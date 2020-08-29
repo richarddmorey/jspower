@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="js/power.js"></script>
+</head>
+<body>
+
+<style type="text/css">
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    min-width: 60px;					
+    min-height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+.line {
+    fill: none;
+    stroke: darkblue;
+    stroke-width: 3;
+}
+  
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+/* Style the dots by assigning a fill and stroke */
+.handle {
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.handle1 {
+	fill: #fff;
+	cursor: ns-resize;
+}
+
+.handle2 {
+	fill: red;
+	cursor: move;
+}
+
+.handle3 {
+	fill: #fff;
+	cursor: ew-resize;
+}
+
+
+.focus {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1;
+}
+
+.svgcontainer {
+	position: relative;
+	width: 500px;
+	height: 350px;
+}
+
+.messageunderlay {
+	font-size: xx-large;
+	color: rgba(0,0,0,.3);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+    /*font-family: monospace, monospace;*/
+}
+
+.relregion {
+	fill: rgba(0,0,0,.1);
+}
+
+</style>
+
+alpha <input id = "alpha" value = "0.025" class="input"/><br/>
+N1 <input id = "N1" class="input" value = "100"/><br/>
+Nratio <input id = "Nratio" value = "1" class="input"/><br/>
+power <input id = "power" value = "0.8" class="input"/><br/>
+n_points <input id = "n_points" value = "50" class="input"/><br/>
+fix delta? <input id = "fixdelta" type="checkbox" checked/><br/>
+use spline? <input id = "splineapprox" type="checkbox" checked/>
+
+<hr>
+
+<div class="svgcontainer">
+	<svg width="500" height="350"></svg>
+	<div class="messageunderlay"></div>
+</div>
+
+<script>
+
+var null_d         = 0;
+var sided          = 1;
+var smallest_d_increment = 0.001
+var smallest_alpha = 0.001;
+var largest_alpha  = 0.25;
+var smallest_power = 0.5;
+var largest_power  = 1 - smallest_alpha;
+var fix_delta      = $("#fixdelta").prop("checked");
+var spline_approx  = $("#splineapprox").prop("checked");
+
+var N1        = parseFloat( $("#N1").val() );
+var Nratio    = parseFloat( $("#Nratio").val() );
+var alpha     = parseFloat( $("#alpha").val() );
+var power     = parseFloat( $("#power").val() );
+var delta     = parseFloat( $("#delta").val() );
+
+var n_points  = parseFloat( $("#n_points").val() );
+
+
+
+data_handles = power_handles(power, alpha, N1, Nratio, null_d, sided);
+
+data_curve = power_curve(alpha, N1, Nratio, null_d, sided, smallest_alpha, largest_power, n_points);
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 50, left: 50},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+    
+var x = d3.scaleLinear()
+	.range([0, width]);
+
+var y = d3.scaleLinear()
+	.range([height, 0])
+	.domain([0,1]);
+
+x.domain(d3.extent(data_curve, function(d) { return d.x; }));
+
+
+var xAxis = d3.axisBottom(x),
+    yAxis = d3.axisLeft(y);
+
+var focus = svg.append("g")
+               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+focus.append('g')
+    .attr('class', 'axis axis--x')
+    .attr('transform', 'translate(0,' + height + ')')
+    .call(xAxis);
+    
+focus.append('g')
+    .attr('class', 'axis axis--y')
+    .call(yAxis);
+
+var mask = focus.append("defs")
+  .append("clipPath")
+  .attr("id", "mask")
+  .style("pointer-events", "none")
+    .append("rect")
+    .attr("x",0)
+    .attr("y",-2)
+    .attr("width", width+10)
+    .attr("height", height + margin.bottom+2);
+
+var rectangle;
+
+if(sided>0){
+	rectangle = 
+		focus.append("rect")
+    		.attr("x", x.range()[0])
+    		.attr("y", y.range()[1])
+    		.attr("width", x(data_handles[2][0]) - x.range()[0])
+    		.attr("height", y.range()[0] - y.range()[1])
+}else{
+	rectangle = 
+		focus.append("rect")
+    		.attr("x", x(data_handles[2][0]))
+    		.attr("y", y.range()[1])
+    		.attr("width", x.range()[1] - x(data_handles[2][0]))
+    		.attr("height", y.range()[0] - y.range()[1])
+}
+
+rectangle    	
+	.attr("class","relregion")
+	.attr("clip-path", "url(#mask)");;
+
+var line = d3.line()
+    .x(function(d) { return x(d.x); }) // set the x values for the line generator
+    .y(function(d) { return y(d.y); }); // set the y values for the line generator 
+
+if(spline_approx)
+	line = line.curve(d3.curveMonotoneX); // apply smoothing to the line
+
+focus.append("path")
+    .datum(data_curve) // 10. Binds data to the line 
+    .attr("class", "line") // Assign a class for styling 
+    .attr("d", line) // 11. Calls the line generator 
+    .attr("clip-path", "url(#mask)");
+
+function show_tooltip() {		
+    var x_coord = x.invert($(this).attr("cx"));
+    var y_coord = y.invert($(this).attr("cy"))
+
+    div.transition()		
+       .duration(200)		
+       .style("opacity", .9);		
+    div.html("&delta;: "+fixedRound(x_coord) + "<br/>Power: "  + fixedRound(y_coord))	
+       .style("left", (d3.event.pageX) + "px")		
+       .style("top", (d3.event.pageY - 28) + "px");	
+}
+
+function hide_tooltip(){
+	div.transition()		
+	        .duration(500)		
+	        .style("opacity", 0);
+}
+
+focus.selectAll('circle')
+    .data(data_handles)
+    .enter()
+    .append('circle')
+    .attr('r', 5)
+    .attr('cx', function(d) { return x(d[0]);  })
+    .attr('cy', function(d) { return y(d[1]); })
+    .attr("class", function(d) { return d[3]; })
+    //.attr("clip-path", "url(#mask)")
+    .on("mouseover", show_tooltip)					
+	.on("mouseout", hide_tooltip);
+
+// Define the div for the tooltip
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+
+ // text label for the y axis
+focus.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("y", 0 - margin.left)
+  .attr("x",0 - (height / 2))
+  .attr("dy", "1em")
+  .style("text-anchor", "middle")
+  .text("Power");  
+
+// text label for the x axis
+svg.append("text")             
+  .attr("transform",
+        "translate(" + (margin.left + width/2) + " ," + 
+                       (height + margin.top + 40) + ")")
+  .style("text-anchor", "middle")
+  .html("Effect size (&delta;)");
+
+
+function dragstarted(d) {
+    d3.select(this).raise().classed('active', true);
+    $(".messageunderlay").text("").fadeIn(500);
+    hide_tooltip();
+    focus.selectAll('circle').on("mouseover", null);
+}
+
+function dragged(d) {
+
+	var N1        = parseFloat( $("#N1").val() );
+	var alpha     = parseFloat( $("#alpha").val() );
+	var Nratio    = parseFloat( $("#Nratio").val() );
+	var fix_delta = $("#fixdelta").prop("checked");
+
+	var N2        = Math.ceil(N1 * Nratio);
+	var Neff      = N1 * N2 / (N1 + N2);  
+	var df        = N1 + N2 - 2;  
+  	
+  	var criterion;
+
+	var upper_handle = null;
+	var middle_handle = null;
+	var middle_handle_delta = null;
+
+    d[0] = x.invert(d3.event.x);
+    d[1] = y.invert(d3.event.y);
+    
+    if(d[2]==0){
+    	if(d[1] >  largest_alpha ) d[1] = largest_alpha;
+    	if(d[1] <= smallest_alpha) d[1] = smallest_alpha; 
+    	
+    	alpha = d[1];
+		upper_handle = t_find_es_power(1 - alpha, alpha, N1, Nratio, null_d, sided).argmin;
+		
+
+    	d3.select(this)
+        	.attr('cy', y(alpha))
+
+        d3.select(".handle3")
+        	.attr('cy', y(1-alpha))
+        	.attr('cx', x(upper_handle));
+
+    	$("#alpha").val(alpha);
+    	$(".messageunderlay").html("&alpha; = " + fixedRound(alpha));
+
+    }
+    if(d[2]==2){
+    	
+    	if(sided>0){
+    		if(d[0] <= null_d) d[0] = null_d + smallest_d_increment;
+    	}else{
+    		if(d[0] >= null_d) d[0] = null_d - smallest_d_increment;
+    	}
+    	
+
+    	N1 = Math.ceil(t_find_N_power(1-alpha, alpha, d[0], Nratio, null_d, sided, true).argmin);
+    	
+    	$("#N1").val(N1);
+
+    	d3.select(this)
+        	.attr('cx', x(d[0]))
+
+    }
+    if(d[2]==1){
+    	if(d[1] <  smallest_power) d[1] = smallest_power;
+    	if(d[1] >= largest_power ) d[1] = largest_power;
+    	if(sided>0){
+    		if(d[0] <= null_d) d[0] = null_d + smallest_d_increment;
+    	}else{
+    		if(d[0] >= null_d) d[0] = null_d - smallest_d_increment;
+    	}
+
+    	N1 = Math.ceil(t_find_N_power(d[1], alpha, d[0], Nratio, null_d, sided, true).argmin);
+		$("#N1").val(N1);    	
+		$("#power").val(d[1]);
+
+    	d3.select(this)
+        	.attr('cx', x(d[0]))
+        	.attr('cy', y(d[1])) 
+	}
+
+	// Recompute, in case N changed
+	N2        = Math.ceil(N1 * Nratio);
+   	Neff      = N1 * N2 / (N1 + N2);  
+
+	if(d[2]==0 | d[2]==2){
+		if(fix_delta){
+			middle_handle_delta = x
+				.invert(d3.select(".handle2").attr("cx"))
+			
+			if(sided>0){
+    			criterion = noncentralt_inv(1 - alpha, df, null_d*Math.sqrt(Neff));
+  			}else{
+    			criterion = noncentralt_inv(alpha, df, null_d*Math.sqrt(Neff));
+  			}
+			middle_handle = t_power(middle_handle_delta, Neff, df, criterion, sided);
+			$("#power").val(middle_handle);
+    	}else{
+    		middle_handle = y
+				.invert(d3.select(".handle2").attr("cy"))
+    		middle_handle_delta = t_find_es_power(middle_handle, alpha, N1, Nratio, null_d, sided).argmin;
+    	}
+    	d3.select(".handle2")
+        	.attr('cy', y(middle_handle))
+        	.attr('cx', x(middle_handle_delta));
+    	
+	}
+
+	if(d[2]>0){
+		var Nmsg;
+		if(Nratio==1){
+			Nmsg = 
+				"N<sub>total</sub> = " + 2*N1;
+		}else{
+			Nmsg = 
+				"N<sub>1</sub> = " + N1 + "<br/>" +
+				"N<sub>2</sub> = " + Math.ceil(N1 * Nratio);
+		}
+		$(".messageunderlay")
+		.html(Nmsg);
+	}
+
+	if(upper_handle === null){
+		upper_handle = t_find_es_power(1 - alpha, alpha, N1, Nratio, null_d, sided).argmin
+		if(d[2]==1){
+			d3.select(".handle3")
+        		.attr('cy', y(1-alpha))
+        		.attr('cx', x(upper_handle));
+		}
+	}
+	if(sided>0){
+		rectangle.attr("width", x(upper_handle) - x.range()[0])
+	}else{
+    	rectangle
+			.attr("x", x(upper_handle))
+			.attr("width", x.range()[1] - x(upper_handle))
+	}
+   	
+   	var max_d;
+    if(sided>0){
+    	max_d = x.domain()[1]
+    }else{
+    	max_d = x.domain()[0]
+    }
+   	var new_curve = power_curve(alpha, N1, Nratio, null_d, sided, smallest_alpha, largest_power, n_points, max_d);
+
+    var svg = d3.select("body")
+
+    // Make the changes
+    svg.select(".line")   // change the line
+       .attr("d", line(new_curve));
+	
+}
+function dragended(d) {
+    d3.select(this).classed('active', false);
+    
+
+	var N1        = parseFloat( $("#N1").val() );
+	var alpha     = parseFloat( $("#alpha").val() );
+
+    var new_handles;
+    if(d[2]==0){
+    	if(d[1] >  largest_alpha ) d[1] = largest_alpha;
+    	if(d[1] <= smallest_alpha) d[1] = smallest_alpha; 
+    	
+    	alpha = d[1];
+    }
+
+    if(d[2]==2){
+   	    if(sided>0){
+    		if(d[0] <= null_d) d[0] = null_d + smallest_d_increment;
+    	}else{
+    		if(d[0] >= null_d) d[0] = null_d - smallest_d_increment;
+    	}
+
+    	N1 = Math.ceil(t_find_N_power(1-alpha, alpha, d[0], Nratio, null_d, sided).argmin);
+
+    	$("#N1").val(N1);
+
+   	}
+   	if(d[2]==1){
+    	if(d[1] <  smallest_power) d[1] = smallest_power;
+    	if(d[1] >= largest_power ) d[1] = largest_power;
+    	if(sided>0){
+    		if(d[0] <= null_d) d[0] = null_d + smallest_d_increment;
+    	}else{
+    		if(d[0] >= null_d) d[0] = null_d - smallest_d_increment;
+    	}
+
+
+    	N1 = Math.ceil(t_find_N_power(d[1], alpha, d[0], Nratio, null_d, sided).argmin);
+
+    	$("#N1").val(N1);
+    	
+	}
+	if(d[2]>0){
+		var Nmsg;
+		if(Nratio==1){
+			Nmsg = 
+				"N<sub>total</sub> = " + 2*N1;
+		}else{
+			Nmsg = 
+				"N<sub>1</sub> = " + N1 + "<br/>" +
+				"N<sub>2</sub> = " + Math.ceil(N1 * Nratio);
+		}
+		$(".messageunderlay")
+		.html(Nmsg);
+	}
+
+	var power = y.invert(focus.select(".handle2").attr("cy"));
+    var new_handles = power_handles(power, alpha, N1, Nratio, null_d, sided);
+    
+   	var lim = t_find_es_power(largest_power, alpha, N1, Nratio, null_d, sided).argmin
+   	
+   	if(sided>0){
+   		x.domain(
+    		[
+    			null_d,
+    			lim
+    		]);	
+   	}else{
+   		x.domain(
+    		[
+    			lim,
+    			null_d
+    		]);	
+   	}
+
+   	var new_curve = power_curve(alpha, N1, Nratio, null_d, sided, smallest_alpha, largest_power, n_points, lim);
+
+ 
+   	if(sided>0){
+    	rectangle
+			.transition()
+			.duration(750)
+			.attr("width", x(new_handles[2][0]) - x.range()[0])
+   	}else{
+    	rectangle
+			.transition()
+			.duration(750)
+			.attr("x", x(new_handles[2][0]))
+			.attr("width", x.range()[1] - x(new_handles[2][0]))
+   	}
+   	var svg = d3.select("body").transition();
+
+   	svg.select(".line")
+   		.duration(750)
+   		.attr("d", line(new_curve));
+
+   	for(var i=1;i<4;i++){
+   		svg.select(".handle"+i)
+   			.duration(750)
+   			.attr("cx", x(new_handles[i-1][0]))
+   			.attr("cy",	y(new_handles[i-1][1])) 
+   	}
+
+    svg.select(".axis--x") // change the x axis
+        .duration(750)
+        .call(xAxis);
+ 	focus.selectAll('circle').on("mouseover", show_tooltip);
+
+ 	$(".messageunderlay")
+    	.fadeOut(500, function(){ $(this).empty() });
+
+}	
+
+let drag = d3.drag()
+        .on('start', dragstarted)
+        .on('drag', dragged)
+        .on('end', dragended);
+
+svg.selectAll('circle')
+        .call(drag);
+
+</script>
+
+</body>
+</html>
