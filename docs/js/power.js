@@ -1,21 +1,219 @@
 
-function fixedRound(x,d=3){
-  var t = Math.pow(10, d);
-  return (Math.round(x*t)/t).toFixed(d);
+function fix_delta(){
+  return $("#opts_fixdelta").prop("checked");
 }
 
-function power_curve(alpha, N1, Nratio, null_d=0, sided, smallest_alpha, largest_power, n_points, max_d, normal = false, tol = 0.00001, maxIterations = 100 ){
+function n_points(){
+  return parseFloat( $("#opts_npoints").val() );
+}
 
+function alpha_val(){
+  return parseFloat( $("#alpha_out").val() );
+}
+
+function n_val(){
+  return Math.ceil(parseFloat($("#N1_out").val()));
+}
+
+function power_val(){
+  return parseFloat( $("#power_out").val() );
+}
+
+function delta_val(){
+  return parseFloat( $("#delta_out").val() );
+}
+
+function n_ratio_val(){
+  return parseFloat($("#Nratio").val());
+}
+
+function null_d_val(){
+  return parseFloat($("#opts_nulld").val());
+}
+
+function smallest_d_increment_val(){
+  return parseFloat($("#opts_delta_inc").val());
+}
+
+function smallest_alpha_val(){ 
+  return parseFloat($("#opts_sm_alpha").val());
+}
+
+function largest_alpha_val(){ 
+  return parseFloat($("#opts_lg_alpha").val());
+}
+
+function smallest_power_val(){
+  return parseFloat($("#opts_sm_power").val());
+}
+
+function largest_power_val(){ 
+  return parseFloat($("#opts_lg_power").val());
+}
+
+function sided_val(){
+  return ($("#side_out").val() == "1") ? 1 : -1;
+}
+
+function report_N(N1){
+  var N2 = Math.ceil(N1 * n_ratio_val());
+  var Ntotal = N1 + N2;
+  $("#N1_out").val(N1);
+  $("#N2_out").val(N2);
+  $("#Ntotal_out").val(Ntotal);
+}
+
+function swap_sided(){
+  if(sided_val()>0){
+    $("#opts_sided")
+      .text("less than")
+      .removeClass("pwr_pickside_gt")
+      .addClass("pwr_pickside_lt");
+    $("#side_out").val("-1");
+  }else{
+    $("#opts_sided")
+      .text("greater than")
+      .removeClass("pwr_pickside_lt")
+      .addClass("pwr_pickside_gt");
+    $("#side_out").val("1");
+  }
+
+  update_power_plot()
+
+}
+
+
+function reset_n(){
+  var N1 = parseFloat($("#N1").val());
+  report_N(N1);
+  update_power_plot();
+}
+
+function reset_alpha(){
+  var alpha = parseFloat($("#opts_setalpha").val());
+  $("#alpha_out").val(alpha);
+  update_power_plot();
+}
+
+function reset_n_ratio(){
+  var N1 = n_val();
+  var N2 = parseFloat($("#N2_out").val());
+  var Ntotal = N1 + N2;
+  var Nratio = n_ratio_val();
+
+
+  var newN1 = Math.ceil(Ntotal/(1 + Nratio));
+  var newN2 = Ntotal - newN1;
+
+  report_N(newN1);
+  update_power_plot();
+}
+
+function reset_null(){
+  if(!isNaN(null_d_val()))  
+    update_power_plot();
+}
+
+function reset_power_handle(new_power=0.5){
+  var middle_handle_delta = t_find_es_power(new_power, alpha_val(), n_val(), n_ratio_val(), null_d_val(), sided_val()).argmin;
+  $("#power_out").val(new_power);
+  $("#delta_out").val(middle_handle_delta);
+  d3.select(".handle2")
+          .attr('cy', y(new_power))
+          .attr('cx', x(middle_handle_delta)); 
+  format_output()
+}
+
+
+function fixedRound(x,d=3){
+  var t = Math.pow(10, d);
+  return parseFloat((Math.round(x*t)/t).toFixed(d));
+}
+
+function compute_criterion(alpha, N1, Nratio, null_d, sided, normal=false, tol = 0.00001, maxIterations = 100){
+  
   var N2 = Math.ceil(N1 * Nratio);
   var Neff = N1 * N2 / (N1 + N2);
   var df = N1 + N2 - 2;
-
+  
   var criterion;
+
   if(sided>0){
     criterion = noncentralt_inv(1 - alpha, df, null_d*Math.sqrt(Neff), normal, tol, maxIterations);
   }else{
     criterion = noncentralt_inv(alpha, df, null_d*Math.sqrt(Neff), normal, tol, maxIterations);
   }
+
+  return criterion;
+}
+
+function format_output(criterion){
+  
+  var N1 = n_val();
+  var N2 = Math.ceil(N1 * n_ratio_val());
+  var Neff = N1 * N2 / (N1 + N2);
+  var df = N1 + N2 - 2;
+
+  var rel_report;
+  var relr2_report;
+  var relr_oppo_report;
+  var relr2_oppo_report;
+  var d50_report;
+
+  var upper_handle_delta = x.invert(d3.select(".handle3").attr("cx")); 
+
+  if($("#opts_sided").text()=="greater than"){
+    rel_report = "large"
+    relr2_report = "at least"
+    relr_oppo_report = "smaller than"
+    relr2_oppo_report = "at most"
+  }else{
+    rel_report = "small"
+    relr2_report = "at most"
+    relr_oppo_report = "larger than"
+    relr2_oppo_report = "at least"
+  }
+
+
+  $(".N1_report").text(n_val);
+  $(".N2_report").text(N2);
+  $(".Ntotal_report").text(N1 + N2);
+  
+  $(".criterion_report").text();
+  $(".power_report").text(fixedRound(power_val()*100, 1));
+  $(".delta_report").text(fixedRound(delta_val()));
+  $(".alpha_report").text(fixedRound(alpha_val()*100, 1));
+
+  $(".hypo_report").text($("#opts_sided").text());
+  $(".rel_report").text(rel_report);
+  $(".relr_report").text($("#opts_sided").text());
+  $(".relr2_report").text( relr2_report );
+  $(".relr_oppo_report").text( relr_oppo_report );
+  $(".relr2_oppo_report").text( relr2_oppo_report );
+
+  $(".upper_d_report").text(fixedRound(upper_handle_delta));
+  $(".nulld_report").text(null_d_val());
+  
+  $(".cilevel_report").text(fixedRound(((1 - 2*alpha_val())*100),1));
+  $(".ciwidth_report").text(fixedRound(Math.abs(upper_handle_delta - null_d_val())));
+  
+  if(typeof criterion !== 'undefined'){
+    d50_report = t_find_es_power(0.5, alpha_val(), n_val(), n_ratio_val(), null_d_val(), sided_val(), criterion).argmin;
+    $(".d50_report").text(fixedRound(d50_report));
+    $(".criterion_report").text( fixedRound(criterion) );
+  }
+    
+
+}
+
+function power_curve(alpha, N1, Nratio, null_d=0, criterion, sided, smallest_alpha, largest_power, n_points, max_d, normal = false, tol = 0.00001, maxIterations = 100 ){
+
+  var N2 = Math.ceil(N1 * Nratio);
+  var Neff = N1 * N2 / (N1 + N2);
+  var df = N1 + N2 - 2;
+
+  if(criterion === null)
+    criterion = compute_criterion(alpha, N1, Nratio, null_d, sided, normal, tol, maxIterations);
 
   var x = 
        [
@@ -71,12 +269,7 @@ function power_handles(power, alpha, N1, Nratio, null_d=0, sided=1, normal = fal
   var Neff = N1 * N2 / (N1 + N2);
   var df = N1 + N2 - 2;
 
-  var criterion;
-  if(sided>0){
-    criterion = noncentralt_inv(1 - alpha, df, null_d*Math.sqrt(Neff), normal, tol, maxIterations);
-  }else{
-    criterion = noncentralt_inv(alpha, df, null_d*Math.sqrt(Neff), normal, tol, maxIterations);
-  }
+  var criterion = compute_criterion(alpha, N1, Nratio, null_d, sided, normal, tol, maxIterations);
 
   var x_handles = [
     null_d,
@@ -227,12 +420,7 @@ function t_find_N(N1, Nratio, delta, power, alpha, null_d=0, sided=1,normal=fals
 	var Neff      = (N1 * N2) / (N1 + N2);
 	var df        = N1 + N2 - 2;
 
-  var criterion;
-  if(sided>0){
-    criterion = noncentralt_inv(1 - alpha, df, null_d*Math.sqrt(Neff),normal,tol,maxIterations);
-  }else{
-    criterion = noncentralt_inv(alpha, df, null_d*Math.sqrt(Neff),normal,tol,maxIterations);
-  }
+  var criterion = compute_criterion(alpha, N1, Nratio, null_d, sided, normal, tol, maxIterations);
 
 	var objective =  t_power(delta, Neff, df, criterion, sided) - power;
 	
@@ -246,13 +434,9 @@ function t_find_es_power(power, alpha, N1, Nratio = 1, null_d=0, sided=1,criteri
   var Neff      = (N1 * N2) / (N1 + N2);
   var df        = N1 + N2 - 2;
 
-  if(typeof criterion === 'undefined'){
-    if(sided > 0){
-      criterion = noncentralt_inv(1 - alpha, df, null_d*Math.sqrt(Neff),normal,tol,maxIterations);
-    }else{
-      criterion = noncentralt_inv(alpha, df, null_d*Math.sqrt(Neff),normal,tol,maxIterations);
-    }
-  }
+  if(typeof criterion === 'undefined')
+    criterion = compute_criterion(alpha, N1, Nratio, null_d, sided, normal, tol, maxIterations);
+
 
   var xL, xU;
   if(sided > 0){
