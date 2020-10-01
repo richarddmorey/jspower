@@ -1,0 +1,12 @@
+Package: jspower
+Type: Package
+Title: Power computations for various common designs
+Version: 0.1
+Date: 2020-10-01
+Author: Richard D. Morey
+Maintainer: Richard D. Morey <richarddmorey@gmail.com>
+Description: Power computations for various common designs
+License: GPL-3
+Imports: 
+    V8
+RoxygenNote: 7.1.1
