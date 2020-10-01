@@ -1,0 +1,16 @@
+<html>
+<head>
+    <script src="jspower.js"></script>
+</head>
+<body>
+
+    <pre id="out"></pre>
+
+<script>
+var t = new jspower.ttest2_pwr();
+const out = t.design_report();
+document.getElementById("out").innerHTML = JSON.stringify(out, null, '\t'); 
+</script>
+
+</body>
+</html>
