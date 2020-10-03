@@ -5,3 +5,4 @@ jspower.code-workspace
 .Rproj.user
 src/R/pkg/jspower/jspower.Rproj
 src/R/pkg/jspower/tmp/*
+*.map

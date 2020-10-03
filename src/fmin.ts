@@ -12,7 +12,7 @@ interface fmin_result {
   i: number
 };
 
-function fmin(ax: number, bx: number, f: Function, tol: number): fmin_result {
+function fmin0(ax: number, bx: number, f: Function, tol: number): fmin_result {
     "use strict";    
     tol = tol || 1E-8;
         //var ax,bx,f,tol;

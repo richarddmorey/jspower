@@ -6,7 +6,7 @@
 * See https://github.com/wch/r-source/blob/trunk/src/library/stats/src/optimize.c
 *********/
 ;
-function fmin(ax, bx, f, tol) {
+function fmin0(ax, bx, f, tol) {
     "use strict";
     tol = tol || 1E-8;
     //var ax,bx,f,tol;
@@ -51,7 +51,7 @@ function fmin(ax, bx, f, tol) {
     //
     //
     if (!isFinite(ax) || !isFinite(bx))
-        throw "Bounds ax, bx must be finite: " + ax + ", " + bx;
+        throw `Bounds ax, bx must be finite: ${ax}, ${bx}`;
     var a, b, c, d, e, eps, xm, p, q, r, tol1, tol2, u, v, w, fu, fv, fw, fx, x;
     var i = 0;
     function sign(x, y) {
@@ -204,3 +204,4 @@ function fmin(ax, bx, f, tol) {
 module.exports = {
     fmin: fmin
 };
+//# sourceMappingURL=fmin.js.map
