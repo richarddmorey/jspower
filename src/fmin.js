@@ -202,6 +202,6 @@ function fmin0(ax, bx, f, tol) {
     return { x: x, fx: fx, i: i };
 }
 module.exports = {
-    fmin: fmin
+    fmin0: fmin0
 };
 //# sourceMappingURL=fmin.js.map

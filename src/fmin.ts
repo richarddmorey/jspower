@@ -233,6 +233,6 @@ function fmin0(ax: number, bx: number, f: Function, tol: number): fmin_result {
 }
 
 module.exports = {
-  fmin: fmin
+  fmin0: fmin0
 }
 

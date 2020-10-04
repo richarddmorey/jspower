@@ -113,14 +113,13 @@ module.exports = {
 
 "use strict";
 /*********
-* 
-* Code by Richard D. Morey, 
+*
+* Code by Richard D. Morey,
 * September 2020
 *
 *
 * TO DO:
 * 1. Add in caching for precision and es50? lib-r-math.js is so fast this might not be necessary
-* 2. convert to TypeScript
 *
 *********/
 
@@ -131,9 +130,17 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _classPrivateFieldGet(receiver, privateMap) { var descriptor = privateMap.get(receiver); if (!descriptor) { throw new TypeError("attempted to get private field on non-instance"); } if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+var __classPrivateFieldGet = this && this.__classPrivateFieldGet || function (receiver, privateMap) {
+  if (!privateMap.has(receiver)) {
+    throw new TypeError("attempted to get private field on non-instance");
+  }
 
-var fmin = __webpack_require__(2).fmin;
+  return privateMap.get(receiver);
+};
+
+var _cache, _design, _test, _curve, _power1, _compute_criterion, _es_power, _n_power;
+
+var fmin = __webpack_require__(2).fmin0;
 
 var _require = __webpack_require__(3),
     StudentT = _require.StudentT,
@@ -152,268 +159,219 @@ var _Logistic = Logistic(),
     plogis = _Logistic.plogis,
     qlogis = _Logistic.qlogis;
 
-var _cache = new WeakMap();
-
-var _design = new WeakMap();
-
-var _test = new WeakMap();
-
-var _curve = new WeakMap();
-
-var _power = new WeakMap();
-
-var _compute_criterion = new WeakMap();
-
-var _es_power = new WeakMap();
-
-var _n_power = new WeakMap();
-
-var _validate = new WeakMap();
+;
 
 var ttest2_pwr = /*#__PURE__*/function () {
   function ttest2_pwr() {
     var _this = this;
 
     var precision_2alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.2;
-
-    var _nratio = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
+    var nratio = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     var test = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
     _classCallCheck(this, ttest2_pwr);
 
     _cache.set(this, {
-      writable: true,
-      value: {
-        criterion: {},
-        es50: {},
-        precision: {}
-      }
+      criterion: {}
     });
 
     _design.set(this, {
-      writable: true,
-      value: {
-        n1: 50,
-        n2: 50,
-        nratio: 1
-      }
+      n1: 50,
+      n2: 50,
+      nratio: 1
     });
 
     _test.set(this, {
-      writable: true,
-      value: {
-        es0: 0,
-        side: 1,
-        alpha: 0.025
-      }
+      es0: 0,
+      side: 1,
+      alpha: 0.025
     });
 
     _curve.set(this, {
-      writable: true,
-      value: {
-        es: 0.1,
-        power: 0.9
-      }
+      es: 0.1,
+      power: 0.9
+    } // Note that this returns log-odds of power!
+    ); // Note that this returns log-odds of power!
+
+
+    _power1.set(this, function (n1, n2, delta, alpha, criterion, delta0) {
+      if (delta == delta0) return alpha;
+      var neff = n1 * n2 / (n1 + n2);
+      var df = n1 + n2 - 2;
+      if (typeof criterion === 'undefined') criterion = __classPrivateFieldGet(_this, _compute_criterion).call(_this, n1, n2, alpha, delta0);
+      var ncp = delta * Math.sqrt(neff);
+      var logpow = pt(criterion, df, ncp, false, true);
+      return qlogis(logpow, 0, 1, true, true);
     });
 
-    _power.set(this, {
-      writable: true,
-      value: function value(n1, n2, delta, alpha, criterion, delta0) {
-        if (delta == delta0) return alpha;
+    _compute_criterion.set(this, function (n1, n2, alpha, delta0) {
+      n1 = Math.ceil(n1);
+      var ns0 = n1 > n2 ? [n2, n1] : [n1, n2];
+      var ns = ns0.toString();
+      var key = "".concat(delta0, ",").concat(alpha, ",").concat(ns);
+      var f0,
+          criterion,
+          i = 0;
+
+      if (key in __classPrivateFieldGet(_this, _cache).criterion && _this.options.criterion.cache) {
+        criterion = __classPrivateFieldGet(_this, _cache).criterion[key];
+      } else {
         var neff = n1 * n2 / (n1 + n2);
         var df = n1 + n2 - 2;
-        if (typeof criterion === 'undefined') criterion = _classPrivateFieldGet(_this, _compute_criterion).call(_this, n1, n2, alpha, delta0);
-        var ncp = delta * Math.sqrt(neff);
-        var logpow = pt(criterion, df, ncp, false, true);
-        return qlogis(logpow, 0, 1, true, true);
-      }
-    });
 
-    _compute_criterion.set(this, {
-      writable: true,
-      value: function value(n1, n2, alpha, delta0) {
-        n1 = Math.ceil(n1);
-        var ns = n1 > n2 ? [n2, n1] : [n1, n2];
-        ns = ns.toString();
-        var key = "".concat(delta0, ",").concat(alpha, ",").concat(ns);
-        var f0,
-            criterion,
-            i = 0;
-
-        if (key in _classPrivateFieldGet(_this, _cache).criterion & _this.options.criterion.cache) {
-          criterion = _classPrivateFieldGet(_this, _cache).criterion[key];
+        if (delta0 == 0) {
+          criterion = -qt(alpha, df);
         } else {
-          var neff = n1 * n2 / (n1 + n2);
-          var df = n1 + n2 - 2;
-
-          if (delta0 == 0) {
-            criterion = -qt(alpha, df);
-          } else {
-            var ncp = delta0 * Math.sqrt(neff);
-            criterion = qt(alpha, df, ncp, false);
-          }
-
-          if (_this.options.criterion.cache) _classPrivateFieldGet(_this, _cache).criterion[key] = criterion;
+          var ncp = delta0 * Math.sqrt(neff);
+          criterion = qt(alpha, df, ncp, false);
         }
 
-        return criterion;
+        if (_this.options.criterion.cache) __classPrivateFieldGet(_this, _cache).criterion[key] = criterion;
       }
+
+      return criterion;
     });
 
-    _es_power.set(this, {
-      writable: true,
-      value: function value(pow, criterion) {
-        var n1 = _classPrivateFieldGet(_this, _design).n1;
+    _es_power.set(this, function (pow, criterion) {
+      var n1 = __classPrivateFieldGet(_this, _design).n1;
 
-        var n2 = _this.n2;
-        var delta0 = _classPrivateFieldGet(_this, _test).side < 0 ? -_classPrivateFieldGet(_this, _test).es0 : _classPrivateFieldGet(_this, _test).es0;
-        var s_dn = _this.options.n.s_dn;
-        var s_up = _this.options.n.s_up;
-        var shift_dn = _this.options.n.shift_dn;
-        var shift_up = _this.options.n.shift_up;
-        if (pow == _classPrivateFieldGet(_this, _test).alpha) return _classPrivateFieldGet(_this, _test).delta;
-        if (_classPrivateFieldGet(_this, _test).side < 0) criterion = -criterion;
-        var es_up, es_lo, pow_up, pow_lo;
-        var qpow = qlogis(pow);
-        var neff = n1 * n2 / (n2 + n2);
-        var df = n1 + n2 - 2;
-        var tmp = criterion - qnorm(pow, 0, 1, false);
-        es_up = (tmp + s_up) / Math.sqrt(neff);
-        es_lo = (tmp - s_dn) / Math.sqrt(neff);
-        pow_up = _classPrivateFieldGet(_this, _power).call(_this, n1, n2, es_up, undefined, criterion, delta0);
-        pow_lo = _classPrivateFieldGet(_this, _power).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
+      var n2 = _this.n2;
+      var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
+      var s_dn = _this.options.n.s_dn;
+      var s_up = _this.options.n.s_up;
+      var shift_dn = _this.options.n.shift_dn;
+      var shift_up = _this.options.n.shift_up;
+      if (pow == __classPrivateFieldGet(_this, _test).alpha) return __classPrivateFieldGet(_this, _test).es0;
+      if (__classPrivateFieldGet(_this, _test).side < 0) criterion = -criterion;
+      var es_up, es_lo, pow_up, pow_lo;
+      var qpow = qlogis(pow);
+      var neff = n1 * n2 / (n2 + n2);
+      var df = n1 + n2 - 2;
+      var tmp = criterion - qnorm(pow, 0, 1, false);
+      es_up = (tmp + s_up) / Math.sqrt(neff);
+      es_lo = (tmp - s_dn) / Math.sqrt(neff);
+      pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_up, undefined, criterion, delta0);
+      pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
 
-        while (pow_up < qpow) {
-          es_lo = es_up;
-          es_up = es_up + shift_up;
-          pow_up = _classPrivateFieldGet(_this, _power).call(_this, n1, n2, es_up, undefined, criterion, delta0);
-        }
-
-        while (pow_lo > qpow) {
-          es_up = es_lo;
-          es_lo = es_lo - shift_dn;
-          pow_lo = _classPrivateFieldGet(_this, _power).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
-        }
-
-        var this0 = _this;
-
-        var opt_fun = function opt_fun(delta) {
-          var obj = _classPrivateFieldGet(this0, _power).call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
-          return obj * obj;
-        };
-
-        return fmin(es_lo, es_up, opt_fun, _this.options.es.tol).x;
+      while (pow_up < qpow) {
+        es_lo = es_up;
+        es_up = es_up + shift_up;
+        pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_up, undefined, criterion, delta0);
       }
+
+      while (pow_lo > qpow) {
+        es_up = es_lo;
+        es_lo = es_lo - shift_dn;
+        pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
+      }
+
+      var this0 = _this;
+
+      var opt_fun = function opt_fun(delta) {
+        var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
+        return obj * obj;
+      };
+
+      return fmin(es_lo, es_up, opt_fun, _this.options.es.tol).x;
     });
 
-    _n_power.set(this, {
-      writable: true,
-      value: function value(pow, delta) {
-        var alpha = _classPrivateFieldGet(_this, _test).alpha;
+    _n_power.set(this, function (pow, delta) {
+      var alpha = __classPrivateFieldGet(_this, _test).alpha;
 
-        var nratio = _classPrivateFieldGet(_this, _design).nratio;
+      var nratio = __classPrivateFieldGet(_this, _design).nratio;
 
-        var s_dn = _this.options.n.s_dn;
-        var s_up = _this.options.n.s_up;
-        var shift_dn = _this.options.n.shift_dn;
-        var shift_up = _this.options.n.shift_up;
-        var delta0 = _classPrivateFieldGet(_this, _test).side < 0 ? -_classPrivateFieldGet(_this, _test).es0 : _classPrivateFieldGet(_this, _test).es0;
-        var fix_n2 = _this.options.fix_n2;
-        if (_classPrivateFieldGet(_this, _test).side < 0) delta = -delta;
+      var s_dn = _this.options.n.s_dn;
+      var s_up = _this.options.n.s_up;
+      var shift_dn = _this.options.n.shift_dn;
+      var shift_up = _this.options.n.shift_up;
+      var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
+      var fix_n2 = _this.options.fix_n2;
+      if (__classPrivateFieldGet(_this, _test).side < 0) delta = -delta;
 
-        if (delta < delta0 & pow > alpha) {
-          throw 'The specified effect size specified cannot be in the null region if power > alpha.';
-        } else if (delta > delta0 & pow < alpha) {
-          throw 'The specified effect size specified cannot be in the null region if power > alpha.';
-        } else if (pow == alpha) {
-          throw 'Power cannot be equal to alpha if computing sample size.';
-        } else if (delta == delta0) {
-          throw 'Effect size cannot be equal to the null effect size if computing sample size.';
-        }
-
-        var n2 = _this.n2;
-        var neff_up,
-            neff_lo,
-            n_up,
-            n2_up = n2,
-            n_lo,
-            n2_lo = n2,
-            pow_up,
-            pow_lo;
-        var qpow = qlogis(pow);
-        var delta_tmp = Math.abs(delta - delta0);
-        var criterion0 = -qnorm(alpha);
-        var tmp = qnorm(pow) + criterion0;
-        neff_lo = Math.pow((tmp - s_dn) / delta_tmp, 2);
-
-        if (fix_n2) {
-          var es0 = Math.abs(delta - delta0) * Math.sqrt(n2);
-          var max_pow = pnorm(criterion0, es0, 1, false);
-          neff_up = n2 - 1;
-          if (pow >= max_pow) throw "Power for es ".concat(delta, " requested was ").concat(pow, ". This is greater than the maximum power of ").concat(max_pow, " when n2 is fixed at ").concat(n2, " and alpha is ").concat(alpha, ".");
-          n_up = Math.max(2, 1 / (1 / neff_up - 1 / n2));
-          n_lo = Math.max(2, 1 / (1 / neff_lo - 1 / n2));
-        } else {
-          neff_up = Math.pow((tmp + s_up) / delta_tmp, 2);
-          n_up = Math.max(2, neff_up * (1 / nratio + 1));
-          n_lo = Math.max(2, neff_lo * (1 / nratio + 1));
-          n2_up = Math.max(2, n_up * nratio);
-          n2_lo = Math.max(2, n_lo * nratio);
-        }
-
-        if (n_up == 2) return 2;
-        pow_up = _classPrivateFieldGet(_this, _power).call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
-        pow_lo = _classPrivateFieldGet(_this, _power).call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
-
-        while (pow_up < qpow) {
-          n_lo = n_up;
-          n_up = n_up * shift_up;
-
-          if (!fix_n2) {
-            n2_lo = n2_up;
-            n2_up = n2_up * shift_up;
-          }
-
-          pow_up = _classPrivateFieldGet(_this, _power).call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
-        }
-
-        while (pow_lo > qpow & n_lo >= 2) {
-          n_up = n_lo;
-          n_lo = n_lo * shift_dn;
-
-          if (!fix_n2) {
-            n2_up = n2_lo;
-            n2_lo = n2_lo * shift_dn;
-          }
-
-          pow_lo = _classPrivateFieldGet(_this, _power).call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
-        } // Ensure group 2 has at least two samples in it
-
-
-        if (!fix_n2 & n_lo * nratio < 2) n_lo = 2 / nratio;
-        var this0 = _this;
-
-        var opt_fun = function opt_fun(n1) {
-          var obj = _classPrivateFieldGet(this0, _power).call(this0, n1, fix_n2 ? n2 : Math.ceil(n1 * nratio), delta, alpha, undefined, delta0) - qpow;
-          return obj * obj;
-        };
-
-        var n_opt = fmin(n_lo, n_up, opt_fun, _this.options.n.tol).x;
-        return Math.ceil(n_opt);
+      if (delta < delta0 && pow > alpha) {
+        throw 'The specified effect size specified cannot be in the null region if power > alpha.';
+      } else if (delta > delta0 && pow < alpha) {
+        throw 'The specified effect size specified cannot be in the null region if power > alpha.';
+      } else if (pow == alpha) {
+        throw 'Power cannot be equal to alpha if computing sample size.';
+      } else if (delta == delta0) {
+        throw 'Effect size cannot be equal to the null effect size if computing sample size.';
       }
+
+      var n2 = _this.n2;
+      var neff_up,
+          neff_lo,
+          n_up,
+          n2_up = n2,
+          n_lo,
+          n2_lo = n2,
+          pow_up,
+          pow_lo;
+      var qpow = qlogis(pow);
+      var delta_tmp = Math.abs(delta - delta0);
+      var criterion0 = -qnorm(alpha);
+      var tmp = qnorm(pow) + criterion0;
+      neff_lo = Math.pow((tmp - s_dn) / delta_tmp, 2);
+
+      if (fix_n2) {
+        var es0 = Math.abs(delta - delta0) * Math.sqrt(n2);
+        var max_pow = pnorm(criterion0, es0, 1, false);
+        neff_up = n2 - 1;
+        if (pow >= max_pow) throw "Power for es ".concat(delta, " requested was ").concat(pow, ". This is greater than the maximum power of ").concat(max_pow, " when n2 is fixed at ").concat(n2, " and alpha is ").concat(alpha, ".");
+        n_up = Math.max(2, 1 / (1 / neff_up - 1 / n2));
+        n_lo = Math.max(2, 1 / (1 / neff_lo - 1 / n2));
+      } else {
+        neff_up = Math.pow((tmp + s_up) / delta_tmp, 2);
+        n_up = Math.max(2, neff_up * (1 / nratio + 1));
+        n_lo = Math.max(2, neff_lo * (1 / nratio + 1));
+        n2_up = Math.max(2, n_up * nratio);
+        n2_lo = Math.max(2, n_lo * nratio);
+      }
+
+      if (n_up == 2) return 2;
+      pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
+      pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+
+      while (pow_up < qpow) {
+        n_lo = n_up;
+        n_up = n_up * shift_up;
+
+        if (!fix_n2) {
+          n2_lo = n2_up;
+          n2_up = n2_up * shift_up;
+        }
+
+        pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
+      }
+
+      while (pow_lo > qpow && n_lo >= 2) {
+        n_up = n_lo;
+        n_lo = n_lo * shift_dn;
+
+        if (!fix_n2) {
+          n2_up = n2_lo;
+          n2_lo = n2_lo * shift_dn;
+        }
+
+        pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+      } // Ensure group 2 has at least two samples in it
+
+
+      if (!fix_n2 && n_lo * nratio < 2) n_lo = 2 / nratio;
+      var this0 = _this;
+
+      var opt_fun = function opt_fun(n1) {
+        var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, fix_n2 ? n2 : Math.ceil(n1 * nratio), delta, alpha, undefined, delta0) - qpow;
+        return obj * obj;
+      };
+
+      var n_opt = fmin(n_lo, n_up, opt_fun, _this.options.n.tol);
+      return Math.ceil(n_opt.x);
     });
 
-    _validate.set(this, {
-      writable: true,
-      value: function value() {
-        if (_classPrivateFieldGet(_this, _test).side == 0) throw "test.side cannot be 0; must be negative or positive.";
-      }
-    });
-
-    _classPrivateFieldGet(this, _design).nratio = _nratio;
-    Object.assign(_classPrivateFieldGet(this, _test), test);
+    __classPrivateFieldGet(this, _design).nratio = nratio;
+    Object.assign(__classPrivateFieldGet(this, _test), test);
     var options0 = {
       fix_es: true,
       fix_n2: false,
@@ -454,13 +412,11 @@ var ttest2_pwr = /*#__PURE__*/function () {
     value: function find_power(es) {
       var typeS = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-      _classPrivateFieldGet(this, _validate).call(this);
+      var design = __classPrivateFieldGet(this, _design);
 
-      var design = _classPrivateFieldGet(this, _design);
+      var test = __classPrivateFieldGet(this, _test);
 
-      var test = _classPrivateFieldGet(this, _test);
-
-      var curve = _classPrivateFieldGet(this, _curve);
+      var curve = __classPrivateFieldGet(this, _curve);
 
       var n2 = this.n2;
       var side = test.side;
@@ -468,9 +424,9 @@ var ttest2_pwr = /*#__PURE__*/function () {
       if (typeof es === 'undefined') es = [curve.es];
 
       if (typeS) {
-        criterion = -Math.sign(side) * _classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, -Math.sign(side) * test.es0);
+        criterion = -Math.sign(side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, -Math.sign(side) * test.es0);
       } else {
-        criterion = Math.sign(side) * _classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(side) * test.es0);
+        criterion = Math.sign(side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(side) * test.es0);
       }
 
       var this0 = this;
@@ -485,53 +441,49 @@ var ttest2_pwr = /*#__PURE__*/function () {
         }
 
         if (typeS) {
-          return plogis(-_classPrivateFieldGet(this0, _power).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
+          return plogis(-__classPrivateFieldGet(this0, _power1).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
         } else {
-          return plogis(_classPrivateFieldGet(this0, _power).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
+          return plogis(__classPrivateFieldGet(this0, _power1).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
         }
       });
     }
   }, {
     key: "find_es",
     value: function find_es(power) {
-      _classPrivateFieldGet(this, _validate).call(this);
+      var design = __classPrivateFieldGet(this, _design);
 
-      var design = _classPrivateFieldGet(this, _design);
+      var test = __classPrivateFieldGet(this, _test);
 
-      var test = _classPrivateFieldGet(this, _test);
-
-      var curve = _classPrivateFieldGet(this, _curve);
+      var curve = __classPrivateFieldGet(this, _curve);
 
       if (typeof power === 'undefined') power = [curve.power];
 
-      var criterion = Math.sign(test.side) * _classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
+      var criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
 
       var this0 = this;
       return power.map(function (power) {
-        return Math.sign(test.side) * _classPrivateFieldGet(this0, _es_power).call(this0, power, criterion);
+        return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, power, criterion);
       });
     }
   }, {
     key: "find_n",
     value: function find_n(curve) {
-      _classPrivateFieldGet(this, _validate).call(this);
+      var design = __classPrivateFieldGet(this, _design);
 
-      var design = _classPrivateFieldGet(this, _design);
+      var test = __classPrivateFieldGet(this, _test);
 
-      var test = _classPrivateFieldGet(this, _test);
-
-      if (typeof curve === 'undefined') curve = [_classPrivateFieldGet(this, _curve)];
+      if (typeof curve === 'undefined') curve = [__classPrivateFieldGet(this, _curve)];
       var this0 = this;
       return curve.map(function (curve) {
-        return _classPrivateFieldGet(this0, _n_power).call(this0, curve.power, curve.es);
+        return __classPrivateFieldGet(this0, _n_power).call(this0, curve.power, curve.es);
       });
     }
   }, {
     key: "clear_cache",
     value: function clear_cache() {
       var this0 = this;
-      Object.keys(_classPrivateFieldGet(this, _cache)).map(function (key) {
-        _classPrivateFieldGet(this0, _cache)[key] = {};
+      Object.keys(__classPrivateFieldGet(this, _cache)).map(function (key) {
+        __classPrivateFieldGet(this0, _cache)[key] = {};
       });
     }
   }, {
@@ -562,89 +514,87 @@ var ttest2_pwr = /*#__PURE__*/function () {
   }, {
     key: "cache",
     get: function get() {
-      return _classPrivateFieldGet(this, _cache);
+      return __classPrivateFieldGet(this, _cache);
     }
   }, {
     key: "test",
     get: function get() {
-      return _classPrivateFieldGet(this, _test);
+      return __classPrivateFieldGet(this, _test);
     },
-    set: function set() {
-      var test = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    set: function set(test) {
       var reset = false,
           i,
           which_change = [];
-      var keys = Object.keys(_classPrivateFieldGet(this, _test));
+      var keys = Object.keys(__classPrivateFieldGet(this, _test));
 
       for (i = 0; i < keys.length; i++) {
         var key = keys[i];
-        if (key in test) if (test[key] != _classPrivateFieldGet(this, _test)[key]) {
+        if (key in test) if (test[key] != __classPrivateFieldGet(this, _test)[key]) {
           which_change.push(key);
         }
       }
 
       if (which_change.length > 0) {
-        Object.assign(_classPrivateFieldGet(this, _test), test);
+        Object.assign(__classPrivateFieldGet(this, _test), test);
 
-        if (which_change[0] == "alpha" & which_change.length == 1) {
+        if (which_change[0] == "alpha" && which_change.length == 1) {
           if (this.options.fix_es) {
-            _classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+            __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
           } else {
-            _classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+            __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
           }
         } else {
-          _classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+          __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
         }
       }
     }
   }, {
     key: "n1",
     get: function get() {
-      return _classPrivateFieldGet(this, _design).n1;
+      return __classPrivateFieldGet(this, _design).n1;
     },
     set: function set(n1) {
-      if (_classPrivateFieldGet(this, _design).n1 == n1) return;
-      _classPrivateFieldGet(this, _design).n1 = n1;
+      if (__classPrivateFieldGet(this, _design).n1 == n1) return;
+      __classPrivateFieldGet(this, _design).n1 = n1;
 
       if (this.options.fix_n2) {
-        _classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+        __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
       } else {
-        _classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+        __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
       }
 
       if (this.options.fix_es) {
-        _classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+        __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
       } else {
-        _classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+        __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
       }
     }
   }, {
     key: "nratio",
     get: function get() {
-      return _classPrivateFieldGet(this, _design).nratio;
+      return __classPrivateFieldGet(this, _design).nratio;
     },
     set: function set(nratio) {
-      // attempts to preserve total n
       var ntotal = this.ntotal;
       var n2 = Math.ceil(ntotal * nratio / (1 + nratio));
       this.options.fix_n2 = false;
-      _classPrivateFieldGet(this, _design).nratio = nratio;
+      __classPrivateFieldGet(this, _design).nratio = nratio;
       this.n1 = ntotal - n2;
     }
   }, {
     key: "n2",
     get: function get() {
-      return _classPrivateFieldGet(this, _design).n2;
+      return __classPrivateFieldGet(this, _design).n2;
     },
     set: function set(n2) {
       n2 = Math.ceil(n2);
-      _classPrivateFieldGet(this, _design).n2 = n2;
-      _classPrivateFieldGet(this, _design).nratio = n2 / this.n1;
+      __classPrivateFieldGet(this, _design).n2 = n2;
+      __classPrivateFieldGet(this, _design).nratio = n2 / this.n1;
 
       if (this.options.fix_es) {
-        _classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+        __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
       } else {
-        _classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+        __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
       }
 
       this.options.fix_n2 = true;
@@ -657,36 +607,36 @@ var ttest2_pwr = /*#__PURE__*/function () {
   }, {
     key: "es",
     set: function set(es) {
-      if (_classPrivateFieldGet(this, _curve).es == es) return;
-      _classPrivateFieldGet(this, _curve).es = es;
-      _classPrivateFieldGet(this, _curve).power = this.find_power([es])[0];
+      if (__classPrivateFieldGet(this, _curve).es == es) return;
+      __classPrivateFieldGet(this, _curve).es = es;
+      __classPrivateFieldGet(this, _curve).power = this.find_power([es])[0];
     }
   }, {
     key: "power",
     set: function set(power) {
-      if (_classPrivateFieldGet(this, _curve).power == power) return;
-      _classPrivateFieldGet(this, _curve).power = power;
-      _classPrivateFieldGet(this, _curve).es = this.find_es([power])[0];
+      if (__classPrivateFieldGet(this, _curve).power == power) return;
+      __classPrivateFieldGet(this, _curve).power = power;
+      __classPrivateFieldGet(this, _curve).es = this.find_es([power])[0];
     }
   }, {
     key: "precision_2alpha",
     get: function get() {
-      var es = this.find_es([1 - _classPrivateFieldGet(this, _test).alpha])[0]; // add cache?
+      var es = this.find_es([1 - __classPrivateFieldGet(this, _test).alpha])[0]; // add cache?
 
-      return Math.abs(_classPrivateFieldGet(this, _test).es0 - es);
+      return Math.abs(__classPrivateFieldGet(this, _test).es0 - es);
     },
     set: function set(p) {
       var fix_n2 = this.options.fix_n2;
-      var es = _classPrivateFieldGet(this, _test).es0 + Math.sign(_classPrivateFieldGet(this, _test).side) * Math.abs(p);
+      var es = __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * Math.abs(p);
       var n1 = this.find_n([{
         es: es,
-        power: 1 - _classPrivateFieldGet(this, _test).alpha
+        power: 1 - __classPrivateFieldGet(this, _test).alpha
       }])[0];
 
       if (fix_n2) {
-        _classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+        __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
       } else {
-        _classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+        __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
       }
 
       this.n1 = n1; // add cache?
@@ -702,11 +652,12 @@ var ttest2_pwr = /*#__PURE__*/function () {
         power: 0.5,
         es: es
       }])[0];
+      var fix_n2 = this.options.fix_n2;
 
       if (fix_n2) {
-        _classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+        __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
       } else {
-        _classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+        __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
       }
 
       this.n1 = n1; // add cache?
@@ -714,43 +665,42 @@ var ttest2_pwr = /*#__PURE__*/function () {
   }, {
     key: "es1mAlpha",
     get: function get() {
-      return _classPrivateFieldGet(this, _test).es0 + Math.sign(_classPrivateFieldGet(this, _test).side) * this.precision_2alpha;
+      return __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * this.precision_2alpha;
     },
     set: function set(es) {
-      this.precision_2alpha = Math.abs(es - _classPrivateFieldGet(this, _test).es0);
+      this.precision_2alpha = Math.abs(es - __classPrivateFieldGet(this, _test).es0);
     }
   }, {
     key: "curve",
     get: function get() {
-      return _classPrivateFieldGet(this, _curve);
+      return __classPrivateFieldGet(this, _curve);
     },
-    set: function set() {
-      var curve = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    set: function set(curve) {
       var reset = false,
           i;
       var fix_n2 = this.options.fix_n2;
-      var keys = Object.keys(_classPrivateFieldGet(this, _curve));
+      var keys = Object.keys(__classPrivateFieldGet(this, _curve));
 
       for (i = 0; i < keys.length; i++) {
         var key = keys[i];
-        if (key in curve) if (curve[key] != _classPrivateFieldGet(this, _curve)[key]) {
+        if (key in curve) if (curve[key] != __classPrivateFieldGet(this, _curve)[key]) {
           reset = true;
           break;
         }
       }
 
-      Object.assign(_classPrivateFieldGet(this, _curve), curve);
+      Object.assign(__classPrivateFieldGet(this, _curve), curve);
 
       if (reset) {
         var n1 = this.find_n([{
-          power: _classPrivateFieldGet(this, _curve).power,
-          es: _classPrivateFieldGet(this, _curve).es
+          power: __classPrivateFieldGet(this, _curve).power,
+          es: __classPrivateFieldGet(this, _curve).es
         }])[0];
 
         if (fix_n2) {
-          _classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+          __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
         } else {
-          _classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+          __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
         }
 
         this.n1 = n1;
@@ -759,21 +709,16 @@ var ttest2_pwr = /*#__PURE__*/function () {
   }, {
     key: "criterion",
     get: function get() {
-      var delta0 = _classPrivateFieldGet(this, _test).es0;
+      var delta0 = __classPrivateFieldGet(this, _test).es0;
 
-      return Math.sign(_classPrivateFieldGet(this, _test).side) * _classPrivateFieldGet(this, _compute_criterion).call(this, _classPrivateFieldGet(this, _design).n1, this.n2, _classPrivateFieldGet(this, _test).alpha, _classPrivateFieldGet(this, _test).side < 0 ? -delta0 : delta0);
+      return Math.sign(__classPrivateFieldGet(this, _test).side) * __classPrivateFieldGet(this, _compute_criterion).call(this, __classPrivateFieldGet(this, _design).n1, this.n2, __classPrivateFieldGet(this, _test).alpha, __classPrivateFieldGet(this, _test).side < 0 ? -delta0 : delta0);
     }
-    /*
-    set criterion(c){ // Do we really want this?
-      // add in reset logic, etc
-    } 
-    */
-
   }]);
 
   return ttest2_pwr;
 }();
 
+_cache = new WeakMap(), _design = new WeakMap(), _test = new WeakMap(), _curve = new WeakMap(), _power1 = new WeakMap(), _compute_criterion = new WeakMap(), _es_power = new WeakMap(), _n_power = new WeakMap();
 module.exports = {
   ttest2_pwr: ttest2_pwr
 };
@@ -783,13 +728,15 @@ module.exports = {
 /***/ (function(module, exports) {
 
 /********
-* This is taken from:
+* This is adapted from:
 * https://gist.github.com/awsnap/0dfed02ee15657df05aa
-* from user https://github.com/awsnap 
+* from user https://github.com/awsnap
 * It is almost line-for-line R's optimize() function in c
 * See https://github.com/wch/r-source/blob/trunk/src/library/stats/src/optimize.c
 *********/
-function fmin(ax, bx, f, tol) {
+;
+
+function fmin0(ax, bx, f, tol) {
   "use strict";
 
   tol = tol || 1E-8; //var ax,bx,f,tol;
@@ -834,7 +781,7 @@ function fmin(ax, bx, f, tol) {
   //
   //
 
-  if (!isFinite(ax) | !isFinite(bx)) throw "Bounds ax, bx must be finite: ".concat(ax, ", ").concat(bx);
+  if (!isFinite(ax) || !isFinite(bx)) throw "Bounds ax, bx must be finite: ".concat(ax, ", ").concat(bx);
   var a, b, c, d, e, eps, xm, p, q, r, tol1, tol2, u, v, w, fu, fv, fw, fx, x;
   var i = 0;
 
@@ -1008,7 +955,7 @@ function fmin(ax, bx, f, tol) {
 }
 
 module.exports = {
-  fmin: fmin
+  fmin0: fmin0
 };
 
 /***/ }),
