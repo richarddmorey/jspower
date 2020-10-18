@@ -15,7 +15,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     }
     return privateMap.get(receiver);
 };
-var _cache, _design, _test, _curve, _power1, _compute_criterion, _es_power, _n_power;
+var _cache, _design, _test, _curve, _stamp, _power1, _compute_criterion, _es_power, _n_power;
 const fmin = require('./fmin.js').fmin0;
 const { StudentT, Normal, Logistic } = require('node_modules/lib-r-math.js/dist/lib/libR.js');
 const { pt, qt } = StudentT();
@@ -40,6 +40,10 @@ class ttest2_pwr {
         _curve.set(this, {
             es: 0.1,
             power: 0.9
+        });
+        _stamp.set(this, () => {
+            this.randstamp = Math.random();
+            this.timestamp = Date.now();
         }
         // Note that this returns log-odds of power!
         );
@@ -197,6 +201,7 @@ class ttest2_pwr {
             return Math.ceil(n_opt.x);
         });
         __classPrivateFieldGet(this, _design).nratio = nratio;
+        __classPrivateFieldGet(this, _stamp).call(this);
         Object.assign(__classPrivateFieldGet(this, _test), test);
         var options0 = {
             fix_es: true,
@@ -316,6 +321,7 @@ class ttest2_pwr {
                 __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
             }
         }
+        __classPrivateFieldGet(this, _stamp).call(this);
     }
     get n1() {
         return __classPrivateFieldGet(this, _design).n1;
@@ -336,6 +342,7 @@ class ttest2_pwr {
         else {
             __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
         }
+        __classPrivateFieldGet(this, _stamp).call(this);
     }
     get nratio() {
         return __classPrivateFieldGet(this, _design).nratio;
@@ -361,6 +368,7 @@ class ttest2_pwr {
             __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
         }
         this.options.fix_n2 = true;
+        __classPrivateFieldGet(this, _stamp).call(this);
     }
     get ntotal() {
         return this.n1 + this.n2;
@@ -370,12 +378,14 @@ class ttest2_pwr {
             return;
         __classPrivateFieldGet(this, _curve).es = es;
         __classPrivateFieldGet(this, _curve).power = this.find_power([es])[0];
+        __classPrivateFieldGet(this, _stamp).call(this);
     }
     set power(power) {
         if (__classPrivateFieldGet(this, _curve).power == power)
             return;
         __classPrivateFieldGet(this, _curve).power = power;
         __classPrivateFieldGet(this, _curve).es = this.find_es([power])[0];
+        __classPrivateFieldGet(this, _stamp).call(this);
     }
     get precision_2alpha() {
         const es = this.find_es([1 - __classPrivateFieldGet(this, _test).alpha])[0];
@@ -449,7 +459,7 @@ class ttest2_pwr {
         return Math.sign(__classPrivateFieldGet(this, _test).side) * __classPrivateFieldGet(this, _compute_criterion).call(this, __classPrivateFieldGet(this, _design).n1, this.n2, __classPrivateFieldGet(this, _test).alpha, __classPrivateFieldGet(this, _test).side < 0 ? -delta0 : delta0);
     }
 }
-_cache = new WeakMap(), _design = new WeakMap(), _test = new WeakMap(), _curve = new WeakMap(), _power1 = new WeakMap(), _compute_criterion = new WeakMap(), _es_power = new WeakMap(), _n_power = new WeakMap();
+_cache = new WeakMap(), _design = new WeakMap(), _test = new WeakMap(), _curve = new WeakMap(), _stamp = new WeakMap(), _power1 = new WeakMap(), _compute_criterion = new WeakMap(), _es_power = new WeakMap(), _n_power = new WeakMap();
 module.exports = {
     ttest2_pwr: ttest2_pwr
 };

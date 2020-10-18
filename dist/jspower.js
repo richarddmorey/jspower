@@ -138,7 +138,7 @@ var __classPrivateFieldGet = this && this.__classPrivateFieldGet || function (re
   return privateMap.get(receiver);
 };
 
-var _cache, _design, _test, _curve, _power1, _compute_criterion, _es_power, _n_power;
+var _cache, _design, _test, _curve, _stamp, _power1, _compute_criterion, _es_power, _n_power;
 
 var fmin = __webpack_require__(2).fmin0;
 
@@ -191,6 +191,11 @@ var ttest2_pwr = /*#__PURE__*/function () {
     _curve.set(this, {
       es: 0.1,
       power: 0.9
+    });
+
+    _stamp.set(this, function () {
+      _this.randstamp = Math.random();
+      _this.timestamp = Date.now();
     } // Note that this returns log-odds of power!
     ); // Note that this returns log-odds of power!
 
@@ -371,6 +376,9 @@ var ttest2_pwr = /*#__PURE__*/function () {
     });
 
     __classPrivateFieldGet(this, _design).nratio = nratio;
+
+    __classPrivateFieldGet(this, _stamp).call(this);
+
     Object.assign(__classPrivateFieldGet(this, _test), test);
     var options0 = {
       fix_es: true,
@@ -547,6 +555,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
           __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
         }
       }
+
+      __classPrivateFieldGet(this, _stamp).call(this);
     }
   }, {
     key: "n1",
@@ -568,6 +578,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
       } else {
         __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
       }
+
+      __classPrivateFieldGet(this, _stamp).call(this);
     }
   }, {
     key: "nratio",
@@ -598,6 +610,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }
 
       this.options.fix_n2 = true;
+
+      __classPrivateFieldGet(this, _stamp).call(this);
     }
   }, {
     key: "ntotal",
@@ -610,6 +624,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
       if (__classPrivateFieldGet(this, _curve).es == es) return;
       __classPrivateFieldGet(this, _curve).es = es;
       __classPrivateFieldGet(this, _curve).power = this.find_power([es])[0];
+
+      __classPrivateFieldGet(this, _stamp).call(this);
     }
   }, {
     key: "power",
@@ -617,6 +633,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
       if (__classPrivateFieldGet(this, _curve).power == power) return;
       __classPrivateFieldGet(this, _curve).power = power;
       __classPrivateFieldGet(this, _curve).es = this.find_es([power])[0];
+
+      __classPrivateFieldGet(this, _stamp).call(this);
     }
   }, {
     key: "precision_2alpha",
@@ -718,7 +736,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
   return ttest2_pwr;
 }();
 
-_cache = new WeakMap(), _design = new WeakMap(), _test = new WeakMap(), _curve = new WeakMap(), _power1 = new WeakMap(), _compute_criterion = new WeakMap(), _es_power = new WeakMap(), _n_power = new WeakMap();
+_cache = new WeakMap(), _design = new WeakMap(), _test = new WeakMap(), _curve = new WeakMap(), _stamp = new WeakMap(), _power1 = new WeakMap(), _compute_criterion = new WeakMap(), _es_power = new WeakMap(), _n_power = new WeakMap();
 module.exports = {
   ttest2_pwr: ttest2_pwr
 };

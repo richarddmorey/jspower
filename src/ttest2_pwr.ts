@@ -85,7 +85,8 @@ class ttest2_pwr {
   constructor(precision_2alpha: number = 0.2, nratio: number = 1, test = {}, options = {}){  
     
     this.#design.nratio = nratio;
-    
+    this.#stamp()
+
     Object.assign(this.#test, test);
         
     var options0: ttest2_pwr_options = {
@@ -106,6 +107,8 @@ class ttest2_pwr {
   }
   
   options: ttest2_pwr_options;
+  timestamp: number;
+  randstamp: number;
 
   #cache = {
     criterion : {}
@@ -127,8 +130,12 @@ class ttest2_pwr {
     es: 0.1,
     power  : 0.9    
   }
-
   
+  #stamp = () => {
+    this.randstamp = Math.random()
+    this.timestamp = Date.now()
+  }
+
   // Note that this returns log-odds of power!
   #power1 = ( n1: number, n2: number, delta: number, alpha: number, criterion: number, delta0:number ): number => {
     
@@ -470,6 +477,8 @@ class ttest2_pwr {
       }
    }
    
+   this.#stamp()
+
   }
   
   get n1(): number{
@@ -491,6 +500,9 @@ class ttest2_pwr {
     }else{
       this.#curve.es = this.find_es([this.curve.power])[0]
     }
+
+    this.#stamp()
+
   }
  
   get nratio(): number{
@@ -524,6 +536,7 @@ class ttest2_pwr {
     }
 
     this.options.fix_n2 = true;
+    this.#stamp()
   }
   
   get ntotal(): number{
@@ -534,12 +547,14 @@ class ttest2_pwr {
     if(this.#curve.es == es) return;
     this.#curve.es = es;
     this.#curve.power = this.find_power([es])[0];
+    this.#stamp()
   }
   
   set power(power: number){
     if(this.#curve.power == power) return;     
     this.#curve.power = power;
-    this.#curve.es = this.find_es([power])[0];    
+    this.#curve.es = this.find_es([power])[0];
+    this.#stamp()   
   }
   
   get precision_2alpha(): number{
