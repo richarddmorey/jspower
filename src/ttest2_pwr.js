@@ -50,7 +50,7 @@ class ttest2_pwr {
         // Note that this returns log-odds of power!
         _power1.set(this, (n1, n2, delta, alpha, criterion, delta0) => {
             if (delta == delta0)
-                return alpha;
+                return qlogis(alpha);
             const neff = n1 * n2 / (n1 + n2);
             const df = n1 + n2 - 2;
             if (typeof criterion === 'undefined')

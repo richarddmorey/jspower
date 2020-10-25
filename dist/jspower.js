@@ -201,7 +201,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
 
 
     _power1.set(this, function (n1, n2, delta, alpha, criterion, delta0) {
-      if (delta == delta0) return alpha;
+      if (delta == delta0) return qlogis(alpha);
       var neff = n1 * n2 / (n1 + n2);
       var df = n1 + n2 - 2;
       if (typeof criterion === 'undefined') criterion = __classPrivateFieldGet(_this, _compute_criterion).call(_this, n1, n2, alpha, delta0);

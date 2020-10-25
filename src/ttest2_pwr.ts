@@ -139,7 +139,7 @@ class ttest2_pwr {
   // Note that this returns log-odds of power!
   #power1 = ( n1: number, n2: number, delta: number, alpha: number, criterion: number, delta0:number ): number => {
     
-    if(delta == delta0) return alpha;   
+    if(delta == delta0) return qlogis(alpha);   
  
     const neff: number = n1 * n2 / (n1 + n2);
     const df: number   = n1 + n2 - 2;
