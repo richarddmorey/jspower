@@ -73,7 +73,7 @@ The `nratio` is set to 1 by default, so this will also set `n2`. Note how the de
 The new point on the power curve under `curve.point` is the one with the same effect size as was set before. The power at that effect size has dropped from .975 to about .41. By default, the new `curve.point` will have the same power. To fix the power instead (and let the effect size change) set the option `fix_es` to `false`:
 
 ```
-t.options = {fix_es: false}
+t.options.fix_es = false
 ```
 
 Now changing the design will power fixed and the effect size will change.
@@ -136,8 +136,8 @@ Finds power for an array of effect sizes, given the defined test and design:
 
 | Element | Description | Example for how to change | Note |
 |---------|-------------|--------------|-----|
-| fix_es  | (`true`/`false`) Whether to fix the effect size when the design changes | `t.options = {fix_es: false}` | `true` by default. |
-| fix_n2  | (`true`/`false`) Whether to fix `n2` as `n1` changes |  `t.options = {fix_n2: false}` | By default, the ratio of `n2/n1` is fixed by `nratio`, so `n2` will change with `n1`. Setting this option to `true` will fix `n2` instead. Changing `n2` explicitly automatically sets this to `true`; changing `nratio` explicitly automatically sets this to `false`.|
+| fix_es  | (`true`/`false`) Whether to fix the effect size when the design changes | `t.options.fix_es = false` | `true` by default. |
+| fix_n2  | (`true`/`false`) Whether to fix `n2` as `n1` changes |  `t.options.fix_n2 = false` | By default, the ratio of `n2/n1` is fixed by `nratio`, so `n2` will change with `n1`. Setting this option to `true` will fix `n2` instead. Changing `n2` explicitly automatically sets this to `true`; changing `nratio` explicitly automatically sets this to `false`.|
 
 The other options mostly govern the precision/speed of optimization and should not be changed by users.
 
