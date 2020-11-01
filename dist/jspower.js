@@ -291,6 +291,15 @@ var ttest2_pwr = /*#__PURE__*/function () {
       var shift_up = _this.options.n.shift_up;
       var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
       var fix_n2 = _this.options.fix_n2;
+
+      if (fix_n2) {
+        var ncp = -Math.abs(delta - delta0) * Math.sqrt(_this.n2);
+
+        if (pow >= pnorm(qnorm(alpha), ncp)) {
+          return Infinity;
+        }
+      }
+
       if (__classPrivateFieldGet(_this, _test).side < 0) delta = -delta;
 
       if (delta < delta0 && pow > alpha) {
@@ -418,6 +427,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
     key: "find_power",
     value: function find_power(es) {
       var typeS = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
       var design = __classPrivateFieldGet(this, _design);
 
@@ -443,6 +453,15 @@ var ttest2_pwr = /*#__PURE__*/function () {
 
         if (delta == delta0) {
           return test.alpha;
+        }
+
+        if (limit) {
+          if (!this0.options.fix_n2) {
+            return 1;
+          }
+
+          var ncp = -Math.abs(delta - delta0) * Math.sqrt(this0.n2);
+          return pnorm(qnorm(test.alpha), ncp);
         }
 
         if (side < 0) {
@@ -510,6 +529,13 @@ var ttest2_pwr = /*#__PURE__*/function () {
         es1mAlpha: this.es1mAlpha,
         typeS: this.find_power(undefined, true)[0]
       };
+
+      if (this.options.fix_n2) {
+        Object.assign(curve, {
+          powerLimit: this.powerLimit
+        });
+      }
+
       return {
         test: test,
         design: {
@@ -682,6 +708,11 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }
 
       this.n1 = n1; // add cache?
+    }
+  }, {
+    key: "powerLimit",
+    get: function get() {
+      return this.find_power([__classPrivateFieldGet(this, _curve).es], null, true)[0];
     }
   }, {
     key: "es1mAlpha",

@@ -128,6 +128,12 @@ class ttest2_pwr {
             const shift_up = this.options.n.shift_up;
             const delta0 = __classPrivateFieldGet(this, _test).side < 0 ? -__classPrivateFieldGet(this, _test).es0 : __classPrivateFieldGet(this, _test).es0;
             const fix_n2 = this.options.fix_n2;
+            if (fix_n2) {
+                let ncp = -Math.abs(delta - delta0) * Math.sqrt(this.n2);
+                if (pow >= pnorm(qnorm(alpha), ncp)) {
+                    return Infinity;
+                }
+            }
             if (__classPrivateFieldGet(this, _test).side < 0)
                 delta = -delta;
             if (delta < delta0 && pow > alpha) {
@@ -213,7 +219,7 @@ class ttest2_pwr {
         this.precision_2alpha = precision_2alpha;
         this.curve = { es: this.es1mAlpha, power: 1 - this.test.alpha };
     }
-    find_power(es, typeS = false) {
+    find_power(es, typeS = false, limit = false) {
         const design = __classPrivateFieldGet(this, _design);
         const test = __classPrivateFieldGet(this, _test);
         const curve = __classPrivateFieldGet(this, _curve);
@@ -234,6 +240,13 @@ class ttest2_pwr {
             var criterion0 = criterion;
             if (delta == delta0) {
                 return test.alpha;
+            }
+            if (limit) {
+                if (!this0.options.fix_n2) {
+                    return 1;
+                }
+                let ncp = -Math.abs(delta - delta0) * Math.sqrt(this0.n2);
+                return pnorm(qnorm(test.alpha), ncp);
             }
             if (side < 0) {
                 delta = -delta;
@@ -279,12 +292,15 @@ class ttest2_pwr {
     design_report() {
         var test = {};
         Object.assign(test, this.test, { criterion: this.criterion });
-        const curve = {
+        var curve = {
             point: this.curve,
             es50: this.es50,
             es1mAlpha: this.es1mAlpha,
             typeS: this.find_power(undefined, true)[0]
         };
+        if (this.options.fix_n2) {
+            Object.assign(curve, { powerLimit: this.powerLimit });
+        }
         return {
             test: test,
             design: { n1: this.n1, n2: this.n2, ntotal: this.ntotal, ratio: this.nratio },
@@ -409,6 +425,9 @@ class ttest2_pwr {
     get es50() {
         // add cache?
         return this.find_es([0.5])[0];
+    }
+    get powerLimit() {
+        return this.find_power([__classPrivateFieldGet(this, _curve).es], null, true)[0];
     }
     set es50(es) {
         const n1 = this.find_n([{ power: 0.5, es: es }])[0];

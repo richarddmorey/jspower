@@ -250,6 +250,13 @@ class ttest2_pwr {
     const delta0: number = this.#test.side<0 ? -this.#test.es0 : this.#test.es0;
     const fix_n2: bool = this.options.fix_n2;
 
+    if(fix_n2){
+      let ncp = -Math.abs(delta - delta0) * Math.sqrt(this.n2)
+      if(pow >= pnorm(qnorm(alpha), ncp)){
+        return Infinity
+      }
+    }
+
     if(this.#test.side<0)
       delta = -delta;
     
@@ -339,7 +346,7 @@ class ttest2_pwr {
   
   }
   
-  find_power( es: number[], typeS: bool = false ): number[] {   
+  find_power( es: number[], typeS: bool = false, limit: bool = false ): number[] {   
     
     const design: ttest2_design = this.#design;
     const test: ttest2_test   = this.#test;
@@ -365,6 +372,13 @@ class ttest2_pwr {
       var criterion0 = criterion;
       if(delta == delta0){
         return test.alpha;
+      }
+      if(limit){
+        if(!this0.options.fix_n2) {
+          return 1
+        }
+        let ncp = -Math.abs(delta - delta0) * Math.sqrt(this0.n2)
+        return pnorm(qnorm(test.alpha), ncp)
       }
       if(side<0){
         delta = -delta;
@@ -426,13 +440,16 @@ class ttest2_pwr {
   design_report(){
     var test = {};
     Object.assign(test, this.test, {criterion: this.criterion});
-    const curve = 
+    var curve = 
         { 
             point: this.curve,
             es50: this.es50,
             es1mAlpha : this.es1mAlpha, 
             typeS: this.find_power(undefined, true)[0] 
         };
+    if(this.options.fix_n2){
+      Object.assign(curve, { powerLimit: this.powerLimit })
+    }
     return {
       test      : test,
       design    : { n1 : this.n1, n2: this.n2, ntotal: this.ntotal, ratio: this.nratio },
@@ -583,6 +600,10 @@ class ttest2_pwr {
     return this.find_es( [ 0.5 ] )[0];
   }
   
+  get powerLimit(): number{
+    return this.find_power( [ this.#curve.es ], null, true )[0];
+  }
+
   set es50(es: number){
     const n1 = this.find_n( [ { power: 0.5, es: es } ] )[0];
     const fix_n2: bool = this.options.fix_n2;
