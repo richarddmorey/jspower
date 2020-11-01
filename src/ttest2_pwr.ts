@@ -375,9 +375,10 @@ class ttest2_pwr {
       }
       if(limit){
         if(!this0.options.fix_n2) {
-          return 1
+          return typeS ? 0 : 1 
         }
-        let ncp = -Math.abs(delta - delta0) * Math.sqrt(this0.n2)
+        let ncp = Math.abs(delta - delta0) * Math.sqrt(this0.n2)
+        ncp = typeS ? ncp : -ncp
         return pnorm(qnorm(test.alpha), ncp)
       }
       if(side<0){

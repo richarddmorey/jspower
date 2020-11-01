@@ -457,10 +457,11 @@ var ttest2_pwr = /*#__PURE__*/function () {
 
         if (limit) {
           if (!this0.options.fix_n2) {
-            return 1;
+            return typeS ? 0 : 1;
           }
 
-          var ncp = -Math.abs(delta - delta0) * Math.sqrt(this0.n2);
+          var ncp = Math.abs(delta - delta0) * Math.sqrt(this0.n2);
+          ncp = typeS ? ncp : -ncp;
           return pnorm(qnorm(test.alpha), ncp);
         }
 
