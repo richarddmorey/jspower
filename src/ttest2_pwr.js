@@ -85,10 +85,11 @@ class ttest2_pwr {
             const n1 = __classPrivateFieldGet(this, _design).n1;
             const n2 = this.n2;
             const delta0 = __classPrivateFieldGet(this, _test).side < 0 ? -__classPrivateFieldGet(this, _test).es0 : __classPrivateFieldGet(this, _test).es0;
-            const s_dn = this.options.n.s_dn;
-            const s_up = this.options.n.s_up;
-            const shift_dn = this.options.n.shift_dn;
-            const shift_up = this.options.n.shift_up;
+            const s_dn = this.options.pow.s_dn;
+            const s_up = this.options.pow.s_up;
+            const shift_dn = this.options.pow.shift_dn;
+            const shift_up = this.options.pow.shift_up;
+            const fix_n2 = this.options.fix_n2;
             if (pow == __classPrivateFieldGet(this, _test).alpha)
                 return __classPrivateFieldGet(this, _test).es0;
             if (__classPrivateFieldGet(this, _test).side < 0)
@@ -98,26 +99,29 @@ class ttest2_pwr {
             const neff = n1 * n2 / (n2 + n2);
             const df = n1 + n2 - 2;
             const tmp = criterion - qnorm(pow, 0, 1, false);
-            es_up = (tmp + s_up) / Math.sqrt(neff);
-            es_lo = (tmp - s_dn) / Math.sqrt(neff);
+            es_up = (tmp + s_up) / Math.sqrt(neff) + delta0;
+            es_lo = (tmp - s_dn) / Math.sqrt(neff) + delta0;
             pow_up = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_up, undefined, criterion, delta0);
             pow_lo = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_lo, undefined, criterion, delta0);
             while (pow_up < qpow) {
                 es_lo = es_up;
-                es_up = es_up + shift_up;
+                es_up = es_up + shift_up / Math.sqrt(neff);
                 pow_up = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_up, undefined, criterion, delta0);
             }
             while (pow_lo > qpow) {
                 es_up = es_lo;
-                es_lo = es_lo - shift_dn;
+                es_lo = es_lo - shift_dn / Math.sqrt(neff);
                 pow_lo = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_lo, undefined, criterion, delta0);
+            }
+            if (fix_n2) {
+                es_lo = (qnorm(pow) + criterion) / Math.sqrt(n2) - __classPrivateFieldGet(this, _test).es0;
             }
             var this0 = this;
             let opt_fun = function (delta) {
                 var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
                 return obj * obj;
             };
-            return fmin(es_lo, es_up, opt_fun, this.options.es.tol).x;
+            return fmin(es_lo, es_up, opt_fun, this.options.pow.tol).x;
         });
         _n_power.set(this, (pow, delta) => {
             const alpha = __classPrivateFieldGet(this, _test).alpha;
@@ -126,6 +130,8 @@ class ttest2_pwr {
             const s_up = this.options.n.s_up;
             const shift_dn = this.options.n.shift_dn;
             const shift_up = this.options.n.shift_up;
+            const n1_max_pow = this.options.n.n1_max_pow;
+            const n1_max_min = this.options.n.n1_max_min;
             const delta0 = __classPrivateFieldGet(this, _test).side < 0 ? -__classPrivateFieldGet(this, _test).es0 : __classPrivateFieldGet(this, _test).es0;
             const fix_n2 = this.options.fix_n2;
             if (fix_n2) {
@@ -156,12 +162,13 @@ class ttest2_pwr {
             const tmp = qnorm(pow) + criterion0;
             neff_lo = Math.pow((tmp - s_dn) / delta_tmp, 2);
             if (fix_n2) {
-                let es0 = Math.abs(delta - delta0) * Math.sqrt(n2);
-                let max_pow = pnorm(criterion0, es0, 1, false);
-                neff_up = n2 - 1;
+                let es0 = -Math.abs(delta - delta0) * Math.sqrt(n2);
+                let max_pow = pnorm(qnorm(this.test.alpha) - es0);
                 if (pow >= max_pow)
                     throw `Power for es ${delta} requested was ${pow}. This is greater than the maximum power of ${max_pow} when n2 is fixed at ${n2} and alpha is ${alpha}.`;
-                n_up = Math.max(2, 1 / (1 / neff_up - 1 / n2));
+                //neff_up = n2 - 1/2;
+                //n_up = Math.max(2, 1 / (1/neff_up - 1/n2) );
+                n_up = Math.max(n1_max_min, Math.pow(n2, n1_max_pow));
                 n_lo = Math.max(2, 1 / (1 / neff_lo - 1 / n2));
             }
             else {
@@ -171,10 +178,10 @@ class ttest2_pwr {
                 n2_up = Math.max(2, n_up * nratio);
                 n2_lo = Math.max(2, n_lo * nratio);
             }
-            if (n_up == 2)
-                return 2;
             pow_up = __classPrivateFieldGet(this, _power1).call(this, n_up, n2_up, delta, alpha, undefined, delta0);
             pow_lo = __classPrivateFieldGet(this, _power1).call(this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+            if (n_up == 2)
+                return 2;
             while (pow_up < qpow) {
                 n_lo = n_up;
                 n_up = n_up * shift_up;
@@ -211,7 +218,8 @@ class ttest2_pwr {
             fix_es: true,
             fix_n2: false,
             es: { tol: 0.0000001, s_up: 1, s_dn: 1, shift_up: 2, shift_dn: 2 },
-            n: { tol: 0.25, s_up: 3, s_dn: 1, shift_up: 1.5, shift_dn: .67 },
+            pow: { tol: 0.0000001, s_up: 10, s_dn: 1, shift_up: 1, shift_dn: 1 },
+            n: { tol: 0.25, s_up: 5, s_dn: 1, shift_up: 1.5, shift_dn: .67, n1_max_pow: 2.5 / 2, n1_max_min: 1000 },
             criterion: { cache: true, s_up: 1, t_shift: 5, i_limit: 10, t_up_tol: 0.0001, tol: 0.0000001 }
         };
         Object.assign(options0, options);

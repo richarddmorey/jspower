@@ -34,6 +34,7 @@ interface ttest2_pwr_options {
     fix_es: bool,
     fix_n2: bool,
     es : ttest2_pwr_options_es,
+    pow: ttest2_pwr_options_pow,
     n  : ttest2_pwr_options_n,
     criterion : ttest2_pwr_options_criterion
 };  
@@ -46,12 +47,22 @@ interface ttest2_pwr_options_es {
   shift_dn: number
 }
 
-interface ttest2_pwr_options_n {
+interface ttest2_pwr_options_pow {
   tol: number,
   s_up: number,
   s_dn: number,
   shift_up: number,
   shift_dn: number
+}
+
+interface ttest2_pwr_options_n {
+  tol: number,
+  s_up: number,
+  s_dn: number,
+  shift_up: number,
+  shift_dn: number,
+  n1_max_pow: number,
+  n1_max_min: number
 }
 
 interface ttest2_pwr_options_criterion {
@@ -93,7 +104,8 @@ class ttest2_pwr {
       fix_es: true,
       fix_n2: false,
       es : { tol: 0.0000001, s_up: 1, s_dn: 1, shift_up: 2, shift_dn: 2 },
-      n  : { tol: 0.25,      s_up: 3, s_dn: 1, shift_up: 1.5, shift_dn: .67 },
+      pow: { tol: 0.0000001, s_up: 10, s_dn: 1, shift_up: 1, shift_dn: 1 },
+      n  : { tol: 0.25,      s_up: 5, s_dn: 1, shift_up: 1.5, shift_dn: .67, n1_max_pow: 2.5/2, n1_max_min: 1000 },
       criterion : { cache: true, s_up: 1, t_shift: 5, i_limit: 10, t_up_tol: 0.0001, tol: 0.0000001 }
     }  
     
@@ -192,10 +204,11 @@ class ttest2_pwr {
     const n1: number     = this.#design.n1;
     const n2: number     = this.n2;
     const delta0: number = this.#test.side<0 ? -this.#test.es0 : this.#test.es0;
-    const s_dn: number   = this.options.n.s_dn;
-    const s_up: number   = this.options.n.s_up;
-    const shift_dn: number = this.options.n.shift_dn;
-    const shift_up: number = this.options.n.shift_up;
+    const s_dn: number   = this.options.pow.s_dn;
+    const s_up: number   = this.options.pow.s_up;
+    const shift_dn: number = this.options.pow.shift_dn;
+    const shift_up: number = this.options.pow.shift_up;
+    const fix_n2: boolean = this.options.fix_n2;
     
     if(pow == this.#test.alpha)
       return this.#test.es0;
@@ -211,31 +224,35 @@ class ttest2_pwr {
     const df   = n1 + n2 - 2;
 
     const tmp = criterion - qnorm(pow, 0, 1, false);     
-    es_up = (tmp + s_up)/Math.sqrt(neff);
-    es_lo = (tmp - s_dn)/Math.sqrt(neff);
+    es_up = (tmp + s_up)/Math.sqrt(neff) + delta0;
+    es_lo = (tmp - s_dn)/Math.sqrt(neff) + delta0;
 
     pow_up = this.#power1(n1, n2, es_up, undefined, criterion, delta0);
     pow_lo = this.#power1(n1, n2, es_lo, undefined, criterion, delta0);
-
+   
     while(pow_up < qpow){
       es_lo = es_up;
-      es_up = es_up + shift_up;
+      es_up = es_up + shift_up / Math.sqrt(neff);
       pow_up = this.#power1(n1, n2, es_up, undefined, criterion, delta0);    
     }
     while(pow_lo > qpow){
       es_up = es_lo;
-      es_lo = es_lo - shift_dn;
+      es_lo = es_lo - shift_dn / Math.sqrt(neff);
       pow_lo = this.#power1(n1, n2, es_lo, undefined, criterion, delta0);
     }
     
+    if(fix_n2){
+      es_lo = (qnorm(pow) + criterion)/Math.sqrt(n2) - this.#test.es0 
+    }
+
     var this0 = this;
     
     let opt_fun = function(delta){
       var obj = this0.#power1(n1, n2, delta, undefined, criterion, delta0) - qpow;
       return obj * obj;
     }
-
-    return fmin(es_lo, es_up, opt_fun, this.options.es.tol).x;
+    
+    return fmin(es_lo, es_up, opt_fun, this.options.pow.tol).x;
     
   }
   
@@ -246,7 +263,9 @@ class ttest2_pwr {
     const s_dn: number   = this.options.n.s_dn;
     const s_up: number   = this.options.n.s_up;
     const shift_dn: number = this.options.n.shift_dn;
-    const shift_up: number = this.options.n.shift_up;   
+    const shift_up: number = this.options.n.shift_up; 
+    const n1_max_pow: number = this.options.n.n1_max_pow;    
+    const n1_max_min: number = this.options.n.n1_max_min;
     const delta0: number = this.#test.side<0 ? -this.#test.es0 : this.#test.es0;
     const fix_n2: bool = this.options.fix_n2;
 
@@ -289,12 +308,13 @@ class ttest2_pwr {
     neff_lo = Math.pow( (tmp - s_dn) / delta_tmp, 2 ); 
 
     if(fix_n2){
-      let es0: number = Math.abs(delta-delta0) * Math.sqrt(n2);
-      let max_pow: number = pnorm(criterion0, es0, 1, false);
-      neff_up = n2 - 1;
+      let es0: number = -Math.abs(delta-delta0) * Math.sqrt(n2);
+      let max_pow: number = pnorm(qnorm(this.test.alpha) - es0);
       if(pow>=max_pow) throw `Power for es ${delta} requested was ${pow}. This is greater than the maximum power of ${max_pow} when n2 is fixed at ${n2} and alpha is ${alpha}.`
       
-      n_up = Math.max(2, 1 / (1/neff_up - 1/n2) );
+      //neff_up = n2 - 1/2;
+      //n_up = Math.max(2, 1 / (1/neff_up - 1/n2) );
+      n_up = Math.max(n1_max_min, Math.pow(n2, n1_max_pow));
       n_lo = Math.max(2, 1 / (1/neff_lo - 1/n2) );
     
     }else{
@@ -304,12 +324,12 @@ class ttest2_pwr {
       n2_up = Math.max(2, n_up * nratio);
       n2_lo = Math.max(2, n_lo * nratio);  
     }
-    
-    if( n_up == 2 ) return 2; 
-    
+
     pow_up = this.#power1(n_up, n2_up, delta, alpha, undefined, delta0 );
     pow_lo = this.#power1(n_lo, n2_lo, delta, alpha, undefined, delta0 );
 
+    if( n_up == 2 ) return 2; 
+        
     while(pow_up < qpow){
       n_lo = n_up;
       n_up = n_up * shift_up;
@@ -339,9 +359,9 @@ class ttest2_pwr {
       var obj: number = this0.#power1(n1, fix_n2 ? n2 : Math.ceil(n1 * nratio), delta, alpha, undefined, delta0) - qpow;
       return obj * obj;
     }
-
+    
     const n_opt: fmin_result = fmin(n_lo, n_up, opt_fun, this.options.n.tol);
- 
+
     return Math.ceil( n_opt.x );
   
   }

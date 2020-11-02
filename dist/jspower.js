@@ -242,10 +242,11 @@ var ttest2_pwr = /*#__PURE__*/function () {
 
       var n2 = _this.n2;
       var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
-      var s_dn = _this.options.n.s_dn;
-      var s_up = _this.options.n.s_up;
-      var shift_dn = _this.options.n.shift_dn;
-      var shift_up = _this.options.n.shift_up;
+      var s_dn = _this.options.pow.s_dn;
+      var s_up = _this.options.pow.s_up;
+      var shift_dn = _this.options.pow.shift_dn;
+      var shift_up = _this.options.pow.shift_up;
+      var fix_n2 = _this.options.fix_n2;
       if (pow == __classPrivateFieldGet(_this, _test).alpha) return __classPrivateFieldGet(_this, _test).es0;
       if (__classPrivateFieldGet(_this, _test).side < 0) criterion = -criterion;
       var es_up, es_lo, pow_up, pow_lo;
@@ -253,21 +254,25 @@ var ttest2_pwr = /*#__PURE__*/function () {
       var neff = n1 * n2 / (n2 + n2);
       var df = n1 + n2 - 2;
       var tmp = criterion - qnorm(pow, 0, 1, false);
-      es_up = (tmp + s_up) / Math.sqrt(neff);
-      es_lo = (tmp - s_dn) / Math.sqrt(neff);
+      es_up = (tmp + s_up) / Math.sqrt(neff) + delta0;
+      es_lo = (tmp - s_dn) / Math.sqrt(neff) + delta0;
       pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_up, undefined, criterion, delta0);
       pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
 
       while (pow_up < qpow) {
         es_lo = es_up;
-        es_up = es_up + shift_up;
+        es_up = es_up + shift_up / Math.sqrt(neff);
         pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_up, undefined, criterion, delta0);
       }
 
       while (pow_lo > qpow) {
         es_up = es_lo;
-        es_lo = es_lo - shift_dn;
+        es_lo = es_lo - shift_dn / Math.sqrt(neff);
         pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
+      }
+
+      if (fix_n2) {
+        es_lo = (qnorm(pow) + criterion) / Math.sqrt(n2) - __classPrivateFieldGet(_this, _test).es0;
       }
 
       var this0 = _this;
@@ -277,7 +282,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
         return obj * obj;
       };
 
-      return fmin(es_lo, es_up, opt_fun, _this.options.es.tol).x;
+      return fmin(es_lo, es_up, opt_fun, _this.options.pow.tol).x;
     });
 
     _n_power.set(this, function (pow, delta) {
@@ -289,6 +294,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
       var s_up = _this.options.n.s_up;
       var shift_dn = _this.options.n.shift_dn;
       var shift_up = _this.options.n.shift_up;
+      var n1_max_pow = _this.options.n.n1_max_pow;
+      var n1_max_min = _this.options.n.n1_max_min;
       var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
       var fix_n2 = _this.options.fix_n2;
 
@@ -328,11 +335,12 @@ var ttest2_pwr = /*#__PURE__*/function () {
       neff_lo = Math.pow((tmp - s_dn) / delta_tmp, 2);
 
       if (fix_n2) {
-        var es0 = Math.abs(delta - delta0) * Math.sqrt(n2);
-        var max_pow = pnorm(criterion0, es0, 1, false);
-        neff_up = n2 - 1;
-        if (pow >= max_pow) throw "Power for es ".concat(delta, " requested was ").concat(pow, ". This is greater than the maximum power of ").concat(max_pow, " when n2 is fixed at ").concat(n2, " and alpha is ").concat(alpha, ".");
-        n_up = Math.max(2, 1 / (1 / neff_up - 1 / n2));
+        var es0 = -Math.abs(delta - delta0) * Math.sqrt(n2);
+        var max_pow = pnorm(qnorm(_this.test.alpha) - es0);
+        if (pow >= max_pow) throw "Power for es ".concat(delta, " requested was ").concat(pow, ". This is greater than the maximum power of ").concat(max_pow, " when n2 is fixed at ").concat(n2, " and alpha is ").concat(alpha, "."); //neff_up = n2 - 1/2;
+        //n_up = Math.max(2, 1 / (1/neff_up - 1/n2) );
+
+        n_up = Math.max(n1_max_min, Math.pow(n2, n1_max_pow));
         n_lo = Math.max(2, 1 / (1 / neff_lo - 1 / n2));
       } else {
         neff_up = Math.pow((tmp + s_up) / delta_tmp, 2);
@@ -342,9 +350,9 @@ var ttest2_pwr = /*#__PURE__*/function () {
         n2_lo = Math.max(2, n_lo * nratio);
       }
 
-      if (n_up == 2) return 2;
       pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
       pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+      if (n_up == 2) return 2;
 
       while (pow_up < qpow) {
         n_lo = n_up;
@@ -398,12 +406,21 @@ var ttest2_pwr = /*#__PURE__*/function () {
         shift_up: 2,
         shift_dn: 2
       },
+      pow: {
+        tol: 0.0000001,
+        s_up: 10,
+        s_dn: 1,
+        shift_up: 1,
+        shift_dn: 1
+      },
       n: {
         tol: 0.25,
-        s_up: 3,
+        s_up: 5,
         s_dn: 1,
         shift_up: 1.5,
-        shift_dn: .67
+        shift_dn: .67,
+        n1_max_pow: 2.5 / 2,
+        n1_max_min: 1000
       },
       criterion: {
         cache: true,
