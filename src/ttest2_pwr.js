@@ -166,9 +166,9 @@ class ttest2_pwr {
                 let max_pow = pnorm(qnorm(this.test.alpha) - es0);
                 if (pow >= max_pow)
                     throw `Power for es ${delta} requested was ${pow}. This is greater than the maximum power of ${max_pow} when n2 is fixed at ${n2} and alpha is ${alpha}.`;
-                //neff_up = n2 - 1/2;
-                //n_up = Math.max(2, 1 / (1/neff_up - 1/n2) );
-                n_up = Math.max(n1_max_min, Math.pow(n2, n1_max_pow));
+                neff_up = Math.pow(tmp / delta_tmp, 2);
+                n_up = Math.max(2, 1 / (1 / neff_up - 1 / n2));
+                n_up = n_up + Math.sqrt(Math.abs(n2 - n_up));
                 n_lo = Math.max(2, 1 / (1 / neff_lo - 1 / n2));
             }
             else {
@@ -270,16 +270,38 @@ class ttest2_pwr {
             }
         });
     }
-    find_es(power) {
+    find_es(power, typeS = false, limit = false) {
         const design = __classPrivateFieldGet(this, _design);
         const test = __classPrivateFieldGet(this, _test);
         const curve = __classPrivateFieldGet(this, _curve);
         if (typeof power === 'undefined')
             power = [curve.power];
-        const criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
+        var criterion;
+        if (typeS) {
+            criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, 1 - test.alpha, Math.sign(test.side) * test.es0);
+        }
+        else {
+            criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
+        }
         const this0 = this;
         return power.map(function (power) {
-            return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, power, criterion);
+            if (power == test.alpha) {
+                return test.es0;
+            }
+            if (limit) {
+                if (!this0.options.fix_n2) {
+                    return test.es0;
+                }
+                let es_diff = (qnorm(power) - qnorm(test.alpha)) / Math.sqrt(this0.n2);
+                return Math.sign(test.side) * Math.abs(es_diff) + test.es0;
+            }
+            if (typeS) {
+                console.log(`${power} ${criterion}`);
+                return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, 1 - power, criterion);
+            }
+            else {
+                return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, power, criterion);
+            }
         });
     }
     find_n(curve) {

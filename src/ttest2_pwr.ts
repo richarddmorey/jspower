@@ -306,15 +306,14 @@ class ttest2_pwr {
     const tmp: number        =  qnorm(pow) + criterion0;
 
     neff_lo = Math.pow( (tmp - s_dn) / delta_tmp, 2 ); 
-
+    
     if(fix_n2){
       let es0: number = -Math.abs(delta-delta0) * Math.sqrt(n2);
       let max_pow: number = pnorm(qnorm(this.test.alpha) - es0);
       if(pow>=max_pow) throw `Power for es ${delta} requested was ${pow}. This is greater than the maximum power of ${max_pow} when n2 is fixed at ${n2} and alpha is ${alpha}.`
-      
-      //neff_up = n2 - 1/2;
-      //n_up = Math.max(2, 1 / (1/neff_up - 1/n2) );
-      n_up = Math.max(n1_max_min, Math.pow(n2, n1_max_pow));
+      neff_up = Math.pow( tmp / delta_tmp, 2 );
+      n_up = Math.max(2, 1 / (1/neff_up - 1/n2) );
+      n_up = n_up + Math.sqrt(Math.abs(n2 - n_up));
       n_lo = Math.max(2, 1 / (1/neff_lo - 1/n2) );
     
     }else{
@@ -328,7 +327,7 @@ class ttest2_pwr {
     pow_up = this.#power1(n_up, n2_up, delta, alpha, undefined, delta0 );
     pow_lo = this.#power1(n_lo, n2_lo, delta, alpha, undefined, delta0 );
 
-    if( n_up == 2 ) return 2; 
+  if( n_up == 2 ) return 2; 
         
     while(pow_up < qpow){
       n_lo = n_up;
@@ -414,7 +413,7 @@ class ttest2_pwr {
     });
   }
   
-  find_es( power: number[] ): number[]{
+  find_es( power: number[], typeS: bool = false, limit: bool = false ): number[]{
   
     const design: ttest2_design  = this.#design;
     const test: ttest2_test      = this.#test;
@@ -422,13 +421,29 @@ class ttest2_pwr {
     
     if( typeof power === 'undefined' )
       power = [ curve.power ];
-      
-    const criterion = Math.sign(test.side) * this.#compute_criterion(design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
-   
+    
+    var criterion; 
+    if (typeS) {  
+      criterion = Math.sign(test.side) * this.#compute_criterion(design.n1, this.n2, 1-test.alpha, Math.sign(test.side) * test.es0);
+    } else {
+      criterion = Math.sign(test.side) * this.#compute_criterion(design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
+    }
     const this0 = this;
     
     return power.map(function(power){
-      return Math.sign(test.side) * this0.#es_power(power, criterion );  
+      if(power == test.alpha){ return test.es0}
+      if(limit){
+        if(!this0.options.fix_n2) {
+          return test.es0 
+        }
+        let es_diff = (qnorm(power) - qnorm(test.alpha))/Math.sqrt(this0.n2)
+        return Math.sign(test.side)*Math.abs(es_diff) + test.es0
+      }
+      if(typeS){
+        return Math.sign(test.side) * this0.#es_power(1-power, criterion );  
+      } else {
+        return Math.sign(test.side) * this0.#es_power(power, criterion );  
+      }
     });  
   }
 
