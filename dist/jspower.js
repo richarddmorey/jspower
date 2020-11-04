@@ -508,13 +508,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
       var curve = __classPrivateFieldGet(this, _curve);
 
       if (typeof power === 'undefined') power = [curve.power];
-      var criterion;
 
-      if (typeS) {
-        criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, 1 - test.alpha, Math.sign(test.side) * test.es0);
-      } else {
-        criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
-      }
+      var criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, typeS ? 1 - test.alpha : test.alpha, Math.sign(test.side) * test.es0);
 
       var this0 = this;
       return power.map(function (power) {
@@ -531,12 +526,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
           return Math.sign(test.side) * Math.abs(es_diff) + test.es0;
         }
 
-        if (typeS) {
-          console.log("".concat(power, " ").concat(criterion));
-          return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, 1 - power, criterion);
-        } else {
-          return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, power, criterion);
-        }
+        return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, typeS ? 1 - power : power, criterion);
       });
     }
   }, {

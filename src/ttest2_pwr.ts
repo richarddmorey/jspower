@@ -422,12 +422,15 @@ class ttest2_pwr {
     if( typeof power === 'undefined' )
       power = [ curve.power ];
     
-    var criterion; 
-    if (typeS) {  
-      criterion = Math.sign(test.side) * this.#compute_criterion(design.n1, this.n2, 1-test.alpha, Math.sign(test.side) * test.es0);
-    } else {
-      criterion = Math.sign(test.side) * this.#compute_criterion(design.n1, this.n2, test.alpha, Math.sign(test.side) * test.es0);
-    }
+    const criterion = 
+      Math.sign(test.side) * 
+      this.#compute_criterion(
+        design.n1,
+        this.n2,
+        typeS ? 1-test.alpha : test.alpha,
+        Math.sign(test.side) * test.es0
+      );
+
     const this0 = this;
     
     return power.map(function(power){
@@ -439,11 +442,10 @@ class ttest2_pwr {
         let es_diff = (qnorm(power) - qnorm(test.alpha))/Math.sqrt(this0.n2)
         return Math.sign(test.side)*Math.abs(es_diff) + test.es0
       }
-      if(typeS){
-        return Math.sign(test.side) * this0.#es_power(1-power, criterion );  
-      } else {
-        return Math.sign(test.side) * this0.#es_power(power, criterion );  
-      }
+      return Math.sign(test.side) * 
+        this0.#es_power(
+        typeS ? 1-power : power,
+        criterion ); 
     });  
   }
 
