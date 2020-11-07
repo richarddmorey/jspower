@@ -89,6 +89,7 @@ class ttest2_pwr {
     
     this.#design.nratio = nratio;
     this.#stamp()
+    this.id = Math.random().toString(36).substring(2)
 
     Object.assign(this.#test, test);
         
@@ -112,7 +113,8 @@ class ttest2_pwr {
   
   options: ttest2_pwr_options;
   timestamp: number;
-  randstamp: number;
+  randstamp: string;
+  id: string;
 
   #cache = {
     criterion : {}
@@ -136,7 +138,7 @@ class ttest2_pwr {
   }
   
   #stamp = () => {
-    this.randstamp = Math.random()
+    this.randstamp = Math.random().toString(36).substring(2)
     this.timestamp = Date.now()
   }
 
@@ -488,6 +490,7 @@ class ttest2_pwr {
       Object.assign(curve, { powerLimit: this.powerLimit })
     }
     return {
+      id        : this.id,
       test      : test,
       design    : { n1 : this.n1, n2: this.n2, ntotal: this.ntotal, ratio: this.nratio },
       curve     : curve,

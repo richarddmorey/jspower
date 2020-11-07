@@ -42,7 +42,7 @@ class ttest2_pwr {
             power: 0.9
         });
         _stamp.set(this, () => {
-            this.randstamp = Math.random();
+            this.randstamp = Math.random().toString(36).substring(2);
             this.timestamp = Date.now();
         }
         // Note that this returns log-odds of power!
@@ -220,6 +220,7 @@ class ttest2_pwr {
         });
         __classPrivateFieldGet(this, _design).nratio = nratio;
         __classPrivateFieldGet(this, _stamp).call(this);
+        this.id = Math.random().toString(36).substring(2);
         Object.assign(__classPrivateFieldGet(this, _test), test);
         var options0 = {
             fix_es: true,
@@ -330,6 +331,7 @@ class ttest2_pwr {
             Object.assign(curve, { powerLimit: this.powerLimit });
         }
         return {
+            id: this.id,
             test: test,
             design: { n1: this.n1, n2: this.n2, ntotal: this.ntotal, ratio: this.nratio },
             curve: curve,

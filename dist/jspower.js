@@ -194,7 +194,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
     });
 
     _stamp.set(this, function () {
-      _this.randstamp = Math.random();
+      _this.randstamp = Math.random().toString(36).substring(2);
       _this.timestamp = Date.now();
     } // Note that this returns log-odds of power!
     ); // Note that this returns log-odds of power!
@@ -403,6 +403,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
 
     __classPrivateFieldGet(this, _stamp).call(this);
 
+    this.id = Math.random().toString(36).substring(2);
     Object.assign(__classPrivateFieldGet(this, _test), test);
     var options0 = {
       fix_es: true,
@@ -573,6 +574,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }
 
       return {
+        id: this.id,
         test: test,
         design: {
           n1: this.n1,
