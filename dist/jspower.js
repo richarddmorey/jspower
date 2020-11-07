@@ -205,8 +205,16 @@ var ttest2_pwr = /*#__PURE__*/function () {
       var df = n1 + n2 - 2;
       if (typeof criterion === 'undefined') criterion = __classPrivateFieldGet(_this, _compute_criterion).call(_this, n1, n2, alpha, delta0);
       var ncp = delta * Math.sqrt(neff);
-      var logpow = pt(criterion, df, ncp, false, true);
-      return qlogis(logpow, 0, 1, true, true);
+      var logpow;
+
+      if (df > _this.options.df_normal_cutoff) {
+        logpow = pnorm(criterion, ncp, 1, false, true);
+      } else {
+        logpow = pt(criterion, df, ncp, false, true);
+      }
+
+      var qpow = qlogis(logpow, 0, 1, true, true);
+      return qpow;
     });
 
     _compute_criterion.set(this, function (n1, n2, alpha, delta0) {
@@ -242,10 +250,10 @@ var ttest2_pwr = /*#__PURE__*/function () {
 
       var n2 = _this.n2;
       var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
-      var s_dn = _this.options.pow.s_dn;
-      var s_up = _this.options.pow.s_up;
-      var shift_dn = _this.options.pow.shift_dn;
-      var shift_up = _this.options.pow.shift_up;
+      var s_dn = _this.options.es.s_dn;
+      var s_up = _this.options.es.s_up;
+      var shift_dn = _this.options.es.shift_dn;
+      var shift_up = _this.options.es.shift_up;
       var fix_n2 = _this.options.fix_n2;
       if (pow == __classPrivateFieldGet(_this, _test).alpha) return __classPrivateFieldGet(_this, _test).es0;
       if (__classPrivateFieldGet(_this, _test).side < 0) criterion = -criterion;
@@ -254,8 +262,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
       var neff = n1 * n2 / (n2 + n2);
       var df = n1 + n2 - 2;
       var tmp = criterion - qnorm(pow, 0, 1, false);
-      es_up = (tmp + s_up) / Math.sqrt(neff) + delta0;
-      es_lo = (tmp - s_dn) / Math.sqrt(neff) + delta0;
+      es_up = (tmp + s_up) / Math.sqrt(neff);
+      es_lo = (tmp - s_dn) / Math.sqrt(neff);
       pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_up, undefined, criterion, delta0);
       pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
 
@@ -282,7 +290,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
         return obj * obj;
       };
 
-      return fmin(es_lo, es_up, opt_fun, _this.options.pow.tol).x;
+      return fmin(es_lo, es_up, opt_fun, _this.options.es.tol).x;
     });
 
     _n_power.set(this, function (pow, delta) {
@@ -399,6 +407,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
     var options0 = {
       fix_es: true,
       fix_n2: false,
+      df_normal_cutoff: 25000,
       es: {
         tol: 0.0000001,
         s_up: 1,
@@ -406,16 +415,9 @@ var ttest2_pwr = /*#__PURE__*/function () {
         shift_up: 2,
         shift_dn: 2
       },
-      pow: {
-        tol: 0.0000001,
-        s_up: 10,
-        s_dn: 1,
-        shift_up: 1,
-        shift_dn: 1
-      },
       n: {
         tol: 0.25,
-        s_up: 5,
+        s_up: 2,
         s_dn: 1,
         shift_up: 1.5,
         shift_dn: .67,

@@ -33,21 +33,13 @@ interface pwr_curve {
 interface ttest2_pwr_options {
     fix_es: bool,
     fix_n2: bool,
+    df_normal_cutoff: number,
     es : ttest2_pwr_options_es,
-    pow: ttest2_pwr_options_pow,
     n  : ttest2_pwr_options_n,
     criterion : ttest2_pwr_options_criterion
 };  
 
 interface ttest2_pwr_options_es {
-  tol: number,
-  s_up: number,
-  s_dn: number,
-  shift_up: number,
-  shift_dn: number
-}
-
-interface ttest2_pwr_options_pow {
   tol: number,
   s_up: number,
   s_dn: number,
@@ -103,9 +95,9 @@ class ttest2_pwr {
     var options0: ttest2_pwr_options = {
       fix_es: true,
       fix_n2: false,
+      df_normal_cutoff: 25000,
       es : { tol: 0.0000001, s_up: 1, s_dn: 1, shift_up: 2, shift_dn: 2 },
-      pow: { tol: 0.0000001, s_up: 10, s_dn: 1, shift_up: 1, shift_dn: 1 },
-      n  : { tol: 0.25,      s_up: 5, s_dn: 1, shift_up: 1.5, shift_dn: .67, n1_max_pow: 2.5/2, n1_max_min: 1000 },
+      n  : { tol: 0.25,      s_up: 2, s_dn: 1, shift_up: 1.5, shift_dn: .67, n1_max_pow: 2.5/2, n1_max_min: 1000 },
       criterion : { cache: true, s_up: 1, t_shift: 5, i_limit: 10, t_up_tol: 0.0001, tol: 0.0000001 }
     }  
     
@@ -157,10 +149,17 @@ class ttest2_pwr {
       criterion = this.#compute_criterion(n1, n2, alpha, delta0);
     
     const ncp: number = delta * Math.sqrt( neff );
-       
-    const logpow: number = pt(criterion, df, ncp, false, true);
+    
+    var logpow: number;
+    if (df > this.options.df_normal_cutoff){
+      logpow = pnorm(criterion, ncp, 1, false, true);  
+    }else{
+      logpow = pt(criterion, df, ncp, false, true);   
+    }
+    
+    const qpow = qlogis( logpow, 0, 1, true, true );
 
-   return qlogis( logpow, 0, 1, true, true );
+    return qpow
   }
 
   #compute_criterion = ( n1: number, n2: number, alpha: number, delta0: number ): number => {
@@ -204,10 +203,10 @@ class ttest2_pwr {
     const n1: number     = this.#design.n1;
     const n2: number     = this.n2;
     const delta0: number = this.#test.side<0 ? -this.#test.es0 : this.#test.es0;
-    const s_dn: number   = this.options.pow.s_dn;
-    const s_up: number   = this.options.pow.s_up;
-    const shift_dn: number = this.options.pow.shift_dn;
-    const shift_up: number = this.options.pow.shift_up;
+    const s_dn: number   = this.options.es.s_dn;
+    const s_up: number   = this.options.es.s_up;
+    const shift_dn: number = this.options.es.shift_dn;
+    const shift_up: number = this.options.es.shift_up;
     const fix_n2: boolean = this.options.fix_n2;
     
     if(pow == this.#test.alpha)
@@ -224,12 +223,12 @@ class ttest2_pwr {
     const df   = n1 + n2 - 2;
 
     const tmp = criterion - qnorm(pow, 0, 1, false);     
-    es_up = (tmp + s_up)/Math.sqrt(neff) + delta0;
-    es_lo = (tmp - s_dn)/Math.sqrt(neff) + delta0;
+    es_up = (tmp + s_up)/Math.sqrt(neff) 
+    es_lo = (tmp - s_dn)/Math.sqrt(neff)
 
     pow_up = this.#power1(n1, n2, es_up, undefined, criterion, delta0);
     pow_lo = this.#power1(n1, n2, es_lo, undefined, criterion, delta0);
-   
+
     while(pow_up < qpow){
       es_lo = es_up;
       es_up = es_up + shift_up / Math.sqrt(neff);
@@ -252,7 +251,7 @@ class ttest2_pwr {
       return obj * obj;
     }
     
-    return fmin(es_lo, es_up, opt_fun, this.options.pow.tol).x;
+    return fmin(es_lo, es_up, opt_fun, this.options.es.tol).x;
     
   }
   

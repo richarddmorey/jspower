@@ -54,8 +54,15 @@ class ttest2_pwr {
             if (typeof criterion === 'undefined')
                 criterion = __classPrivateFieldGet(this, _compute_criterion).call(this, n1, n2, alpha, delta0);
             const ncp = delta * Math.sqrt(neff);
-            const logpow = pt(criterion, df, ncp, false, true);
-            return qlogis(logpow, 0, 1, true, true);
+            var logpow;
+            if (df > this.options.df_normal_cutoff) {
+                logpow = pnorm(criterion, ncp, 1, false, true);
+            }
+            else {
+                logpow = pt(criterion, df, ncp, false, true);
+            }
+            const qpow = qlogis(logpow, 0, 1, true, true);
+            return qpow;
         });
         _compute_criterion.set(this, (n1, n2, alpha, delta0) => {
             n1 = Math.ceil(n1);
@@ -85,10 +92,10 @@ class ttest2_pwr {
             const n1 = __classPrivateFieldGet(this, _design).n1;
             const n2 = this.n2;
             const delta0 = __classPrivateFieldGet(this, _test).side < 0 ? -__classPrivateFieldGet(this, _test).es0 : __classPrivateFieldGet(this, _test).es0;
-            const s_dn = this.options.pow.s_dn;
-            const s_up = this.options.pow.s_up;
-            const shift_dn = this.options.pow.shift_dn;
-            const shift_up = this.options.pow.shift_up;
+            const s_dn = this.options.es.s_dn;
+            const s_up = this.options.es.s_up;
+            const shift_dn = this.options.es.shift_dn;
+            const shift_up = this.options.es.shift_up;
             const fix_n2 = this.options.fix_n2;
             if (pow == __classPrivateFieldGet(this, _test).alpha)
                 return __classPrivateFieldGet(this, _test).es0;
@@ -99,8 +106,8 @@ class ttest2_pwr {
             const neff = n1 * n2 / (n2 + n2);
             const df = n1 + n2 - 2;
             const tmp = criterion - qnorm(pow, 0, 1, false);
-            es_up = (tmp + s_up) / Math.sqrt(neff) + delta0;
-            es_lo = (tmp - s_dn) / Math.sqrt(neff) + delta0;
+            es_up = (tmp + s_up) / Math.sqrt(neff);
+            es_lo = (tmp - s_dn) / Math.sqrt(neff);
             pow_up = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_up, undefined, criterion, delta0);
             pow_lo = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_lo, undefined, criterion, delta0);
             while (pow_up < qpow) {
@@ -121,7 +128,7 @@ class ttest2_pwr {
                 var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
                 return obj * obj;
             };
-            return fmin(es_lo, es_up, opt_fun, this.options.pow.tol).x;
+            return fmin(es_lo, es_up, opt_fun, this.options.es.tol).x;
         });
         _n_power.set(this, (pow, delta) => {
             const alpha = __classPrivateFieldGet(this, _test).alpha;
@@ -217,9 +224,9 @@ class ttest2_pwr {
         var options0 = {
             fix_es: true,
             fix_n2: false,
+            df_normal_cutoff: 25000,
             es: { tol: 0.0000001, s_up: 1, s_dn: 1, shift_up: 2, shift_dn: 2 },
-            pow: { tol: 0.0000001, s_up: 10, s_dn: 1, shift_up: 1, shift_dn: 1 },
-            n: { tol: 0.25, s_up: 5, s_dn: 1, shift_up: 1.5, shift_dn: .67, n1_max_pow: 2.5 / 2, n1_max_min: 1000 },
+            n: { tol: 0.25, s_up: 2, s_dn: 1, shift_up: 1.5, shift_dn: .67, n1_max_pow: 2.5 / 2, n1_max_min: 1000 },
             criterion: { cache: true, s_up: 1, t_shift: 5, i_limit: 10, t_up_tol: 0.0001, tol: 0.0000001 }
         };
         Object.assign(options0, options);
