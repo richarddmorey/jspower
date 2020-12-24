@@ -436,11 +436,14 @@ var ttest2_pwr = /*#__PURE__*/function () {
     };
     Object.assign(options0, options);
     this.options = options0;
+    var fix_n2 = this.options.fix_n2;
+    this.options.fix_n2 = false;
     this.precision_2alpha = precision_2alpha;
     this.curve = {
       es: this.es1mAlpha,
       power: 1 - this.test.alpha
     };
+    this.options.fix_n2 = fix_n2;
   }
 
   _createClass(ttest2_pwr, [{

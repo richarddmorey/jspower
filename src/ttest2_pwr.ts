@@ -105,10 +105,13 @@ class ttest2_pwr {
     Object.assign(options0, options);
     
     this.options = options0;
-    
+    const fix_n2: bool = this.options.fix_n2;
+    this.options.fix_n2 = false;
+      
     this.precision_2alpha = precision_2alpha;
     this.curve = { es: this.es1mAlpha, power: 1 - this.test.alpha }
     
+    this.options.fix_n2 = fix_n2;
   }
   
   options: ttest2_pwr_options;
