@@ -121,7 +121,7 @@ class ttest2_pwr {
                 pow_lo = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_lo, undefined, criterion, delta0);
             }
             if (fix_n2) {
-                es_lo = (qnorm(pow) + criterion) / Math.sqrt(n2) - __classPrivateFieldGet(this, _test).es0;
+                es_lo = (qnorm(1 - pow) + criterion) / Math.sqrt(n2) + __classPrivateFieldGet(this, _test).es0;
             }
             var this0 = this;
             let opt_fun = function (delta) {

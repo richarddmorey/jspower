@@ -246,7 +246,7 @@ class ttest2_pwr {
     }
     
     if(fix_n2){
-      es_lo = (qnorm(pow) + criterion)/Math.sqrt(n2) - this.#test.es0 
+      es_lo = (qnorm(1-pow) + criterion) / Math.sqrt(n2) + this.#test.es0;
     }
 
     var this0 = this;
@@ -438,7 +438,7 @@ class ttest2_pwr {
     const this0 = this;
     
     return power.map(function(power){
-      if(power == test.alpha){ return test.es0}
+      if(power == test.alpha){ return test.es0 }
       if(limit){
         if(!this0.options.fix_n2) {
           return test.es0 

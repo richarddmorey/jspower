@@ -280,7 +280,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }
 
       if (fix_n2) {
-        es_lo = (qnorm(pow) + criterion) / Math.sqrt(n2) - __classPrivateFieldGet(_this, _test).es0;
+        es_lo = (qnorm(1 - pow) + criterion) / Math.sqrt(n2) + __classPrivateFieldGet(_this, _test).es0;
       }
 
       var this0 = _this;
