@@ -24,6 +24,7 @@ const { plogis, qlogis } = Logistic();
 ;
 class ttest2_pwr {
     constructor(precision_2alpha = 0.2, nratio = 1, test = {}, options = {}) {
+        this.names = { es: "𝛿", test_stat: "t" };
         _cache.set(this, {
             criterion: {}
         });
@@ -121,7 +122,7 @@ class ttest2_pwr {
                 pow_lo = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_lo, undefined, criterion, delta0);
             }
             if (fix_n2) {
-                es_lo = (qnorm(1 - pow) + criterion) / Math.sqrt(n2) + __classPrivateFieldGet(this, _test).es0;
+                es_lo = __classPrivateFieldGet(this, _test).es0 - qnorm(__classPrivateFieldGet(this, _test).alpha) / Math.sqrt(n2) + qnorm(pow) / Math.sqrt(n1);
             }
             var this0 = this;
             let opt_fun = function (delta) {
@@ -323,7 +324,11 @@ class ttest2_pwr {
     }
     design_report() {
         var test = {};
-        Object.assign(test, this.test, { criterion: this.criterion });
+        Object.assign(test, this.test, {
+            es_type: this.names.es,
+            criterion_on: this.names.test_stat,
+            criterion: this.criterion
+        });
         var curve = {
             point: this.curve,
             es50: this.es50,

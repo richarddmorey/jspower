@@ -118,6 +118,7 @@ class ttest2_pwr {
   timestamp: number;
   randstamp: string;
   id: string;
+  names = { es: "𝛿", test_stat: "t" };
 
   #cache = {
     criterion : {}
@@ -245,8 +246,8 @@ class ttest2_pwr {
       pow_lo = this.#power1(n1, n2, es_lo, undefined, criterion, delta0);
     }
     
-    if(fix_n2){
-      es_lo = (qnorm(1-pow) + criterion) / Math.sqrt(n2) + this.#test.es0;
+    if (fix_n2) {
+      es_lo = this.#test.es0 - qnorm(this.#test.alpha)/Math.sqrt(n2) + qnorm(pow)/Math.sqrt(n1)
     }
 
     var this0 = this;
@@ -481,7 +482,12 @@ class ttest2_pwr {
 
   design_report(){
     var test = {};
-    Object.assign(test, this.test, {criterion: this.criterion});
+    Object.assign(test, this.test,
+      {
+        es_type: this.names.es,
+        criterion_on: this.names.test_stat,
+        criterion: this.criterion
+      });
     var curve = 
         { 
             point: this.curve,

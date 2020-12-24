@@ -172,6 +172,11 @@ var ttest2_pwr = /*#__PURE__*/function () {
 
     _classCallCheck(this, ttest2_pwr);
 
+    this.names = {
+      es: "𝛿",
+      test_stat: "t"
+    };
+
     _cache.set(this, {
       criterion: {}
     });
@@ -280,7 +285,7 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }
 
       if (fix_n2) {
-        es_lo = (qnorm(1 - pow) + criterion) / Math.sqrt(n2) + __classPrivateFieldGet(_this, _test).es0;
+        es_lo = __classPrivateFieldGet(_this, _test).es0 - qnorm(__classPrivateFieldGet(_this, _test).alpha) / Math.sqrt(n2) + qnorm(pow) / Math.sqrt(n1);
       }
 
       var this0 = _this;
@@ -561,6 +566,8 @@ var ttest2_pwr = /*#__PURE__*/function () {
     value: function design_report() {
       var test = {};
       Object.assign(test, this.test, {
+        es_type: this.names.es,
+        criterion_on: this.names.test_stat,
         criterion: this.criterion
       });
       var curve = {
