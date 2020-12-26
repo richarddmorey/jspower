@@ -10,6 +10,7 @@
     "@types/node": "^14.11.2",
     "babel-loader": "^8.1.0",
     "lib-r-math.js": "^1.0.88",
+    "validatorjs": "^3.22.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }

@@ -16,12 +16,34 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return privateMap.get(receiver);
 };
 var _cache, _design, _test, _curve, _stamp, _power1, _compute_criterion, _es_power, _n_power;
+Object.defineProperty(exports, "__esModule", { value: true });
+const Validator = require("validatorjs");
+/* Some validation rules */
+const prob_inclusive_vrule = 'between:0,1';
+const prob_exclusive_vrule = `between:${Number.EPSILON},${1 - Number.EPSILON}`;
+const n_vrule = ["min:2", "integer"];
+const positive_vrule = `min:${Number.EPSILON}`;
+const side_vrule = "in:-1,1";
 const fmin = require('./fmin.js').fmin0;
 const { StudentT, Normal, Logistic } = require('node_modules/lib-r-math.js/dist/lib/libR.js');
 const { pt, qt } = StudentT();
 const { pnorm, qnorm } = Normal();
 const { plogis, qlogis } = Logistic();
+const pwr_curve_vrule = {
+    es: "numeric",
+    power: prob_exclusive_vrule
+};
 ;
+const ttest2_design_vrule = {
+    n1: n_vrule,
+    n2: n_vrule,
+    nratio: positive_vrule
+};
+const ttest2_test_vrule = {
+    alpha: prob_exclusive_vrule,
+    es0: "numeric",
+    side: side_vrule
+};
 class ttest2_pwr {
     constructor(precision_2alpha = 0.2, nratio = 1, test = {}, options = {}) {
         this.names = { es: "𝛿", test_stat: "t" };
@@ -353,6 +375,10 @@ class ttest2_pwr {
         return __classPrivateFieldGet(this, _test);
     }
     set test(test) {
+        const val = new Validator(test, ttest2_test_vrule);
+        if (val.fails()) {
+            throw 'Invalid test setup.';
+        }
         var reset = false, i, which_change = [];
         const keys = Object.keys(__classPrivateFieldGet(this, _test));
         for (i = 0; i < keys.length; i++) {
@@ -384,6 +410,10 @@ class ttest2_pwr {
     set n1(n1) {
         if (__classPrivateFieldGet(this, _design).n1 == n1)
             return;
+        const val = new Validator({ n: n1 }, { n: n_vrule });
+        if (val.fails()) {
+            throw 'Invalid sample size.';
+        }
         __classPrivateFieldGet(this, _design).n1 = n1;
         if (this.options.fix_n2) {
             __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
@@ -403,6 +433,10 @@ class ttest2_pwr {
         return __classPrivateFieldGet(this, _design).nratio;
     }
     set nratio(nratio) {
+        const val = new Validator({ nr: nratio }, { nr: positive_vrule });
+        if (val.fails()) {
+            throw 'Invalid sample size ratio.';
+        }
         const ntotal = this.ntotal;
         const n2 = Math.ceil(ntotal * nratio / (1 + nratio));
         this.options.fix_n2 = false;
@@ -414,6 +448,10 @@ class ttest2_pwr {
     }
     set n2(n2) {
         n2 = Math.ceil(n2);
+        const val = new Validator({ n: n2 }, { n2: n_vrule });
+        if (val.fails()) {
+            throw 'Invalid sample size.';
+        }
         __classPrivateFieldGet(this, _design).n2 = n2;
         __classPrivateFieldGet(this, _design).nratio = n2 / this.n1;
         if (this.options.fix_es) {
@@ -431,6 +469,10 @@ class ttest2_pwr {
     set es(es) {
         if (__classPrivateFieldGet(this, _curve).es == es)
             return;
+        const val = new Validator({ es: es }, { es: 'number' });
+        if (val.fails()) {
+            throw 'Invalid effect size.';
+        }
         __classPrivateFieldGet(this, _curve).es = es;
         __classPrivateFieldGet(this, _curve).power = this.find_power([es])[0];
         __classPrivateFieldGet(this, _stamp).call(this);
@@ -438,6 +480,10 @@ class ttest2_pwr {
     set power(power) {
         if (__classPrivateFieldGet(this, _curve).power == power)
             return;
+        const val = new Validator({ power: power }, { n: prob_exclusive_vrule });
+        if (val.fails()) {
+            throw 'Invalid power.';
+        }
         __classPrivateFieldGet(this, _curve).power = power;
         __classPrivateFieldGet(this, _curve).es = this.find_es([power])[0];
         __classPrivateFieldGet(this, _stamp).call(this);
@@ -448,6 +494,10 @@ class ttest2_pwr {
         return Math.abs(__classPrivateFieldGet(this, _test).es0 - es);
     }
     set precision_2alpha(p) {
+        const val = new Validator({ p: p }, { p: positive_vrule });
+        if (val.fails()) {
+            throw 'Invalid precision.';
+        }
         const fix_n2 = this.options.fix_n2;
         const es = __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * Math.abs(p);
         const n1 = this.find_n([{ es: es, power: 1 - __classPrivateFieldGet(this, _test).alpha }])[0];
@@ -468,6 +518,11 @@ class ttest2_pwr {
         return this.find_power([__classPrivateFieldGet(this, _curve).es], null, true)[0];
     }
     set es50(es) {
+        const min_max = __classPrivateFieldGet(this, _test).side > 0 ? "min" : "max";
+        const val = new Validator({ es: es }, { es: `${min_max}:${__classPrivateFieldGet(this, _test).es0 + Number.EPSILON}` });
+        if (val.fails()) {
+            throw 'Invalid effect size.';
+        }
         const n1 = this.find_n([{ power: 0.5, es: es }])[0];
         const fix_n2 = this.options.fix_n2;
         if (fix_n2) {
@@ -483,12 +538,21 @@ class ttest2_pwr {
         return __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * this.precision_2alpha;
     }
     set es1mAlpha(es) {
+        const min_max = __classPrivateFieldGet(this, _test).side > 0 ? "min" : "max";
+        const val = new Validator({ es: es }, { es: `${min_max}:${__classPrivateFieldGet(this, _test).es0 + Number.EPSILON}` });
+        if (val.fails()) {
+            throw 'Invalid effect size.';
+        }
         this.precision_2alpha = Math.abs(es - __classPrivateFieldGet(this, _test).es0);
     }
     get curve() {
         return __classPrivateFieldGet(this, _curve);
     }
     set curve(curve) {
+        const val = new Validator({ curve: curve }, { curve: pwr_curve_vrule });
+        if (val.fails()) {
+            throw 'Invalid power curve values.';
+        }
         var reset = false, i;
         const fix_n2 = this.options.fix_n2;
         const keys = Object.keys(__classPrivateFieldGet(this, _curve));

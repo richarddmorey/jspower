@@ -10,6 +10,15 @@
 *********/
 "use strict";
 
+import Validator = require('validatorjs');
+
+/* Some validation rules */
+const prob_inclusive_vrule: string = 'between:0,1';
+const prob_exclusive_vrule: string = `between:${Number.EPSILON},${1 - Number.EPSILON}`;
+const n_vrule = ["min:2", "integer"];
+const positive_vrule: string = `min:${Number.EPSILON}`
+const side_vrule = "in:-1,1"
+
 const fmin = require('./fmin.js').fmin0
 
 const {
@@ -29,6 +38,11 @@ interface pwr_curve {
   es: number,
   power: number
 }
+
+const pwr_curve_vrule:Object = {
+  es: "numeric",
+  power: prob_exclusive_vrule
+};
 
 interface ttest2_pwr_options {
     fix_es: bool,
@@ -66,17 +80,28 @@ interface ttest2_pwr_options_criterion {
   t_up_tol: number
 }
 
-
 interface ttest2_design {
   n1: number,
   n2: number,
   nratio: number
 }
 
+const ttest2_design_vrule = {
+  n1: n_vrule,
+  n2: n_vrule,
+  nratio: positive_vrule
+}
+
 interface ttest2_test {
   alpha: number,
   es0: number,
   side: pwr_side
+}
+
+const ttest2_test_vrule = {
+  alpha: prob_exclusive_vrule,
+  es0: "numeric",
+  side: side_vrule
 }
 
 interface ttest2_cache {
@@ -517,6 +542,11 @@ class ttest2_pwr {
   
   set test(test: ttest2_test){
    
+    const val = new Validator(test, ttest2_test_vrule)
+    if (val.fails()) {
+      throw 'Invalid test setup.';
+    }
+
     var reset: bool = false,
       i: number, which_change: string[] = [];
     
@@ -554,6 +584,12 @@ class ttest2_pwr {
   
   set n1(n1: number){
     if(this.#design.n1 == n1) return;
+    
+    const val = new Validator({ n: n1}, { n: n_vrule })
+    if (val.fails()) {
+      throw 'Invalid sample size.';
+    }
+
     this.#design.n1 = n1;
 
     if(this.options.fix_n2){
@@ -578,6 +614,11 @@ class ttest2_pwr {
   
   set nratio(nratio: number){ // attempts to preserve total n
     
+    const val = new Validator({ nr: nratio}, { nr: positive_vrule })
+    if (val.fails()) {
+      throw 'Invalid sample size ratio.';
+    }
+
     const ntotal: number = this.ntotal;
     const n2: number = Math.ceil(ntotal * nratio / (1 + nratio)); 
     
@@ -593,6 +634,12 @@ class ttest2_pwr {
   
   set n2(n2: number){
     n2 = Math.ceil(n2);
+    
+    const val = new Validator({ n: n2}, { n2: n_vrule })
+    if (val.fails()) {
+      throw 'Invalid sample size.';
+    }
+    
     this.#design.n2 = n2;
     this.#design.nratio = n2 / this.n1;
   
@@ -611,7 +658,13 @@ class ttest2_pwr {
   }
   
   set es(es: number){
-    if(this.#curve.es == es) return;
+    if (this.#curve.es == es) return;
+    
+    const val = new Validator({ es: es}, { es: 'number' })
+    if (val.fails()) {
+      throw 'Invalid effect size.';
+    }
+
     this.#curve.es = es;
     this.#curve.power = this.find_power([es])[0];
     this.#stamp()
@@ -619,18 +672,31 @@ class ttest2_pwr {
   
   set power(power: number){
     if(this.#curve.power == power) return;     
+    
+    const val = new Validator({ power: power}, { n: prob_exclusive_vrule })
+    if (val.fails()) {
+      throw 'Invalid power.';
+    }
+
     this.#curve.power = power;
     this.#curve.es = this.find_es([power])[0];
     this.#stamp()   
   }
   
   get precision_2alpha(): number{
-    const es: number = this.find_es( [ 1 - this.#test.alpha ] )[0];
+    
+    const es: number = this.find_es([1 - this.#test.alpha])[0];
     // add cache?
     return Math.abs( this.#test.es0 - es );
   }
   
   set precision_2alpha(p: number){
+    
+    const val = new Validator({ p: p}, { p: positive_vrule })
+    if (val.fails()) {
+      throw 'Invalid precision.';
+    }
+    
     const fix_n2: bool = this.options.fix_n2;
     const es: number = this.#test.es0 + Math.sign(this.#test.side)*Math.abs(p); 
     const n1: number = this.find_n( [ { es: es, power: 1 - this.#test.alpha } ] )[0];
@@ -653,7 +719,15 @@ class ttest2_pwr {
     return this.find_power( [ this.#curve.es ], null, true )[0];
   }
 
-  set es50(es: number){
+  set es50(es: number) {
+
+    const min_max: string = this.#test.side > 0 ? "min" : "max";
+    
+    const val = new Validator({ es: es}, { es: `${min_max}:${this.#test.es0 + Number.EPSILON}` })
+    if (val.fails()) {
+      throw 'Invalid effect size.';
+    }
+
     const n1 = this.find_n( [ { power: 0.5, es: es } ] )[0];
     const fix_n2: bool = this.options.fix_n2;
     if (fix_n2) {
@@ -670,7 +744,15 @@ class ttest2_pwr {
   }
   
   set es1mAlpha(es: number){
-    this.precision_2alpha = Math.abs( es - this.#test.es0 );
+    
+    const min_max: string = this.#test.side > 0 ? "min" : "max";
+
+    const val = new Validator({ es: es}, { es: `${min_max}:${this.#test.es0 + Number.EPSILON}` })
+    if (val.fails()) {
+      throw 'Invalid effect size.';
+    }
+
+    this.precision_2alpha = Math.abs(es - this.#test.es0);
   }
   
   get curve(): pwr_curve{
@@ -678,7 +760,12 @@ class ttest2_pwr {
   }
   
   set curve(curve: pwr_curve){
-    
+        
+    const val = new Validator({ curve: curve}, { curve: pwr_curve_vrule })
+    if (val.fails()) {
+      throw 'Invalid power curve values.';
+    }
+
     var reset = false, i;
     const fix_n2 = this.options.fix_n2;
 
