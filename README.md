@@ -10,7 +10,7 @@ The underlying philosophy is:
 * To encourage thinking about power *curves* rather than power *values*, 
 * To encourage thinking about power as a function of the *design* and *test*,
 * To encourage *interactive* power/design thinking, and
-* To build functions that will be useful for deploying design analyses on the web (see https://richarddmorey.github.io/jspower/#step-1).
+* To build functions that will be useful for deploying design analyses on the web (see https://richarddmorey.github.io/jspower-site/).
 
 See ["Power and precision"](https://medium.com/@richarddmorey/power-and-precision-47f644ddea5e?source=friends_link&sk=20a7fd66048b5ead68050b791ebbf79b) and ["Why you shouldn't say 'this study is underpowered'"](https://towardsdatascience.com/why-you-shouldnt-say-this-study-is-underpowered-627f002ddf35?source=friends_link&sk=8f150607a87bd81b879434a02b92c7e4) for more on the philosophy of power analysis underlying the development.
 
