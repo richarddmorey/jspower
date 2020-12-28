@@ -19,13 +19,17 @@ To this end, the functions will be based around methods of a design/test pairing
 This is in a very early stage of development. Here's how to try it:
 
 1. Install [node.js](https://nodejs.org/en/) on your system (if you're running MacOS or Linux you may already have it)
-2. Download `dist/jspower.js`.
-3. Open up a terminal window in the folder where `jspower.js` is located and start `node`.
+2. Make a new folder in which to work, and open a new terminal
+3. Install the package:
+```
+npm i git+https://github.com/richarddmorey/jspower.git
+```
+4. Start `node` in that folder
 4. Type the following:
 
 ```
 // Grab the constructor for ttest power objects
-const ttest2_pwr = require('./jspower.js').ttest2_pwr;
+const ttest2_pwr = require('jspower').ttest2_pwr;
 var t = new ttest2_pwr();
 ```
 
