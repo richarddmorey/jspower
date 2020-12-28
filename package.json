@@ -1,17 +1,19 @@
 {
-  "name": "jspower",
-  "private": true,
-  "version": "1.0.0",
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.11.5",
-    "@types/node": "^14.11.2",
-    "babel-loader": "^8.1.0",
-    "lib-r-math.js": "^1.0.88",
-    "validatorjs": "^3.22.1",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
-  }
+    "name": "jspower",
+    "private": true,
+    "version": "0.1.0",
+    "main": "src/index.js",
+    "dependencies": {
+        "lib-r-math.js": "^1.0.88",
+        "validatorjs": "^3.22.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.11.6",
+        "@babel/plugin-proposal-class-properties": "^7.10.4",
+        "@babel/preset-env": "^7.11.5",
+        "@types/node": "^14.11.2",
+        "babel-loader": "^8.1.0",
+        "webpack": "^4.44.2",
+        "webpack-cli": "^3.3.12"
+    }
 }

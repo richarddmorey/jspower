@@ -21,11 +21,12 @@ const side_vrule = "in:-1,1"
 
 const fmin = require('./fmin.js').fmin0
 
+const libR = require('lib-r-math.js');
 const {
   StudentT,
   Normal,
   Logistic
-} = require('node_modules/lib-r-math.js/dist/lib/libR.js');
+} = libR;
  
 const { pt, qt }  = StudentT();
 const { pnorm, qnorm } = Normal();
