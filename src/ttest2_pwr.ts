@@ -496,17 +496,38 @@ class ttest2_pwr {
    
   }
 
-  density(x: number[], es: number, t: boolean = true, logp: boolean = false): number[] {
+  density(x: number[], es: number, cumulative: boolean = false, t: boolean = true, logp: boolean = false): number[] {
     
     const sqrt_neff: number = Math.sqrt( this.n1 * this.n2 / (this.n1 + this.n2) );
     const df: number = this.n1 + this.n2 - 2;
     const ncp: number = es * sqrt_neff;
     
     const s = t ? 1 : sqrt_neff;
-    
+    const lower_tail: boolean = true
+
     return x.map(function(x) {
-      const d = dt(x * s, df, ncp, true) + Math.log(s); 
-      return logp ? d : Math.exp(d);
+      if (cumulative) {
+        const p = pt(x * s, df, ncp, lower_tail, true);
+        return logp ? p : Math.exp(p);
+      } else {
+        const d = dt(x * s, df, ncp, true) + Math.log(s);
+        return logp ? d : Math.exp(d);
+      }
+    });
+
+  }
+
+  quantile(p: number[], es: number, t: boolean = true, logp: boolean = false): number[] {
+    
+    const sqrt_neff: number = Math.sqrt(this.n1 * this.n2 / (this.n1 + this.n2));
+    const df: number = this.n1 + this.n2 - 2;
+    const ncp: number = es * sqrt_neff;
+
+    const s = t ? 1 : sqrt_neff;
+    const lower_tail: boolean = true
+
+    return p.map(function(p) {
+      return qt(p, df, ncp, lower_tail, logp) / s;
     });
 
   }

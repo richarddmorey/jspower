@@ -339,14 +339,31 @@ class ttest2_pwr {
             return __classPrivateFieldGet(this0, _n_power).call(this0, curve.power, curve.es);
         });
     }
-    density(x, es, t = true, logp = false) {
+    density(x, es, cumulative = false, t = true, logp = false) {
         const sqrt_neff = Math.sqrt(this.n1 * this.n2 / (this.n1 + this.n2));
         const df = this.n1 + this.n2 - 2;
         const ncp = es * sqrt_neff;
         const s = t ? 1 : sqrt_neff;
+        const lower_tail = true;
         return x.map(function (x) {
-            const d = dt(x * s, df, ncp, true) + Math.log(s);
-            return logp ? d : Math.exp(d);
+            if (cumulative) {
+                const p = pt(x * s, df, ncp, lower_tail, true);
+                return logp ? p : Math.exp(p);
+            }
+            else {
+                const d = dt(x * s, df, ncp, true) + Math.log(s);
+                return logp ? d : Math.exp(d);
+            }
+        });
+    }
+    quantile(p, es, t = true, logp = false) {
+        const sqrt_neff = Math.sqrt(this.n1 * this.n2 / (this.n1 + this.n2));
+        const df = this.n1 + this.n2 - 2;
+        const ncp = es * sqrt_neff;
+        const s = t ? 1 : sqrt_neff;
+        const lower_tail = true;
+        return p.map(function (p) {
+            return qt(p, df, ncp, lower_tail, logp) / s;
         });
     }
     clear_cache() {

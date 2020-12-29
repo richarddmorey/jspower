@@ -114,12 +114,23 @@ t.find_power([.2,.4]);
 
 ### `t.density()`
 
-Yields the density of the sampling distribution for either the test statistic (t) or observed effect size (d) for a given true effect size:
+Yields the density (or cumulative density) of the sampling distribution for either the test statistic (t) or observed effect size (d) for a given true effect size:
 
 ```
 t.density([0,.5], 1)
 // Returns [ 1.7866245026413097e-16, 0.0003904513212928331 ]
 ```
+
+### `t.quantile()`
+
+Yields the quantile function of the sampling distribution for either the test statistic (t) or observed effect size (d) for a given true effect size:
+
+```
+t.quantile([.25,.5,.75], .1)
+// Returns [ 0.19167561817629775, 0.8667525446561228, 1.5431551328239692 ]
+```
+
+
 
 
 ## Elements of the design report
