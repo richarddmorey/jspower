@@ -27,7 +27,7 @@ const side_vrule = "in:-1,1";
 const fmin = require('./fmin.js').fmin0;
 const libR = require('lib-r-math.js');
 const { StudentT, Normal, Logistic } = libR;
-const { pt, qt } = StudentT();
+const { pt, qt, dt } = StudentT();
 const { pnorm, qnorm } = Normal();
 const { plogis, qlogis } = Logistic();
 const pwr_curve_vrule = {
@@ -337,6 +337,16 @@ class ttest2_pwr {
         const this0 = this;
         return curve.map(function (curve) {
             return __classPrivateFieldGet(this0, _n_power).call(this0, curve.power, curve.es);
+        });
+    }
+    density(x, es, t = true, logp = false) {
+        const sqrt_neff = Math.sqrt(this.n1 * this.n2 / (this.n1 + this.n2));
+        const df = this.n1 + this.n2 - 2;
+        const ncp = es * sqrt_neff;
+        const s = t ? 1 : sqrt_neff;
+        return x.map(function (x) {
+            const d = dt(x * s, df, ncp, true) + Math.log(s);
+            return logp ? d : Math.exp(d);
         });
     }
     clear_cache() {

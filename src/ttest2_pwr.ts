@@ -28,7 +28,7 @@ const {
   Logistic
 } = libR;
  
-const { pt, qt }  = StudentT();
+const { pt, qt, dt }  = StudentT();
 const { pnorm, qnorm } = Normal();
 const { plogis, qlogis } = Logistic();
 
@@ -495,6 +495,22 @@ class ttest2_pwr {
     });
    
   }
+
+  density(x: number[], es: number, t: boolean = true, logp: boolean = false): number[] {
+    
+    const sqrt_neff: number = Math.sqrt( this.n1 * this.n2 / (this.n1 + this.n2) );
+    const df: number = this.n1 + this.n2 - 2;
+    const ncp: number = es * sqrt_neff;
+    
+    const s = t ? 1 : sqrt_neff;
+    
+    return x.map(function(x) {
+      const d = dt(x * s, df, ncp, true) + Math.log(s); 
+      return logp ? d : Math.exp(d);
+    });
+
+  }
+
 
   clear_cache(){
     

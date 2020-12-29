@@ -108,12 +108,18 @@ Finds power for an array of effect sizes, given the defined test and design:
 
 
 ```
-> t.find_power([.2,.4]);
+t.find_power([.2,.4]);
 // Returns [ 0.40768841290143554, 0.9322751597343004 ]
 ```
 
+### `t.density()`
 
+Yields the density of the sampling distribution for either the test statistic (t) or observed effect size (d) for a given true effect size:
 
+```
+t.density([0,.5], 1)
+// Returns [ 1.7866245026413097e-16, 0.0003904513212928331 ]
+```
 
 
 ## Elements of the design report
