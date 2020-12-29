@@ -126,11 +126,14 @@ t.density([0,.5], 1)
 
 | Element | Description | Example for how to change | Note |
 |---------|-------------|--------------|-----|
+| id      | A name for the object  |  `t.id = "Analysis 1"`    | |
 | test    | Parameters of the (one-sided) test | `t.test = {}` | |
 | test.es0| Null effect size |  `t.test = {es0: .2}` | |
 | test.side| Side of alternative (-1: "less", 1: greater) | `t.test = {side: -1}` | |
 | test.alpha| alpha level for test  | `t.test = {alpha: .05}` | |
 | test.criterion | Criterion on t statistic for significance | NA | |
+| test.es_type | The parameter indexing true effect size | NA | |
+| test.criterion_on | The test statistic | NA | |
 | design   | Design parameters | NA | |
 | design.n1 | Sample size for reference group | `t.n1 = 150` | |
 | design.n2 | Sample size for second group| `t.n2 = 100` | If you change this directly, `n2` will be fixed as `n1` changes until you change `nratio` explicitly |
