@@ -7,102 +7,16 @@
 		exports["jspower"] = factory();
 	else
 		root["jspower"] = factory();
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ([
+})(this, () => {
+return /******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var ttest2_pwr = __webpack_require__(1).ttest2_pwr;
-
+var ttest2_pwr = (__webpack_require__(1).ttest2_pwr);
 module.exports = {
   ttest2_pwr: ttest2_pwr
 };
@@ -124,55 +38,43 @@ module.exports = {
 *********/
 
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var __classPrivateFieldGet = this && this.__classPrivateFieldGet || function (receiver, privateMap) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to get private field on non-instance");
-  }
-
-  return privateMap.get(receiver);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var __classPrivateFieldGet = this && this.__classPrivateFieldGet || function (receiver, state, kind, f) {
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-
-var _cache, _design, _test, _curve, _stamp, _power1, _compute_criterion, _es_power, _n_power;
-
-Object.defineProperty(exports, "__esModule", {
+var _ttest2_pwr_cache, _ttest2_pwr_design, _ttest2_pwr_test, _ttest2_pwr_curve, _ttest2_pwr_stamp, _ttest2_pwr_power1, _ttest2_pwr_compute_criterion, _ttest2_pwr_es_power, _ttest2_pwr_n_power;
+Object.defineProperty(exports, "__esModule", ({
   value: true
-});
-
+}));
 var Validator = __webpack_require__(2);
 /* Some validation rules */
-
-
 var prob_inclusive_vrule = 'between:0,1';
 var prob_exclusive_vrule = "between:".concat(Number.EPSILON, ",").concat(1 - Number.EPSILON);
 var n_vrule = ["min:2", "integer"];
 var positive_vrule = "min:".concat(Number.EPSILON);
 var side_vrule = "in:-1,1";
-
-var fmin = __webpack_require__(58).fmin0;
-
-var _require = __webpack_require__(59),
-    StudentT = _require.StudentT,
-    Normal = _require.Normal,
-    Logistic = _require.Logistic;
-
+var fmin = (__webpack_require__(58).fmin0);
+var libR = __webpack_require__(59);
+var StudentT = libR.StudentT,
+  Normal = libR.Normal,
+  Logistic = libR.Logistic;
 var _StudentT = StudentT(),
-    pt = _StudentT.pt,
-    qt = _StudentT.qt;
-
+  pt = _StudentT.pt,
+  qt = _StudentT.qt,
+  dt = _StudentT.dt;
 var _Normal = Normal(),
-    pnorm = _Normal.pnorm,
-    qnorm = _Normal.qnorm;
-
+  pnorm = _Normal.pnorm,
+  qnorm = _Normal.qnorm;
 var _Logistic = Logistic(),
-    plogis = _Logistic.plogis,
-    qlogis = _Logistic.qlogis;
-
+  plogis = _Logistic.plogis,
+  qlogis = _Logistic.qlogis;
 var pwr_curve_vrule = {
   es: "numeric",
   power: prob_exclusive_vrule
@@ -188,108 +90,90 @@ var ttest2_test_vrule = {
   es0: "numeric",
   side: side_vrule
 };
-
 var ttest2_pwr = /*#__PURE__*/function () {
   function ttest2_pwr() {
     var _this = this;
-
     var precision_2alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.2;
     var nratio = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     var test = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-
     _classCallCheck(this, ttest2_pwr);
-
     this.names = {
       es: "𝛿",
       test_stat: "t"
     };
-
-    _cache.set(this, {
+    _ttest2_pwr_cache.set(this, {
       criterion: {}
     });
-
-    _design.set(this, {
+    _ttest2_pwr_design.set(this, {
       n1: 50,
       n2: 50,
       nratio: 1
     });
-
-    _test.set(this, {
+    _ttest2_pwr_test.set(this, {
       es0: 0,
       side: 1,
       alpha: 0.025
     });
-
-    _curve.set(this, {
+    _ttest2_pwr_curve.set(this, {
       es: 0.1,
       power: 0.9
     });
-
-    _stamp.set(this, function () {
+    _ttest2_pwr_stamp.set(this, function () {
       _this.randstamp = Math.random().toString(36).substring(2);
       _this.timestamp = Date.now();
-    } // Note that this returns log-odds of power!
-    ); // Note that this returns log-odds of power!
-
-
-    _power1.set(this, function (n1, n2, delta, alpha, criterion, delta0) {
+    }
+    // Note that this returns log-odds of power!
+    );
+    // Note that this returns log-odds of power!
+    _ttest2_pwr_power1.set(this, function (n1, n2, delta, alpha, criterion, delta0) {
       var neff = n1 * n2 / (n1 + n2);
       var df = n1 + n2 - 2;
-      if (typeof criterion === 'undefined') criterion = __classPrivateFieldGet(_this, _compute_criterion).call(_this, n1, n2, alpha, delta0);
+      if (typeof criterion === 'undefined') criterion = __classPrivateFieldGet(_this, _ttest2_pwr_compute_criterion, "f").call(_this, n1, n2, alpha, delta0);
       var ncp = delta * Math.sqrt(neff);
       var logpow;
-
       if (df > _this.options.df_normal_cutoff) {
         logpow = pnorm(criterion, ncp, 1, false, true);
       } else {
         logpow = pt(criterion, df, ncp, false, true);
       }
-
       var qpow = qlogis(logpow, 0, 1, true, true);
       return qpow;
     });
-
-    _compute_criterion.set(this, function (n1, n2, alpha, delta0) {
+    _ttest2_pwr_compute_criterion.set(this, function (n1, n2, alpha, delta0) {
       n1 = Math.ceil(n1);
       var ns0 = n1 > n2 ? [n2, n1] : [n1, n2];
       var ns = ns0.toString();
       var key = "".concat(delta0, ",").concat(alpha, ",").concat(ns);
       var f0,
-          criterion,
-          i = 0;
-
-      if (key in __classPrivateFieldGet(_this, _cache).criterion && _this.options.criterion.cache) {
-        criterion = __classPrivateFieldGet(_this, _cache).criterion[key];
+        criterion,
+        i = 0;
+      if (key in __classPrivateFieldGet(_this, _ttest2_pwr_cache, "f").criterion && _this.options.criterion.cache) {
+        criterion = __classPrivateFieldGet(_this, _ttest2_pwr_cache, "f").criterion[key];
       } else {
         var neff = n1 * n2 / (n1 + n2);
         var df = n1 + n2 - 2;
-
         if (delta0 == 0) {
           criterion = -qt(alpha, df);
         } else {
           var ncp = delta0 * Math.sqrt(neff);
           criterion = qt(alpha, df, ncp, false);
         }
-
-        if (_this.options.criterion.cache) __classPrivateFieldGet(_this, _cache).criterion[key] = criterion;
+        if (_this.options.criterion.cache) __classPrivateFieldGet(_this, _ttest2_pwr_cache, "f").criterion[key] = criterion;
       }
-
       return criterion;
     });
-
-    _es_power.set(this, function (pow, criterion) {
-      var n1 = __classPrivateFieldGet(_this, _design).n1;
-
+    _ttest2_pwr_es_power.set(this, function (pow, criterion) {
+      var n1 = __classPrivateFieldGet(_this, _ttest2_pwr_design, "f").n1;
       var n2 = _this.n2;
-      var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
+      var delta0 = __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").side < 0 ? -__classPrivateFieldGet(_this, _ttest2_pwr_test, "f").es0 : __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").es0;
       var s_dn = _this.options.es.s_dn;
       var s_up = _this.options.es.s_up;
       var shift_dn = _this.options.es.shift_dn;
       var shift_up = _this.options.es.shift_up;
       var fix_n2 = _this.options.fix_n2;
-      if (pow == __classPrivateFieldGet(_this, _test).alpha) return __classPrivateFieldGet(_this, _test).es0;
-      if (__classPrivateFieldGet(_this, _test).side < 0) criterion = -criterion;
+      if (pow == __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").alpha) return __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").es0;
+      if (__classPrivateFieldGet(_this, _ttest2_pwr_test, "f").side < 0) criterion = -criterion;
       var es_up, es_lo, pow_up, pow_lo;
       var qpow = qlogis(pow);
       var neff = n1 * n2 / (n2 + n2);
@@ -297,59 +181,46 @@ var ttest2_pwr = /*#__PURE__*/function () {
       var tmp = criterion - qnorm(pow, 0, 1, false);
       es_up = (tmp + s_up) / Math.sqrt(neff);
       es_lo = (tmp - s_dn) / Math.sqrt(neff);
-      pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_up, undefined, criterion, delta0);
-      pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
-
+      pow_up = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n1, n2, es_up, undefined, criterion, delta0);
+      pow_lo = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n1, n2, es_lo, undefined, criterion, delta0);
       while (pow_up < qpow) {
         es_lo = es_up;
         es_up = es_up + shift_up / Math.sqrt(neff);
-        pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_up, undefined, criterion, delta0);
+        pow_up = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n1, n2, es_up, undefined, criterion, delta0);
       }
-
       while (pow_lo > qpow) {
         es_up = es_lo;
         es_lo = es_lo - shift_dn / Math.sqrt(neff);
-        pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n1, n2, es_lo, undefined, criterion, delta0);
+        pow_lo = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n1, n2, es_lo, undefined, criterion, delta0);
       }
-
       if (fix_n2) {
-        es_lo = __classPrivateFieldGet(_this, _test).es0 - qnorm(__classPrivateFieldGet(_this, _test).alpha) / Math.sqrt(n2) + qnorm(pow) / Math.sqrt(n1);
+        es_lo = __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").es0 - qnorm(__classPrivateFieldGet(_this, _ttest2_pwr_test, "f").alpha) / Math.sqrt(n2) + qnorm(pow) / Math.sqrt(n1);
       }
-
       var this0 = _this;
-
       var opt_fun = function opt_fun(delta) {
-        var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
+        var obj = __classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
         return obj * obj;
       };
-
       return fmin(es_lo, es_up, opt_fun, _this.options.es.tol).x;
     });
-
-    _n_power.set(this, function (pow, delta) {
-      var alpha = __classPrivateFieldGet(_this, _test).alpha;
-
-      var nratio = __classPrivateFieldGet(_this, _design).nratio;
-
+    _ttest2_pwr_n_power.set(this, function (pow, delta) {
+      var alpha = __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").alpha;
+      var nratio = __classPrivateFieldGet(_this, _ttest2_pwr_design, "f").nratio;
       var s_dn = _this.options.n.s_dn;
       var s_up = _this.options.n.s_up;
       var shift_dn = _this.options.n.shift_dn;
       var shift_up = _this.options.n.shift_up;
       var n1_max_pow = _this.options.n.n1_max_pow;
       var n1_max_min = _this.options.n.n1_max_min;
-      var delta0 = __classPrivateFieldGet(_this, _test).side < 0 ? -__classPrivateFieldGet(_this, _test).es0 : __classPrivateFieldGet(_this, _test).es0;
+      var delta0 = __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").side < 0 ? -__classPrivateFieldGet(_this, _ttest2_pwr_test, "f").es0 : __classPrivateFieldGet(_this, _ttest2_pwr_test, "f").es0;
       var fix_n2 = _this.options.fix_n2;
-
       if (fix_n2) {
         var ncp = -Math.abs(delta - delta0) * Math.sqrt(_this.n2);
-
         if (pow >= pnorm(qnorm(alpha), ncp)) {
           return Infinity;
         }
       }
-
-      if (__classPrivateFieldGet(_this, _test).side < 0) delta = -delta;
-
+      if (__classPrivateFieldGet(_this, _ttest2_pwr_test, "f").side < 0) delta = -delta;
       if (delta < delta0 && pow > alpha) {
         throw 'The specified effect size specified cannot be in the null region if power > alpha.';
       } else if (delta > delta0 && pow < alpha) {
@@ -359,22 +230,20 @@ var ttest2_pwr = /*#__PURE__*/function () {
       } else if (delta == delta0) {
         throw 'Effect size cannot be equal to the null effect size if computing sample size.';
       }
-
       var n2 = _this.n2;
       var neff_up,
-          neff_lo,
-          n_up,
-          n2_up = n2,
-          n_lo,
-          n2_lo = n2,
-          pow_up,
-          pow_lo;
+        neff_lo,
+        n_up,
+        n2_up = n2,
+        n_lo,
+        n2_lo = n2,
+        pow_up,
+        pow_lo;
       var qpow = qlogis(pow);
       var delta_tmp = Math.abs(delta - delta0);
       var criterion0 = -qnorm(alpha);
       var tmp = qnorm(pow) + criterion0;
       neff_lo = Math.pow((tmp - s_dn) / delta_tmp, 2);
-
       if (fix_n2) {
         var es0 = -Math.abs(delta - delta0) * Math.sqrt(n2);
         var max_pow = pnorm(qnorm(_this.test.alpha) - es0);
@@ -390,54 +259,41 @@ var ttest2_pwr = /*#__PURE__*/function () {
         n2_up = Math.max(2, n_up * nratio);
         n2_lo = Math.max(2, n_lo * nratio);
       }
-
-      pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
-      pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+      pow_up = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
+      pow_lo = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
       if (n_up == 2) return 2;
-
       while (pow_up < qpow) {
         n_lo = n_up;
         n_up = n_up * shift_up;
-
         if (!fix_n2) {
           n2_lo = n2_up;
           n2_up = n2_up * shift_up;
         }
-
-        pow_up = __classPrivateFieldGet(_this, _power1).call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
+        pow_up = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n_up, n2_up, delta, alpha, undefined, delta0);
       }
-
       while (pow_lo > qpow && n_lo >= 2) {
         n_up = n_lo;
         n_lo = n_lo * shift_dn;
-
         if (!fix_n2) {
           n2_up = n2_lo;
           n2_lo = n2_lo * shift_dn;
         }
-
-        pow_lo = __classPrivateFieldGet(_this, _power1).call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
-      } // Ensure group 2 has at least two samples in it
-
-
+        pow_lo = __classPrivateFieldGet(_this, _ttest2_pwr_power1, "f").call(_this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+      }
+      // Ensure group 2 has at least two samples in it
       if (!fix_n2 && n_lo * nratio < 2) n_lo = 2 / nratio;
       var this0 = _this;
-
       var opt_fun = function opt_fun(n1) {
-        var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, fix_n2 ? n2 : Math.ceil(n1 * nratio), delta, alpha, undefined, delta0) - qpow;
+        var obj = __classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, n1, fix_n2 ? n2 : Math.ceil(n1 * nratio), delta, alpha, undefined, delta0) - qpow;
         return obj * obj;
       };
-
       var n_opt = fmin(n_lo, n_up, opt_fun, _this.options.n.tol);
       return Math.ceil(n_opt.x);
     });
-
-    __classPrivateFieldGet(this, _design).nratio = nratio;
-
-    __classPrivateFieldGet(this, _stamp).call(this);
-
+    __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = nratio;
+    __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     this.id = Math.random().toString(36).substring(2);
-    Object.assign(__classPrivateFieldGet(this, _test), test);
+    Object.assign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f"), test);
     var options0 = {
       fix_es: true,
       fix_n2: false,
@@ -478,59 +334,47 @@ var ttest2_pwr = /*#__PURE__*/function () {
     };
     this.options.fix_n2 = fix_n2;
   }
-
-  _createClass(ttest2_pwr, [{
+  return _createClass(ttest2_pwr, [{
     key: "find_power",
     value: function find_power(es) {
       var typeS = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      var design = __classPrivateFieldGet(this, _design);
-
-      var test = __classPrivateFieldGet(this, _test);
-
-      var curve = __classPrivateFieldGet(this, _curve);
-
+      var design = __classPrivateFieldGet(this, _ttest2_pwr_design, "f");
+      var test = __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
+      var curve = __classPrivateFieldGet(this, _ttest2_pwr_curve, "f");
       var n2 = this.n2;
       var side = test.side;
       var criterion;
       if (typeof es === 'undefined') es = [curve.es];
-
       if (typeS) {
-        criterion = -Math.sign(side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, -Math.sign(side) * test.es0);
+        criterion = -Math.sign(side) * __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, design.n1, this.n2, test.alpha, -Math.sign(side) * test.es0);
       } else {
-        criterion = Math.sign(side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(side) * test.es0);
+        criterion = Math.sign(side) * __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, design.n1, this.n2, test.alpha, Math.sign(side) * test.es0);
       }
-
       var this0 = this;
       return es.map(function (delta) {
         var delta0 = test.es0;
         var criterion0 = criterion;
-
         if (delta == delta0) {
           return test.alpha;
         }
-
         if (limit) {
           if (!this0.options.fix_n2) {
             return typeS ? 0 : 1;
           }
-
           var ncp = Math.abs(delta - delta0) * Math.sqrt(this0.n2);
           ncp = typeS ? ncp : -ncp;
           return pnorm(qnorm(test.alpha), ncp);
         }
-
         if (side < 0) {
           delta = -delta;
           delta0 = -delta0;
           criterion0 = -criterion0;
         }
-
         if (typeS) {
-          return plogis(-__classPrivateFieldGet(this0, _power1).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
+          return plogis(-__classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
         } else {
-          return plogis(__classPrivateFieldGet(this0, _power1).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
+          return plogis(__classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
         }
       });
     }
@@ -539,54 +383,78 @@ var ttest2_pwr = /*#__PURE__*/function () {
     value: function find_es(power) {
       var typeS = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      var design = __classPrivateFieldGet(this, _design);
-
-      var test = __classPrivateFieldGet(this, _test);
-
-      var curve = __classPrivateFieldGet(this, _curve);
-
+      var design = __classPrivateFieldGet(this, _ttest2_pwr_design, "f");
+      var test = __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
+      var curve = __classPrivateFieldGet(this, _ttest2_pwr_curve, "f");
       if (typeof power === 'undefined') power = [curve.power];
-
-      var criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, typeS ? 1 - test.alpha : test.alpha, Math.sign(test.side) * test.es0);
-
+      var criterion = Math.sign(test.side) * __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, design.n1, this.n2, typeS ? 1 - test.alpha : test.alpha, Math.sign(test.side) * test.es0);
       var this0 = this;
       return power.map(function (power) {
         if (power == test.alpha) {
           return test.es0;
         }
-
         if (limit) {
           if (!this0.options.fix_n2) {
             return test.es0;
           }
-
           var es_diff = (qnorm(power) - qnorm(test.alpha)) / Math.sqrt(this0.n2);
           return Math.sign(test.side) * Math.abs(es_diff) + test.es0;
         }
-
-        return Math.sign(test.side) * __classPrivateFieldGet(this0, _es_power).call(this0, typeS ? 1 - power : power, criterion);
+        return Math.sign(test.side) * __classPrivateFieldGet(this0, _ttest2_pwr_es_power, "f").call(this0, typeS ? 1 - power : power, criterion);
       });
     }
   }, {
     key: "find_n",
     value: function find_n(curve) {
-      var design = __classPrivateFieldGet(this, _design);
-
-      var test = __classPrivateFieldGet(this, _test);
-
-      if (typeof curve === 'undefined') curve = [__classPrivateFieldGet(this, _curve)];
+      var design = __classPrivateFieldGet(this, _ttest2_pwr_design, "f");
+      var test = __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
+      if (typeof curve === 'undefined') curve = [__classPrivateFieldGet(this, _ttest2_pwr_curve, "f")];
       var this0 = this;
       return curve.map(function (curve) {
-        return __classPrivateFieldGet(this0, _n_power).call(this0, curve.power, curve.es);
+        return __classPrivateFieldGet(this0, _ttest2_pwr_n_power, "f").call(this0, curve.power, curve.es);
+      });
+    }
+  }, {
+    key: "density",
+    value: function density(x, es) {
+      var cumulative = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var t = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+      var logp = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+      var sqrt_neff = Math.sqrt(this.n1 * this.n2 / (this.n1 + this.n2));
+      var df = this.n1 + this.n2 - 2;
+      var ncp = es * sqrt_neff;
+      var s = t ? 1 : sqrt_neff;
+      var lower_tail = true;
+      return x.map(function (x) {
+        if (cumulative) {
+          var p = pt(x * s, df, ncp, lower_tail, true);
+          return logp ? p : Math.exp(p);
+        } else {
+          var d = dt(x * s, df, ncp, true) + Math.log(s);
+          return logp ? d : Math.exp(d);
+        }
+      });
+    }
+  }, {
+    key: "quantile",
+    value: function quantile(p, es) {
+      var t = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+      var logp = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      var sqrt_neff = Math.sqrt(this.n1 * this.n2 / (this.n1 + this.n2));
+      var df = this.n1 + this.n2 - 2;
+      var ncp = es * sqrt_neff;
+      var s = t ? 1 : sqrt_neff;
+      var lower_tail = true;
+      return p.map(function (p) {
+        return qt(p, df, ncp, lower_tail, logp) / s;
       });
     }
   }, {
     key: "clear_cache",
     value: function clear_cache() {
       var this0 = this;
-      Object.keys(__classPrivateFieldGet(this, _cache)).map(function (key) {
-        __classPrivateFieldGet(this0, _cache)[key] = {};
+      Object.keys(__classPrivateFieldGet(this, _ttest2_pwr_cache, "f")).map(function (key) {
+        __classPrivateFieldGet(this0, _ttest2_pwr_cache, "f")[key] = {};
       });
     }
   }, {
@@ -604,13 +472,11 @@ var ttest2_pwr = /*#__PURE__*/function () {
         es1mAlpha: this.es1mAlpha,
         typeS: this.find_power(undefined, true)[0]
       };
-
       if (this.options.fix_n2) {
         Object.assign(curve, {
           powerLimit: this.powerLimit
         });
       }
-
       return {
         id: this.id,
         test: test,
@@ -627,85 +493,74 @@ var ttest2_pwr = /*#__PURE__*/function () {
   }, {
     key: "cache",
     get: function get() {
-      return __classPrivateFieldGet(this, _cache);
+      return __classPrivateFieldGet(this, _ttest2_pwr_cache, "f");
     }
   }, {
     key: "test",
     get: function get() {
-      return __classPrivateFieldGet(this, _test);
+      return __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
     },
     set: function set(test) {
       var val = new Validator(test, ttest2_test_vrule);
-
       if (val.fails()) {
         throw 'Invalid test setup.';
       }
-
       var reset = false,
-          i,
-          which_change = [];
-      var keys = Object.keys(__classPrivateFieldGet(this, _test));
-
+        i,
+        which_change = [];
+      var keys = Object.keys(__classPrivateFieldGet(this, _ttest2_pwr_test, "f"));
       for (i = 0; i < keys.length; i++) {
         var key = keys[i];
-        if (key in test) if (test[key] != __classPrivateFieldGet(this, _test)[key]) {
+        if (key in test) if (test[key] != __classPrivateFieldGet(this, _ttest2_pwr_test, "f")[key]) {
           which_change.push(key);
         }
       }
-
       if (which_change.length > 0) {
-        Object.assign(__classPrivateFieldGet(this, _test), test);
-
+        Object.assign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f"), test);
         if (which_change[0] == "alpha" && which_change.length == 1) {
           if (this.options.fix_es) {
-            __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+            __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([this.curve.es])[0];
           } else {
-            __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+            __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
           }
         } else {
-          __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+          __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
         }
       }
-
-      __classPrivateFieldGet(this, _stamp).call(this);
+      __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
   }, {
     key: "n1",
     get: function get() {
-      return __classPrivateFieldGet(this, _design).n1;
+      return __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1;
     },
     set: function set(n1) {
-      if (__classPrivateFieldGet(this, _design).n1 == n1) return;
+      if (__classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1 == n1) return;
       var val = new Validator({
         n: n1
       }, {
         n: n_vrule
       });
-
       if (val.fails()) {
         throw 'Invalid sample size.';
       }
-
-      __classPrivateFieldGet(this, _design).n1 = n1;
-
+      __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1 = n1;
       if (this.options.fix_n2) {
-        __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
       } else {
-        __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
       }
-
       if (this.options.fix_es) {
-        __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([this.curve.es])[0];
       } else {
-        __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
       }
-
-      __classPrivateFieldGet(this, _stamp).call(this);
+      __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
   }, {
     key: "nratio",
     get: function get() {
-      return __classPrivateFieldGet(this, _design).nratio;
+      return __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio;
     },
     set: function set(nratio) {
       var val = new Validator({
@@ -713,21 +568,19 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }, {
         nr: positive_vrule
       });
-
       if (val.fails()) {
         throw 'Invalid sample size ratio.';
       }
-
       var ntotal = this.ntotal;
       var n2 = Math.ceil(ntotal * nratio / (1 + nratio));
       this.options.fix_n2 = false;
-      __classPrivateFieldGet(this, _design).nratio = nratio;
+      __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = nratio;
       this.n1 = ntotal - n2;
     }
   }, {
     key: "n2",
     get: function get() {
-      return __classPrivateFieldGet(this, _design).n2;
+      return __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2;
     },
     set: function set(n2) {
       n2 = Math.ceil(n2);
@@ -736,23 +589,18 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }, {
         n2: n_vrule
       });
-
       if (val.fails()) {
         throw 'Invalid sample size.';
       }
-
-      __classPrivateFieldGet(this, _design).n2 = n2;
-      __classPrivateFieldGet(this, _design).nratio = n2 / this.n1;
-
+      __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = n2;
+      __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n2 / this.n1;
       if (this.options.fix_es) {
-        __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([this.curve.es])[0];
       } else {
-        __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
       }
-
       this.options.fix_n2 = true;
-
-      __classPrivateFieldGet(this, _stamp).call(this);
+      __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
   }, {
     key: "ntotal",
@@ -762,47 +610,41 @@ var ttest2_pwr = /*#__PURE__*/function () {
   }, {
     key: "es",
     set: function set(es) {
-      if (__classPrivateFieldGet(this, _curve).es == es) return;
+      if (__classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es == es) return;
       var val = new Validator({
         es: es
       }, {
         es: 'number'
       });
-
       if (val.fails()) {
         throw 'Invalid effect size.';
       }
-
-      __classPrivateFieldGet(this, _curve).es = es;
-      __classPrivateFieldGet(this, _curve).power = this.find_power([es])[0];
-
-      __classPrivateFieldGet(this, _stamp).call(this);
+      __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = es;
+      __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([es])[0];
+      __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
   }, {
     key: "power",
     set: function set(power) {
-      if (__classPrivateFieldGet(this, _curve).power == power) return;
+      if (__classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power == power) return;
       var val = new Validator({
         power: power
       }, {
         n: prob_exclusive_vrule
       });
-
       if (val.fails()) {
         throw 'Invalid power.';
       }
-
-      __classPrivateFieldGet(this, _curve).power = power;
-      __classPrivateFieldGet(this, _curve).es = this.find_es([power])[0];
-
-      __classPrivateFieldGet(this, _stamp).call(this);
+      __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = power;
+      __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([power])[0];
+      __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
   }, {
     key: "precision_2alpha",
     get: function get() {
-      var es = this.find_es([1 - __classPrivateFieldGet(this, _test).alpha])[0]; // add cache?
-
-      return Math.abs(__classPrivateFieldGet(this, _test).es0 - es);
+      var es = this.find_es([1 - __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha])[0];
+      // add cache?
+      return Math.abs(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 - es);
     },
     set: function set(p) {
       var val = new Validator({
@@ -810,25 +652,22 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }, {
         p: positive_vrule
       });
-
       if (val.fails()) {
         throw 'Invalid precision.';
       }
-
       var fix_n2 = this.options.fix_n2;
-      var es = __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * Math.abs(p);
+      var es = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Math.sign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side) * Math.abs(p);
       var n1 = this.find_n([{
         es: es,
-        power: 1 - __classPrivateFieldGet(this, _test).alpha
+        power: 1 - __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha
       }])[0];
-
       if (fix_n2) {
-        __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
       } else {
-        __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
       }
-
-      this.n1 = n1; // add cache?
+      this.n1 = n1;
+      // add cache?
     }
   }, {
     key: "es50",
@@ -837,59 +676,54 @@ var ttest2_pwr = /*#__PURE__*/function () {
       return this.find_es([0.5])[0];
     },
     set: function set(es) {
-      var min_max = __classPrivateFieldGet(this, _test).side > 0 ? "min" : "max";
+      var min_max = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side > 0 ? "min" : "max";
       var val = new Validator({
         es: es
       }, {
-        es: "".concat(min_max, ":").concat(__classPrivateFieldGet(this, _test).es0 + Number.EPSILON)
+        es: "".concat(min_max, ":").concat(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Number.EPSILON)
       });
-
       if (val.fails()) {
         throw 'Invalid effect size.';
       }
-
       var n1 = this.find_n([{
         power: 0.5,
         es: es
       }])[0];
       var fix_n2 = this.options.fix_n2;
-
       if (fix_n2) {
-        __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
       } else {
-        __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
       }
-
-      this.n1 = n1; // add cache?
+      this.n1 = n1;
+      // add cache?
     }
   }, {
     key: "powerLimit",
     get: function get() {
-      return this.find_power([__classPrivateFieldGet(this, _curve).es], null, true)[0];
+      return this.find_power([__classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es], null, true)[0];
     }
   }, {
     key: "es1mAlpha",
     get: function get() {
-      return __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * this.precision_2alpha;
+      return __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Math.sign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side) * this.precision_2alpha;
     },
     set: function set(es) {
-      var min_max = __classPrivateFieldGet(this, _test).side > 0 ? "min" : "max";
+      var min_max = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side > 0 ? "min" : "max";
       var val = new Validator({
         es: es
       }, {
-        es: "".concat(min_max, ":").concat(__classPrivateFieldGet(this, _test).es0 + Number.EPSILON)
+        es: "".concat(min_max, ":").concat(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Number.EPSILON)
       });
-
       if (val.fails()) {
         throw 'Invalid effect size.';
       }
-
-      this.precision_2alpha = Math.abs(es - __classPrivateFieldGet(this, _test).es0);
+      this.precision_2alpha = Math.abs(es - __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0);
     }
   }, {
     key: "curve",
     get: function get() {
-      return __classPrivateFieldGet(this, _curve);
+      return __classPrivateFieldGet(this, _ttest2_pwr_curve, "f");
     },
     set: function set(curve) {
       var val = new Validator({
@@ -897,61 +731,50 @@ var ttest2_pwr = /*#__PURE__*/function () {
       }, {
         curve: pwr_curve_vrule
       });
-
       if (val.fails()) {
         throw 'Invalid power curve values.';
       }
-
       var reset = false,
-          i;
+        i;
       var fix_n2 = this.options.fix_n2;
-      var keys = Object.keys(__classPrivateFieldGet(this, _curve));
-
+      var keys = Object.keys(__classPrivateFieldGet(this, _ttest2_pwr_curve, "f"));
       for (i = 0; i < keys.length; i++) {
         var key = keys[i];
-        if (key in curve) if (curve[key] != __classPrivateFieldGet(this, _curve)[key]) {
+        if (key in curve) if (curve[key] != __classPrivateFieldGet(this, _ttest2_pwr_curve, "f")[key]) {
           reset = true;
           break;
         }
       }
-
-      Object.assign(__classPrivateFieldGet(this, _curve), curve);
-
+      Object.assign(__classPrivateFieldGet(this, _ttest2_pwr_curve, "f"), curve);
       if (reset) {
         var n1 = this.find_n([{
-          power: __classPrivateFieldGet(this, _curve).power,
-          es: __classPrivateFieldGet(this, _curve).es
+          power: __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power,
+          es: __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es
         }])[0];
-
         if (fix_n2) {
-          __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+          __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
         } else {
-          __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+          __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
         }
-
         this.n1 = n1;
       }
     }
   }, {
     key: "criterion",
     get: function get() {
-      var delta0 = __classPrivateFieldGet(this, _test).es0;
-
-      return Math.sign(__classPrivateFieldGet(this, _test).side) * __classPrivateFieldGet(this, _compute_criterion).call(this, __classPrivateFieldGet(this, _design).n1, this.n2, __classPrivateFieldGet(this, _test).alpha, __classPrivateFieldGet(this, _test).side < 0 ? -delta0 : delta0);
+      var delta0 = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0;
+      return Math.sign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side) * __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1, this.n2, __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha, __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side < 0 ? -delta0 : delta0);
     }
   }]);
-
-  return ttest2_pwr;
 }();
-
-_cache = new WeakMap(), _design = new WeakMap(), _test = new WeakMap(), _curve = new WeakMap(), _stamp = new WeakMap(), _power1 = new WeakMap(), _compute_criterion = new WeakMap(), _es_power = new WeakMap(), _n_power = new WeakMap();
+_ttest2_pwr_cache = new WeakMap(), _ttest2_pwr_design = new WeakMap(), _ttest2_pwr_test = new WeakMap(), _ttest2_pwr_curve = new WeakMap(), _ttest2_pwr_stamp = new WeakMap(), _ttest2_pwr_power1 = new WeakMap(), _ttest2_pwr_compute_criterion = new WeakMap(), _ttest2_pwr_es_power = new WeakMap(), _ttest2_pwr_n_power = new WeakMap();
 module.exports = {
   ttest2_pwr: ttest2_pwr
 };
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var Rules = __webpack_require__(3);
 var Lang = __webpack_require__(4);
@@ -1619,7 +1442,7 @@ module.exports = Validator;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 
 // https://docs.microsoft.com/en-us/office/troubleshoot/excel/determine-a-leap-year
@@ -2489,13 +2312,13 @@ module.exports = manager;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var require;var Messages = __webpack_require__(5);
+var Messages = __webpack_require__(5);
 
 __webpack_require__(7);
 
-var require_method = require;
+var require_method = undefined;
 
 var container = {
 
@@ -2573,7 +2396,7 @@ module.exports = container;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var Attributes = __webpack_require__(6);
 
@@ -2731,7 +2554,7 @@ module.exports = Messages;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 var replacements = {
 
@@ -2936,7 +2759,7 @@ module.exports = {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'The :attribute must be accepted.',
@@ -2993,7 +2816,7 @@ module.exports = {
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
 	"./ar": 9,
@@ -3116,7 +2939,7 @@ webpackContext.id = 8;
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "الصفة :attribute يجب أن تكون مقبولة",
@@ -3185,7 +3008,7 @@ module.exports = {
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute qəbul edilməlidir",
@@ -3292,7 +3115,7 @@ module.exports = {
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Вы павінны прыняць :attribute.",
@@ -3400,7 +3223,7 @@ module.exports = {
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Трябва да приемете :attribute.",
@@ -3508,7 +3331,7 @@ module.exports = {
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Polje :attribute mora biti prihvaćeno.",
@@ -3617,7 +3440,7 @@ module.exports = {
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'El camp :attribute pot ser aceptat.',
@@ -3660,7 +3483,7 @@ module.exports = {
 
 /***/ }),
 /* 15 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute musí být přijat.",
@@ -3770,7 +3593,7 @@ module.exports = {
 
 /***/ }),
 /* 16 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Rhaid derbyn :attribute.",
@@ -3879,7 +3702,7 @@ module.exports = {
 
 /***/ }),
 /* 17 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute skal accepteres.',
@@ -3933,7 +3756,7 @@ module.exports = {
 
 /***/ }),
 /* 18 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'Das :attribute Feld muss akzeptiert werden.',
@@ -3982,7 +3805,7 @@ module.exports = {
 
 /***/ }),
 /* 19 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'Το πεδίο :attribute πρέπει να γίνει αποδεκτό.',
@@ -4028,7 +3851,7 @@ module.exports = {
 
 /***/ }),
 /* 20 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'El campo :attribute debe ser aceptado.',
@@ -4071,7 +3894,7 @@ module.exports = {
 
 /***/ }),
 /* 21 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute tuleb aktsepteerida.",
@@ -4180,7 +4003,7 @@ module.exports = {
 
 /***/ }),
 /* 22 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute onartua izan behar da.",
@@ -4289,7 +4112,7 @@ module.exports = {
 
 /***/ }),
 /* 23 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'فیلد :attribute می بایست تایید شود',
@@ -4334,7 +4157,7 @@ module.exports = {
 
 /***/ }),
 /* 24 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute on oltava hyväksytty.',
@@ -4388,7 +4211,7 @@ module.exports = {
 
 /***/ }),
 /* 25 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'Le champ :attribute doit être accepté.',
@@ -4431,7 +4254,7 @@ module.exports = {
 
 /***/ }),
 /* 26 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Polje :attribute mora biti prihvaćeno.",
@@ -4540,7 +4363,7 @@ module.exports = {
 
 /***/ }),
 /* 27 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "A(z) :attribute el kell legyen fogadva!",
@@ -4649,7 +4472,7 @@ module.exports = {
 
 /***/ }),
 /* 28 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute harus disetujui.',
@@ -4703,7 +4526,7 @@ module.exports = {
 
 /***/ }),
 /* 29 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'Il campo :attribute deve essere accettato.',
@@ -4747,7 +4570,7 @@ module.exports = {
 
 /***/ }),
 /* 30 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attributeを確認してください。',
@@ -4804,7 +4627,7 @@ module.exports = {
 
 /***/ }),
 /* 31 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute უნდა იყოს მონიშნული.",
@@ -4913,7 +4736,7 @@ module.exports = {
 
 /***/ }),
 /* 32 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute을(를) 동의해야 합니다.",
@@ -5022,7 +4845,7 @@ module.exports = {
 
 /***/ }),
 /* 33 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Laukas :attribute turi būti priimtas.",
@@ -5131,7 +4954,7 @@ module.exports = {
 
 /***/ }),
 /* 34 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: " :attribute ir jābūt pieņemtam.",
@@ -5240,7 +5063,7 @@ module.exports = {
 
 /***/ }),
 /* 35 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Полето :attribute мора да биде прифатено.",
@@ -5349,7 +5172,7 @@ module.exports = {
 
 /***/ }),
 /* 36 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":Attribute баталсан байх шаардлагатай.",
@@ -5458,7 +5281,7 @@ module.exports = {
 
 /***/ }),
 /* 37 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute mesti diterima pakai.",
@@ -5567,7 +5390,7 @@ module.exports = {
 
 /***/ }),
 /* 38 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute må være akseptert.',
@@ -5612,7 +5435,7 @@ module.exports = {
 
 /***/ }),
 /* 39 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'Het :attribute veld moet geaccepteerd worden.',
@@ -5666,7 +5489,7 @@ module.exports = {
 
 /***/ }),
 /* 40 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'Pole :attribute musi być zaakceptowane.',
@@ -5711,7 +5534,7 @@ module.exports = {
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "O campo :attribute deverá ser aceite.",
@@ -5824,7 +5647,7 @@ module.exports = {
 
 /***/ }),
 /* 42 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "O campo :attribute deve ser aceito.",
@@ -5932,7 +5755,7 @@ module.exports = {
 
 /***/ }),
 /* 43 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute trebuie acceptat.',
@@ -5986,7 +5809,7 @@ module.exports = {
 
 /***/ }),
 /* 44 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: 'Вы должны принять :attribute.',
@@ -6029,7 +5852,7 @@ module.exports = {
 
 /***/ }),
 /* 45 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute måste vara accepterat.',
@@ -6082,7 +5905,7 @@ module.exports = {
 
 /***/ }),
 /* 46 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute mora biti sprejet.",
@@ -6191,7 +6014,7 @@ module.exports = {
 
 /***/ }),
 /* 47 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute duhet të pranohet.",
@@ -6300,7 +6123,7 @@ module.exports = {
 
 /***/ }),
 /* 48 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Polje :attribute mora biti prihvaćeno.",
@@ -6409,7 +6232,7 @@ module.exports = {
 
 /***/ }),
 /* 49 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ":attribute måste accepteras.",
@@ -6517,7 +6340,7 @@ module.exports = {
 
 /***/ }),
 /* 50 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute kabul edilmeli.',
@@ -6571,7 +6394,7 @@ module.exports = {
 
 /***/ }),
 /* 51 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute повиннен бути прийнятий.',
@@ -6614,7 +6437,7 @@ module.exports = {
 
 /***/ }),
 /* 52 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: "Ви повинні прийняти :attribute.",
@@ -6723,7 +6546,7 @@ module.exports = {
 
 /***/ }),
 /* 53 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute phải được chấp nhận.',
@@ -6768,7 +6591,7 @@ module.exports = {
 
 /***/ }),
 /* 54 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute必须是可接受的.',
@@ -6813,7 +6636,7 @@ module.exports = {
 
 /***/ }),
 /* 55 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 module.exports = {
   accepted: ':attribute必須接受。',
@@ -6858,7 +6681,7 @@ module.exports = {
 
 /***/ }),
 /* 56 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 var Errors = function() {
   this.errors = {};
@@ -6941,7 +6764,7 @@ module.exports = Errors;
 
 /***/ }),
 /* 57 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 function AsyncResolvers(onFailedOne, onResolvedAll) {
   this.onResolvedAll = onResolvedAll;
@@ -7028,7 +6851,7 @@ module.exports = AsyncResolvers;
 
 /***/ }),
 /* 58 */
-/***/ (function(module, exports) {
+/***/ ((module) => {
 
 /********
 * This is adapted from:
@@ -7038,11 +6861,11 @@ module.exports = AsyncResolvers;
 * See https://github.com/wch/r-source/blob/trunk/src/library/stats/src/optimize.c
 *********/
 ;
-
 function fmin0(ax, bx, f, tol) {
   "use strict";
 
-  tol = tol || 1E-8; //var ax,bx,f,tol;
+  tol = tol || 1E-8;
+  //var ax,bx,f,tol;
   //
   //     an approximation  x  to the point where  f  attains a minimum  on
   // the interval  (ax,bx)  is determined.
@@ -7083,28 +6906,25 @@ function fmin0(ax, bx, f, tol) {
   // minimization without derivatives, prentice - hall, inc. (1973).
   //
   //
-
   if (!isFinite(ax) || !isFinite(bx)) throw "Bounds ax, bx must be finite: ".concat(ax, ", ").concat(bx);
   var a, b, c, d, e, eps, xm, p, q, r, tol1, tol2, u, v, w, fu, fv, fw, fx, x;
   var i = 0;
-
   function sign(x, y) {
     // return value of x with the sign of y.
     return y >= 0 ? Math.abs(x) : -Math.abs(x);
-  } //
+  }
+  //
   //  c is the squared inverse of the golden ratio
   //
-
-
-  c = 0.5 * (3.0 - Math.sqrt(5.0)); //
+  c = 0.5 * (3.0 - Math.sqrt(5.0));
+  //
   //  eps is approximately the square root of the relative machine
   //  precision.
   //
-
-  eps = Math.sqrt(2.220446049250313e-16); //
+  eps = Math.sqrt(2.220446049250313e-16);
+  //
   //  initialization
   //
-
   a = ax;
   b = bx;
   v = a + c * (b - a);
@@ -7113,25 +6933,24 @@ function fmin0(ax, bx, f, tol) {
   e = 0.0;
   fx = f(x);
   fv = fx;
-  fw = fx; //
+  fw = fx;
+  //
   //  main loop starts here
   //
-
   for (;;) {
     i++;
     xm = 0.5 * (a + b);
     tol1 = eps * Math.abs(x) + tol / 3.0;
-    tol2 = 2.0 * tol1; //
+    tol2 = 2.0 * tol1;
+    //
     // check stopping criterion
     //
-
     if (Math.abs(x - xm) <= tol2 - 0.5 * (b - a)) {
       break;
-    } //
+    }
+    //
     // is golden-section necessary
     //
-
-
     if (Math.abs(e) > tol1) {
       //
       //  fit parabola
@@ -7140,30 +6959,27 @@ function fmin0(ax, bx, f, tol) {
       q = (x - v) * (fx - fw);
       p = (x - v) * q - (x - w) * r;
       q = 2.00 * (q - r);
-
       if (q > 0.0) {
         p = -p;
       }
-
       q = Math.abs(q);
       r = e;
-      e = d; //
+      e = d;
+      //
       //  is parabola acceptable
       //
-
       if (Math.abs(p) < Math.abs(0.5 * q * r) && p > q * (a - x) && p < q * (b - x)) {
         //
         //  a parabolic interpolation step
         //
         d = p / q;
-        u = x + d; //
+        u = x + d;
+        //
         //  f must not be evaluated too close to ax or bx
         //
-
         if (u - a < tol2) {
           d = sign(tol1, xm - x);
         }
-
         if (b - u < tol2) {
           d = sign(tol1, xm - x);
         }
@@ -7174,11 +6990,9 @@ function fmin0(ax, bx, f, tol) {
         if (x >= xm) {
           e = a - x;
         }
-
         if (x < xm) {
           e = b - x;
         }
-
         d = c * e;
       }
     } else {
@@ -7188,38 +7002,31 @@ function fmin0(ax, bx, f, tol) {
       if (x >= xm) {
         e = a - x;
       }
-
       if (x < xm) {
         e = b - x;
       }
-
       d = c * e;
-    } //
+    }
+    //
     //  f must not be evaluated too close to x
     //
-
-
     if (Math.abs(d) >= tol1) {
       u = x + d;
     }
-
     if (Math.abs(d) < tol1) {
       u = x + sign(tol1, d);
     }
-
-    fu = f(u); //
+    fu = f(u);
+    //
     //  update  a, b, v, w, and x
     //
-
     if (fu <= fx) {
       if (u >= x) {
         a = x;
       }
-
       if (u < x) {
         b = x;
       }
-
       v = w;
       fv = fw;
       w = x;
@@ -7228,54 +7035,49 @@ function fmin0(ax, bx, f, tol) {
       fx = fu;
       continue;
     }
-
     if (u < x) {
       a = u;
     }
-
     if (u >= x) {
       b = u;
     }
-
     if (fu <= fw || w === x) {
       v = w;
       fv = fw;
       w = u;
       fw = fu;
     }
-
     if (fu <= fv || v === x || v === w) {
       v = u;
       fv = fu;
     }
   }
-
   return {
     x: x,
     fx: fx,
     i: i
   };
 }
-
 module.exports = {
   fmin0: fmin0
 };
 
 /***/ }),
 /* 59 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {(function webpackUniversalModuleDefinition(root, factory) {
+(function webpackUniversalModuleDefinition(root, factory) {
 	if(true)
-		module.exports = factory(__webpack_require__(61), __webpack_require__(62), (function webpackLoadOptionalExternalModule() { try { return __webpack_require__(65); } catch(e) {} }()));
-	else {}
+		module.exports = factory(__webpack_require__(60), __webpack_require__(61), (function webpackLoadOptionalExternalModule() { try { return __webpack_require__(117); } catch(e) {} }()));
+	else // removed by dead control flow
+{}
 })(this, function(__WEBPACK_EXTERNAL_MODULE_186__, __WEBPACK_EXTERNAL_MODULE_187__, __WEBPACK_EXTERNAL_MODULE_185__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
 /******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/ 	function __nested_webpack_require_1187__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId]) {
@@ -7289,7 +7091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		};
 /******/
 /******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_1187__);
 /******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
@@ -7300,17 +7102,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
+/******/ 	__nested_webpack_require_1187__.m = modules;
 /******/
 /******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
+/******/ 	__nested_webpack_require_1187__.c = installedModules;
 /******/
 /******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/ 	__nested_webpack_require_1187__.i = function(value) { return value; };
 /******/
 /******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 	__nested_webpack_require_1187__.d = function(exports, name, getter) {
+/******/ 		if(!__nested_webpack_require_1187__.o(exports, name)) {
 /******/ 			Object.defineProperty(exports, name, {
 /******/ 				configurable: false,
 /******/ 				enumerable: true,
@@ -7320,32 +7122,32 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
+/******/ 	__nested_webpack_require_1187__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
 /******/ 			function getDefault() { return module['default']; } :
 /******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		__nested_webpack_require_1187__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
 /******/
 /******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/ 	__nested_webpack_require_1187__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__nested_webpack_require_1187__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 136);
+/******/ 	return __nested_webpack_require_1187__(__nested_webpack_require_1187__.s = 136);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_3628__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
+const debug = __nested_webpack_require_3628__(1);
 const debug_R_Q_P01_boundaries = debug('R_Q_P01_boundaries');
 const debug_R_Q_P01_check = debug('R_Q_P01_check');
 exports.M_SQRT2 = 1.41421356237309504880168872421;
@@ -7669,26 +7471,23 @@ exports.R_D_qIv = R_D_qIv;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/***/ (function(module, exports, __nested_webpack_require_12992__) {
 
 /**
- * Detect Electron renderer / nwjs process, which is node, but we should
+ * Detect Electron renderer process, which is node, but we should
  * treat as a browser.
  */
-if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
-  module.exports = __webpack_require__(182);
-} else {
-  module.exports = __webpack_require__(183);
-}
 
+if (typeof process === 'undefined' || process.type === 'renderer') {
+  module.exports = __nested_webpack_require_12992__(182);
+} else {
+  module.exports = __nested_webpack_require_12992__(183);
+}
 
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_13337__) {
 
 "use strict";
 
@@ -7696,7 +7495,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const { abs, sign, floor, trunc, max } = Math;
 const { isNaN } = Number;
 const { isArray } = Array;
-const debug = __webpack_require__(1);
+const debug = __nested_webpack_require_13337__(1);
 const printer_seq = debug('seq');
 const precision9 = numberPrecision(9);
 function isOdd(n) {
@@ -7968,12 +7767,12 @@ exports.Welch_Satterthwaite = Welch_Satterthwaite;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_21237__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
+const _general_1 = __nested_webpack_require_21237__(0);
 const { exp, expm1, log, log1p } = Math;
 function R_DT_qIv(lower_tail, log_p, p) {
     return log_p ? (lower_tail ? exp(p) : -expm1(p)) : _general_1.R_D_Lval(lower_tail, p);
@@ -8008,13 +7807,13 @@ exports.R_DT_log = R_DT_log;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_22383__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const r_func_1 = __webpack_require__(2);
-const lgammafn_sign_1 = __webpack_require__(67);
+const r_func_1 = __nested_webpack_require_22383__(2);
+const lgammafn_sign_1 = __nested_webpack_require_22383__(67);
 function lgammafn(x) {
     return r_func_1.map(x)(fx => {
         return lgammafn_sign_1.lgammafn_sign(fx);
@@ -8025,7 +7824,7 @@ exports.lgammafn = lgammafn;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_22775__) {
 
 "use strict";
 
@@ -8037,10 +7836,10 @@ const UPPER_MASK = 0x80000000;
 const LOWER_MASK = 0x7fffffff;
 const TEMPERING_MASK_B = 0x9d2c5680;
 const TEMPERING_MASK_C = 0xefc60000;
-const fixup_1 = __webpack_require__(20);
-const irng_1 = __webpack_require__(7);
-const irng_type_1 = __webpack_require__(14);
-const timeseed_1 = __webpack_require__(10);
+const fixup_1 = __nested_webpack_require_22775__(20);
+const irng_1 = __nested_webpack_require_22775__(7);
+const irng_type_1 = __nested_webpack_require_22775__(14);
+const timeseed_1 = __nested_webpack_require_22775__(10);
 const SEED_LEN = 625;
 class MersenneTwister extends irng_1.IRNG {
     MT_sgenrand(seed) {
@@ -8135,15 +7934,15 @@ exports.MersenneTwister = MersenneTwister;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_26291__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_26291__(1);
+const _general_1 = __nested_webpack_require_26291__(0);
+const expm1_1 = __nested_webpack_require_26291__(3);
+const r_func_1 = __nested_webpack_require_26291__(2);
 const printer = debug('qnorm');
 const { isNaN: ISNAN } = Number;
 const { log, sqrt, abs: fabs } = Math;
@@ -8275,12 +8074,12 @@ exports.qnorm = qnorm;
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_31460__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const r_func_1 = __webpack_require__(2);
+const r_func_1 = __nested_webpack_require_31460__(2);
 exports.segFnCache = r_func_1.seq();
 class IRNG {
     constructor(_seed) {
@@ -8322,35 +8121,35 @@ exports.IRNG = IRNG;
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_32633__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var buggy_kinderman_ramage_1 = __webpack_require__(155);
+var buggy_kinderman_ramage_1 = __nested_webpack_require_32633__(155);
 exports.BuggyKindermanRamage = buggy_kinderman_ramage_1.BuggyKindermanRamage;
-var box_muller_1 = __webpack_require__(154);
+var box_muller_1 = __nested_webpack_require_32633__(154);
 exports.BoxMuller = box_muller_1.BoxMuller;
-var ahrens_dieter_1 = __webpack_require__(153);
+var ahrens_dieter_1 = __nested_webpack_require_32633__(153);
 exports.AhrensDieter = ahrens_dieter_1.AhrensDieter;
-var inversion_1 = __webpack_require__(72);
+var inversion_1 = __nested_webpack_require_32633__(72);
 exports.Inversion = inversion_1.Inversion;
-var kinderman_ramage_1 = __webpack_require__(156);
+var kinderman_ramage_1 = __nested_webpack_require_32633__(156);
 exports.KindermanRamage = kinderman_ramage_1.KindermanRamage;
-var inormal_rng_1 = __webpack_require__(15);
+var inormal_rng_1 = __nested_webpack_require_32633__(15);
 exports.IRNGNormal = inormal_rng_1.IRNGNormal;
 
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_33404__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var toms708_1 = __webpack_require__(115);
+var toms708_1 = __nested_webpack_require_33404__(115);
 exports.Toms708 = toms708_1.Toms708;
-var NumberW_1 = __webpack_require__(63);
+var NumberW_1 = __nested_webpack_require_33404__(63);
 exports.NumberW = NumberW_1.NumberW;
 
 
@@ -8384,17 +8183,17 @@ exports.timeseed = timeseed;
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_34424__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const gamma_fn_1 = __webpack_require__(29);
-const lgamma_fn_1 = __webpack_require__(4);
-const lgammacor_1 = __webpack_require__(42);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_34424__(1);
+const _general_1 = __nested_webpack_require_34424__(0);
+const gamma_fn_1 = __nested_webpack_require_34424__(29);
+const lgamma_fn_1 = __nested_webpack_require_34424__(4);
+const lgammacor_1 = __nested_webpack_require_34424__(42);
+const r_func_1 = __nested_webpack_require_34424__(2);
 const { log, log1p } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF, NEGATIVE_INFINITY: ML_NEGINF } = Number;
 const printer = debug('lbeta');
@@ -8446,15 +8245,15 @@ exports.internal_lbeta = internal_lbeta;
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_36219__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const toms708_1 = __webpack_require__(9);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_36219__(1);
+const _general_1 = __nested_webpack_require_36219__(0);
+const toms708_1 = __nested_webpack_require_36219__(9);
+const r_func_1 = __nested_webpack_require_36219__(2);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { LN2: M_LN2, log } = Math;
 const printer_pbeta_raw = debug('pbeta_raw');
@@ -8507,15 +8306,15 @@ exports.pbeta = pbeta;
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_38573__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const rgamma_1 = __webpack_require__(30);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_38573__(1);
+const _general_1 = __nested_webpack_require_38573__(0);
+const rgamma_1 = __nested_webpack_require_38573__(30);
+const r_func_1 = __nested_webpack_require_38573__(2);
 const { isFinite: R_FINITE } = Number;
 const printer = debug('rchisq');
 const sequence = r_func_1.seq()();
@@ -8551,13 +8350,13 @@ var IRNGType;
 
 /***/ }),
 /* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_39982__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const r_func_1 = __webpack_require__(2);
-const irng_1 = __webpack_require__(7);
+const r_func_1 = __nested_webpack_require_39982__(2);
+const irng_1 = __nested_webpack_require_39982__(7);
 class IRNGNormal {
     constructor(_rng) {
         this.rng = _rng;
@@ -8578,24 +8377,24 @@ exports.IRNGNormal = IRNGNormal;
 
 /***/ }),
 /* 16 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_40716__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const irng_1 = __webpack_require__(7);
+const irng_1 = __nested_webpack_require_40716__(7);
 exports.IRNG = irng_1.IRNG;
-const knuth_taocp_1 = __webpack_require__(149);
-const knuth_taocp_2002_1 = __webpack_require__(148);
-const lecuyer_cmrg_1 = __webpack_require__(151);
-const marsaglia_multicarry_1 = __webpack_require__(152);
-const mersenne_twister_1 = __webpack_require__(5);
-const normal_1 = __webpack_require__(8);
-const inormal_rng_1 = __webpack_require__(15);
+const knuth_taocp_1 = __nested_webpack_require_40716__(149);
+const knuth_taocp_2002_1 = __nested_webpack_require_40716__(148);
+const lecuyer_cmrg_1 = __nested_webpack_require_40716__(151);
+const marsaglia_multicarry_1 = __nested_webpack_require_40716__(152);
+const mersenne_twister_1 = __nested_webpack_require_40716__(5);
+const normal_1 = __nested_webpack_require_40716__(8);
+const inormal_rng_1 = __nested_webpack_require_40716__(15);
 exports.IRNGNormal = inormal_rng_1.IRNGNormal;
-const super_duper_1 = __webpack_require__(157);
-const timeseed_1 = __webpack_require__(10);
-const wichmann_hill_1 = __webpack_require__(158);
+const super_duper_1 = __nested_webpack_require_40716__(157);
+const timeseed_1 = __nested_webpack_require_40716__(10);
+const wichmann_hill_1 = __nested_webpack_require_40716__(158);
 exports.rng = {
     KnuthTAOCP: knuth_taocp_1.KnuthTAOCP,
     KnuthTAOCP2002: knuth_taocp_2002_1.KnuthTAOCP2002,
@@ -8617,16 +8416,16 @@ exports.rng = {
 
 /***/ }),
 /* 17 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_42141__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const deviance_1 = __webpack_require__(65);
-const r_func_1 = __webpack_require__(2);
-const stirling_1 = __webpack_require__(44);
+const debug = __nested_webpack_require_42141__(1);
+const _general_1 = __nested_webpack_require_42141__(0);
+const deviance_1 = __nested_webpack_require_42141__(65);
+const r_func_1 = __nested_webpack_require_42141__(2);
+const stirling_1 = __nested_webpack_require_42141__(44);
 const { log, log1p, round: R_forceint } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer = debug('dbinom');
@@ -8678,18 +8477,18 @@ exports.dbinom = dbinom;
 
 /***/ }),
 /* 18 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_44232__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const dnorm_1 = __webpack_require__(31);
-const pnorm_1 = __webpack_require__(19);
-const dpois_1 = __webpack_require__(22);
-const lgamma_fn_1 = __webpack_require__(4);
+const debug = __nested_webpack_require_44232__(1);
+const _general_1 = __nested_webpack_require_44232__(0);
+const expm1_1 = __nested_webpack_require_44232__(3);
+const dnorm_1 = __nested_webpack_require_44232__(31);
+const pnorm_1 = __nested_webpack_require_44232__(19);
+const dpois_1 = __nested_webpack_require_44232__(22);
+const lgamma_fn_1 = __nested_webpack_require_44232__(4);
 const { LN2: M_LN2, log1p, expm1, sqrt, floor, pow, log, exp, max: fmax2, abs: fabs } = Math;
 const { isNaN: ISNAN, MIN_VALUE: DBL_MIN, EPSILON: DBL_EPSILON, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const { isArray } = Array;
@@ -9129,17 +8928,17 @@ exports.pgamma = pgamma;
 
 /***/ }),
 /* 19 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_58272__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_58272__(1);
+const _general_1 = __nested_webpack_require_58272__(0);
+const r_func_1 = __nested_webpack_require_58272__(2);
 const { isNaN: ISNAN, isFinite: R_FINITE, EPSILON: DBL_EPSILON, NaN: ML_NAN, MIN_VALUE: DBL_MIN } = Number;
 const { trunc, log, exp, abs: fabs, log1p } = Math;
-const toms708_1 = __webpack_require__(9);
+const toms708_1 = __nested_webpack_require_58272__(9);
 const SIXTEN = 16;
 const printer = debug('pnorm5');
 function do_del(ccum, cum, log_p, X, temp, upper, lower, x) {
@@ -9355,15 +9154,15 @@ exports.fixup = fixup;
 
 /***/ }),
 /* 21 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_64644__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const dpois_1 = __webpack_require__(22);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_64644__(1);
+const _general_1 = __nested_webpack_require_64644__(0);
+const dpois_1 = __nested_webpack_require_64644__(22);
+const r_func_1 = __nested_webpack_require_64644__(2);
 const { log } = Math;
 const { isNaN: ISNAN } = Number;
 const ML_POSINF = Infinity;
@@ -9403,17 +9202,17 @@ exports.dgamma = dgamma;
 
 /***/ }),
 /* 22 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_66108__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const deviance_1 = __webpack_require__(65);
-const lgamma_fn_1 = __webpack_require__(4);
-const r_func_1 = __webpack_require__(2);
-const stirling_1 = __webpack_require__(44);
+const debug = __nested_webpack_require_66108__(1);
+const _general_1 = __nested_webpack_require_66108__(0);
+const deviance_1 = __nested_webpack_require_66108__(65);
+const lgamma_fn_1 = __nested_webpack_require_66108__(4);
+const r_func_1 = __nested_webpack_require_66108__(2);
+const stirling_1 = __nested_webpack_require_66108__(44);
 const { round: R_forceint, log, PI } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, MIN_VALUE: DBL_MIN } = Number;
 const M_2PI = 2 * PI;
@@ -9456,13 +9255,13 @@ exports.dpois = dpois;
 
 /***/ }),
 /* 23 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_67917__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_67917__(1);
+const _general_1 = __nested_webpack_require_67917__(0);
 const { abs: fabs, PI: M_PI } = Math;
 const { NaN: ML_NAN, isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer_cospi = debug('cospi');
@@ -9509,13 +9308,13 @@ exports.atanpi = atanpi;
 
 /***/ }),
 /* 24 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_69207__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_69207__(1);
+const _general_1 = __nested_webpack_require_69207__(0);
 const { PI: M_PI } = Math;
 const { NaN: ML_NAN, isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer_sinpi = debug('sinpi');
@@ -9544,21 +9343,21 @@ exports.sinpi = sinpi;
 
 /***/ }),
 /* 25 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_70051__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const dgamma_1 = __webpack_require__(21);
-const pgamma_1 = __webpack_require__(18);
-const qgamma_1 = __webpack_require__(68);
-const rgamma_1 = __webpack_require__(30);
-const normal_1 = __webpack_require__(8);
-const r_func_1 = __webpack_require__(2);
-const gamma_fn_1 = __webpack_require__(29);
-const lgamma_fn_1 = __webpack_require__(4);
-const polygamma_1 = __webpack_require__(128);
+const debug = __nested_webpack_require_70051__(1);
+const dgamma_1 = __nested_webpack_require_70051__(21);
+const pgamma_1 = __nested_webpack_require_70051__(18);
+const qgamma_1 = __nested_webpack_require_70051__(68);
+const rgamma_1 = __nested_webpack_require_70051__(30);
+const normal_1 = __nested_webpack_require_70051__(8);
+const r_func_1 = __nested_webpack_require_70051__(2);
+const gamma_fn_1 = __nested_webpack_require_70051__(29);
+const lgamma_fn_1 = __nested_webpack_require_70051__(4);
+const polygamma_1 = __nested_webpack_require_70051__(128);
 exports.special = {
     digamma: polygamma_1.digamma,
     gamma: gamma_fn_1.gammafn,
@@ -9658,19 +9457,19 @@ exports.M_eps_sinc = 2.149e-8;
 
 /***/ }),
 /* 27 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_73795__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_73795__(1);
+const _general_1 = __nested_webpack_require_73795__(0);
 const { abs: fabs, log, exp, round } = Math;
 const { isInteger, NEGATIVE_INFINITY: ML_NEGINF, isNaN: ISNAN } = Number;
-const lbeta_1 = __webpack_require__(11);
-const lgamma_fn_1 = __webpack_require__(4);
-const lgammafn_sign_1 = __webpack_require__(67);
-const r_func_1 = __webpack_require__(2);
+const lbeta_1 = __nested_webpack_require_73795__(11);
+const lgamma_fn_1 = __nested_webpack_require_73795__(4);
+const lgammafn_sign_1 = __nested_webpack_require_73795__(67);
+const r_func_1 = __nested_webpack_require_73795__(2);
 function lfastchoose(n, k) {
     return -log(n + 1) - lbeta_1.internal_lbeta(n - k + 1, k + 1);
 }
@@ -9821,17 +9620,17 @@ exports.exp_rand = exp_rand;
 
 /***/ }),
 /* 29 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_78058__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const chebyshev_1 = __webpack_require__(37);
-const _general_1 = __webpack_require__(0);
-const stirling_1 = __webpack_require__(44);
-const trigonometry_1 = __webpack_require__(33);
-const lgammacor_1 = __webpack_require__(42);
-const debug = __webpack_require__(1);
+const chebyshev_1 = __nested_webpack_require_78058__(37);
+const _general_1 = __nested_webpack_require_78058__(0);
+const stirling_1 = __nested_webpack_require_78058__(44);
+const trigonometry_1 = __nested_webpack_require_78058__(33);
+const lgammacor_1 = __nested_webpack_require_78058__(42);
+const debug = __nested_webpack_require_78058__(1);
 const printer = debug('gammafn');
 const { isNaN: ISNAN, NaN: ML_NAN, POSITIVE_INFINITY: ML_POSINF, NEGATIVE_INFINITY: ML_NEGINF } = Number;
 const { PI: M_PI, abs: fabs, round, trunc, exp, log } = Math;
@@ -9977,14 +9776,14 @@ function _gammafn(x) {
 
 /***/ }),
 /* 30 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_83318__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const sexp_1 = __webpack_require__(28);
+const debug = __nested_webpack_require_83318__(1);
+const _general_1 = __nested_webpack_require_83318__(0);
+const sexp_1 = __nested_webpack_require_83318__(28);
 const { expm1, abs: fabs, sqrt, log, exp } = Math;
 const { isFinite: R_FINITE } = Number;
 function rgamma(n = 1, a = 1, scale = 1, rng) {
@@ -10139,13 +9938,13 @@ exports._rgamma = _rgamma;
 
 /***/ }),
 /* 31 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_87718__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_87718__(1);
+const _general_1 = __nested_webpack_require_87718__(0);
 const { isNaN: ISNAN, isFinite: R_FINITE, MAX_VALUE: DBL_MAX, POSITIVE_INFINITY: ML_POSINF, NaN: ML_NAN } = Number;
 const { sqrt, exp, abs: fabs, round: R_forceint, log } = Math;
 const printer = debug('dnorm4');
@@ -10193,16 +9992,16 @@ exports.dnorm4 = dnorm4;
 
 /***/ }),
 /* 32 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_89669__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const sexp_1 = __webpack_require__(28);
-const r_func_1 = __webpack_require__(2);
-const fsign_1 = __webpack_require__(161);
+const debug = __nested_webpack_require_89669__(1);
+const _general_1 = __nested_webpack_require_89669__(0);
+const sexp_1 = __nested_webpack_require_89669__(28);
+const r_func_1 = __nested_webpack_require_89669__(2);
+const fsign_1 = __nested_webpack_require_89669__(161);
 const { trunc, log, abs: fabs, pow, exp, floor, sqrt } = Math;
 const { isFinite: R_FINITE } = Number;
 const sequence = r_func_1.seq()();
@@ -10398,40 +10197,40 @@ function _rpois(mu, rng) {
 
 /***/ }),
 /* 33 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_95177__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var cospi_1 = __webpack_require__(23);
+var cospi_1 = __nested_webpack_require_95177__(23);
 exports.cospi = cospi_1.cospi;
-var sinpi_1 = __webpack_require__(24);
+var sinpi_1 = __nested_webpack_require_95177__(24);
 exports.sinpi = sinpi_1.sinpi;
-var tanpi_1 = __webpack_require__(76);
+var tanpi_1 = __nested_webpack_require_95177__(76);
 exports.tanpi = tanpi_1.tanpi;
 exports.atanpi = tanpi_1.atanpi;
 
 
 /***/ }),
 /* 34 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_95576__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const beta_1 = __webpack_require__(106);
-const lbeta_1 = __webpack_require__(11);
-const dbeta_1 = __webpack_require__(53);
-const dnbeta_1 = __webpack_require__(54);
-const pbeta_1 = __webpack_require__(12);
-const pnbeta_1 = __webpack_require__(35);
-const qbeta_1 = __webpack_require__(55);
-const qnbeta_1 = __webpack_require__(56);
-const rchisq_1 = __webpack_require__(13);
-const rnchisq_1 = __webpack_require__(41);
-const r_func_1 = __webpack_require__(2);
-const normal_1 = __webpack_require__(8);
-const rbeta_1 = __webpack_require__(107);
+const beta_1 = __nested_webpack_require_95576__(106);
+const lbeta_1 = __nested_webpack_require_95576__(11);
+const dbeta_1 = __nested_webpack_require_95576__(53);
+const dnbeta_1 = __nested_webpack_require_95576__(54);
+const pbeta_1 = __nested_webpack_require_95576__(12);
+const pnbeta_1 = __nested_webpack_require_95576__(35);
+const qbeta_1 = __nested_webpack_require_95576__(55);
+const qnbeta_1 = __nested_webpack_require_95576__(56);
+const rchisq_1 = __nested_webpack_require_95576__(13);
+const rnchisq_1 = __nested_webpack_require_95576__(41);
+const r_func_1 = __nested_webpack_require_95576__(2);
+const normal_1 = __nested_webpack_require_95576__(8);
+const rbeta_1 = __nested_webpack_require_95576__(107);
 exports.special = {
     beta: beta_1.beta,
     lbeta: lbeta_1.lbeta
@@ -10484,15 +10283,15 @@ exports.Beta = Beta;
 
 /***/ }),
 /* 35 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_97835__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const lgamma_fn_1 = __webpack_require__(4);
-const toms708_1 = __webpack_require__(9);
+const debug = __nested_webpack_require_97835__(1);
+const _general_1 = __nested_webpack_require_97835__(0);
+const lgamma_fn_1 = __nested_webpack_require_97835__(4);
+const toms708_1 = __nested_webpack_require_97835__(9);
 const { log1p, floor, max: fmax2, sqrt, log, exp } = Math;
 const { isNaN: ISNAN } = Number;
 const printer = debug('pnbeta_raw');
@@ -10581,15 +10380,15 @@ exports.pnbeta = pnbeta;
 
 /***/ }),
 /* 36 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_100836__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const qbinom_1 = __webpack_require__(59);
+const debug = __nested_webpack_require_100836__(1);
+const _general_1 = __nested_webpack_require_100836__(0);
+const r_func_1 = __nested_webpack_require_100836__(2);
+const qbinom_1 = __nested_webpack_require_100836__(59);
 const { log, abs: fabs, abs, sqrt, min: fmin2, trunc, round } = Math;
 const { MAX_SAFE_INTEGER: INT_MAX, isFinite: R_FINITE } = Number;
 const sequence = r_func_1.seq()();
@@ -10812,13 +10611,13 @@ function _rbinom(nin, pp, rng) {
 
 /***/ }),
 /* 37 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_107052__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_107052__(1);
+const _general_1 = __nested_webpack_require_107052__(0);
 const { abs: fabs } = Math;
 const printer = debug('chebyshev_eval');
 function chebyshev_init(dos, nos, eta) {
@@ -10864,12 +10663,12 @@ exports.chebyshev_eval = chebyshev_eval;
 
 /***/ }),
 /* 38 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_108223__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const pgamma_1 = __webpack_require__(18);
+const pgamma_1 = __nested_webpack_require_108223__(18);
 function pchisq(x, df, lowerTail = true, logP = false) {
     return pgamma_1.pgamma(x, df / 2., 2., lowerTail, logP);
 }
@@ -10878,18 +10677,18 @@ exports.pchisq = pchisq;
 
 /***/ }),
 /* 39 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_108566__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const lgamma_fn_1 = __webpack_require__(4);
-const logspace_add_1 = __webpack_require__(127);
-const r_func_1 = __webpack_require__(2);
-const pchisq_1 = __webpack_require__(38);
+const debug = __nested_webpack_require_108566__(1);
+const _general_1 = __nested_webpack_require_108566__(0);
+const expm1_1 = __nested_webpack_require_108566__(3);
+const lgamma_fn_1 = __nested_webpack_require_108566__(4);
+const logspace_add_1 = __nested_webpack_require_108566__(127);
+const r_func_1 = __nested_webpack_require_108566__(2);
+const pchisq_1 = __nested_webpack_require_108566__(38);
 const { sqrt, abs: fabs, exp, log, min: fmin2, max: fmax2, LN2: M_LN2, LN10: M_LN10 } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, EPSILON: DBL_EPSILON, NEGATIVE_INFINITY: ML_NEGINF } = Number;
 exports.DBL_MAX_EXP = Math.log2(Number.MAX_VALUE);
@@ -11096,12 +10895,12 @@ exports.pnchisq_raw = pnchisq_raw;
 
 /***/ }),
 /* 40 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_115693__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const qgamma_1 = __webpack_require__(68);
+const qgamma_1 = __nested_webpack_require_115693__(68);
 function qchisq(p, df, lowerTail = true, logP = false) {
     return qgamma_1.qgamma(p, 0.5 * df, 2.0, lowerTail, logP);
 }
@@ -11110,16 +10909,16 @@ exports.qchisq = qchisq;
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_116038__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const rgamma_1 = __webpack_require__(30);
-const rpois_1 = __webpack_require__(32);
-const rchisq_1 = __webpack_require__(13);
+const debug = __nested_webpack_require_116038__(1);
+const _general_1 = __nested_webpack_require_116038__(0);
+const rgamma_1 = __nested_webpack_require_116038__(30);
+const rpois_1 = __nested_webpack_require_116038__(32);
+const rchisq_1 = __nested_webpack_require_116038__(13);
 const printer = debug('rnchisq');
 const { isFinite: R_FINITE } = Number;
 function rnchisq(n, df, lambda, rng) {
@@ -11146,14 +10945,14 @@ exports.rnchisq = rnchisq;
 
 /***/ }),
 /* 42 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_117162__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const chebyshev_1 = __webpack_require__(37);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_117162__(1);
+const chebyshev_1 = __nested_webpack_require_117162__(37);
+const _general_1 = __nested_webpack_require_117162__(0);
 const printer = debug('lgammacor');
 const algmcs = [
     +.1666389480451863247205729650822e+0,
@@ -11193,14 +10992,14 @@ exports.lgammacor = lgammacor;
 
 /***/ }),
 /* 43 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_118636__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_118636__(1);
+const _general_1 = __nested_webpack_require_118636__(0);
+const r_func_1 = __nested_webpack_require_118636__(2);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer = debug('rnorm');
 const seq = r_func_1.seq()();
@@ -11221,28 +11020,28 @@ exports.rnorm = rnorm;
 
 /***/ }),
 /* 44 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_119465__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var stirlerror_1 = __webpack_require__(74);
+var stirlerror_1 = __nested_webpack_require_119465__(74);
 exports.stirlerr = stirlerror_1.stirlerr;
 
 
 /***/ }),
 /* 45 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_119707__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const bd0_1 = __webpack_require__(64);
-const dnorm_1 = __webpack_require__(31);
-const r_func_1 = __webpack_require__(2);
-const stirlerror_1 = __webpack_require__(74);
+const debug = __nested_webpack_require_119707__(1);
+const _general_1 = __nested_webpack_require_119707__(0);
+const bd0_1 = __nested_webpack_require_119707__(64);
+const dnorm_1 = __nested_webpack_require_119707__(31);
+const r_func_1 = __nested_webpack_require_119707__(2);
+const stirlerror_1 = __nested_webpack_require_119707__(74);
 const { log1p, abs: fabs, exp, log, sqrt } = Math;
 const { isNaN: ISNAN, EPSILON: DBL_EPSILON, isFinite: R_FINITE } = Number;
 const printer_dt = debug('dt');
@@ -11291,18 +11090,18 @@ exports.dt = dt;
 
 /***/ }),
 /* 46 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_121535__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const pbeta_1 = __webpack_require__(12);
-const _general_1 = __webpack_require__(0);
-const lgamma_fn_1 = __webpack_require__(4);
-const pnorm_1 = __webpack_require__(19);
-const r_func_1 = __webpack_require__(2);
-const pt_1 = __webpack_require__(47);
+const debug = __nested_webpack_require_121535__(1);
+const pbeta_1 = __nested_webpack_require_121535__(12);
+const _general_1 = __nested_webpack_require_121535__(0);
+const lgamma_fn_1 = __nested_webpack_require_121535__(4);
+const pnorm_1 = __nested_webpack_require_121535__(19);
+const r_func_1 = __nested_webpack_require_121535__(2);
+const pt_1 = __nested_webpack_require_121535__(47);
 const { isFinite: R_FINITE, EPSILON: DBL_EPSILON } = Number;
 const { sqrt, exp, pow, log, expm1, abs: fabs, min: fmin2 } = Math;
 const printer_pnt = debug('pnt');
@@ -11427,17 +11226,17 @@ function _pnt(_t, df, ncp, lower_tail = true, log_p = false) {
 
 /***/ }),
 /* 47 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_126593__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const lbeta_1 = __webpack_require__(11);
-const pbeta_1 = __webpack_require__(12);
-const _general_1 = __webpack_require__(0);
-const pnorm_1 = __webpack_require__(19);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_126593__(1);
+const lbeta_1 = __nested_webpack_require_126593__(11);
+const pbeta_1 = __nested_webpack_require_126593__(12);
+const _general_1 = __nested_webpack_require_126593__(0);
+const pnorm_1 = __nested_webpack_require_126593__(19);
+const r_func_1 = __nested_webpack_require_126593__(2);
 const { log1p, sqrt, log, abs: fabs, exp } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer = debug('pt');
@@ -11585,18 +11384,18 @@ exports.cwilcox = cwilcox;
 
 /***/ }),
 /* 50 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_130663__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const cospi_1 = __webpack_require__(23);
-const sinpi_1 = __webpack_require__(24);
-const besselY_1 = __webpack_require__(52);
-const Jbessel_1 = __webpack_require__(103);
+const debug = __nested_webpack_require_130663__(1);
+const _general_1 = __nested_webpack_require_130663__(0);
+const r_func_1 = __nested_webpack_require_130663__(2);
+const cospi_1 = __nested_webpack_require_130663__(23);
+const sinpi_1 = __nested_webpack_require_130663__(24);
+const besselY_1 = __nested_webpack_require_130663__(52);
+const Jbessel_1 = __nested_webpack_require_130663__(103);
 const { isNaN: ISNAN } = Number;
 const { floor, trunc } = Math;
 const printer = debug('bessel_j');
@@ -11639,15 +11438,15 @@ exports.internal_bessel_j = internal_bessel_j;
 
 /***/ }),
 /* 51 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_132438__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const Kbessel_1 = __webpack_require__(104);
+const debug = __nested_webpack_require_132438__(1);
+const _general_1 = __nested_webpack_require_132438__(0);
+const r_func_1 = __nested_webpack_require_132438__(2);
+const Kbessel_1 = __nested_webpack_require_132438__(104);
 const { isNaN: ISNAN } = Number;
 const { floor } = Math;
 const printer = debug('bessel_k');
@@ -11684,18 +11483,18 @@ exports.internal_bessel_k = internal_bessel_k;
 
 /***/ }),
 /* 52 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_133827__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const cospi_1 = __webpack_require__(23);
-const sinpi_1 = __webpack_require__(24);
-const besselJ_1 = __webpack_require__(50);
-const Ybessel_1 = __webpack_require__(105);
+const debug = __nested_webpack_require_133827__(1);
+const _general_1 = __nested_webpack_require_133827__(0);
+const r_func_1 = __nested_webpack_require_133827__(2);
+const cospi_1 = __nested_webpack_require_133827__(23);
+const sinpi_1 = __nested_webpack_require_133827__(24);
+const besselJ_1 = __nested_webpack_require_133827__(50);
+const Ybessel_1 = __nested_webpack_require_133827__(105);
 const { floor } = Math;
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('bessel_y');
@@ -11739,16 +11538,16 @@ exports.internal_bessel_y = internal_bessel_y;
 
 /***/ }),
 /* 53 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_135690__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const dbinom_1 = __webpack_require__(17);
-const r_func_1 = __webpack_require__(2);
-const lbeta_1 = __webpack_require__(11);
+const debug = __nested_webpack_require_135690__(1);
+const _general_1 = __nested_webpack_require_135690__(0);
+const dbinom_1 = __nested_webpack_require_135690__(17);
+const r_func_1 = __nested_webpack_require_135690__(2);
+const lbeta_1 = __nested_webpack_require_135690__(11);
 const { log, log1p } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('dbeta');
@@ -11812,16 +11611,16 @@ exports.dbeta = dbeta;
 
 /***/ }),
 /* 54 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_138099__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const dpois_1 = __webpack_require__(22);
-const r_func_1 = __webpack_require__(2);
-const dbeta_1 = __webpack_require__(53);
+const debug = __nested_webpack_require_138099__(1);
+const _general_1 = __nested_webpack_require_138099__(0);
+const dpois_1 = __nested_webpack_require_138099__(22);
+const r_func_1 = __nested_webpack_require_138099__(2);
+const dbeta_1 = __nested_webpack_require_138099__(53);
 const { log: ln, sqrt, ceil } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer = debug('dnbeta');
@@ -11896,16 +11695,16 @@ function _dnbeta(x, a, b, ncp, give_log) {
 
 /***/ }),
 /* 55 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_140356__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const lbeta_1 = __webpack_require__(11);
-const pbeta_1 = __webpack_require__(12);
+const debug = __nested_webpack_require_140356__(1);
+const _general_1 = __nested_webpack_require_140356__(0);
+const expm1_1 = __nested_webpack_require_140356__(3);
+const lbeta_1 = __nested_webpack_require_140356__(11);
+const pbeta_1 = __nested_webpack_require_140356__(12);
 const { expm1, log1p, sqrt, min: fmin2, exp, abs: fabs, log, pow, max: fmax2 } = Math;
 const { isNaN: ISNAN, MIN_VALUE: DBL_MIN, EPSILON: DBL_EPSILON, POSITIVE_INFINITY: ML_POSINF, NEGATIVE_INFINITY: ML_NEGINF, isFinite: R_FINITE, NaN: ML_NAN } = Number;
 const USE_LOG_X_CUTOFF = -5;
@@ -12365,16 +12164,16 @@ exports.qbeta_raw = qbeta_raw;
 
 /***/ }),
 /* 56 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_157606__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
-const pnbeta_1 = __webpack_require__(35);
+const debug = __nested_webpack_require_157606__(1);
+const _general_1 = __nested_webpack_require_157606__(0);
+const expm1_1 = __nested_webpack_require_157606__(3);
+const r_func_1 = __nested_webpack_require_157606__(2);
+const pnbeta_1 = __nested_webpack_require_157606__(35);
 const { isNaN: ISNAN, isFinite: R_FINITE, MIN_VALUE: DBL_MIN, EPSILON: DBL_EPSILON } = Number;
 const { min: fmin2 } = Math;
 const printer_qnbeta = debug('qnbeta');
@@ -12420,17 +12219,17 @@ exports.qnbeta = qnbeta;
 
 /***/ }),
 /* 57 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_159484__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_159484__(1);
+const _general_1 = __nested_webpack_require_159484__(0);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { floor, log } = Math;
-const pbeta_1 = __webpack_require__(12);
-const toms708_1 = __webpack_require__(9);
+const pbeta_1 = __nested_webpack_require_159484__(12);
+const toms708_1 = __nested_webpack_require_159484__(9);
 const printer = debug('pnbinom');
 function pnbinom(xx, size, prob, lowerTail, logP) {
     const fx = Array.isArray(xx) ? xx : [xx];
@@ -12493,15 +12292,15 @@ exports.pnbinom_mu = pnbinom_mu;
 
 /***/ }),
 /* 58 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_162259__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const pbeta_1 = __webpack_require__(12);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_162259__(1);
+const pbeta_1 = __nested_webpack_require_162259__(12);
+const _general_1 = __nested_webpack_require_162259__(0);
+const r_func_1 = __nested_webpack_require_162259__(2);
 const printer = debug('pbinom');
 const { floor, round: R_forceint } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
@@ -12535,20 +12334,20 @@ exports.pbinom = pbinom;
 
 /***/ }),
 /* 59 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_163707__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_163707__(1);
+const _general_1 = __nested_webpack_require_163707__(0);
 const { max: fmax2, min: fmin2, floor, sqrt } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, EPSILON: DBL_EPSILON } = Number;
-const toms708_1 = __webpack_require__(9);
-const expm1_1 = __webpack_require__(3);
-const qnorm_1 = __webpack_require__(6);
-const r_func_1 = __webpack_require__(2);
-const pbinom_1 = __webpack_require__(58);
+const toms708_1 = __nested_webpack_require_163707__(9);
+const expm1_1 = __nested_webpack_require_163707__(3);
+const qnorm_1 = __nested_webpack_require_163707__(6);
+const r_func_1 = __nested_webpack_require_163707__(2);
+const pbinom_1 = __nested_webpack_require_163707__(58);
 const printer_do_search = debug('do_search');
 function do_search(y, z, p, n, pr, incr) {
     if (z.val >= p) {
@@ -12646,12 +12445,12 @@ function _qbinom(p, size, pr, lower_tail, log_p) {
 
 /***/ }),
 /* 60 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_167271__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dgamma_1 = __webpack_require__(21);
+const dgamma_1 = __nested_webpack_require_167271__(21);
 function dchisq(x, df, log = false) {
     return dgamma_1.dgamma(x, df / 2, 2, log);
 }
@@ -12660,15 +12459,15 @@ exports.dchisq = dchisq;
 
 /***/ }),
 /* 61 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_167581__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const dchisq_1 = __webpack_require__(60);
-const dpois_1 = __webpack_require__(22);
+const debug = __nested_webpack_require_167581__(1);
+const _general_1 = __nested_webpack_require_167581__(0);
+const dchisq_1 = __nested_webpack_require_167581__(60);
+const dpois_1 = __nested_webpack_require_167581__(22);
 const { ceil, sqrt } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer_dnchisq = debug('dnchisq');
@@ -12749,16 +12548,16 @@ exports.dnchisq = dnchisq;
 
 /***/ }),
 /* 62 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_170248__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const qchisq_1 = __webpack_require__(40);
-const r_func_1 = __webpack_require__(2);
-const pnchisq_1 = __webpack_require__(39);
+const debug = __nested_webpack_require_170248__(1);
+const _general_1 = __nested_webpack_require_170248__(0);
+const qchisq_1 = __nested_webpack_require_170248__(40);
+const r_func_1 = __nested_webpack_require_170248__(2);
+const pnchisq_1 = __nested_webpack_require_170248__(39);
 const { expm1, min: fmin2 } = Math;
 const { MAX_VALUE: DBL_MAX, MIN_VALUE: DBL_MIN, EPSILON: DBL_EPSILON, isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('_qnchisq');
@@ -12920,7 +12719,7 @@ exports.bd0 = bd0;
 
 /***/ }),
 /* 65 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_174950__) {
 
 "use strict";
 
@@ -12928,17 +12727,17 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(64));
+__export(__nested_webpack_require_174950__(64));
 
 
 /***/ }),
 /* 66 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_175238__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const trigonometry_1 = __webpack_require__(33);
+const trigonometry_1 = __nested_webpack_require_175238__(33);
 const { PI: M_PI, log, exp, trunc } = Math;
 const { EPSILON: DBL_EPSILON, MIN_VALUE: DBL_MIN, POSITIVE_INFINITY: ML_POSINF } = Number;
 function Rf_gamma_cody(x) {
@@ -13066,16 +12865,16 @@ exports.Rf_gamma_cody = Rf_gamma_cody;
 
 /***/ }),
 /* 67 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_178312__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const trigonometry_1 = __webpack_require__(33);
-const gamma_fn_1 = __webpack_require__(29);
-const lgammacor_1 = __webpack_require__(42);
+const debug = __nested_webpack_require_178312__(1);
+const _general_1 = __nested_webpack_require_178312__(0);
+const trigonometry_1 = __nested_webpack_require_178312__(33);
+const gamma_fn_1 = __nested_webpack_require_178312__(29);
+const lgammacor_1 = __nested_webpack_require_178312__(42);
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF } = Number;
 const { log, abs: fabs, floor, trunc } = Math;
 const printer_sign = debug('lgammafn_sign');
@@ -13129,20 +12928,20 @@ exports.lgammafn_sign = lgammafn_sign;
 
 /***/ }),
 /* 68 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_180366__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const dgamma_1 = __webpack_require__(21);
-const lgamma_fn_1 = __webpack_require__(4);
-const pgamma_1 = __webpack_require__(18);
-const pgamma_2 = __webpack_require__(18);
-const pgamma_3 = __webpack_require__(18);
-const qnorm_1 = __webpack_require__(6);
+const debug = __nested_webpack_require_180366__(1);
+const _general_1 = __nested_webpack_require_180366__(0);
+const expm1_1 = __nested_webpack_require_180366__(3);
+const dgamma_1 = __nested_webpack_require_180366__(21);
+const lgamma_fn_1 = __nested_webpack_require_180366__(4);
+const pgamma_1 = __nested_webpack_require_180366__(18);
+const pgamma_2 = __nested_webpack_require_180366__(18);
+const pgamma_3 = __nested_webpack_require_180366__(18);
+const qnorm_1 = __nested_webpack_require_180366__(6);
 const { isArray } = Array;
 const { abs: fabs, sqrt, pow, exp, log } = Math;
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF, NEGATIVE_INFINITY: ML_NEGINF, MIN_VALUE: DBL_MIN, isFinite: R_FINITE } = Number;
@@ -13375,15 +13174,15 @@ exports._qgamma = _qgamma;
 
 /***/ }),
 /* 69 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_188585__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const r_func_1 = __webpack_require__(2);
-const _general_1 = __webpack_require__(0);
-const dbinom_1 = __webpack_require__(17);
+const debug = __nested_webpack_require_188585__(1);
+const r_func_1 = __nested_webpack_require_188585__(2);
+const _general_1 = __nested_webpack_require_188585__(0);
+const dbinom_1 = __nested_webpack_require_188585__(17);
 const printer = debug('dhyper');
 const { round: R_forceint } = Math;
 const { isNaN: ISNAN } = Number;
@@ -13428,16 +13227,16 @@ exports.dhyper = dhyper;
 
 /***/ }),
 /* 70 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_190306__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
-const lfastchoose_1 = __webpack_require__(133);
+const debug = __nested_webpack_require_190306__(1);
+const _general_1 = __nested_webpack_require_190306__(0);
+const expm1_1 = __nested_webpack_require_190306__(3);
+const r_func_1 = __nested_webpack_require_190306__(2);
+const lfastchoose_1 = __nested_webpack_require_190306__(133);
 const { log, exp, min: fmin2, max: fmax2, round: R_forceint } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, EPSILON: DBL_EPSILON } = Number;
 const printer_qhyper = debug('qhyper');
@@ -13499,17 +13298,17 @@ exports.qhyper = qhyper;
 
 /***/ }),
 /* 71 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_192558__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
+const _general_1 = __nested_webpack_require_192558__(0);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { floor, max: fmax2 } = Math;
-const debug = __webpack_require__(1);
-const pgamma_1 = __webpack_require__(18);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_192558__(1);
+const pgamma_1 = __nested_webpack_require_192558__(18);
+const r_func_1 = __nested_webpack_require_192558__(2);
 const printer = debug('ppois');
 function ppois(_x, lambda, lowerTail = true, logP = false) {
     return r_func_1.map(_x)(x => {
@@ -13551,14 +13350,14 @@ exports.do_search = do_search;
 
 /***/ }),
 /* 72 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_194084__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const qnorm_1 = __webpack_require__(6);
-const mersenne_twister_1 = __webpack_require__(5);
-const inormal_rng_1 = __webpack_require__(15);
+const qnorm_1 = __nested_webpack_require_194084__(6);
+const mersenne_twister_1 = __nested_webpack_require_194084__(5);
+const inormal_rng_1 = __nested_webpack_require_194084__(15);
 const BIG = 134217728;
 const { isArray } = Array;
 class Inversion extends inormal_rng_1.IRNGNormal {
@@ -13578,14 +13377,14 @@ exports.Inversion = Inversion;
 
 /***/ }),
 /* 73 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_194886__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
+const debug = __nested_webpack_require_194886__(1);
+const _general_1 = __nested_webpack_require_194886__(0);
+const expm1_1 = __nested_webpack_require_194886__(3);
 const { isFinite: R_FINITE, EPSILON: DBL_EPSILON, isNaN: ISNAN } = Number;
 const { LN2: M_LN2, abs: fabs, trunc, log, exp, floor, round } = Math;
 const printer_dsignrank = debug('dsignrank');
@@ -13754,13 +13553,13 @@ exports.rsignrank = rsignrank;
 
 /***/ }),
 /* 74 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_200323__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const lgamma_fn_1 = __webpack_require__(4);
+const _general_1 = __nested_webpack_require_200323__(0);
+const lgamma_fn_1 = __nested_webpack_require_200323__(4);
 const { trunc, log } = Math;
 const sferr_halves = [
     0.0,
@@ -13822,19 +13621,19 @@ exports.stirlerr = stirlerr;
 
 /***/ }),
 /* 75 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_202429__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const qnorm_1 = __webpack_require__(6);
-const r_func_1 = __webpack_require__(2);
-const cospi_1 = __webpack_require__(23);
-const dt_1 = __webpack_require__(45);
-const pt_1 = __webpack_require__(47);
+const debug = __nested_webpack_require_202429__(1);
+const _general_1 = __nested_webpack_require_202429__(0);
+const expm1_1 = __nested_webpack_require_202429__(3);
+const qnorm_1 = __nested_webpack_require_202429__(6);
+const r_func_1 = __nested_webpack_require_202429__(2);
+const cospi_1 = __nested_webpack_require_202429__(23);
+const dt_1 = __nested_webpack_require_202429__(45);
+const pt_1 = __nested_webpack_require_202429__(47);
 const { LN2: M_LN2, PI: M_PI, SQRT2: M_SQRT2, sqrt, pow, log, exp, min: fmin2, abs: fabs, expm1 } = Math;
 const { isNaN: ISNAN, EPSILON: DBL_EPSILON, MAX_VALUE: DBL_MAX, MIN_VALUE: DBL_MIN, POSITIVE_INFINITY: ML_POSINF, NEGATIVE_INFINITY: ML_NEGINF, isFinite: R_FINITE } = Number;
 const printer_qt = debug('qt');
@@ -13985,13 +13784,13 @@ function _qt(p, ndf, lower_tail, log_p) {
 
 /***/ }),
 /* 76 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_207934__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_207934__(1);
+const _general_1 = __nested_webpack_require_207934__(0);
 const { NaN: ML_NAN, isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { PI: M_PI } = Math;
 const printer_tanpi = debug('tanpi');
@@ -14020,17 +13819,17 @@ exports.atanpi = atanpi;
 
 /***/ }),
 /* 77 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_208772__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const wprob_1 = __webpack_require__(169);
-const _general_1 = __webpack_require__(0);
-const _general_2 = __webpack_require__(0);
-const lgamma_fn_1 = __webpack_require__(4);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_208772__(1);
+const wprob_1 = __nested_webpack_require_208772__(169);
+const _general_1 = __nested_webpack_require_208772__(0);
+const _general_2 = __nested_webpack_require_208772__(0);
+const lgamma_fn_1 = __nested_webpack_require_208772__(4);
+const r_func_1 = __nested_webpack_require_208772__(2);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { exp, sqrt, log, LN2: M_LN2 } = Math;
 const printer_ptukey = debug('_ptukey');
@@ -14149,271 +13948,246 @@ exports._ptukey = _ptukey;
 
 /***/ }),
 /* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
+/***/ (function(module, exports, __nested_webpack_require_212793__) {
 
 
 /**
  * This is the common logic for both the Node.js and web browser
  * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
  */
-function setup(env) {
-  createDebug.debug = createDebug;
-  createDebug.default = createDebug;
-  createDebug.coerce = coerce;
-  createDebug.disable = disable;
-  createDebug.enable = enable;
-  createDebug.enabled = enabled;
-  createDebug.humanize = __webpack_require__(184);
-  Object.keys(env).forEach(function (key) {
-    createDebug[key] = env[key];
-  });
-  /**
-  * Active `debug` instances.
-  */
 
-  createDebug.instances = [];
-  /**
-  * The currently active debug mode names, and names to skip.
-  */
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = __nested_webpack_require_212793__(184);
 
-  createDebug.names = [];
-  createDebug.skips = [];
-  /**
-  * Map of special "%n" handling functions, for the debug "format" argument.
-  *
-  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
-  */
+/**
+ * Active `debug` instances.
+ */
+exports.instances = [];
 
-  createDebug.formatters = {};
-  /**
-  * Selects a color for a debug namespace
-  * @param {String} namespace The namespace string for the for the debug instance to be colored
-  * @return {Number|String} An ANSI color code for the given namespace
-  * @api private
-  */
+/**
+ * The currently active debug mode names, and names to skip.
+ */
 
-  function selectColor(namespace) {
-    var hash = 0;
+exports.names = [];
+exports.skips = [];
 
-    for (var i = 0; i < namespace.length; i++) {
-      hash = (hash << 5) - hash + namespace.charCodeAt(i);
-      hash |= 0; // Convert to 32bit integer
-    }
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
 
-    return createDebug.colors[Math.abs(hash) % createDebug.colors.length];
+exports.formatters = {};
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
   }
 
-  createDebug.selectColor = selectColor;
-  /**
-  * Create a debugger with the given `namespace`.
-  *
-  * @param {String} namespace
-  * @return {Function}
-  * @api public
-  */
-
-  function createDebug(namespace) {
-    var prevTime;
-
-    function debug() {
-      // Disabled?
-      if (!debug.enabled) {
-        return;
-      }
-
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      var self = debug; // Set `diff` timestamp
-
-      var curr = Number(new Date());
-      var ms = curr - (prevTime || curr);
-      self.diff = ms;
-      self.prev = prevTime;
-      self.curr = curr;
-      prevTime = curr;
-      args[0] = createDebug.coerce(args[0]);
-
-      if (typeof args[0] !== 'string') {
-        // Anything else let's inspect with %O
-        args.unshift('%O');
-      } // Apply any `formatters` transformations
-
-
-      var index = 0;
-      args[0] = args[0].replace(/%([a-zA-Z%])/g, function (match, format) {
-        // If we encounter an escaped % then don't increase the array index
-        if (match === '%%') {
-          return match;
-        }
-
-        index++;
-        var formatter = createDebug.formatters[format];
-
-        if (typeof formatter === 'function') {
-          var val = args[index];
-          match = formatter.call(self, val); // Now we need to remove `args[index]` since it's inlined in the `format`
-
-          args.splice(index, 1);
-          index--;
-        }
-
-        return match;
-      }); // Apply env-specific formatting (colors, etc.)
-
-      createDebug.formatArgs.call(self, args);
-      var logFn = self.log || createDebug.log;
-      logFn.apply(self, args);
-    }
-
-    debug.namespace = namespace;
-    debug.enabled = createDebug.enabled(namespace);
-    debug.useColors = createDebug.useColors();
-    debug.color = selectColor(namespace);
-    debug.destroy = destroy;
-    debug.extend = extend; // Debug.formatArgs = formatArgs;
-    // debug.rawLog = rawLog;
-    // env-specific initialization logic for debug instances
-
-    if (typeof createDebug.init === 'function') {
-      createDebug.init(debug);
-    }
-
-    createDebug.instances.push(debug);
-    return debug;
-  }
-
-  function destroy() {
-    var index = createDebug.instances.indexOf(this);
-
-    if (index !== -1) {
-      createDebug.instances.splice(index, 1);
-      return true;
-    }
-
-    return false;
-  }
-
-  function extend(namespace, delimiter) {
-    return createDebug(this.namespace + (typeof delimiter === 'undefined' ? ':' : delimiter) + namespace);
-  }
-  /**
-  * Enables a debug mode by namespaces. This can include modes
-  * separated by a colon and wildcards.
-  *
-  * @param {String} namespaces
-  * @api public
-  */
-
-
-  function enable(namespaces) {
-    createDebug.save(namespaces);
-    createDebug.names = [];
-    createDebug.skips = [];
-    var i;
-    var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
-    var len = split.length;
-
-    for (i = 0; i < len; i++) {
-      if (!split[i]) {
-        // ignore empty strings
-        continue;
-      }
-
-      namespaces = split[i].replace(/\*/g, '.*?');
-
-      if (namespaces[0] === '-') {
-        createDebug.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-      } else {
-        createDebug.names.push(new RegExp('^' + namespaces + '$'));
-      }
-    }
-
-    for (i = 0; i < createDebug.instances.length; i++) {
-      var instance = createDebug.instances[i];
-      instance.enabled = createDebug.enabled(instance.namespace);
-    }
-  }
-  /**
-  * Disable debug output.
-  *
-  * @api public
-  */
-
-
-  function disable() {
-    createDebug.enable('');
-  }
-  /**
-  * Returns true if the given mode name is enabled, false otherwise.
-  *
-  * @param {String} name
-  * @return {Boolean}
-  * @api public
-  */
-
-
-  function enabled(name) {
-    if (name[name.length - 1] === '*') {
-      return true;
-    }
-
-    var i;
-    var len;
-
-    for (i = 0, len = createDebug.skips.length; i < len; i++) {
-      if (createDebug.skips[i].test(name)) {
-        return false;
-      }
-    }
-
-    for (i = 0, len = createDebug.names.length; i < len; i++) {
-      if (createDebug.names[i].test(name)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-  /**
-  * Coerce `val`.
-  *
-  * @param {Mixed} val
-  * @return {Mixed}
-  * @api private
-  */
-
-
-  function coerce(val) {
-    if (val instanceof Error) {
-      return val.stack || val.message;
-    }
-
-    return val;
-  }
-
-  createDebug.enable(createDebug.load());
-  return createDebug;
+  return exports.colors[Math.abs(hash) % exports.colors.length];
 }
 
-module.exports = setup;
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
 
+function createDebug(namespace) {
+
+  var prevTime;
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+  debug.destroy = destroy;
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  exports.instances.push(debug);
+
+  return debug;
+}
+
+function destroy () {
+  var index = exports.instances.indexOf(this);
+  if (index !== -1) {
+    exports.instances.splice(index, 1);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var i;
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+
+  for (i = 0; i < exports.instances.length; i++) {
+    var instance = exports.instances[i];
+    instance.enabled = exports.enabled(instance.namespace);
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  if (name[name.length - 1] === '*') {
+    return true;
+  }
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
 
 
 /***/ }),
 /* 79 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_217771__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const besselI_1 = __webpack_require__(102);
-const besselJ_1 = __webpack_require__(50);
-const besselK_1 = __webpack_require__(51);
-const besselY_1 = __webpack_require__(52);
+const besselI_1 = __nested_webpack_require_217771__(102);
+const besselJ_1 = __nested_webpack_require_217771__(50);
+const besselK_1 = __nested_webpack_require_217771__(51);
+const besselY_1 = __nested_webpack_require_217771__(52);
 exports.special = Object.freeze({
     besselJ: besselJ_1.bessel_j,
     besselY: besselY_1.bessel_y,
@@ -14424,16 +14198,16 @@ exports.special = Object.freeze({
 
 /***/ }),
 /* 80 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_218269__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const normal_1 = __webpack_require__(8);
-const dnbinom_1 = __webpack_require__(108);
-const pnbinom_1 = __webpack_require__(57);
-const qnbinom_1 = __webpack_require__(109);
-const rnbinom_1 = __webpack_require__(110);
+const normal_1 = __nested_webpack_require_218269__(8);
+const dnbinom_1 = __nested_webpack_require_218269__(108);
+const pnbinom_1 = __nested_webpack_require_218269__(57);
+const qnbinom_1 = __nested_webpack_require_218269__(109);
+const rnbinom_1 = __nested_webpack_require_218269__(110);
 const errText = Object.freeze([
     'at most specify either argument "mu" or  "prob", but not both at the same time!',
     'both arguments "mu" and "prob" are undefined'
@@ -14491,16 +14265,16 @@ exports.NegativeBinomial = NegativeBinomial;
 
 /***/ }),
 /* 81 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_220321__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const mersenne_twister_1 = __webpack_require__(5);
-const dbinom_1 = __webpack_require__(17);
-const pbinom_1 = __webpack_require__(58);
-const qbinom_1 = __webpack_require__(59);
-const rbinom_1 = __webpack_require__(36);
+const mersenne_twister_1 = __nested_webpack_require_220321__(5);
+const dbinom_1 = __nested_webpack_require_220321__(17);
+const pbinom_1 = __nested_webpack_require_220321__(58);
+const qbinom_1 = __nested_webpack_require_220321__(59);
+const rbinom_1 = __nested_webpack_require_220321__(36);
 function Binomial(rng = new mersenne_twister_1.MersenneTwister()) {
     return {
         dbinom: dbinom_1.dbinom,
@@ -14514,16 +14288,16 @@ exports.Binomial = Binomial;
 
 /***/ }),
 /* 82 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_220979__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dcauchy_1 = __webpack_require__(111);
-const pcauchy_1 = __webpack_require__(112);
-const qcauchy_1 = __webpack_require__(113);
-const rcauchy_1 = __webpack_require__(114);
-const mersenne_twister_1 = __webpack_require__(5);
+const dcauchy_1 = __nested_webpack_require_220979__(111);
+const pcauchy_1 = __nested_webpack_require_220979__(112);
+const qcauchy_1 = __nested_webpack_require_220979__(113);
+const rcauchy_1 = __nested_webpack_require_220979__(114);
+const mersenne_twister_1 = __nested_webpack_require_220979__(5);
 function Cauchy(rng = new mersenne_twister_1.MersenneTwister(0)) {
     return {
         rcauchy: (n, location = 0, scale = 1) => rcauchy_1.rcauchy(n, location, scale, rng),
@@ -14537,12 +14311,12 @@ exports.Cauchy = Cauchy;
 
 /***/ }),
 /* 83 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_221676__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const chebyshev_1 = __webpack_require__(37);
+const chebyshev_1 = __nested_webpack_require_221676__(37);
 exports.ChebyshevSeries = {
     chebyshev_eval: chebyshev_1.chebyshev_eval,
     chebyshev_init: chebyshev_1.chebyshev_init
@@ -14551,20 +14325,20 @@ exports.ChebyshevSeries = {
 
 /***/ }),
 /* 84 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_222003__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const normal_1 = __webpack_require__(8);
-const dchisq_1 = __webpack_require__(60);
-const dnchisq_1 = __webpack_require__(61);
-const pchisq_1 = __webpack_require__(38);
-const pnchisq_1 = __webpack_require__(39);
-const qchisq_1 = __webpack_require__(40);
-const qnchisq_1 = __webpack_require__(62);
-const rchisq_1 = __webpack_require__(13);
-const rnchisq_1 = __webpack_require__(41);
+const normal_1 = __nested_webpack_require_222003__(8);
+const dchisq_1 = __nested_webpack_require_222003__(60);
+const dnchisq_1 = __nested_webpack_require_222003__(61);
+const pchisq_1 = __nested_webpack_require_222003__(38);
+const pnchisq_1 = __nested_webpack_require_222003__(39);
+const qchisq_1 = __nested_webpack_require_222003__(40);
+const qnchisq_1 = __nested_webpack_require_222003__(62);
+const rchisq_1 = __nested_webpack_require_222003__(13);
+const rnchisq_1 = __nested_webpack_require_222003__(41);
 function ChiSquared(rng = new normal_1.Inversion()) {
     function rchisq(n = 1, df, ncp) {
         return ncp === undefined
@@ -14596,12 +14370,12 @@ exports.ChiSquared = ChiSquared;
 
 /***/ }),
 /* 85 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_223477__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const choose_1 = __webpack_require__(27);
+const choose_1 = __nested_webpack_require_223477__(27);
 exports.special = {
     choose: choose_1.choose,
     lchoose: choose_1.lchoose
@@ -14610,16 +14384,16 @@ exports.special = {
 
 /***/ }),
 /* 86 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_223757__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dexp_1 = __webpack_require__(116);
-const pexp_1 = __webpack_require__(117);
-const qexp_1 = __webpack_require__(118);
-const rexp_1 = __webpack_require__(119);
-const rng_1 = __webpack_require__(16);
+const dexp_1 = __nested_webpack_require_223757__(116);
+const pexp_1 = __nested_webpack_require_223757__(117);
+const qexp_1 = __nested_webpack_require_223757__(118);
+const rexp_1 = __nested_webpack_require_223757__(119);
+const rng_1 = __nested_webpack_require_223757__(16);
 const { MersenneTwister } = rng_1.rng;
 function Exponential(rng = new MersenneTwister(0)) {
     return {
@@ -14634,23 +14408,23 @@ exports.Exponential = Exponential;
 
 /***/ }),
 /* 87 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_224617__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const rchisq_1 = __webpack_require__(13);
-const rnchisq_1 = __webpack_require__(41);
-const r_func_1 = __webpack_require__(2);
-const r_func_2 = __webpack_require__(2);
-const normal_1 = __webpack_require__(8);
-const df_1 = __webpack_require__(120);
-const dnf_1 = __webpack_require__(121);
-const pf_1 = __webpack_require__(122);
-const pnf_1 = __webpack_require__(123);
-const qf_1 = __webpack_require__(124);
-const qnf_1 = __webpack_require__(125);
-const rf_1 = __webpack_require__(126);
+const rchisq_1 = __nested_webpack_require_224617__(13);
+const rnchisq_1 = __nested_webpack_require_224617__(41);
+const r_func_1 = __nested_webpack_require_224617__(2);
+const r_func_2 = __nested_webpack_require_224617__(2);
+const normal_1 = __nested_webpack_require_224617__(8);
+const df_1 = __nested_webpack_require_224617__(120);
+const dnf_1 = __nested_webpack_require_224617__(121);
+const pf_1 = __nested_webpack_require_224617__(122);
+const pnf_1 = __nested_webpack_require_224617__(123);
+const qf_1 = __nested_webpack_require_224617__(124);
+const qnf_1 = __nested_webpack_require_224617__(125);
+const rf_1 = __nested_webpack_require_224617__(126);
 const sequence = r_func_1.seq()();
 function FDist(rng = new normal_1.Inversion()) {
     function df(x, df1, df2, ncp, log = false) {
@@ -14695,16 +14469,16 @@ exports.FDist = FDist;
 
 /***/ }),
 /* 88 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_226617__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const normal_1 = __webpack_require__(8);
-const dgeom_1 = __webpack_require__(129);
-const pgeom_1 = __webpack_require__(130);
-const qgeom_1 = __webpack_require__(131);
-const rgeom_1 = __webpack_require__(132);
+const normal_1 = __nested_webpack_require_226617__(8);
+const dgeom_1 = __nested_webpack_require_226617__(129);
+const pgeom_1 = __nested_webpack_require_226617__(130);
+const qgeom_1 = __nested_webpack_require_226617__(131);
+const rgeom_1 = __nested_webpack_require_226617__(132);
 function Geometric(rng = new normal_1.Inversion()) {
     return {
         dgeom: dgeom_1.dgeom,
@@ -14718,16 +14492,16 @@ exports.Geometric = Geometric;
 
 /***/ }),
 /* 89 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_227234__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dhyper_1 = __webpack_require__(69);
-const phyper_1 = __webpack_require__(134);
-const qhyper_1 = __webpack_require__(70);
-const rhyper_1 = __webpack_require__(135);
-const mersenne_twister_1 = __webpack_require__(5);
+const dhyper_1 = __nested_webpack_require_227234__(69);
+const phyper_1 = __nested_webpack_require_227234__(134);
+const qhyper_1 = __nested_webpack_require_227234__(70);
+const rhyper_1 = __nested_webpack_require_227234__(135);
+const mersenne_twister_1 = __nested_webpack_require_227234__(5);
 function HyperGeometric(rng = new mersenne_twister_1.MersenneTwister()) {
     function rhyper(N, nn1in, nn2in, kkin) {
         return rhyper_1.rhyper(N, nn1in, nn2in, kkin, rng);
@@ -14744,16 +14518,16 @@ exports.HyperGeometric = HyperGeometric;
 
 /***/ }),
 /* 90 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_227973__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const mersenne_twister_1 = __webpack_require__(5);
-const dlogis_1 = __webpack_require__(137);
-const plogis_1 = __webpack_require__(138);
-const qlogis_1 = __webpack_require__(139);
-const rlogis_1 = __webpack_require__(140);
+const mersenne_twister_1 = __nested_webpack_require_227973__(5);
+const dlogis_1 = __nested_webpack_require_227973__(137);
+const plogis_1 = __nested_webpack_require_227973__(138);
+const qlogis_1 = __nested_webpack_require_227973__(139);
+const rlogis_1 = __nested_webpack_require_227973__(140);
 function Logistic(rng = new mersenne_twister_1.MersenneTwister(0)) {
     function rlogis(N, location = 0, scale = 1) {
         return rlogis_1.rlogis(N, location, scale, rng);
@@ -14770,16 +14544,16 @@ exports.Logistic = Logistic;
 
 /***/ }),
 /* 91 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_228699__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dlnorm_1 = __webpack_require__(141);
-const plnorm_1 = __webpack_require__(142);
-const qlnorm_1 = __webpack_require__(143);
-const rlnorm_1 = __webpack_require__(144);
-const normal_1 = __webpack_require__(8);
+const dlnorm_1 = __nested_webpack_require_228699__(141);
+const plnorm_1 = __nested_webpack_require_228699__(142);
+const qlnorm_1 = __nested_webpack_require_228699__(143);
+const rlnorm_1 = __nested_webpack_require_228699__(144);
+const normal_1 = __nested_webpack_require_228699__(8);
 function LogNormal(rng = new normal_1.Inversion()) {
     return {
         dlnorm: dlnorm_1.dlnorm,
@@ -14793,14 +14567,14 @@ exports.LogNormal = LogNormal;
 
 /***/ }),
 /* 92 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_229360__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dmultinom_1 = __webpack_require__(145);
-const rmultinom_1 = __webpack_require__(146);
-const mersenne_twister_1 = __webpack_require__(5);
+const dmultinom_1 = __nested_webpack_require_229360__(145);
+const rmultinom_1 = __nested_webpack_require_229360__(146);
+const mersenne_twister_1 = __nested_webpack_require_229360__(5);
 function Multinomial(rng = new mersenne_twister_1.MersenneTwister(0)) {
     function rmultinom(n, size, prob) {
         return rmultinom_1.rmultinom(n, size, prob, rng);
@@ -14815,16 +14589,16 @@ exports.Multinomial = Multinomial;
 
 /***/ }),
 /* 93 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_229952__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dnorm_1 = __webpack_require__(31);
-const pnorm_1 = __webpack_require__(19);
-const qnorm_1 = __webpack_require__(6);
-const rnorm_1 = __webpack_require__(43);
-const rng_1 = __webpack_require__(16);
+const dnorm_1 = __nested_webpack_require_229952__(31);
+const pnorm_1 = __nested_webpack_require_229952__(19);
+const qnorm_1 = __nested_webpack_require_229952__(6);
+const rnorm_1 = __nested_webpack_require_229952__(43);
+const rng_1 = __nested_webpack_require_229952__(16);
 const { normal: { Inversion } } = rng_1.rng;
 function Normal(prng = new Inversion()) {
     return {
@@ -14840,16 +14614,16 @@ exports.Normal = Normal;
 
 /***/ }),
 /* 94 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_230635__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dpois_1 = __webpack_require__(22);
-const ppois_1 = __webpack_require__(71);
-const qpois_1 = __webpack_require__(147);
-const rpois_1 = __webpack_require__(32);
-const normal_1 = __webpack_require__(8);
+const dpois_1 = __nested_webpack_require_230635__(22);
+const ppois_1 = __nested_webpack_require_230635__(71);
+const qpois_1 = __nested_webpack_require_230635__(147);
+const rpois_1 = __nested_webpack_require_230635__(32);
+const normal_1 = __nested_webpack_require_230635__(8);
 function Poisson(rng = new normal_1.Inversion()) {
     return {
         dpois: dpois_1.dpois,
@@ -14863,16 +14637,16 @@ exports.Poisson = Poisson;
 
 /***/ }),
 /* 95 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_231247__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const rng_1 = __webpack_require__(16);
-const dsign_1 = __webpack_require__(160);
-const psign_1 = __webpack_require__(162);
-const qsign_1 = __webpack_require__(163);
-const rsign_1 = __webpack_require__(164);
+const rng_1 = __nested_webpack_require_231247__(16);
+const dsign_1 = __nested_webpack_require_231247__(160);
+const psign_1 = __nested_webpack_require_231247__(162);
+const qsign_1 = __nested_webpack_require_231247__(163);
+const rsign_1 = __nested_webpack_require_231247__(164);
 const { MersenneTwister } = rng_1.rng;
 function SignRank(rng = new MersenneTwister(0)) {
     function rsignrank(N, n) {
@@ -14890,22 +14664,22 @@ exports.SignRank = SignRank;
 
 /***/ }),
 /* 96 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_231964__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const rchisq_1 = __webpack_require__(13);
-const rnorm_1 = __webpack_require__(43);
-const r_func_1 = __webpack_require__(2);
-const inversion_1 = __webpack_require__(72);
-const dnt_1 = __webpack_require__(165);
-const dt_1 = __webpack_require__(45);
-const pnt_1 = __webpack_require__(46);
-const pt_1 = __webpack_require__(47);
-const qnt_1 = __webpack_require__(166);
-const qt_1 = __webpack_require__(75);
-const rt_1 = __webpack_require__(167);
+const rchisq_1 = __nested_webpack_require_231964__(13);
+const rnorm_1 = __nested_webpack_require_231964__(43);
+const r_func_1 = __nested_webpack_require_231964__(2);
+const inversion_1 = __nested_webpack_require_231964__(72);
+const dnt_1 = __nested_webpack_require_231964__(165);
+const dt_1 = __nested_webpack_require_231964__(45);
+const pnt_1 = __nested_webpack_require_231964__(46);
+const pt_1 = __nested_webpack_require_231964__(47);
+const qnt_1 = __nested_webpack_require_231964__(166);
+const qt_1 = __nested_webpack_require_231964__(75);
+const rt_1 = __nested_webpack_require_231964__(167);
 function StudentT(rng = new inversion_1.Inversion()) {
     function dt(x, df, ncp, asLog = false) {
         if (ncp === undefined) {
@@ -14953,13 +14727,13 @@ exports.StudentT = StudentT;
 
 /***/ }),
 /* 97 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_233970__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const ptukey_1 = __webpack_require__(77);
-const qtukey_1 = __webpack_require__(168);
+const ptukey_1 = __nested_webpack_require_233970__(77);
+const qtukey_1 = __nested_webpack_require_233970__(168);
 function Tukey() {
     function ptukey(q, nmeans, df, nranges = 1, lowerTail = true, logP = false) {
         return ptukey_1.ptukey(q, nranges, nmeans, df, lowerTail, logP);
@@ -14977,16 +14751,16 @@ exports.Tukey = Tukey;
 
 /***/ }),
 /* 98 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_234628__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dunif_1 = __webpack_require__(170);
-const punif_1 = __webpack_require__(171);
-const qunif_1 = __webpack_require__(172);
-const runif_1 = __webpack_require__(173);
-const rng_1 = __webpack_require__(16);
+const dunif_1 = __nested_webpack_require_234628__(170);
+const punif_1 = __nested_webpack_require_234628__(171);
+const qunif_1 = __nested_webpack_require_234628__(172);
+const runif_1 = __nested_webpack_require_234628__(173);
+const rng_1 = __nested_webpack_require_234628__(16);
 const { MersenneTwister } = rng_1.rng;
 function Uniform(rng = new MersenneTwister(0)) {
     return {
@@ -15002,16 +14776,16 @@ exports.Uniform = Uniform;
 
 /***/ }),
 /* 99 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_235307__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dweibull_1 = __webpack_require__(174);
-const pweibull_1 = __webpack_require__(175);
-const qweibull_1 = __webpack_require__(176);
-const rweibull_1 = __webpack_require__(177);
-const rng_1 = __webpack_require__(16);
+const dweibull_1 = __nested_webpack_require_235307__(174);
+const pweibull_1 = __nested_webpack_require_235307__(175);
+const qweibull_1 = __nested_webpack_require_235307__(176);
+const rweibull_1 = __nested_webpack_require_235307__(177);
+const rng_1 = __nested_webpack_require_235307__(16);
 function Weibull(rng = new rng_1.rng.MersenneTwister(0)) {
     function rweibull(n, shape, scale = 1) {
         return rweibull_1.rweibull(n, shape, scale, rng);
@@ -15028,16 +14802,16 @@ exports.Weibull = Weibull;
 
 /***/ }),
 /* 100 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_236034__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const dwilcox_1 = __webpack_require__(178);
-const pwilcox_1 = __webpack_require__(179);
-const qwilcox_1 = __webpack_require__(180);
-const rwilcox_1 = __webpack_require__(181);
-const mersenne_twister_1 = __webpack_require__(5);
+const dwilcox_1 = __nested_webpack_require_236034__(178);
+const pwilcox_1 = __nested_webpack_require_236034__(179);
+const qwilcox_1 = __nested_webpack_require_236034__(180);
+const rwilcox_1 = __nested_webpack_require_236034__(181);
+const mersenne_twister_1 = __nested_webpack_require_236034__(5);
 function Wilcoxon(rng = new mersenne_twister_1.MersenneTwister(0)) {
     function rwilcox(nn, m, n) {
         return rwilcox_1.rwilcox(nn, m, n, rng);
@@ -15054,14 +14828,14 @@ exports.Wilcoxon = Wilcoxon;
 
 /***/ }),
 /* 101 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_236750__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const gamma_cody_1 = __webpack_require__(66);
-const bessel_constants_1 = __webpack_require__(26);
+const debug = __nested_webpack_require_236750__(1);
+const gamma_cody_1 = __nested_webpack_require_236750__(66);
+const bessel_constants_1 = __nested_webpack_require_236750__(26);
 const { sqrt, pow, min, max: fmax, exp, trunc } = Math;
 const { POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('I_bessel');
@@ -15330,17 +15104,17 @@ exports.I_bessel = I_bessel;
 
 /***/ }),
 /* 102 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_246149__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const sinpi_1 = __webpack_require__(24);
-const besselK_1 = __webpack_require__(51);
-const IBessel_1 = __webpack_require__(101);
+const debug = __nested_webpack_require_246149__(1);
+const _general_1 = __nested_webpack_require_246149__(0);
+const r_func_1 = __nested_webpack_require_246149__(2);
+const sinpi_1 = __nested_webpack_require_246149__(24);
+const besselK_1 = __nested_webpack_require_246149__(51);
+const IBessel_1 = __nested_webpack_require_246149__(101);
 const { isNaN: ISNAN } = Number;
 const { exp, trunc, floor, PI: M_PI } = Math;
 const printer = debug('bessel_i');
@@ -15383,15 +15157,15 @@ exports.internal_bessel_i = internal_bessel_i;
 
 /***/ }),
 /* 103 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_247899__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const gamma_cody_1 = __webpack_require__(66);
-const bessel_constants_1 = __webpack_require__(26);
+const debug = __nested_webpack_require_247899__(1);
+const _general_1 = __nested_webpack_require_247899__(0);
+const gamma_cody_1 = __nested_webpack_require_247899__(66);
+const bessel_constants_1 = __nested_webpack_require_247899__(26);
 const { min, trunc, pow, sqrt, sin, cos, max, abs } = Math;
 const printer = debug('J_bessel');
 function J_bessel(x, alpha, nb) {
@@ -15712,14 +15486,14 @@ exports.J_bessel = J_bessel;
 
 /***/ }),
 /* 104 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_258345__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const bessel_constants_1 = __webpack_require__(26);
+const debug = __nested_webpack_require_258345__(1);
+const _general_1 = __nested_webpack_require_258345__(0);
+const bessel_constants_1 = __nested_webpack_require_258345__(26);
 const M_SQRT_2dPI = 0.797884560802865355879892119869;
 const { min, log, exp, abs: fabs, sinh, trunc, sqrt, max } = Math;
 const { MAX_VALUE: DBL_MAX, EPSILON: DBL_EPSILON, MIN_VALUE: DBL_MIN } = Number;
@@ -16042,15 +15816,15 @@ exports.K_bessel = K_bessel;
 
 /***/ }),
 /* 105 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_269718__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const cospi_1 = __webpack_require__(23);
-const sinpi_1 = __webpack_require__(24);
-const bessel_constants_1 = __webpack_require__(26);
+const debug = __nested_webpack_require_269718__(1);
+const cospi_1 = __nested_webpack_require_269718__(23);
+const sinpi_1 = __nested_webpack_require_269718__(24);
+const bessel_constants_1 = __nested_webpack_require_269718__(26);
 const M_SQRT_2dPI = 0.797884560802865355879892119869;
 const M_1_PI = 0.3183098861837907;
 const M_PI_2 = 1.5707963267948966;
@@ -16355,16 +16129,16 @@ exports.Y_bessel = Y_bessel;
 
 /***/ }),
 /* 106 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_278203__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const gamma_fn_1 = __webpack_require__(29);
-const r_func_1 = __webpack_require__(2);
-const lbeta_1 = __webpack_require__(11);
+const debug = __nested_webpack_require_278203__(1);
+const _general_1 = __nested_webpack_require_278203__(0);
+const gamma_fn_1 = __nested_webpack_require_278203__(29);
+const r_func_1 = __nested_webpack_require_278203__(2);
+const lbeta_1 = __nested_webpack_require_278203__(11);
 const xmax = 171.61447887182298;
 const lnsml = -708.39641853226412;
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
@@ -16398,13 +16172,13 @@ exports.internal_beta = internal_beta;
 
 /***/ }),
 /* 107 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_279539__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_279539__(1);
+const _general_1 = __nested_webpack_require_279539__(0);
 const { LN2: M_LN2, log, min: fmin2, max: fmax2, exp, sqrt } = Math;
 const { MAX_VALUE: DBL_MAX, isFinite: R_FINITE } = Number;
 const printer = debug('rbeta');
@@ -16521,15 +16295,15 @@ exports.rbeta = rbeta;
 
 /***/ }),
 /* 108 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_283187__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const dbinom_1 = __webpack_require__(17);
-const lgamma_fn_1 = __webpack_require__(4);
+const debug = __nested_webpack_require_283187__(1);
+const _general_1 = __nested_webpack_require_283187__(0);
+const dbinom_1 = __nested_webpack_require_283187__(17);
+const lgamma_fn_1 = __nested_webpack_require_283187__(4);
 const printer = debug('dnbinom');
 const { log, round: R_forceint, log1p } = Math;
 const { isFinite: R_FINITE, isNaN: ISNAN } = Number;
@@ -16610,18 +16384,18 @@ exports.dnbinom_mu = dnbinom_mu;
 
 /***/ }),
 /* 109 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_286214__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const toms708_1 = __webpack_require__(9);
-const expm1_1 = __webpack_require__(3);
-const qnorm_1 = __webpack_require__(6);
-const r_func_1 = __webpack_require__(2);
-const pnbinom_1 = __webpack_require__(57);
+const debug = __nested_webpack_require_286214__(1);
+const _general_1 = __nested_webpack_require_286214__(0);
+const toms708_1 = __nested_webpack_require_286214__(9);
+const expm1_1 = __nested_webpack_require_286214__(3);
+const qnorm_1 = __nested_webpack_require_286214__(6);
+const r_func_1 = __nested_webpack_require_286214__(2);
+const pnbinom_1 = __nested_webpack_require_286214__(57);
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF, EPSILON: DBL_EPSILON } = Number;
 const { max: fmax2, sqrt, floor, round: R_forceint } = Math;
 const printer_do_search = debug('do_search');
@@ -16712,15 +16486,15 @@ exports.qnbinom_mu = qnbinom_mu;
 
 /***/ }),
 /* 110 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_289592__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const rgamma_1 = __webpack_require__(30);
-const rpois_1 = __webpack_require__(32);
+const debug = __nested_webpack_require_289592__(1);
+const _general_1 = __nested_webpack_require_289592__(0);
+const rgamma_1 = __nested_webpack_require_289592__(30);
+const rpois_1 = __nested_webpack_require_289592__(32);
 const { isFinite: R_FINITE } = Number;
 const printer_rnbinom = debug('rnbinom');
 function rnbinom(n, size, prob, rng) {
@@ -16757,14 +16531,14 @@ exports.rnbinom_mu = rnbinom_mu;
 
 /***/ }),
 /* 111 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_291087__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_291087__(1);
+const _general_1 = __nested_webpack_require_291087__(0);
+const r_func_1 = __nested_webpack_require_291087__(2);
 const { isNaN: ISNAN } = Number;
 const { PI: M_PI, log } = Math;
 const printer = debug('dcauchy');
@@ -16788,16 +16562,16 @@ exports.dcauchy = dcauchy;
 
 /***/ }),
 /* 112 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_291975__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const _general_2 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const trigonometry_1 = __webpack_require__(33);
+const debug = __nested_webpack_require_291975__(1);
+const _general_1 = __nested_webpack_require_291975__(0);
+const _general_2 = __nested_webpack_require_291975__(0);
+const r_func_1 = __nested_webpack_require_291975__(2);
+const trigonometry_1 = __nested_webpack_require_291975__(33);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { abs: fabs } = Math;
 const printer = debug('pcauchy');
@@ -16834,15 +16608,15 @@ exports.pcauchy = pcauchy;
 
 /***/ }),
 /* 113 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_293449__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const tanpi_1 = __webpack_require__(76);
+const debug = __nested_webpack_require_293449__(1);
+const _general_1 = __nested_webpack_require_293449__(0);
+const r_func_1 = __nested_webpack_require_293449__(2);
+const tanpi_1 = __nested_webpack_require_293449__(76);
 const { expm1, exp } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { ML_POSINF, ML_NEGINF } = {
@@ -16895,13 +16669,13 @@ exports.qcauchy = qcauchy;
 
 /***/ }),
 /* 114 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_295285__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_295285__(1);
+const _general_1 = __nested_webpack_require_295285__(0);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { PI: M_PI } = Math;
 const printer = debug('rcauchy');
@@ -16922,13 +16696,13 @@ exports.rcauchy = rcauchy;
 
 /***/ }),
 /* 115 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_296125__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const NumberW_1 = __webpack_require__(63);
+const debug = __nested_webpack_require_296125__(1);
+const NumberW_1 = __nested_webpack_require_296125__(63);
 const { trunc, log, abs, min, pow } = Math;
 const printer_bratio = debug('Toms708.bratio');
 class Toms708 {
@@ -19334,14 +19108,14 @@ exports.Toms708 = Toms708;
 
 /***/ }),
 /* 116 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_363614__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const debug = __webpack_require__(1);
-const r_func_1 = __webpack_require__(2);
+const _general_1 = __nested_webpack_require_363614__(0);
+const debug = __nested_webpack_require_363614__(1);
+const r_func_1 = __nested_webpack_require_363614__(2);
 const { log, exp } = Math;
 const { isNaN: ISNAN } = Number;
 const printer = debug('dexp');
@@ -19364,15 +19138,15 @@ exports.dexp = dexp;
 
 /***/ }),
 /* 117 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_364424__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const debug = __webpack_require__(1);
-const expm1_1 = __webpack_require__(3);
+const _general_1 = __nested_webpack_require_364424__(0);
+const r_func_1 = __nested_webpack_require_364424__(2);
+const debug = __nested_webpack_require_364424__(1);
+const expm1_1 = __nested_webpack_require_364424__(3);
 const { expm1 } = Math;
 const { isNaN: ISNAN } = Number;
 const printer = debug('pexp');
@@ -19396,15 +19170,15 @@ exports.pexp = pexp;
 
 /***/ }),
 /* 118 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_365340__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const expm1_1 = __webpack_require__(3);
+const debug = __nested_webpack_require_365340__(1);
+const _general_1 = __nested_webpack_require_365340__(0);
+const r_func_1 = __nested_webpack_require_365340__(2);
+const expm1_1 = __nested_webpack_require_365340__(3);
 const { isNaN: ISNAN } = Number;
 const printer = debug('qexp');
 function qexp(_p, scale, lower_tail, log_p) {
@@ -19427,14 +19201,14 @@ exports.qexp = qexp;
 
 /***/ }),
 /* 119 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_366245__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const debug = __webpack_require__(1);
-const sexp_1 = __webpack_require__(28);
+const _general_1 = __nested_webpack_require_366245__(0);
+const debug = __nested_webpack_require_366245__(1);
+const sexp_1 = __nested_webpack_require_366245__(28);
 const { isFinite: R_FINITE } = Number;
 const printer = debug('rexp');
 function rexp(n = 1, scale = 1, rng) {
@@ -19453,15 +19227,15 @@ exports.rexp = rexp;
 
 /***/ }),
 /* 120 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_366993__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const dbinom_1 = __webpack_require__(17);
-const dgamma_1 = __webpack_require__(21);
+const debug = __nested_webpack_require_366993__(1);
+const _general_1 = __nested_webpack_require_366993__(0);
+const dbinom_1 = __nested_webpack_require_366993__(17);
+const dgamma_1 = __nested_webpack_require_366993__(21);
 const { log } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer_df = debug('df');
@@ -19519,16 +19293,16 @@ exports.df = df;
 
 /***/ }),
 /* 121 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_369014__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const dnbeta_1 = __webpack_require__(54);
-const dnchisq_1 = __webpack_require__(61);
-const dgamma_1 = __webpack_require__(21);
+const debug = __nested_webpack_require_369014__(1);
+const _general_1 = __nested_webpack_require_369014__(0);
+const dnbeta_1 = __nested_webpack_require_369014__(54);
+const dnchisq_1 = __nested_webpack_require_369014__(61);
+const dgamma_1 = __nested_webpack_require_369014__(21);
 const { log1p, log } = Math;
 const { isFinite: R_FINITE, isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('dnf');
@@ -19578,15 +19352,15 @@ exports.dnf = dnf;
 
 /***/ }),
 /* 122 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_370949__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const pbeta_1 = __webpack_require__(12);
-const pchisq_1 = __webpack_require__(38);
+const debug = __nested_webpack_require_370949__(1);
+const _general_1 = __nested_webpack_require_370949__(0);
+const pbeta_1 = __nested_webpack_require_370949__(12);
+const pchisq_1 = __nested_webpack_require_370949__(38);
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF, NaN: ML_NAN, isFinite: ML_VALID } = Number;
 const { LN2: M_LN2 } = Math;
 const printer_pf = debug('pf');
@@ -19628,15 +19402,15 @@ exports.pf = pf;
 
 /***/ }),
 /* 123 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_372756__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const pnbeta_1 = __webpack_require__(35);
-const pnchisq_1 = __webpack_require__(39);
+const debug = __nested_webpack_require_372756__(1);
+const _general_1 = __nested_webpack_require_372756__(0);
+const pnbeta_1 = __nested_webpack_require_372756__(35);
+const pnchisq_1 = __nested_webpack_require_372756__(39);
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer_pnf = debug('pnf');
 function pnf(xx, df1, df2, ncp, lowerTail = true, logP = false) {
@@ -19667,15 +19441,15 @@ exports.pnf = pnf;
 
 /***/ }),
 /* 124 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_374212__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const qbeta_1 = __webpack_require__(55);
-const qchisq_1 = __webpack_require__(40);
+const debug = __nested_webpack_require_374212__(1);
+const _general_1 = __nested_webpack_require_374212__(0);
+const qbeta_1 = __nested_webpack_require_374212__(55);
+const qchisq_1 = __nested_webpack_require_374212__(40);
 const printer = debug('qf');
 const { isNaN: ISNAN, isFinite: R_FINITE, NaN: ML_NAN, POSITIVE_INFINITY: ML_POSINF, isFinite: ML_VALID } = Number;
 function qf(pp, df1, df2, lower_tail, log_p) {
@@ -19707,15 +19481,15 @@ exports.qf = qf;
 
 /***/ }),
 /* 125 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_375623__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const qnbeta_1 = __webpack_require__(56);
-const qnchisq_1 = __webpack_require__(62);
+const debug = __nested_webpack_require_375623__(1);
+const _general_1 = __nested_webpack_require_375623__(0);
+const qnbeta_1 = __nested_webpack_require_375623__(56);
+const qnchisq_1 = __nested_webpack_require_375623__(62);
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('qnf');
 function qnf(pp, df1, df2, ncp, lowerTail = true, logP = false) {
@@ -19748,15 +19522,15 @@ exports.qnf = qnf;
 
 /***/ }),
 /* 126 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_377037__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const rchisq_1 = __webpack_require__(13);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_377037__(1);
+const _general_1 = __nested_webpack_require_377037__(0);
+const rchisq_1 = __nested_webpack_require_377037__(13);
+const r_func_1 = __nested_webpack_require_377037__(2);
 const printer = debug('rf');
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const sequence = r_func_1.seq()();
@@ -19791,15 +19565,15 @@ exports.logspace_add = logspace_add;
 
 /***/ }),
 /* 128 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_378240__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const toms708_1 = __webpack_require__(9);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_378240__(1);
+const _general_1 = __nested_webpack_require_378240__(0);
+const toms708_1 = __nested_webpack_require_378240__(9);
+const r_func_1 = __nested_webpack_require_378240__(2);
 const printer = debug('dpsifn');
 const { NaN: ML_NAN, POSITIVE_INFINITY: ML_POSINF, isNaN: ISNAN, EPSILON: DBL_EPSILON } = Number;
 const n_max = 100;
@@ -20250,14 +20024,14 @@ exports.pentagamma = pentagamma;
 
 /***/ }),
 /* 129 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_390232__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const dbinom_1 = __webpack_require__(17);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_390232__(1);
+const dbinom_1 = __nested_webpack_require_390232__(17);
+const _general_1 = __nested_webpack_require_390232__(0);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const { round: R_forceint, log } = Math;
 const printer = debug('dgeom');
@@ -20288,14 +20062,14 @@ exports.dgeom = dgeom;
 
 /***/ }),
 /* 130 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_391397__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
+const debug = __nested_webpack_require_391397__(1);
+const _general_1 = __nested_webpack_require_391397__(0);
+const expm1_1 = __nested_webpack_require_391397__(3);
 const { expm1, log1p, log, exp, floor } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer = debug('pgeom');
@@ -20329,14 +20103,14 @@ exports.pgeom = pgeom;
 
 /***/ }),
 /* 131 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_392651__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
+const debug = __nested_webpack_require_392651__(1);
+const _general_1 = __nested_webpack_require_392651__(0);
+const expm1_1 = __nested_webpack_require_392651__(3);
 const { ceil, max: fmax2, log1p } = Math;
 const { POSITIVE_INFINITY: ML_POSINF, isNaN: ISNAN } = Number;
 const printer = debug('qgeom');
@@ -20363,15 +20137,15 @@ exports.qgeom = qgeom;
 
 /***/ }),
 /* 132 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_393757__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const sexp_1 = __webpack_require__(28);
-const rpois_1 = __webpack_require__(32);
+const debug = __nested_webpack_require_393757__(1);
+const _general_1 = __nested_webpack_require_393757__(0);
+const sexp_1 = __nested_webpack_require_393757__(28);
+const rpois_1 = __nested_webpack_require_393757__(32);
 const { isFinite: R_FINITE } = Number;
 const printer = debug('rgeom');
 function rgeom(N, p, rng) {
@@ -20387,12 +20161,12 @@ exports.rgeom = rgeom;
 
 /***/ }),
 /* 133 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_394502__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const lbeta_1 = __webpack_require__(11);
+const lbeta_1 = __nested_webpack_require_394502__(11);
 const { log } = Math;
 function lfastchoose(n, k) {
     return -log(n + 1) - lbeta_1.internal_lbeta(n - k + 1, k + 1);
@@ -20402,16 +20176,16 @@ exports.lfastchoose = lfastchoose;
 
 /***/ }),
 /* 134 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_394855__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
-const dhyper_1 = __webpack_require__(69);
+const debug = __nested_webpack_require_394855__(1);
+const _general_1 = __nested_webpack_require_394855__(0);
+const expm1_1 = __nested_webpack_require_394855__(3);
+const r_func_1 = __nested_webpack_require_394855__(2);
+const dhyper_1 = __nested_webpack_require_394855__(69);
 const { floor, round: R_forceint, log1p } = Math;
 const { EPSILON: DBL_EPSILON, isNaN: ISNAN, isFinite: R_FINITE } = Number;
 function pdhyper(x, NR, NB, n, log_p) {
@@ -20467,15 +20241,15 @@ exports.phyper = phyper;
 
 /***/ }),
 /* 135 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_396898__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const rbinom_1 = __webpack_require__(36);
-const _general_1 = __webpack_require__(0);
-const qhyper_1 = __webpack_require__(70);
+const debug = __nested_webpack_require_396898__(1);
+const rbinom_1 = __nested_webpack_require_396898__(36);
+const _general_1 = __nested_webpack_require_396898__(0);
+const qhyper_1 = __nested_webpack_require_396898__(70);
 const { log, round: R_forceint, exp, sqrt } = Math;
 const { isFinite: R_FINITE, MAX_SAFE_INTEGER: INT_MAX } = Number;
 const printer_afc = debug('afc');
@@ -20816,65 +20590,65 @@ function _rhyper(nn1in, nn2in, kkin, rng) {
 
 /***/ }),
 /* 136 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_407461__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var beta_1 = __webpack_require__(34);
+var beta_1 = __nested_webpack_require_407461__(34);
 exports.Beta = beta_1.Beta;
-var binomial_1 = __webpack_require__(81);
+var binomial_1 = __nested_webpack_require_407461__(81);
 exports.Binomial = binomial_1.Binomial;
-var binomial_negative_1 = __webpack_require__(80);
+var binomial_negative_1 = __nested_webpack_require_407461__(80);
 exports.NegativeBinomial = binomial_negative_1.NegativeBinomial;
-var cauchy_1 = __webpack_require__(82);
+var cauchy_1 = __nested_webpack_require_407461__(82);
 exports.Cauchy = cauchy_1.Cauchy;
-var chebyshev_1 = __webpack_require__(83);
+var chebyshev_1 = __nested_webpack_require_407461__(83);
 exports.ChebyshevSeries = chebyshev_1.ChebyshevSeries;
-var chi_2_1 = __webpack_require__(84);
+var chi_2_1 = __nested_webpack_require_407461__(84);
 exports.ChiSquared = chi_2_1.ChiSquared;
-var exp_1 = __webpack_require__(86);
+var exp_1 = __nested_webpack_require_407461__(86);
 exports.Exponential = exp_1.Exponential;
-var f_distro_1 = __webpack_require__(87);
+var f_distro_1 = __nested_webpack_require_407461__(87);
 exports.FDist = f_distro_1.FDist;
-var gamma_1 = __webpack_require__(25);
+var gamma_1 = __nested_webpack_require_407461__(25);
 exports.Gamma = gamma_1.Gamma;
-var geometric_1 = __webpack_require__(88);
+var geometric_1 = __nested_webpack_require_407461__(88);
 exports.Geometric = geometric_1.Geometric;
-var hypergeometric_1 = __webpack_require__(89);
+var hypergeometric_1 = __nested_webpack_require_407461__(89);
 exports.HyperGeometric = hypergeometric_1.HyperGeometric;
-var logis_1 = __webpack_require__(90);
+var logis_1 = __nested_webpack_require_407461__(90);
 exports.Logistic = logis_1.Logistic;
-var lognormal_1 = __webpack_require__(91);
+var lognormal_1 = __nested_webpack_require_407461__(91);
 exports.LogNormal = lognormal_1.LogNormal;
-var multinom_1 = __webpack_require__(92);
+var multinom_1 = __nested_webpack_require_407461__(92);
 exports.Multinomial = multinom_1.Multinomial;
-var normal_1 = __webpack_require__(93);
+var normal_1 = __nested_webpack_require_407461__(93);
 exports.Normal = normal_1.Normal;
-var poisson_1 = __webpack_require__(94);
+var poisson_1 = __nested_webpack_require_407461__(94);
 exports.Poisson = poisson_1.Poisson;
-var rng_1 = __webpack_require__(16);
+var rng_1 = __nested_webpack_require_407461__(16);
 exports.rng = rng_1.rng;
 exports.IRNG = rng_1.IRNG;
 exports.IRNGNormal = rng_1.IRNGNormal;
-var signrank_1 = __webpack_require__(95);
+var signrank_1 = __nested_webpack_require_407461__(95);
 exports.SignRank = signrank_1.SignRank;
-var student_t_1 = __webpack_require__(96);
+var student_t_1 = __nested_webpack_require_407461__(96);
 exports.StudentT = student_t_1.StudentT;
-var tukey_1 = __webpack_require__(97);
+var tukey_1 = __nested_webpack_require_407461__(97);
 exports.Tukey = tukey_1.Tukey;
-var uniform_1 = __webpack_require__(98);
+var uniform_1 = __nested_webpack_require_407461__(98);
 exports.Uniform = uniform_1.Uniform;
-var weibull_1 = __webpack_require__(99);
+var weibull_1 = __nested_webpack_require_407461__(99);
 exports.Weibull = weibull_1.Weibull;
-var wilcoxon_1 = __webpack_require__(100);
+var wilcoxon_1 = __nested_webpack_require_407461__(100);
 exports.Wilcoxon = wilcoxon_1.Wilcoxon;
-const bessel_1 = __webpack_require__(79);
-const beta_2 = __webpack_require__(34);
-const common_1 = __webpack_require__(85);
-const gamma_2 = __webpack_require__(25);
+const bessel_1 = __nested_webpack_require_407461__(79);
+const beta_2 = __nested_webpack_require_407461__(34);
+const common_1 = __nested_webpack_require_407461__(85);
+const gamma_2 = __nested_webpack_require_407461__(25);
 exports.special = Object.freeze(Object.assign({}, gamma_2.special, beta_2.special, common_1.special, bessel_1.special));
-const r_func_1 = __webpack_require__(2);
+const r_func_1 = __nested_webpack_require_407461__(2);
 exports.R = {
     any: r_func_1.any,
     arrayrify: r_func_1.arrayrify,
@@ -20899,14 +20673,14 @@ exports.R = {
 
 /***/ }),
 /* 137 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_410452__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_410452__(1);
+const _general_1 = __nested_webpack_require_410452__(0);
+const r_func_1 = __nested_webpack_require_410452__(2);
 const { log, exp, abs: fabs } = Math;
 const { isNaN: ISNAN } = Number;
 const printer_dlogis = debug('dlogis');
@@ -20930,14 +20704,14 @@ exports.dlogis = dlogis;
 
 /***/ }),
 /* 138 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_411350__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_411350__(1);
+const _general_1 = __nested_webpack_require_411350__(0);
+const r_func_1 = __nested_webpack_require_411350__(2);
 const { exp, log1p } = Math;
 const { isNaN: ISNAN } = Number;
 function Rf_log1pexp(x) {
@@ -20977,15 +20751,15 @@ exports.plogis = plogis;
 
 /***/ }),
 /* 139 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_412687__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_412687__(1);
+const _general_1 = __nested_webpack_require_412687__(0);
+const expm1_1 = __nested_webpack_require_412687__(3);
+const r_func_1 = __nested_webpack_require_412687__(2);
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF, NEGATIVE_INFINITY: ML_NEGINF } = Number;
 const { log } = Math;
 const printer_qlogis = debug('qlogis');
@@ -21018,14 +20792,14 @@ exports.qlogis = qlogis;
 
 /***/ }),
 /* 140 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_414002__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_414002__(1);
+const _general_1 = __nested_webpack_require_414002__(0);
+const r_func_1 = __nested_webpack_require_414002__(2);
 const { log } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const sequence = r_func_1.seq()();
@@ -21048,14 +20822,14 @@ exports.rlogis = rlogis;
 
 /***/ }),
 /* 141 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_414883__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_414883__(1);
+const _general_1 = __nested_webpack_require_414883__(0);
+const r_func_1 = __nested_webpack_require_414883__(2);
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF } = Number;
 const { log, exp } = Math;
 const printer = debug('dlnorm');
@@ -21084,15 +20858,15 @@ exports.dlnorm = dlnorm;
 
 /***/ }),
 /* 142 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_416033__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const pnorm_1 = __webpack_require__(19);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_416033__(1);
+const _general_1 = __nested_webpack_require_416033__(0);
+const pnorm_1 = __nested_webpack_require_416033__(19);
+const r_func_1 = __nested_webpack_require_416033__(2);
 const { isNaN: ISNAN } = Number;
 const { log } = Math;
 const printer = debug('plnorm');
@@ -21112,14 +20886,14 @@ exports.plnorm = plnorm;
 
 /***/ }),
 /* 143 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_416921__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const qnorm_1 = __webpack_require__(6);
-const r_func_1 = __webpack_require__(2);
+const _general_1 = __nested_webpack_require_416921__(0);
+const qnorm_1 = __nested_webpack_require_416921__(6);
+const r_func_1 = __nested_webpack_require_416921__(2);
 const { exp } = Math;
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF } = Number;
 function qlnorm(pp, meanlog = 0, sdlog = 1, lower_tail = true, log_p = false) {
@@ -21135,15 +20909,15 @@ exports.qlnorm = qlnorm;
 
 /***/ }),
 /* 144 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_417681__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const rnorm_1 = __webpack_require__(43);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_417681__(1);
+const _general_1 = __nested_webpack_require_417681__(0);
+const rnorm_1 = __nested_webpack_require_417681__(43);
+const r_func_1 = __nested_webpack_require_417681__(2);
 const exp = r_func_1.arrayrify(Math.exp);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer = debug('rlnorm');
@@ -21159,13 +20933,13 @@ exports.rlnorm = rlnorm;
 
 /***/ }),
 /* 145 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_418448__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const gamma_1 = __webpack_require__(25);
-const r_func_1 = __webpack_require__(2);
+const gamma_1 = __nested_webpack_require_418448__(25);
+const r_func_1 = __nested_webpack_require_418448__(2);
 const { isFinite } = Number;
 const div = r_func_1.arrayrify((a, b) => a / b);
 const { lgamma } = gamma_1.special;
@@ -21222,16 +20996,16 @@ exports.dmultinom = dmultinom;
 
 /***/ }),
 /* 146 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_420637__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
+const debug = __nested_webpack_require_420637__(1);
 const { isFinite: R_FINITE } = Number;
 const { abs: fabs } = Math;
-const rbinom_1 = __webpack_require__(36);
-const r_func_1 = __webpack_require__(2);
+const rbinom_1 = __nested_webpack_require_420637__(36);
+const r_func_1 = __nested_webpack_require_420637__(2);
 const printer_rmultinom = debug('rmultinom');
 function rmultinom(n, size, prob, rng) {
     const result = Array.from({ length: n }).map(() => _rmultinom(size, prob, rng));
@@ -21291,18 +21065,18 @@ function _rmultinom(size, prob, rng) {
 
 /***/ }),
 /* 147 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_422591__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const toms708_1 = __webpack_require__(9);
-const ppois_1 = __webpack_require__(71);
-const qnorm_1 = __webpack_require__(6);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_422591__(1);
+const _general_1 = __nested_webpack_require_422591__(0);
+const toms708_1 = __nested_webpack_require_422591__(9);
+const ppois_1 = __nested_webpack_require_422591__(71);
+const qnorm_1 = __nested_webpack_require_422591__(6);
+const expm1_1 = __nested_webpack_require_422591__(3);
+const r_func_1 = __nested_webpack_require_422591__(2);
 const { max: fmax2, sqrt, floor, round: nearbyint } = Math;
 const { isNaN: ISNAN, EPSILON: DBL_EPSILON, POSITIVE_INFINITY: ML_POSINF, isFinite: R_FINITE } = Number;
 function do_search(y, z, p, lambda, incr) {
@@ -21380,15 +21154,15 @@ function _qpois(p, lambda, lower_tail, log_p) {
 
 /***/ }),
 /* 148 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_425272__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const fixup_1 = __webpack_require__(20);
-const irng_1 = __webpack_require__(7);
-const irng_type_1 = __webpack_require__(14);
-const timeseed_1 = __webpack_require__(10);
+const fixup_1 = __nested_webpack_require_425272__(20);
+const irng_1 = __nested_webpack_require_425272__(7);
+const irng_type_1 = __nested_webpack_require_425272__(14);
+const timeseed_1 = __nested_webpack_require_425272__(10);
 const QUALITY = 1009;
 const SEED_LEN = 101;
 const LL = 37;
@@ -21532,16 +21306,16 @@ exports.KnuthTAOCP2002 = KnuthTAOCP2002;
 
 /***/ }),
 /* 149 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_429484__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const fixup_1 = __webpack_require__(20);
-const irng_1 = __webpack_require__(7);
-const irng_type_1 = __webpack_require__(14);
-const timeseed_1 = __webpack_require__(10);
-const taocp_1997_init_1 = __webpack_require__(150);
+const fixup_1 = __nested_webpack_require_429484__(20);
+const irng_1 = __nested_webpack_require_429484__(7);
+const irng_type_1 = __nested_webpack_require_429484__(14);
+const timeseed_1 = __nested_webpack_require_429484__(10);
+const taocp_1997_init_1 = __nested_webpack_require_429484__(150);
 const MM = 1 << 30;
 const KK = 100;
 const LL = 37;
@@ -21634,12 +21408,12 @@ exports.KnuthTAOCP = KnuthTAOCP;
 
 /***/ }),
 /* 150 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_432391__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const r_func_1 = __webpack_require__(2);
+const r_func_1 = __nested_webpack_require_432391__(2);
 const { trunc } = Math;
 function TAOCP1997init(seed) {
     const KK = 100;
@@ -21699,14 +21473,14 @@ exports.TAOCP1997init = TAOCP1997init;
 
 /***/ }),
 /* 151 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_434028__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const irng_1 = __webpack_require__(7);
-const irng_type_1 = __webpack_require__(14);
-const timeseed_1 = __webpack_require__(10);
+const irng_1 = __nested_webpack_require_434028__(7);
+const irng_type_1 = __nested_webpack_require_434028__(14);
+const timeseed_1 = __nested_webpack_require_434028__(10);
 const SEED_LEN = 6;
 const a12 = 1403580;
 const a13n = 810728;
@@ -21778,15 +21552,15 @@ exports.LecuyerCMRG = LecuyerCMRG;
 
 /***/ }),
 /* 152 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_436267__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const fixup_1 = __webpack_require__(20);
-const irng_1 = __webpack_require__(7);
-const irng_type_1 = __webpack_require__(14);
-const timeseed_1 = __webpack_require__(10);
+const fixup_1 = __nested_webpack_require_436267__(20);
+const irng_1 = __nested_webpack_require_436267__(7);
+const irng_type_1 = __nested_webpack_require_436267__(14);
+const timeseed_1 = __nested_webpack_require_436267__(10);
 const SEED_LEN = 2;
 class MarsagliaMultiCarry extends irng_1.IRNG {
     fixupSeeds() {
@@ -21843,13 +21617,13 @@ exports.MarsagliaMultiCarry = MarsagliaMultiCarry;
 
 /***/ }),
 /* 153 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_438165__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const mersenne_twister_1 = __webpack_require__(5);
-const inormal_rng_1 = __webpack_require__(15);
+const mersenne_twister_1 = __nested_webpack_require_438165__(5);
+const inormal_rng_1 = __nested_webpack_require_438165__(15);
 const a = [
     0.0,
     0.03917609,
@@ -22060,13 +21834,13 @@ exports.AhrensDieter = AhrensDieter;
 
 /***/ }),
 /* 154 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_442461__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const mersenne_twister_1 = __webpack_require__(5);
-const inormal_rng_1 = __webpack_require__(15);
+const mersenne_twister_1 = __nested_webpack_require_442461__(5);
+const inormal_rng_1 = __nested_webpack_require_442461__(15);
 const { log, sqrt, cos, sin } = Math;
 const DBL_MIN = 2.22507e-308;
 const M_PI = 3.14159265358979323846264338327950288;
@@ -22101,13 +21875,13 @@ exports.BoxMuller = BoxMuller;
 
 /***/ }),
 /* 155 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_443623__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const mersenne_twister_1 = __webpack_require__(5);
-const inormal_rng_1 = __webpack_require__(15);
+const mersenne_twister_1 = __nested_webpack_require_443623__(5);
+const inormal_rng_1 = __nested_webpack_require_443623__(15);
 const { log, sqrt, min: fmin2, max: fmax2, abs: fabs, exp } = Math;
 class BuggyKindermanRamage extends inormal_rng_1.IRNGNormal {
     constructor(_rng = new mersenne_twister_1.MersenneTwister(0)) {
@@ -22171,13 +21945,13 @@ exports.BuggyKindermanRamage = BuggyKindermanRamage;
 
 /***/ }),
 /* 156 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_446112__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const mersenne_twister_1 = __webpack_require__(5);
-const inormal_rng_1 = __webpack_require__(15);
+const mersenne_twister_1 = __nested_webpack_require_446112__(5);
+const inormal_rng_1 = __nested_webpack_require_446112__(15);
 const { exp, log, sqrt, max: fmax2, min: fmin2, abs: fabs } = Math;
 const A = 2.216035867166471;
 const C1 = 0.398942280401433;
@@ -22246,15 +22020,15 @@ exports.KindermanRamage = KindermanRamage;
 
 /***/ }),
 /* 157 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_448722__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const fixup_1 = __webpack_require__(20);
-const irng_1 = __webpack_require__(7);
-const irng_type_1 = __webpack_require__(14);
-const timeseed_1 = __webpack_require__(10);
+const fixup_1 = __nested_webpack_require_448722__(20);
+const irng_1 = __nested_webpack_require_448722__(7);
+const irng_type_1 = __nested_webpack_require_448722__(14);
+const timeseed_1 = __nested_webpack_require_448722__(10);
 const SEED_LEN = 2;
 const buf = new ArrayBuffer(SEED_LEN * 4);
 class SuperDuper extends irng_1.IRNG {
@@ -22312,17 +22086,17 @@ exports.SuperDuper = SuperDuper;
 
 /***/ }),
 /* 158 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_450533__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const { trunc } = Math;
 const frac = (x) => x - trunc(x);
-const fixup_1 = __webpack_require__(20);
-const irng_1 = __webpack_require__(7);
-const irng_type_1 = __webpack_require__(14);
-const timeseed_1 = __webpack_require__(10);
+const fixup_1 = __nested_webpack_require_450533__(20);
+const irng_1 = __nested_webpack_require_450533__(7);
+const irng_type_1 = __nested_webpack_require_450533__(14);
+const timeseed_1 = __nested_webpack_require_450533__(10);
 const SEED_LEN = 3;
 class WichmannHill extends irng_1.IRNG {
     constructor(_seed = timeseed_1.timeseed()) {
@@ -22383,12 +22157,12 @@ exports.WichmannHill = WichmannHill;
 
 /***/ }),
 /* 159 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_452534__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
+const _general_1 = __nested_webpack_require_452534__(0);
 function csignrank(k, n, u, c, w) {
     if (k < 0 || k > u)
         return 0;
@@ -22412,14 +22186,14 @@ exports.csignrank = csignrank;
 
 /***/ }),
 /* 160 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_453173__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const csignrank_1 = __webpack_require__(159);
+const debug = __nested_webpack_require_453173__(1);
+const _general_1 = __nested_webpack_require_453173__(0);
+const csignrank_1 = __nested_webpack_require_453173__(159);
 const { round, trunc, abs: fabs, log, LN2: M_LN2 } = Math;
 const { isNaN: ISNAN } = Number;
 const printer_dsignrank = debug('dsignrank');
@@ -22469,15 +22243,15 @@ exports.fsign = fsign;
 
 /***/ }),
 /* 162 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_454784__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
-const signrank_1 = __webpack_require__(73);
+const debug = __nested_webpack_require_454784__(1);
+const _general_1 = __nested_webpack_require_454784__(0);
+const r_func_1 = __nested_webpack_require_454784__(2);
+const signrank_1 = __nested_webpack_require_454784__(73);
 const { round, trunc, LN2: M_LN2, exp } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer_psignrank = debug('psignrank');
@@ -22523,16 +22297,16 @@ exports.psignrank = psignrank;
 
 /***/ }),
 /* 163 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_456489__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
-const signrank_1 = __webpack_require__(73);
+const debug = __nested_webpack_require_456489__(1);
+const _general_1 = __nested_webpack_require_456489__(0);
+const expm1_1 = __nested_webpack_require_456489__(3);
+const r_func_1 = __nested_webpack_require_456489__(2);
+const signrank_1 = __nested_webpack_require_456489__(73);
 const { round, trunc, LN2: M_LN2, exp } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, EPSILON: DBL_EPSILON } = Number;
 const printer_qsignrank = debug('qsignrank');
@@ -22595,14 +22369,14 @@ exports.qsignrank = qsignrank;
 
 /***/ }),
 /* 164 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_458620__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_458620__(1);
+const _general_1 = __nested_webpack_require_458620__(0);
+const r_func_1 = __nested_webpack_require_458620__(2);
 const { isNaN: ISNAN } = Number;
 const { floor, round } = Math;
 const printer_rsignrank = debug('rsignrank');
@@ -22629,18 +22403,18 @@ exports.rsignrank = rsignrank;
 
 /***/ }),
 /* 165 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_459548__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const lgamma_fn_1 = __webpack_require__(4);
-const dnorm_1 = __webpack_require__(31);
-const r_func_1 = __webpack_require__(2);
-const dt_1 = __webpack_require__(45);
-const pnt_1 = __webpack_require__(46);
+const debug = __nested_webpack_require_459548__(1);
+const _general_1 = __nested_webpack_require_459548__(0);
+const lgamma_fn_1 = __nested_webpack_require_459548__(4);
+const dnorm_1 = __nested_webpack_require_459548__(31);
+const r_func_1 = __nested_webpack_require_459548__(2);
+const dt_1 = __nested_webpack_require_459548__(45);
+const pnt_1 = __nested_webpack_require_459548__(46);
 const { isNaN: ISNAN, isFinite: R_FINITE, EPSILON: DBL_EPSILON } = Number;
 const { abs: fabs, sqrt, log, exp } = Math;
 const printer_dnt = debug('dnt');
@@ -22680,18 +22454,18 @@ exports.dnt = dnt;
 
 /***/ }),
 /* 166 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_461481__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const qnorm_1 = __webpack_require__(6);
-const r_func_1 = __webpack_require__(2);
-const pnt_1 = __webpack_require__(46);
-const qt_1 = __webpack_require__(75);
+const debug = __nested_webpack_require_461481__(1);
+const _general_1 = __nested_webpack_require_461481__(0);
+const expm1_1 = __nested_webpack_require_461481__(3);
+const qnorm_1 = __nested_webpack_require_461481__(6);
+const r_func_1 = __nested_webpack_require_461481__(2);
+const pnt_1 = __nested_webpack_require_461481__(46);
+const qt_1 = __nested_webpack_require_461481__(75);
 const { abs: fabs, max: fmax2, min: fmin2 } = Math;
 const { MAX_VALUE: DBL_MAX, EPSILON: DBL_EPSILON, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF, NEGATIVE_INFINITY: ML_NEGINF, isNaN: ISNAN } = Number;
 const printer = debug('qnt');
@@ -22740,15 +22514,15 @@ function _qnt(p, df, ncp, lower_tail, log_p) {
 
 /***/ }),
 /* 167 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_463511__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const rchisq_1 = __webpack_require__(13);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_463511__(1);
+const rchisq_1 = __nested_webpack_require_463511__(13);
+const _general_1 = __nested_webpack_require_463511__(0);
+const r_func_1 = __nested_webpack_require_463511__(2);
 const { sqrt } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const sequence = r_func_1.seq()();
@@ -22771,7 +22545,7 @@ exports.rt = rt;
 
 /***/ }),
 /* 168 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_464368__) {
 
 "use strict";
 
@@ -22811,11 +22585,11 @@ function qinv(p, c, v) {
         q += -c3 / v + c4 * t / v;
     return t * (q * log(c - 1.0) + c5);
 }
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
-const ptukey_1 = __webpack_require__(77);
+const debug = __nested_webpack_require_464368__(1);
+const _general_1 = __nested_webpack_require_464368__(0);
+const expm1_1 = __nested_webpack_require_464368__(3);
+const r_func_1 = __nested_webpack_require_464368__(2);
+const ptukey_1 = __nested_webpack_require_464368__(77);
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF } = Number;
 const { abs: fabs, max: fmax2 } = Math;
 const printer = debug('qtukey');
@@ -22873,13 +22647,13 @@ function _qtukey(p, rr, cc, df, lower_tail, log_p) {
 
 /***/ }),
 /* 169 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_467334__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const pnorm_1 = __webpack_require__(19);
+const _general_1 = __nested_webpack_require_467334__(0);
+const pnorm_1 = __nested_webpack_require_467334__(19);
 const { exp, pow } = Math;
 const bb = 8;
 const C2 = -50;
@@ -22990,13 +22764,13 @@ exports.wprob = wprob;
 
 /***/ }),
 /* 170 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_470098__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const _general_1 = __nested_webpack_require_470098__(0);
+const r_func_1 = __nested_webpack_require_470098__(2);
 const { isNaN: ISNAN } = Number;
 const { log } = Math;
 function dunif(x, min = 0, max = 1, logP = false) {
@@ -23015,15 +22789,15 @@ exports.dunif = dunif;
 
 /***/ }),
 /* 171 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_470761__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
+const debug = __nested_webpack_require_470761__(1);
 const printer = debug('punif');
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const _general_1 = __nested_webpack_require_470761__(0);
+const r_func_1 = __nested_webpack_require_470761__(2);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 function punif(q, min = 0, max = 1, lowerTail = true, logP = false) {
     return r_func_1.map(q)(fx => {
@@ -23053,15 +22827,15 @@ exports.punif = punif;
 
 /***/ }),
 /* 172 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_471923__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _general_1 = __webpack_require__(0);
-const debug = __webpack_require__(1);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
+const _general_1 = __nested_webpack_require_471923__(0);
+const debug = __nested_webpack_require_471923__(1);
+const expm1_1 = __nested_webpack_require_471923__(3);
+const r_func_1 = __nested_webpack_require_471923__(2);
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer = debug('qunif');
 function qunif(p, min = 0, max = 1, lowerTail = true, logP = false) {
@@ -23086,13 +22860,13 @@ exports.qunif = qunif;
 
 /***/ }),
 /* 173 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_472966__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
+const debug = __nested_webpack_require_472966__(1);
+const _general_1 = __nested_webpack_require_472966__(0);
 const { isFinite: R_FINITE } = Number;
 const printer = debug('runif');
 function runif(n = 1, min = 0, max = 1, u) {
@@ -23110,14 +22884,14 @@ exports.runif = runif;
 
 /***/ }),
 /* 174 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_473645__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_473645__(1);
+const _general_1 = __nested_webpack_require_473645__(0);
+const r_func_1 = __nested_webpack_require_473645__(2);
 const { pow, log, exp } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('dweilbull');
@@ -23145,15 +22919,15 @@ exports.dweibull = dweibull;
 
 /***/ }),
 /* 175 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_474808__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_474808__(1);
+const _general_1 = __nested_webpack_require_474808__(0);
+const expm1_1 = __nested_webpack_require_474808__(3);
+const r_func_1 = __nested_webpack_require_474808__(2);
 const { expm1, pow } = Math;
 const { isNaN: ISNAN } = Number;
 const printer = debug('pweibull');
@@ -23175,15 +22949,15 @@ exports.pweibull = pweibull;
 
 /***/ }),
 /* 176 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_475791__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_475791__(1);
+const _general_1 = __nested_webpack_require_475791__(0);
+const expm1_1 = __nested_webpack_require_475791__(3);
+const r_func_1 = __nested_webpack_require_475791__(2);
 const { pow } = Math;
 const { isNaN: ISNAN, POSITIVE_INFINITY: ML_POSINF } = Number;
 const printer = debug('qweibull');
@@ -23205,14 +22979,14 @@ exports.qweibull = qweibull;
 
 /***/ }),
 /* 177 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_476792__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_476792__(1);
+const _general_1 = __nested_webpack_require_476792__(0);
+const r_func_1 = __nested_webpack_require_476792__(2);
 const { log, pow } = Math;
 const { isFinite: R_FINITE } = Number;
 const printer = debug('rweibull');
@@ -23232,17 +23006,17 @@ exports.rweibull = rweibull;
 
 /***/ }),
 /* 178 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_477620__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const choose_1 = __webpack_require__(27);
-const r_func_1 = __webpack_require__(2);
-const cwilcox_1 = __webpack_require__(49);
-const WilcoxonCache_1 = __webpack_require__(48);
+const debug = __nested_webpack_require_477620__(1);
+const _general_1 = __nested_webpack_require_477620__(0);
+const choose_1 = __nested_webpack_require_477620__(27);
+const r_func_1 = __nested_webpack_require_477620__(2);
+const cwilcox_1 = __nested_webpack_require_477620__(49);
+const WilcoxonCache_1 = __nested_webpack_require_477620__(48);
 const { round: R_forceint, abs: fabs, log } = Math;
 const { isNaN: ISNAN } = Number;
 const printer_dwilcox = debug('dwilcox');
@@ -23274,17 +23048,17 @@ exports.dwilcox = dwilcox;
 
 /***/ }),
 /* 179 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_478990__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const choose_1 = __webpack_require__(27);
-const r_func_1 = __webpack_require__(2);
-const WilcoxonCache_1 = __webpack_require__(48);
-const cwilcox_1 = __webpack_require__(49);
+const debug = __nested_webpack_require_478990__(1);
+const _general_1 = __nested_webpack_require_478990__(0);
+const choose_1 = __nested_webpack_require_478990__(27);
+const r_func_1 = __nested_webpack_require_478990__(2);
+const WilcoxonCache_1 = __nested_webpack_require_478990__(48);
+const cwilcox_1 = __nested_webpack_require_478990__(49);
 const { round: R_forceint, floor } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE } = Number;
 const printer_pwilcox = debug('pwilcox');
@@ -23325,18 +23099,18 @@ exports.pwilcox = pwilcox;
 
 /***/ }),
 /* 180 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_480728__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const expm1_1 = __webpack_require__(3);
-const r_func_1 = __webpack_require__(2);
-const cwilcox_1 = __webpack_require__(49);
-const WilcoxonCache_1 = __webpack_require__(48);
-const choose_1 = __webpack_require__(27);
+const debug = __nested_webpack_require_480728__(1);
+const _general_1 = __nested_webpack_require_480728__(0);
+const expm1_1 = __nested_webpack_require_480728__(3);
+const r_func_1 = __nested_webpack_require_480728__(2);
+const cwilcox_1 = __nested_webpack_require_480728__(49);
+const WilcoxonCache_1 = __nested_webpack_require_480728__(48);
+const choose_1 = __nested_webpack_require_480728__(27);
 const { round: R_forceint, trunc } = Math;
 const { isNaN: ISNAN, isFinite: R_FINITE, EPSILON: DBL_EPSILON } = Number;
 const printer_qwilcox = debug('qwilcox');
@@ -23389,14 +23163,14 @@ exports.qwilcox = qwilcox;
 
 /***/ }),
 /* 181 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nested_webpack_require_482806__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = __webpack_require__(1);
-const _general_1 = __webpack_require__(0);
-const r_func_1 = __webpack_require__(2);
+const debug = __nested_webpack_require_482806__(1);
+const _general_1 = __nested_webpack_require_482806__(0);
+const r_func_1 = __nested_webpack_require_482806__(2);
 const printer_rwilcox = debug('rwilcox');
 const { round: R_forceint, trunc, floor } = Math;
 const { isNaN: ISNAN } = Number;
@@ -23429,29 +23203,43 @@ exports.rwilcox = rwilcox;
 
 /***/ }),
 /* 182 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/* eslint-env browser */
+/***/ (function(module, exports, __nested_webpack_require_484034__) {
 
 /**
  * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
  */
+
+exports = module.exports = __nested_webpack_require_484034__(78);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
 exports.load = load;
 exports.useColors = useColors;
-exports.storage = localstorage();
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
 /**
  * Colors.
  */
 
-exports.colors = ['#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066FF', '#0099CC', '#0099FF', '#00CC00', '#00CC33', '#00CC66', '#00CC99', '#00CCCC', '#00CCFF', '#3300CC', '#3300FF', '#3333CC', '#3333FF', '#3366CC', '#3366FF', '#3399CC', '#3399FF', '#33CC00', '#33CC33', '#33CC66', '#33CC99', '#33CCCC', '#33CCFF', '#6600CC', '#6600FF', '#6633CC', '#6633FF', '#66CC00', '#66CC33', '#9900CC', '#9900FF', '#9933CC', '#9933FF', '#99CC00', '#99CC33', '#CC0000', '#CC0033', '#CC0066', '#CC0099', '#CC00CC', '#CC00FF', '#CC3300', '#CC3333', '#CC3366', '#CC3399', '#CC33CC', '#CC33FF', '#CC6600', '#CC6633', '#CC9900', '#CC9933', '#CCCC00', '#CCCC33', '#FF0000', '#FF0033', '#FF0066', '#FF0099', '#FF00CC', '#FF00FF', '#FF3300', '#FF3333', '#FF3366', '#FF3399', '#FF33CC', '#FF33FF', '#FF6600', '#FF6633', '#FF9900', '#FF9933', '#FFCC00', '#FFCC33'];
+exports.colors = [
+  '#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066FF', '#0099CC',
+  '#0099FF', '#00CC00', '#00CC33', '#00CC66', '#00CC99', '#00CCCC', '#00CCFF',
+  '#3300CC', '#3300FF', '#3333CC', '#3333FF', '#3366CC', '#3366FF', '#3399CC',
+  '#3399FF', '#33CC00', '#33CC33', '#33CC66', '#33CC99', '#33CCCC', '#33CCFF',
+  '#6600CC', '#6600FF', '#6633CC', '#6633FF', '#66CC00', '#66CC33', '#9900CC',
+  '#9900FF', '#9933CC', '#9933FF', '#99CC00', '#99CC33', '#CC0000', '#CC0033',
+  '#CC0066', '#CC0099', '#CC00CC', '#CC00FF', '#CC3300', '#CC3333', '#CC3366',
+  '#CC3399', '#CC33CC', '#CC33FF', '#CC6600', '#CC6633', '#CC9900', '#CC9933',
+  '#CCCC00', '#CCCC33', '#FF0000', '#FF0033', '#FF0066', '#FF0099', '#FF00CC',
+  '#FF00FF', '#FF3300', '#FF3333', '#FF3366', '#FF3399', '#FF33CC', '#FF33FF',
+  '#FF6600', '#FF6633', '#FF9900', '#FF9933', '#FFCC00', '#FFCC33'
+];
+
 /**
  * Currently only WebKit-based Web Inspectors, Firefox >= v31,
  * and the Firebug extension (any Firefox version) are known
@@ -23459,65 +23247,84 @@ exports.colors = ['#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066F
  *
  * TODO: add a `localStorage` variable to explicitly enable/disable colors
  */
-// eslint-disable-next-line complexity
 
 function useColors() {
   // NB: In an Electron preload script, document will be defined but not fully
   // initialized. Since we know we're in Chrome, we'll just detect this case
   // explicitly
-  if (typeof window !== 'undefined' && window.process && (window.process.type === 'renderer' || window.process.__nwjs)) {
+  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
     return true;
-  } // Internet Explorer and Edge do not support colors.
+  }
 
-
+  // Internet Explorer and Edge do not support colors.
   if (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/)) {
     return false;
-  } // Is webkit? http://stackoverflow.com/a/16459606/376773
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
   // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-
-
-  return typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance || // Is firebug? http://stackoverflow.com/a/398120/376773
-  typeof window !== 'undefined' && window.console && (window.console.firebug || window.console.exception && window.console.table) || // Is firefox >= v31?
-  // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-  typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31 || // Double check webkit in userAgent just in case we are in a worker
-  typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/);
+  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
 }
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
 /**
  * Colorize log arguments if enabled.
  *
  * @api public
  */
 
-
 function formatArgs(args) {
-  args[0] = (this.useColors ? '%c' : '') + this.namespace + (this.useColors ? ' %c' : ' ') + args[0] + (this.useColors ? '%c ' : ' ') + '+' + module.exports.humanize(this.diff);
+  var useColors = this.useColors;
 
-  if (!this.useColors) {
-    return;
-  }
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
 
   var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit'); // The final "%c" is somewhat tricky, because there could be other
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
   // arguments passed either before or after the %c, so we need to
   // figure out the correct index to insert the CSS into
-
   var index = 0;
   var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function (match) {
-    if (match === '%%') {
-      return;
-    }
-
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
     index++;
-
-    if (match === '%c') {
-      // We only are interested in the *last* %c
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
       // (the user may have provided their own)
       lastC = index;
     }
   });
+
   args.splice(lastC, 0, c);
 }
+
 /**
  * Invokes `console.log()` when available.
  * No-op when `console.log` is not a "function".
@@ -23525,14 +23332,14 @@ function formatArgs(args) {
  * @api public
  */
 
-
 function log() {
-  var _console;
-
-  // This hackery is required for IE8/9, where
+  // this hackery is required for IE8/9, where
   // the `console.log` function doesn't have 'apply'
-  return (typeof console === "undefined" ? "undefined" : _typeof(console)) === 'object' && console.log && (_console = console).log.apply(_console, arguments);
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
 }
+
 /**
  * Save `namespaces`.
  *
@@ -23540,18 +23347,16 @@ function log() {
  * @api private
  */
 
-
 function save(namespaces) {
   try {
-    if (namespaces) {
-      exports.storage.setItem('debug', namespaces);
-    } else {
+    if (null == namespaces) {
       exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
     }
-  } catch (error) {// Swallow
-    // XXX (@Qix-) should we be logging these?
-  }
+  } catch(e) {}
 }
+
 /**
  * Load `namespaces`.
  *
@@ -23559,23 +23364,26 @@ function save(namespaces) {
  * @api private
  */
 
-
 function load() {
   var r;
-
   try {
-    r = exports.storage.getItem('debug');
-  } catch (error) {} // Swallow
-  // XXX (@Qix-) should we be logging these?
+    r = exports.storage.debug;
+  } catch(e) {}
+
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-
-
   if (!r && typeof process !== 'undefined' && 'env' in process) {
     r = process.env.DEBUG;
   }
 
   return r;
 }
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
 /**
  * Localstorage attempts to return the localstorage.
  *
@@ -23587,72 +23395,58 @@ function load() {
  * @api private
  */
 
-
 function localstorage() {
   try {
-    // TVMLKit (Apple TV JS Runtime) does not have a window object, just localStorage in the global context
-    // The Browser also has localStorage in the global context.
-    return localStorage;
-  } catch (error) {// Swallow
-    // XXX (@Qix-) should we be logging these?
-  }
+    return window.localStorage;
+  } catch (e) {}
 }
-
-module.exports = __webpack_require__(78)(exports);
-var formatters = module.exports.formatters;
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-formatters.j = function (v) {
-  try {
-    return JSON.stringify(v);
-  } catch (error) {
-    return '[UnexpectedJSONParseError]: ' + error.message;
-  }
-};
-
 
 
 /***/ }),
 /* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/***/ (function(module, exports, __nested_webpack_require_489825__) {
 
 /**
  * Module dependencies.
  */
-var tty = __webpack_require__(186);
 
-var util = __webpack_require__(187);
+var tty = __nested_webpack_require_489825__(186);
+var util = __nested_webpack_require_489825__(187);
+
 /**
  * This is the Node.js implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
  */
 
-
+exports = module.exports = __nested_webpack_require_489825__(78);
 exports.init = init;
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
 exports.load = load;
 exports.useColors = useColors;
+
 /**
  * Colors.
  */
 
-exports.colors = [6, 2, 3, 4, 5, 1];
+exports.colors = [ 6, 2, 3, 4, 5, 1 ];
 
 try {
-  // Optional dependency (as in, doesn't need to be installed, NOT like optionalDependencies in package.json)
-  // eslint-disable-next-line import/no-extraneous-dependencies
-  var supportsColor = __webpack_require__(185);
-
-  if (supportsColor && (supportsColor.stderr || supportsColor).level >= 2) {
-    exports.colors = [20, 21, 26, 27, 32, 33, 38, 39, 40, 41, 42, 43, 44, 45, 56, 57, 62, 63, 68, 69, 74, 75, 76, 77, 78, 79, 80, 81, 92, 93, 98, 99, 112, 113, 128, 129, 134, 135, 148, 149, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 178, 179, 184, 185, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 214, 215, 220, 221];
+  var supportsColor = __nested_webpack_require_489825__(185);
+  if (supportsColor && supportsColor.level >= 2) {
+    exports.colors = [
+      20, 21, 26, 27, 32, 33, 38, 39, 40, 41, 42, 43, 44, 45, 56, 57, 62, 63, 68,
+      69, 74, 75, 76, 77, 78, 79, 80, 81, 92, 93, 98, 99, 112, 113, 128, 129, 134,
+      135, 148, 149, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171,
+      172, 173, 178, 179, 184, 185, 196, 197, 198, 199, 200, 201, 202, 203, 204,
+      205, 206, 207, 208, 209, 214, 215, 220, 221
+    ];
   }
-} catch (error) {} // Swallow - we only care if `supports-color` is available; it doesn't have to be.
+} catch (err) {
+  // swallow - we only care if `supports-color` is available; it doesn't have to be.
+}
 
 /**
  * Build up the default `inspectOpts` object from the environment variables.
@@ -23660,54 +23454,74 @@ try {
  *   $ DEBUG_COLORS=no DEBUG_DEPTH=10 DEBUG_SHOW_HIDDEN=enabled node script.js
  */
 
-
 exports.inspectOpts = Object.keys(process.env).filter(function (key) {
   return /^debug_/i.test(key);
 }).reduce(function (obj, key) {
-  // Camel-case
-  var prop = key.substring(6).toLowerCase().replace(/_([a-z])/g, function (_, k) {
-    return k.toUpperCase();
-  }); // Coerce string value into JS value
+  // camel-case
+  var prop = key
+    .substring(6)
+    .toLowerCase()
+    .replace(/_([a-z])/g, function (_, k) { return k.toUpperCase() });
 
+  // coerce string value into JS value
   var val = process.env[key];
-
-  if (/^(yes|on|true|enabled)$/i.test(val)) {
-    val = true;
-  } else if (/^(no|off|false|disabled)$/i.test(val)) {
-    val = false;
-  } else if (val === 'null') {
-    val = null;
-  } else {
-    val = Number(val);
-  }
+  if (/^(yes|on|true|enabled)$/i.test(val)) val = true;
+  else if (/^(no|off|false|disabled)$/i.test(val)) val = false;
+  else if (val === 'null') val = null;
+  else val = Number(val);
 
   obj[prop] = val;
   return obj;
 }, {});
+
 /**
  * Is stdout a TTY? Colored output is enabled when `true`.
  */
 
 function useColors() {
-  return 'colors' in exports.inspectOpts ? Boolean(exports.inspectOpts.colors) : tty.isatty(process.stderr.fd);
+  return 'colors' in exports.inspectOpts
+    ? Boolean(exports.inspectOpts.colors)
+    : tty.isatty(process.stderr.fd);
 }
+
+/**
+ * Map %o to `util.inspect()`, all on a single line.
+ */
+
+exports.formatters.o = function(v) {
+  this.inspectOpts.colors = this.useColors;
+  return util.inspect(v, this.inspectOpts)
+    .split('\n').map(function(str) {
+      return str.trim()
+    }).join(' ');
+};
+
+/**
+ * Map %o to `util.inspect()`, allowing multiple lines if needed.
+ */
+
+exports.formatters.O = function(v) {
+  this.inspectOpts.colors = this.useColors;
+  return util.inspect(v, this.inspectOpts);
+};
+
 /**
  * Adds ANSI color escape codes if enabled.
  *
  * @api public
  */
 
-
 function formatArgs(args) {
-  var name = this.namespace,
-      useColors = this.useColors;
+  var name = this.namespace;
+  var useColors = this.useColors;
 
   if (useColors) {
     var c = this.color;
-    var colorCode = "\x1B[3" + (c < 8 ? c : '8;5;' + c);
-    var prefix = "  ".concat(colorCode, ";1m").concat(name, " \x1B[0m");
+    var colorCode = '\u001b[3' + (c < 8 ? c : '8;5;' + c);
+    var prefix = '  ' + colorCode + ';1m' + name + ' ' + '\u001b[0m';
+
     args[0] = prefix + args[0].split('\n').join('\n' + prefix);
-    args.push(colorCode + 'm+' + module.exports.humanize(this.diff) + "\x1B[0m");
+    args.push(colorCode + 'm+' + exports.humanize(this.diff) + '\u001b[0m');
   } else {
     args[0] = getDate() + name + ' ' + args[0];
   }
@@ -23716,18 +23530,19 @@ function formatArgs(args) {
 function getDate() {
   if (exports.inspectOpts.hideDate) {
     return '';
+  } else {
+    return new Date().toISOString() + ' ';
   }
-
-  return new Date().toISOString() + ' ';
 }
+
 /**
  * Invokes `util.format()` with the specified arguments and writes to stderr.
  */
 
-
 function log() {
   return process.stderr.write(util.format.apply(util, arguments) + '\n');
 }
+
 /**
  * Save `namespaces`.
  *
@@ -23735,16 +23550,16 @@ function log() {
  * @api private
  */
 
-
 function save(namespaces) {
-  if (namespaces) {
-    process.env.DEBUG = namespaces;
-  } else {
+  if (null == namespaces) {
     // If you set a process.env field to null or undefined, it gets cast to the
     // string 'null' or 'undefined'. Just delete instead.
     delete process.env.DEBUG;
+  } else {
+    process.env.DEBUG = namespaces;
   }
 }
+
 /**
  * Load `namespaces`.
  *
@@ -23752,10 +23567,10 @@ function save(namespaces) {
  * @api private
  */
 
-
 function load() {
   return process.env.DEBUG;
 }
+
 /**
  * Init logic for `debug` instances.
  *
@@ -23763,36 +23578,20 @@ function load() {
  * differently for a particular `debug` instance.
  */
 
-
-function init(debug) {
+function init (debug) {
   debug.inspectOpts = {};
-  var keys = Object.keys(exports.inspectOpts);
 
+  var keys = Object.keys(exports.inspectOpts);
   for (var i = 0; i < keys.length; i++) {
     debug.inspectOpts[keys[i]] = exports.inspectOpts[keys[i]];
   }
 }
 
-module.exports = __webpack_require__(78)(exports);
-var formatters = module.exports.formatters;
 /**
- * Map %o to `util.inspect()`, all on a single line.
+ * Enable namespaces listed in `process.env.DEBUG` initially.
  */
 
-formatters.o = function (v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts).replace(/\s*\n\s*/g, ' ');
-};
-/**
- * Map %O to `util.inspect()`, allowing multiple lines if needed.
- */
-
-
-formatters.O = function (v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts);
-};
-
+exports.enable(load());
 
 
 /***/ }),
@@ -23807,7 +23606,6 @@ var s = 1000;
 var m = s * 60;
 var h = m * 60;
 var d = h * 24;
-var w = d * 7;
 var y = d * 365.25;
 
 /**
@@ -23851,7 +23649,7 @@ function parse(str) {
   if (str.length > 100) {
     return;
   }
-  var match = /^((?:\d+)?\-?\d?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
     str
   );
   if (!match) {
@@ -23866,10 +23664,6 @@ function parse(str) {
     case 'yr':
     case 'y':
       return n * y;
-    case 'weeks':
-    case 'week':
-    case 'w':
-      return n * w;
     case 'days':
     case 'day':
     case 'd':
@@ -23912,17 +23706,16 @@ function parse(str) {
  */
 
 function fmtShort(ms) {
-  var msAbs = Math.abs(ms);
-  if (msAbs >= d) {
+  if (ms >= d) {
     return Math.round(ms / d) + 'd';
   }
-  if (msAbs >= h) {
+  if (ms >= h) {
     return Math.round(ms / h) + 'h';
   }
-  if (msAbs >= m) {
+  if (ms >= m) {
     return Math.round(ms / m) + 'm';
   }
-  if (msAbs >= s) {
+  if (ms >= s) {
     return Math.round(ms / s) + 's';
   }
   return ms + 'ms';
@@ -23937,29 +23730,25 @@ function fmtShort(ms) {
  */
 
 function fmtLong(ms) {
-  var msAbs = Math.abs(ms);
-  if (msAbs >= d) {
-    return plural(ms, msAbs, d, 'day');
-  }
-  if (msAbs >= h) {
-    return plural(ms, msAbs, h, 'hour');
-  }
-  if (msAbs >= m) {
-    return plural(ms, msAbs, m, 'minute');
-  }
-  if (msAbs >= s) {
-    return plural(ms, msAbs, s, 'second');
-  }
-  return ms + ' ms';
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
 }
 
 /**
  * Pluralization helper.
  */
 
-function plural(ms, msAbs, n, name) {
-  var isPlural = msAbs >= n * 1.5;
-  return Math.round(ms / n) + ' ' + name + (isPlural ? 's' : '');
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
 }
 
 
@@ -23967,219 +23756,28 @@ function plural(ms, msAbs, n, name) {
 /* 185 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(65);
+module.exports = __webpack_require__(117);
 
 /***/ }),
 /* 186 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(61);
+module.exports = __webpack_require__(60);
 
 /***/ }),
 /* 187 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(62);
+module.exports = __webpack_require__(61);
 
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=libR.js.map
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(60)))
+//# sourceMappingURL=libR.min.js.map
 
 /***/ }),
 /* 60 */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports) {
+/***/ ((__unused_webpack_module, exports) => {
 
 exports.isatty = function () { return false; };
 
@@ -24189,16 +23787,16 @@ function ReadStream() {
 exports.ReadStream = ReadStream;
 
 function WriteStream() {
-  throw new Error('tty.ReadStream is not implemented');
+  throw new Error('tty.WriteStream is not implemented');
 }
 exports.WriteStream = WriteStream;
 
 
 /***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 61 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
+// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -24304,13 +23902,14 @@ exports.deprecate = function(fn, msg) {
 
 
 var debugs = {};
-var debugEnviron;
+var debugEnvRegex = /^$/;
+
+if (false) // removed by dead control flow
+{ var debugEnv; }
 exports.debuglog = function(set) {
-  if (isUndefined(debugEnviron))
-    debugEnviron = process.env.NODE_DEBUG || '';
   set = set.toUpperCase();
   if (!debugs[set]) {
-    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
+    if (debugEnvRegex.test(set)) {
       var pid = process.pid;
       debugs[set] = function() {
         var msg = exports.format.apply(exports, arguments);
@@ -24603,7 +24202,7 @@ function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
         if (array) {
           str = str.split('\n').map(function(line) {
             return '  ' + line;
-          }).join('\n').substr(2);
+          }).join('\n').slice(2);
         } else {
           str = '\n' + str.split('\n').map(function(line) {
             return '   ' + line;
@@ -24620,7 +24219,7 @@ function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
     }
     name = JSON.stringify('' + key);
     if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
-      name = name.substr(1, name.length - 2);
+      name = name.slice(1, -1);
       name = ctx.stylize(name, 'name');
     } else {
       name = name.replace(/'/g, "\\'")
@@ -24657,6 +24256,8 @@ function reduceToSingleString(output, base, braces) {
 
 // NOTE: These type checking functions intentionally don't use `instanceof`
 // because it is fragile and can be easily faked with `Object.create()`.
+exports.types = __webpack_require__(62);
+
 function isArray(ar) {
   return Array.isArray(ar);
 }
@@ -24701,6 +24302,7 @@ function isRegExp(re) {
   return isObject(re) && objectToString(re) === '[object RegExp]';
 }
 exports.isRegExp = isRegExp;
+exports.types.isRegExp = isRegExp;
 
 function isObject(arg) {
   return typeof arg === 'object' && arg !== null;
@@ -24711,12 +24313,14 @@ function isDate(d) {
   return isObject(d) && objectToString(d) === '[object Date]';
 }
 exports.isDate = isDate;
+exports.types.isDate = isDate;
 
 function isError(e) {
   return isObject(e) &&
       (objectToString(e) === '[object Error]' || e instanceof Error);
 }
 exports.isError = isError;
+exports.types.isNativeError = isError;
 
 function isFunction(arg) {
   return typeof arg === 'function';
@@ -24733,7 +24337,7 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-exports.isBuffer = __webpack_require__(63);
+exports.isBuffer = __webpack_require__(115);
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);
@@ -24777,7 +24381,7 @@ exports.log = function() {
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
  */
-exports.inherits = __webpack_require__(64);
+exports.inherits = __webpack_require__(116);
 
 exports._extend = function(origin, add) {
   // Don't do anything if add isn't an object
@@ -24891,8 +24495,8 @@ function callbackify(original) {
     // In true node style we process the callback on `nextTick` with all the
     // implications (stack, `uncaughtException`, `async_hooks`)
     original.apply(this, args)
-      .then(function(ret) { process.nextTick(cb, null, ret) },
-            function(rej) { process.nextTick(callbackifyOnRejected, rej, cb) });
+      .then(function(ret) { process.nextTick(cb.bind(null, null, ret)) },
+            function(rej) { process.nextTick(callbackifyOnRejected.bind(null, rej, cb)) });
   }
 
   Object.setPrototypeOf(callbackified, Object.getPrototypeOf(original));
@@ -24902,11 +24506,2143 @@ function callbackify(original) {
 }
 exports.callbackify = callbackify;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(60)))
+
+/***/ }),
+/* 62 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+// Currently in sync with Node.js lib/internal/util/types.js
+// https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
+
+
+
+var isArgumentsObject = __webpack_require__(63);
+var isGeneratorFunction = __webpack_require__(100);
+var whichTypedArray = __webpack_require__(104);
+var isTypedArray = __webpack_require__(114);
+
+function uncurryThis(f) {
+  return f.call.bind(f);
+}
+
+var BigIntSupported = typeof BigInt !== 'undefined';
+var SymbolSupported = typeof Symbol !== 'undefined';
+
+var ObjectToString = uncurryThis(Object.prototype.toString);
+
+var numberValue = uncurryThis(Number.prototype.valueOf);
+var stringValue = uncurryThis(String.prototype.valueOf);
+var booleanValue = uncurryThis(Boolean.prototype.valueOf);
+
+if (BigIntSupported) {
+  var bigIntValue = uncurryThis(BigInt.prototype.valueOf);
+}
+
+if (SymbolSupported) {
+  var symbolValue = uncurryThis(Symbol.prototype.valueOf);
+}
+
+function checkBoxedPrimitive(value, prototypeValueOf) {
+  if (typeof value !== 'object') {
+    return false;
+  }
+  try {
+    prototypeValueOf(value);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+exports.isArgumentsObject = isArgumentsObject;
+exports.isGeneratorFunction = isGeneratorFunction;
+exports.isTypedArray = isTypedArray;
+
+// Taken from here and modified for better browser support
+// https://github.com/sindresorhus/p-is-promise/blob/cda35a513bda03f977ad5cde3a079d237e82d7ef/index.js
+function isPromise(input) {
+	return (
+		(
+			typeof Promise !== 'undefined' &&
+			input instanceof Promise
+		) ||
+		(
+			input !== null &&
+			typeof input === 'object' &&
+			typeof input.then === 'function' &&
+			typeof input.catch === 'function'
+		)
+	);
+}
+exports.isPromise = isPromise;
+
+function isArrayBufferView(value) {
+  if (typeof ArrayBuffer !== 'undefined' && ArrayBuffer.isView) {
+    return ArrayBuffer.isView(value);
+  }
+
+  return (
+    isTypedArray(value) ||
+    isDataView(value)
+  );
+}
+exports.isArrayBufferView = isArrayBufferView;
+
+
+function isUint8Array(value) {
+  return whichTypedArray(value) === 'Uint8Array';
+}
+exports.isUint8Array = isUint8Array;
+
+function isUint8ClampedArray(value) {
+  return whichTypedArray(value) === 'Uint8ClampedArray';
+}
+exports.isUint8ClampedArray = isUint8ClampedArray;
+
+function isUint16Array(value) {
+  return whichTypedArray(value) === 'Uint16Array';
+}
+exports.isUint16Array = isUint16Array;
+
+function isUint32Array(value) {
+  return whichTypedArray(value) === 'Uint32Array';
+}
+exports.isUint32Array = isUint32Array;
+
+function isInt8Array(value) {
+  return whichTypedArray(value) === 'Int8Array';
+}
+exports.isInt8Array = isInt8Array;
+
+function isInt16Array(value) {
+  return whichTypedArray(value) === 'Int16Array';
+}
+exports.isInt16Array = isInt16Array;
+
+function isInt32Array(value) {
+  return whichTypedArray(value) === 'Int32Array';
+}
+exports.isInt32Array = isInt32Array;
+
+function isFloat32Array(value) {
+  return whichTypedArray(value) === 'Float32Array';
+}
+exports.isFloat32Array = isFloat32Array;
+
+function isFloat64Array(value) {
+  return whichTypedArray(value) === 'Float64Array';
+}
+exports.isFloat64Array = isFloat64Array;
+
+function isBigInt64Array(value) {
+  return whichTypedArray(value) === 'BigInt64Array';
+}
+exports.isBigInt64Array = isBigInt64Array;
+
+function isBigUint64Array(value) {
+  return whichTypedArray(value) === 'BigUint64Array';
+}
+exports.isBigUint64Array = isBigUint64Array;
+
+function isMapToString(value) {
+  return ObjectToString(value) === '[object Map]';
+}
+isMapToString.working = (
+  typeof Map !== 'undefined' &&
+  isMapToString(new Map())
+);
+
+function isMap(value) {
+  if (typeof Map === 'undefined') {
+    return false;
+  }
+
+  return isMapToString.working
+    ? isMapToString(value)
+    : value instanceof Map;
+}
+exports.isMap = isMap;
+
+function isSetToString(value) {
+  return ObjectToString(value) === '[object Set]';
+}
+isSetToString.working = (
+  typeof Set !== 'undefined' &&
+  isSetToString(new Set())
+);
+function isSet(value) {
+  if (typeof Set === 'undefined') {
+    return false;
+  }
+
+  return isSetToString.working
+    ? isSetToString(value)
+    : value instanceof Set;
+}
+exports.isSet = isSet;
+
+function isWeakMapToString(value) {
+  return ObjectToString(value) === '[object WeakMap]';
+}
+isWeakMapToString.working = (
+  typeof WeakMap !== 'undefined' &&
+  isWeakMapToString(new WeakMap())
+);
+function isWeakMap(value) {
+  if (typeof WeakMap === 'undefined') {
+    return false;
+  }
+
+  return isWeakMapToString.working
+    ? isWeakMapToString(value)
+    : value instanceof WeakMap;
+}
+exports.isWeakMap = isWeakMap;
+
+function isWeakSetToString(value) {
+  return ObjectToString(value) === '[object WeakSet]';
+}
+isWeakSetToString.working = (
+  typeof WeakSet !== 'undefined' &&
+  isWeakSetToString(new WeakSet())
+);
+function isWeakSet(value) {
+  return isWeakSetToString(value);
+}
+exports.isWeakSet = isWeakSet;
+
+function isArrayBufferToString(value) {
+  return ObjectToString(value) === '[object ArrayBuffer]';
+}
+isArrayBufferToString.working = (
+  typeof ArrayBuffer !== 'undefined' &&
+  isArrayBufferToString(new ArrayBuffer())
+);
+function isArrayBuffer(value) {
+  if (typeof ArrayBuffer === 'undefined') {
+    return false;
+  }
+
+  return isArrayBufferToString.working
+    ? isArrayBufferToString(value)
+    : value instanceof ArrayBuffer;
+}
+exports.isArrayBuffer = isArrayBuffer;
+
+function isDataViewToString(value) {
+  return ObjectToString(value) === '[object DataView]';
+}
+isDataViewToString.working = (
+  typeof ArrayBuffer !== 'undefined' &&
+  typeof DataView !== 'undefined' &&
+  isDataViewToString(new DataView(new ArrayBuffer(1), 0, 1))
+);
+function isDataView(value) {
+  if (typeof DataView === 'undefined') {
+    return false;
+  }
+
+  return isDataViewToString.working
+    ? isDataViewToString(value)
+    : value instanceof DataView;
+}
+exports.isDataView = isDataView;
+
+// Store a copy of SharedArrayBuffer in case it's deleted elsewhere
+var SharedArrayBufferCopy = typeof SharedArrayBuffer !== 'undefined' ? SharedArrayBuffer : undefined;
+function isSharedArrayBufferToString(value) {
+  return ObjectToString(value) === '[object SharedArrayBuffer]';
+}
+function isSharedArrayBuffer(value) {
+  if (typeof SharedArrayBufferCopy === 'undefined') {
+    return false;
+  }
+
+  if (typeof isSharedArrayBufferToString.working === 'undefined') {
+    isSharedArrayBufferToString.working = isSharedArrayBufferToString(new SharedArrayBufferCopy());
+  }
+
+  return isSharedArrayBufferToString.working
+    ? isSharedArrayBufferToString(value)
+    : value instanceof SharedArrayBufferCopy;
+}
+exports.isSharedArrayBuffer = isSharedArrayBuffer;
+
+function isAsyncFunction(value) {
+  return ObjectToString(value) === '[object AsyncFunction]';
+}
+exports.isAsyncFunction = isAsyncFunction;
+
+function isMapIterator(value) {
+  return ObjectToString(value) === '[object Map Iterator]';
+}
+exports.isMapIterator = isMapIterator;
+
+function isSetIterator(value) {
+  return ObjectToString(value) === '[object Set Iterator]';
+}
+exports.isSetIterator = isSetIterator;
+
+function isGeneratorObject(value) {
+  return ObjectToString(value) === '[object Generator]';
+}
+exports.isGeneratorObject = isGeneratorObject;
+
+function isWebAssemblyCompiledModule(value) {
+  return ObjectToString(value) === '[object WebAssembly.Module]';
+}
+exports.isWebAssemblyCompiledModule = isWebAssemblyCompiledModule;
+
+function isNumberObject(value) {
+  return checkBoxedPrimitive(value, numberValue);
+}
+exports.isNumberObject = isNumberObject;
+
+function isStringObject(value) {
+  return checkBoxedPrimitive(value, stringValue);
+}
+exports.isStringObject = isStringObject;
+
+function isBooleanObject(value) {
+  return checkBoxedPrimitive(value, booleanValue);
+}
+exports.isBooleanObject = isBooleanObject;
+
+function isBigIntObject(value) {
+  return BigIntSupported && checkBoxedPrimitive(value, bigIntValue);
+}
+exports.isBigIntObject = isBigIntObject;
+
+function isSymbolObject(value) {
+  return SymbolSupported && checkBoxedPrimitive(value, symbolValue);
+}
+exports.isSymbolObject = isSymbolObject;
+
+function isBoxedPrimitive(value) {
+  return (
+    isNumberObject(value) ||
+    isStringObject(value) ||
+    isBooleanObject(value) ||
+    isBigIntObject(value) ||
+    isSymbolObject(value)
+  );
+}
+exports.isBoxedPrimitive = isBoxedPrimitive;
+
+function isAnyArrayBuffer(value) {
+  return typeof Uint8Array !== 'undefined' && (
+    isArrayBuffer(value) ||
+    isSharedArrayBuffer(value)
+  );
+}
+exports.isAnyArrayBuffer = isAnyArrayBuffer;
+
+['isProxy', 'isExternal', 'isModuleNamespaceObject'].forEach(function(method) {
+  Object.defineProperty(exports, method, {
+    enumerable: false,
+    value: function() {
+      throw new Error(method + ' is not supported in userland');
+    }
+  });
+});
+
 
 /***/ }),
 /* 63 */
-/***/ (function(module, exports) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var hasToStringTag = __webpack_require__(64)();
+var callBound = __webpack_require__(66);
+
+var $toString = callBound('Object.prototype.toString');
+
+/** @type {import('.')} */
+var isStandardArguments = function isArguments(value) {
+	if (
+		hasToStringTag
+		&& value
+		&& typeof value === 'object'
+		&& Symbol.toStringTag in value
+	) {
+		return false;
+	}
+	return $toString(value) === '[object Arguments]';
+};
+
+/** @type {import('.')} */
+var isLegacyArguments = function isArguments(value) {
+	if (isStandardArguments(value)) {
+		return true;
+	}
+	return value !== null
+		&& typeof value === 'object'
+		&& 'length' in value
+		&& typeof value.length === 'number'
+		&& value.length >= 0
+		&& $toString(value) !== '[object Array]'
+		&& 'callee' in value
+		&& $toString(value.callee) === '[object Function]';
+};
+
+var supportsStandardArguments = (function () {
+	return isStandardArguments(arguments);
+}());
+
+// @ts-expect-error TODO make this not error
+isStandardArguments.isLegacyArguments = isLegacyArguments; // for tests
+
+/** @type {import('.')} */
+module.exports = supportsStandardArguments ? isStandardArguments : isLegacyArguments;
+
+
+/***/ }),
+/* 64 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var hasSymbols = __webpack_require__(65);
+
+/** @type {import('.')} */
+module.exports = function hasToStringTagShams() {
+	return hasSymbols() && !!Symbol.toStringTag;
+};
+
+
+/***/ }),
+/* 65 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./shams')} */
+/* eslint complexity: [2, 18], max-statements: [2, 33] */
+module.exports = function hasSymbols() {
+	if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }
+	if (typeof Symbol.iterator === 'symbol') { return true; }
+
+	/** @type {{ [k in symbol]?: unknown }} */
+	var obj = {};
+	var sym = Symbol('test');
+	var symObj = Object(sym);
+	if (typeof sym === 'string') { return false; }
+
+	if (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }
+	if (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }
+
+	// temp disabled per https://github.com/ljharb/object.assign/issues/17
+	// if (sym instanceof Symbol) { return false; }
+	// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
+	// if (!(symObj instanceof Symbol)) { return false; }
+
+	// if (typeof Symbol.prototype.toString !== 'function') { return false; }
+	// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
+
+	var symVal = 42;
+	obj[sym] = symVal;
+	for (var _ in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop
+	if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }
+
+	if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }
+
+	var syms = Object.getOwnPropertySymbols(obj);
+	if (syms.length !== 1 || syms[0] !== sym) { return false; }
+
+	if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }
+
+	if (typeof Object.getOwnPropertyDescriptor === 'function') {
+		// eslint-disable-next-line no-extra-parens
+		var descriptor = /** @type {PropertyDescriptor} */ (Object.getOwnPropertyDescriptor(obj, sym));
+		if (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }
+	}
+
+	return true;
+};
+
+
+/***/ }),
+/* 66 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var GetIntrinsic = __webpack_require__(67);
+
+var callBindBasic = __webpack_require__(92);
+
+/** @type {(thisArg: string, searchString: string, position?: number) => number} */
+var $indexOf = callBindBasic([GetIntrinsic('%String.prototype.indexOf%')]);
+
+/** @type {import('.')} */
+module.exports = function callBoundIntrinsic(name, allowMissing) {
+	/* eslint no-extra-parens: 0 */
+
+	var intrinsic = /** @type {(this: unknown, ...args: unknown[]) => unknown} */ (GetIntrinsic(name, !!allowMissing));
+	if (typeof intrinsic === 'function' && $indexOf(name, '.prototype.') > -1) {
+		return callBindBasic(/** @type {const} */ ([intrinsic]));
+	}
+	return intrinsic;
+};
+
+
+/***/ }),
+/* 67 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var undefined;
+
+var $Object = __webpack_require__(68);
+
+var $Error = __webpack_require__(69);
+var $EvalError = __webpack_require__(70);
+var $RangeError = __webpack_require__(71);
+var $ReferenceError = __webpack_require__(72);
+var $SyntaxError = __webpack_require__(73);
+var $TypeError = __webpack_require__(74);
+var $URIError = __webpack_require__(75);
+
+var abs = __webpack_require__(76);
+var floor = __webpack_require__(77);
+var max = __webpack_require__(78);
+var min = __webpack_require__(79);
+var pow = __webpack_require__(80);
+var round = __webpack_require__(81);
+var sign = __webpack_require__(82);
+
+var $Function = Function;
+
+// eslint-disable-next-line consistent-return
+var getEvalledConstructor = function (expressionSyntax) {
+	try {
+		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
+	} catch (e) {}
+};
+
+var $gOPD = __webpack_require__(84);
+var $defineProperty = __webpack_require__(86);
+
+var throwTypeError = function () {
+	throw new $TypeError();
+};
+var ThrowTypeError = $gOPD
+	? (function () {
+		try {
+			// eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
+			arguments.callee; // IE 8 does not throw here
+			return throwTypeError;
+		} catch (calleeThrows) {
+			try {
+				// IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
+				return $gOPD(arguments, 'callee').get;
+			} catch (gOPDthrows) {
+				return throwTypeError;
+			}
+		}
+	}())
+	: throwTypeError;
+
+var hasSymbols = __webpack_require__(87)();
+
+var getProto = __webpack_require__(88);
+var $ObjectGPO = __webpack_require__(90);
+var $ReflectGPO = __webpack_require__(89);
+
+var $apply = __webpack_require__(97);
+var $call = __webpack_require__(95);
+
+var needsEval = {};
+
+var TypedArray = typeof Uint8Array === 'undefined' || !getProto ? undefined : getProto(Uint8Array);
+
+var INTRINSICS = {
+	__proto__: null,
+	'%AggregateError%': typeof AggregateError === 'undefined' ? undefined : AggregateError,
+	'%Array%': Array,
+	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
+	'%ArrayIteratorPrototype%': hasSymbols && getProto ? getProto([][Symbol.iterator]()) : undefined,
+	'%AsyncFromSyncIteratorPrototype%': undefined,
+	'%AsyncFunction%': needsEval,
+	'%AsyncGenerator%': needsEval,
+	'%AsyncGeneratorFunction%': needsEval,
+	'%AsyncIteratorPrototype%': needsEval,
+	'%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
+	'%BigInt%': typeof BigInt === 'undefined' ? undefined : BigInt,
+	'%BigInt64Array%': typeof BigInt64Array === 'undefined' ? undefined : BigInt64Array,
+	'%BigUint64Array%': typeof BigUint64Array === 'undefined' ? undefined : BigUint64Array,
+	'%Boolean%': Boolean,
+	'%DataView%': typeof DataView === 'undefined' ? undefined : DataView,
+	'%Date%': Date,
+	'%decodeURI%': decodeURI,
+	'%decodeURIComponent%': decodeURIComponent,
+	'%encodeURI%': encodeURI,
+	'%encodeURIComponent%': encodeURIComponent,
+	'%Error%': $Error,
+	'%eval%': eval, // eslint-disable-line no-eval
+	'%EvalError%': $EvalError,
+	'%Float16Array%': typeof Float16Array === 'undefined' ? undefined : Float16Array,
+	'%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
+	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
+	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,
+	'%Function%': $Function,
+	'%GeneratorFunction%': needsEval,
+	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
+	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
+	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
+	'%isFinite%': isFinite,
+	'%isNaN%': isNaN,
+	'%IteratorPrototype%': hasSymbols && getProto ? getProto(getProto([][Symbol.iterator]())) : undefined,
+	'%JSON%': typeof JSON === 'object' ? JSON : undefined,
+	'%Map%': typeof Map === 'undefined' ? undefined : Map,
+	'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols || !getProto ? undefined : getProto(new Map()[Symbol.iterator]()),
+	'%Math%': Math,
+	'%Number%': Number,
+	'%Object%': $Object,
+	'%Object.getOwnPropertyDescriptor%': $gOPD,
+	'%parseFloat%': parseFloat,
+	'%parseInt%': parseInt,
+	'%Promise%': typeof Promise === 'undefined' ? undefined : Promise,
+	'%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
+	'%RangeError%': $RangeError,
+	'%ReferenceError%': $ReferenceError,
+	'%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
+	'%RegExp%': RegExp,
+	'%Set%': typeof Set === 'undefined' ? undefined : Set,
+	'%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols || !getProto ? undefined : getProto(new Set()[Symbol.iterator]()),
+	'%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,
+	'%String%': String,
+	'%StringIteratorPrototype%': hasSymbols && getProto ? getProto(''[Symbol.iterator]()) : undefined,
+	'%Symbol%': hasSymbols ? Symbol : undefined,
+	'%SyntaxError%': $SyntaxError,
+	'%ThrowTypeError%': ThrowTypeError,
+	'%TypedArray%': TypedArray,
+	'%TypeError%': $TypeError,
+	'%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,
+	'%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,
+	'%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,
+	'%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,
+	'%URIError%': $URIError,
+	'%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
+	'%WeakRef%': typeof WeakRef === 'undefined' ? undefined : WeakRef,
+	'%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet,
+
+	'%Function.prototype.call%': $call,
+	'%Function.prototype.apply%': $apply,
+	'%Object.defineProperty%': $defineProperty,
+	'%Object.getPrototypeOf%': $ObjectGPO,
+	'%Math.abs%': abs,
+	'%Math.floor%': floor,
+	'%Math.max%': max,
+	'%Math.min%': min,
+	'%Math.pow%': pow,
+	'%Math.round%': round,
+	'%Math.sign%': sign,
+	'%Reflect.getPrototypeOf%': $ReflectGPO
+};
+
+if (getProto) {
+	try {
+		null.error; // eslint-disable-line no-unused-expressions
+	} catch (e) {
+		// https://github.com/tc39/proposal-shadowrealm/pull/384#issuecomment-1364264229
+		var errorProto = getProto(getProto(e));
+		INTRINSICS['%Error.prototype%'] = errorProto;
+	}
+}
+
+var doEval = function doEval(name) {
+	var value;
+	if (name === '%AsyncFunction%') {
+		value = getEvalledConstructor('async function () {}');
+	} else if (name === '%GeneratorFunction%') {
+		value = getEvalledConstructor('function* () {}');
+	} else if (name === '%AsyncGeneratorFunction%') {
+		value = getEvalledConstructor('async function* () {}');
+	} else if (name === '%AsyncGenerator%') {
+		var fn = doEval('%AsyncGeneratorFunction%');
+		if (fn) {
+			value = fn.prototype;
+		}
+	} else if (name === '%AsyncIteratorPrototype%') {
+		var gen = doEval('%AsyncGenerator%');
+		if (gen && getProto) {
+			value = getProto(gen.prototype);
+		}
+	}
+
+	INTRINSICS[name] = value;
+
+	return value;
+};
+
+var LEGACY_ALIASES = {
+	__proto__: null,
+	'%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],
+	'%ArrayPrototype%': ['Array', 'prototype'],
+	'%ArrayProto_entries%': ['Array', 'prototype', 'entries'],
+	'%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],
+	'%ArrayProto_keys%': ['Array', 'prototype', 'keys'],
+	'%ArrayProto_values%': ['Array', 'prototype', 'values'],
+	'%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],
+	'%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],
+	'%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],
+	'%BooleanPrototype%': ['Boolean', 'prototype'],
+	'%DataViewPrototype%': ['DataView', 'prototype'],
+	'%DatePrototype%': ['Date', 'prototype'],
+	'%ErrorPrototype%': ['Error', 'prototype'],
+	'%EvalErrorPrototype%': ['EvalError', 'prototype'],
+	'%Float32ArrayPrototype%': ['Float32Array', 'prototype'],
+	'%Float64ArrayPrototype%': ['Float64Array', 'prototype'],
+	'%FunctionPrototype%': ['Function', 'prototype'],
+	'%Generator%': ['GeneratorFunction', 'prototype'],
+	'%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],
+	'%Int8ArrayPrototype%': ['Int8Array', 'prototype'],
+	'%Int16ArrayPrototype%': ['Int16Array', 'prototype'],
+	'%Int32ArrayPrototype%': ['Int32Array', 'prototype'],
+	'%JSONParse%': ['JSON', 'parse'],
+	'%JSONStringify%': ['JSON', 'stringify'],
+	'%MapPrototype%': ['Map', 'prototype'],
+	'%NumberPrototype%': ['Number', 'prototype'],
+	'%ObjectPrototype%': ['Object', 'prototype'],
+	'%ObjProto_toString%': ['Object', 'prototype', 'toString'],
+	'%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],
+	'%PromisePrototype%': ['Promise', 'prototype'],
+	'%PromiseProto_then%': ['Promise', 'prototype', 'then'],
+	'%Promise_all%': ['Promise', 'all'],
+	'%Promise_reject%': ['Promise', 'reject'],
+	'%Promise_resolve%': ['Promise', 'resolve'],
+	'%RangeErrorPrototype%': ['RangeError', 'prototype'],
+	'%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],
+	'%RegExpPrototype%': ['RegExp', 'prototype'],
+	'%SetPrototype%': ['Set', 'prototype'],
+	'%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],
+	'%StringPrototype%': ['String', 'prototype'],
+	'%SymbolPrototype%': ['Symbol', 'prototype'],
+	'%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],
+	'%TypedArrayPrototype%': ['TypedArray', 'prototype'],
+	'%TypeErrorPrototype%': ['TypeError', 'prototype'],
+	'%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],
+	'%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],
+	'%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],
+	'%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],
+	'%URIErrorPrototype%': ['URIError', 'prototype'],
+	'%WeakMapPrototype%': ['WeakMap', 'prototype'],
+	'%WeakSetPrototype%': ['WeakSet', 'prototype']
+};
+
+var bind = __webpack_require__(93);
+var hasOwn = __webpack_require__(99);
+var $concat = bind.call($call, Array.prototype.concat);
+var $spliceApply = bind.call($apply, Array.prototype.splice);
+var $replace = bind.call($call, String.prototype.replace);
+var $strSlice = bind.call($call, String.prototype.slice);
+var $exec = bind.call($call, RegExp.prototype.exec);
+
+/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
+var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
+var reEscapeChar = /\\(\\)?/g; /** Used to match backslashes in property paths. */
+var stringToPath = function stringToPath(string) {
+	var first = $strSlice(string, 0, 1);
+	var last = $strSlice(string, -1);
+	if (first === '%' && last !== '%') {
+		throw new $SyntaxError('invalid intrinsic syntax, expected closing `%`');
+	} else if (last === '%' && first !== '%') {
+		throw new $SyntaxError('invalid intrinsic syntax, expected opening `%`');
+	}
+	var result = [];
+	$replace(string, rePropName, function (match, number, quote, subString) {
+		result[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : number || match;
+	});
+	return result;
+};
+/* end adaptation */
+
+var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
+	var intrinsicName = name;
+	var alias;
+	if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
+		alias = LEGACY_ALIASES[intrinsicName];
+		intrinsicName = '%' + alias[0] + '%';
+	}
+
+	if (hasOwn(INTRINSICS, intrinsicName)) {
+		var value = INTRINSICS[intrinsicName];
+		if (value === needsEval) {
+			value = doEval(intrinsicName);
+		}
+		if (typeof value === 'undefined' && !allowMissing) {
+			throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
+		}
+
+		return {
+			alias: alias,
+			name: intrinsicName,
+			value: value
+		};
+	}
+
+	throw new $SyntaxError('intrinsic ' + name + ' does not exist!');
+};
+
+module.exports = function GetIntrinsic(name, allowMissing) {
+	if (typeof name !== 'string' || name.length === 0) {
+		throw new $TypeError('intrinsic name must be a non-empty string');
+	}
+	if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
+		throw new $TypeError('"allowMissing" argument must be a boolean');
+	}
+
+	if ($exec(/^%?[^%]*%?$/, name) === null) {
+		throw new $SyntaxError('`%` may not be present anywhere but at the beginning and end of the intrinsic name');
+	}
+	var parts = stringToPath(name);
+	var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
+
+	var intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
+	var intrinsicRealName = intrinsic.name;
+	var value = intrinsic.value;
+	var skipFurtherCaching = false;
+
+	var alias = intrinsic.alias;
+	if (alias) {
+		intrinsicBaseName = alias[0];
+		$spliceApply(parts, $concat([0, 1], alias));
+	}
+
+	for (var i = 1, isOwn = true; i < parts.length; i += 1) {
+		var part = parts[i];
+		var first = $strSlice(part, 0, 1);
+		var last = $strSlice(part, -1);
+		if (
+			(
+				(first === '"' || first === "'" || first === '`')
+				|| (last === '"' || last === "'" || last === '`')
+			)
+			&& first !== last
+		) {
+			throw new $SyntaxError('property names with quotes must have matching quotes');
+		}
+		if (part === 'constructor' || !isOwn) {
+			skipFurtherCaching = true;
+		}
+
+		intrinsicBaseName += '.' + part;
+		intrinsicRealName = '%' + intrinsicBaseName + '%';
+
+		if (hasOwn(INTRINSICS, intrinsicRealName)) {
+			value = INTRINSICS[intrinsicRealName];
+		} else if (value != null) {
+			if (!(part in value)) {
+				if (!allowMissing) {
+					throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
+				}
+				return void undefined;
+			}
+			if ($gOPD && (i + 1) >= parts.length) {
+				var desc = $gOPD(value, part);
+				isOwn = !!desc;
+
+				// By convention, when a data property is converted to an accessor
+				// property to emulate a data property that does not suffer from
+				// the override mistake, that accessor's getter is marked with
+				// an `originalValue` property. Here, when we detect this, we
+				// uphold the illusion by pretending to see that original data
+				// property, i.e., returning the value rather than the getter
+				// itself.
+				if (isOwn && 'get' in desc && !('originalValue' in desc.get)) {
+					value = desc.get;
+				} else {
+					value = value[part];
+				}
+			} else {
+				isOwn = hasOwn(value, part);
+				value = value[part];
+			}
+
+			if (isOwn && !skipFurtherCaching) {
+				INTRINSICS[intrinsicRealName] = value;
+			}
+		}
+	}
+	return value;
+};
+
+
+/***/ }),
+/* 68 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('.')} */
+module.exports = Object;
+
+
+/***/ }),
+/* 69 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('.')} */
+module.exports = Error;
+
+
+/***/ }),
+/* 70 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./eval')} */
+module.exports = EvalError;
+
+
+/***/ }),
+/* 71 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./range')} */
+module.exports = RangeError;
+
+
+/***/ }),
+/* 72 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./ref')} */
+module.exports = ReferenceError;
+
+
+/***/ }),
+/* 73 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./syntax')} */
+module.exports = SyntaxError;
+
+
+/***/ }),
+/* 74 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./type')} */
+module.exports = TypeError;
+
+
+/***/ }),
+/* 75 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./uri')} */
+module.exports = URIError;
+
+
+/***/ }),
+/* 76 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./abs')} */
+module.exports = Math.abs;
+
+
+/***/ }),
+/* 77 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./floor')} */
+module.exports = Math.floor;
+
+
+/***/ }),
+/* 78 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./max')} */
+module.exports = Math.max;
+
+
+/***/ }),
+/* 79 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./min')} */
+module.exports = Math.min;
+
+
+/***/ }),
+/* 80 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./pow')} */
+module.exports = Math.pow;
+
+
+/***/ }),
+/* 81 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./round')} */
+module.exports = Math.round;
+
+
+/***/ }),
+/* 82 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var $isNaN = __webpack_require__(83);
+
+/** @type {import('./sign')} */
+module.exports = function sign(number) {
+	if ($isNaN(number) || number === 0) {
+		return number;
+	}
+	return number < 0 ? -1 : +1;
+};
+
+
+/***/ }),
+/* 83 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./isNaN')} */
+module.exports = Number.isNaN || function isNaN(a) {
+	return a !== a;
+};
+
+
+/***/ }),
+/* 84 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+/** @type {import('.')} */
+var $gOPD = __webpack_require__(85);
+
+if ($gOPD) {
+	try {
+		$gOPD([], 'length');
+	} catch (e) {
+		// IE 8 has a broken gOPD
+		$gOPD = null;
+	}
+}
+
+module.exports = $gOPD;
+
+
+/***/ }),
+/* 85 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./gOPD')} */
+module.exports = Object.getOwnPropertyDescriptor;
+
+
+/***/ }),
+/* 86 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('.')} */
+var $defineProperty = Object.defineProperty || false;
+if ($defineProperty) {
+	try {
+		$defineProperty({}, 'a', { value: 1 });
+	} catch (e) {
+		// IE 8 has a broken defineProperty
+		$defineProperty = false;
+	}
+}
+
+module.exports = $defineProperty;
+
+
+/***/ }),
+/* 87 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var origSymbol = typeof Symbol !== 'undefined' && Symbol;
+var hasSymbolSham = __webpack_require__(65);
+
+/** @type {import('.')} */
+module.exports = function hasNativeSymbols() {
+	if (typeof origSymbol !== 'function') { return false; }
+	if (typeof Symbol !== 'function') { return false; }
+	if (typeof origSymbol('foo') !== 'symbol') { return false; }
+	if (typeof Symbol('bar') !== 'symbol') { return false; }
+
+	return hasSymbolSham();
+};
+
+
+/***/ }),
+/* 88 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var reflectGetProto = __webpack_require__(89);
+var originalGetProto = __webpack_require__(90);
+
+var getDunderProto = __webpack_require__(91);
+
+/** @type {import('.')} */
+module.exports = reflectGetProto
+	? function getProto(O) {
+		// @ts-expect-error TS can't narrow inside a closure, for some reason
+		return reflectGetProto(O);
+	}
+	: originalGetProto
+		? function getProto(O) {
+			if (!O || (typeof O !== 'object' && typeof O !== 'function')) {
+				throw new TypeError('getProto: not an object');
+			}
+			// @ts-expect-error TS can't narrow inside a closure, for some reason
+			return originalGetProto(O);
+		}
+		: getDunderProto
+			? function getProto(O) {
+				// @ts-expect-error TS can't narrow inside a closure, for some reason
+				return getDunderProto(O);
+			}
+			: null;
+
+
+/***/ }),
+/* 89 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./Reflect.getPrototypeOf')} */
+module.exports = (typeof Reflect !== 'undefined' && Reflect.getPrototypeOf) || null;
+
+
+/***/ }),
+/* 90 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var $Object = __webpack_require__(68);
+
+/** @type {import('./Object.getPrototypeOf')} */
+module.exports = $Object.getPrototypeOf || null;
+
+
+/***/ }),
+/* 91 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var callBind = __webpack_require__(92);
+var gOPD = __webpack_require__(84);
+
+var hasProtoAccessor;
+try {
+	// eslint-disable-next-line no-extra-parens, no-proto
+	hasProtoAccessor = /** @type {{ __proto__?: typeof Array.prototype }} */ ([]).__proto__ === Array.prototype;
+} catch (e) {
+	if (!e || typeof e !== 'object' || !('code' in e) || e.code !== 'ERR_PROTO_ACCESS') {
+		throw e;
+	}
+}
+
+// eslint-disable-next-line no-extra-parens
+var desc = !!hasProtoAccessor && gOPD && gOPD(Object.prototype, /** @type {keyof typeof Object.prototype} */ ('__proto__'));
+
+var $Object = Object;
+var $getPrototypeOf = $Object.getPrototypeOf;
+
+/** @type {import('./get')} */
+module.exports = desc && typeof desc.get === 'function'
+	? callBind([desc.get])
+	: typeof $getPrototypeOf === 'function'
+		? /** @type {import('./get')} */ function getDunder(value) {
+			// eslint-disable-next-line eqeqeq
+			return $getPrototypeOf(value == null ? value : $Object(value));
+		}
+		: false;
+
+
+/***/ }),
+/* 92 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var bind = __webpack_require__(93);
+var $TypeError = __webpack_require__(74);
+
+var $call = __webpack_require__(95);
+var $actualApply = __webpack_require__(96);
+
+/** @type {(args: [Function, thisArg?: unknown, ...args: unknown[]]) => Function} TODO FIXME, find a way to use import('.') */
+module.exports = function callBindBasic(args) {
+	if (args.length < 1 || typeof args[0] !== 'function') {
+		throw new $TypeError('a function is required');
+	}
+	return $actualApply(bind, $call, args);
+};
+
+
+/***/ }),
+/* 93 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var implementation = __webpack_require__(94);
+
+module.exports = Function.prototype.bind || implementation;
+
+
+/***/ }),
+/* 94 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/* eslint no-invalid-this: 1 */
+
+var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
+var toStr = Object.prototype.toString;
+var max = Math.max;
+var funcType = '[object Function]';
+
+var concatty = function concatty(a, b) {
+    var arr = [];
+
+    for (var i = 0; i < a.length; i += 1) {
+        arr[i] = a[i];
+    }
+    for (var j = 0; j < b.length; j += 1) {
+        arr[j + a.length] = b[j];
+    }
+
+    return arr;
+};
+
+var slicy = function slicy(arrLike, offset) {
+    var arr = [];
+    for (var i = offset || 0, j = 0; i < arrLike.length; i += 1, j += 1) {
+        arr[j] = arrLike[i];
+    }
+    return arr;
+};
+
+var joiny = function (arr, joiner) {
+    var str = '';
+    for (var i = 0; i < arr.length; i += 1) {
+        str += arr[i];
+        if (i + 1 < arr.length) {
+            str += joiner;
+        }
+    }
+    return str;
+};
+
+module.exports = function bind(that) {
+    var target = this;
+    if (typeof target !== 'function' || toStr.apply(target) !== funcType) {
+        throw new TypeError(ERROR_MESSAGE + target);
+    }
+    var args = slicy(arguments, 1);
+
+    var bound;
+    var binder = function () {
+        if (this instanceof bound) {
+            var result = target.apply(
+                this,
+                concatty(args, arguments)
+            );
+            if (Object(result) === result) {
+                return result;
+            }
+            return this;
+        }
+        return target.apply(
+            that,
+            concatty(args, arguments)
+        );
+
+    };
+
+    var boundLength = max(0, target.length - args.length);
+    var boundArgs = [];
+    for (var i = 0; i < boundLength; i++) {
+        boundArgs[i] = '$' + i;
+    }
+
+    bound = Function('binder', 'return function (' + joiny(boundArgs, ',') + '){ return binder.apply(this,arguments); }')(binder);
+
+    if (target.prototype) {
+        var Empty = function Empty() {};
+        Empty.prototype = target.prototype;
+        bound.prototype = new Empty();
+        Empty.prototype = null;
+    }
+
+    return bound;
+};
+
+
+/***/ }),
+/* 95 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./functionCall')} */
+module.exports = Function.prototype.call;
+
+
+/***/ }),
+/* 96 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var bind = __webpack_require__(93);
+
+var $apply = __webpack_require__(97);
+var $call = __webpack_require__(95);
+var $reflectApply = __webpack_require__(98);
+
+/** @type {import('./actualApply')} */
+module.exports = $reflectApply || bind.call($call, $apply);
+
+
+/***/ }),
+/* 97 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./functionApply')} */
+module.exports = Function.prototype.apply;
+
+
+/***/ }),
+/* 98 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./reflectApply')} */
+module.exports = typeof Reflect !== 'undefined' && Reflect && Reflect.apply;
+
+
+/***/ }),
+/* 99 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var call = Function.prototype.call;
+var $hasOwn = Object.prototype.hasOwnProperty;
+var bind = __webpack_require__(93);
+
+/** @type {import('.')} */
+module.exports = bind.call(call, $hasOwn);
+
+
+/***/ }),
+/* 100 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var callBound = __webpack_require__(66);
+var safeRegexTest = __webpack_require__(101);
+var isFnRegex = safeRegexTest(/^\s*(?:function)?\*/);
+var hasToStringTag = __webpack_require__(64)();
+var getProto = __webpack_require__(88);
+
+var toStr = callBound('Object.prototype.toString');
+var fnToStr = callBound('Function.prototype.toString');
+
+var getGeneratorFunction = __webpack_require__(103);
+
+/** @type {import('.')} */
+module.exports = function isGeneratorFunction(fn) {
+	if (typeof fn !== 'function') {
+		return false;
+	}
+	if (isFnRegex(fnToStr(fn))) {
+		return true;
+	}
+	if (!hasToStringTag) {
+		var str = toStr(fn);
+		return str === '[object GeneratorFunction]';
+	}
+	if (!getProto) {
+		return false;
+	}
+	var GeneratorFunction = getGeneratorFunction();
+	return GeneratorFunction && getProto(fn) === GeneratorFunction.prototype;
+};
+
+
+/***/ }),
+/* 101 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var callBound = __webpack_require__(66);
+var isRegex = __webpack_require__(102);
+
+var $exec = callBound('RegExp.prototype.exec');
+var $TypeError = __webpack_require__(74);
+
+/** @type {import('.')} */
+module.exports = function regexTester(regex) {
+	if (!isRegex(regex)) {
+		throw new $TypeError('`regex` must be a RegExp');
+	}
+	return function test(s) {
+		return $exec(regex, s) !== null;
+	};
+};
+
+
+/***/ }),
+/* 102 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var callBound = __webpack_require__(66);
+var hasToStringTag = __webpack_require__(64)();
+var hasOwn = __webpack_require__(99);
+var gOPD = __webpack_require__(84);
+
+/** @type {import('.')} */
+var fn;
+
+if (hasToStringTag) {
+	/** @type {(receiver: ThisParameterType<typeof RegExp.prototype.exec>, ...args: Parameters<typeof RegExp.prototype.exec>) => ReturnType<typeof RegExp.prototype.exec>} */
+	var $exec = callBound('RegExp.prototype.exec');
+	/** @type {object} */
+	var isRegexMarker = {};
+
+	var throwRegexMarker = function () {
+		throw isRegexMarker;
+	};
+	/** @type {{ toString(): never, valueOf(): never, [Symbol.toPrimitive]?(): never }} */
+	var badStringifier = {
+		toString: throwRegexMarker,
+		valueOf: throwRegexMarker
+	};
+
+	if (typeof Symbol.toPrimitive === 'symbol') {
+		badStringifier[Symbol.toPrimitive] = throwRegexMarker;
+	}
+
+	/** @type {import('.')} */
+	// @ts-expect-error TS can't figure out that the $exec call always throws
+	// eslint-disable-next-line consistent-return
+	fn = function isRegex(value) {
+		if (!value || typeof value !== 'object') {
+			return false;
+		}
+
+		// eslint-disable-next-line no-extra-parens
+		var descriptor = /** @type {NonNullable<typeof gOPD>} */ (gOPD)(/** @type {{ lastIndex?: unknown }} */ (value), 'lastIndex');
+		var hasLastIndexDataProperty = descriptor && hasOwn(descriptor, 'value');
+		if (!hasLastIndexDataProperty) {
+			return false;
+		}
+
+		try {
+			// eslint-disable-next-line no-extra-parens
+			$exec(value, /** @type {string} */ (/** @type {unknown} */ (badStringifier)));
+		} catch (e) {
+			return e === isRegexMarker;
+		}
+	};
+} else {
+	/** @type {(receiver: ThisParameterType<typeof Object.prototype.toString>, ...args: Parameters<typeof Object.prototype.toString>) => ReturnType<typeof Object.prototype.toString>} */
+	var $toString = callBound('Object.prototype.toString');
+	/** @const @type {'[object RegExp]'} */
+	var regexClass = '[object RegExp]';
+
+	/** @type {import('.')} */
+	fn = function isRegex(value) {
+		// In older browsers, typeof regex incorrectly returns 'function'
+		if (!value || (typeof value !== 'object' && typeof value !== 'function')) {
+			return false;
+		}
+
+		return $toString(value) === regexClass;
+	};
+}
+
+module.exports = fn;
+
+
+/***/ }),
+/* 103 */
+/***/ ((module) => {
+
+"use strict";
+
+
+// eslint-disable-next-line no-extra-parens, no-empty-function
+const cached = /** @type {GeneratorFunctionConstructor} */ (function* () {}.constructor);
+
+/** @type {import('.')} */
+module.exports = () => cached;
+
+
+
+/***/ }),
+/* 104 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var forEach = __webpack_require__(105);
+var availableTypedArrays = __webpack_require__(107);
+var callBind = __webpack_require__(109);
+var callBound = __webpack_require__(66);
+var gOPD = __webpack_require__(84);
+var getProto = __webpack_require__(88);
+
+var $toString = callBound('Object.prototype.toString');
+var hasToStringTag = __webpack_require__(64)();
+
+var g = typeof globalThis === 'undefined' ? __webpack_require__.g : globalThis;
+var typedArrays = availableTypedArrays();
+
+var $slice = callBound('String.prototype.slice');
+
+/** @type {<T = unknown>(array: readonly T[], value: unknown) => number} */
+var $indexOf = callBound('Array.prototype.indexOf', true) || function indexOf(array, value) {
+	for (var i = 0; i < array.length; i += 1) {
+		if (array[i] === value) {
+			return i;
+		}
+	}
+	return -1;
+};
+
+/** @typedef {import('./types').Getter} Getter */
+/** @type {import('./types').Cache} */
+var cache = { __proto__: null };
+if (hasToStringTag && gOPD && getProto) {
+	forEach(typedArrays, function (typedArray) {
+		var arr = new g[typedArray]();
+		if (Symbol.toStringTag in arr && getProto) {
+			var proto = getProto(arr);
+			// @ts-expect-error TS won't narrow inside a closure
+			var descriptor = gOPD(proto, Symbol.toStringTag);
+			if (!descriptor && proto) {
+				var superProto = getProto(proto);
+				// @ts-expect-error TS won't narrow inside a closure
+				descriptor = gOPD(superProto, Symbol.toStringTag);
+			}
+			if (descriptor && descriptor.get) {
+				var bound = callBind(descriptor.get);
+				cache[
+					/** @type {`$${import('.').TypedArrayName}`} */ ('$' + typedArray)
+				] = bound;
+			}
+		}
+	});
+} else {
+	forEach(typedArrays, function (typedArray) {
+		var arr = new g[typedArray]();
+		var fn = arr.slice || arr.set;
+		if (fn) {
+			var bound = /** @type {import('./types').BoundSlice | import('./types').BoundSet} */ (
+				// @ts-expect-error TODO FIXME
+				callBind(fn)
+			);
+			cache[
+				/** @type {`$${import('.').TypedArrayName}`} */ ('$' + typedArray)
+			] = bound;
+		}
+	});
+}
+
+/** @type {(value: object) => false | import('.').TypedArrayName} */
+var tryTypedArrays = function tryAllTypedArrays(value) {
+	/** @type {ReturnType<typeof tryAllTypedArrays>} */ var found = false;
+	forEach(
+		/** @type {Record<`\$${import('.').TypedArrayName}`, Getter>} */ (cache),
+		/** @type {(getter: Getter, name: `\$${import('.').TypedArrayName}`) => void} */
+		function (getter, typedArray) {
+			if (!found) {
+				try {
+					// @ts-expect-error a throw is fine here
+					if ('$' + getter(value) === typedArray) {
+						found = /** @type {import('.').TypedArrayName} */ ($slice(typedArray, 1));
+					}
+				} catch (e) { /**/ }
+			}
+		}
+	);
+	return found;
+};
+
+/** @type {(value: object) => false | import('.').TypedArrayName} */
+var trySlices = function tryAllSlices(value) {
+	/** @type {ReturnType<typeof tryAllSlices>} */ var found = false;
+	forEach(
+		/** @type {Record<`\$${import('.').TypedArrayName}`, Getter>} */(cache),
+		/** @type {(getter: Getter, name: `\$${import('.').TypedArrayName}`) => void} */ function (getter, name) {
+			if (!found) {
+				try {
+					// @ts-expect-error a throw is fine here
+					getter(value);
+					found = /** @type {import('.').TypedArrayName} */ ($slice(name, 1));
+				} catch (e) { /**/ }
+			}
+		}
+	);
+	return found;
+};
+
+/** @type {import('.')} */
+module.exports = function whichTypedArray(value) {
+	if (!value || typeof value !== 'object') { return false; }
+	if (!hasToStringTag) {
+		/** @type {string} */
+		var tag = $slice($toString(value), 8, -1);
+		if ($indexOf(typedArrays, tag) > -1) {
+			return tag;
+		}
+		if (tag !== 'Object') {
+			return false;
+		}
+		// node < 0.6 hits here on real Typed Arrays
+		return trySlices(value);
+	}
+	if (!gOPD) { return null; } // unknown engine
+	return tryTypedArrays(value);
+};
+
+
+/***/ }),
+/* 105 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var isCallable = __webpack_require__(106);
+
+var toStr = Object.prototype.toString;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/** @type {<This, A extends readonly unknown[]>(arr: A, iterator: (this: This | void, value: A[number], index: number, arr: A) => void, receiver: This | undefined) => void} */
+var forEachArray = function forEachArray(array, iterator, receiver) {
+    for (var i = 0, len = array.length; i < len; i++) {
+        if (hasOwnProperty.call(array, i)) {
+            if (receiver == null) {
+                iterator(array[i], i, array);
+            } else {
+                iterator.call(receiver, array[i], i, array);
+            }
+        }
+    }
+};
+
+/** @type {<This, S extends string>(string: S, iterator: (this: This | void, value: S[number], index: number, string: S) => void, receiver: This | undefined) => void} */
+var forEachString = function forEachString(string, iterator, receiver) {
+    for (var i = 0, len = string.length; i < len; i++) {
+        // no such thing as a sparse string.
+        if (receiver == null) {
+            iterator(string.charAt(i), i, string);
+        } else {
+            iterator.call(receiver, string.charAt(i), i, string);
+        }
+    }
+};
+
+/** @type {<This, O>(obj: O, iterator: (this: This | void, value: O[keyof O], index: keyof O, obj: O) => void, receiver: This | undefined) => void} */
+var forEachObject = function forEachObject(object, iterator, receiver) {
+    for (var k in object) {
+        if (hasOwnProperty.call(object, k)) {
+            if (receiver == null) {
+                iterator(object[k], k, object);
+            } else {
+                iterator.call(receiver, object[k], k, object);
+            }
+        }
+    }
+};
+
+/** @type {(x: unknown) => x is readonly unknown[]} */
+function isArray(x) {
+    return toStr.call(x) === '[object Array]';
+}
+
+/** @type {import('.')._internal} */
+module.exports = function forEach(list, iterator, thisArg) {
+    if (!isCallable(iterator)) {
+        throw new TypeError('iterator must be a function');
+    }
+
+    var receiver;
+    if (arguments.length >= 3) {
+        receiver = thisArg;
+    }
+
+    if (isArray(list)) {
+        forEachArray(list, iterator, receiver);
+    } else if (typeof list === 'string') {
+        forEachString(list, iterator, receiver);
+    } else {
+        forEachObject(list, iterator, receiver);
+    }
+};
+
+
+/***/ }),
+/* 106 */
+/***/ ((module) => {
+
+"use strict";
+
+
+var fnToStr = Function.prototype.toString;
+var reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;
+var badArrayLike;
+var isCallableMarker;
+if (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {
+	try {
+		badArrayLike = Object.defineProperty({}, 'length', {
+			get: function () {
+				throw isCallableMarker;
+			}
+		});
+		isCallableMarker = {};
+		// eslint-disable-next-line no-throw-literal
+		reflectApply(function () { throw 42; }, null, badArrayLike);
+	} catch (_) {
+		if (_ !== isCallableMarker) {
+			reflectApply = null;
+		}
+	}
+} else {
+	reflectApply = null;
+}
+
+var constructorRegex = /^\s*class\b/;
+var isES6ClassFn = function isES6ClassFunction(value) {
+	try {
+		var fnStr = fnToStr.call(value);
+		return constructorRegex.test(fnStr);
+	} catch (e) {
+		return false; // not a function
+	}
+};
+
+var tryFunctionObject = function tryFunctionToStr(value) {
+	try {
+		if (isES6ClassFn(value)) { return false; }
+		fnToStr.call(value);
+		return true;
+	} catch (e) {
+		return false;
+	}
+};
+var toStr = Object.prototype.toString;
+var objectClass = '[object Object]';
+var fnClass = '[object Function]';
+var genClass = '[object GeneratorFunction]';
+var ddaClass = '[object HTMLAllCollection]'; // IE 11
+var ddaClass2 = '[object HTML document.all class]';
+var ddaClass3 = '[object HTMLCollection]'; // IE 9-10
+var hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`
+
+var isIE68 = !(0 in [,]); // eslint-disable-line no-sparse-arrays, comma-spacing
+
+var isDDA = function isDocumentDotAll() { return false; };
+if (typeof document === 'object') {
+	// Firefox 3 canonicalizes DDA to undefined when it's not accessed directly
+	var all = document.all;
+	if (toStr.call(all) === toStr.call(document.all)) {
+		isDDA = function isDocumentDotAll(value) {
+			/* globals document: false */
+			// in IE 6-8, typeof document.all is "object" and it's truthy
+			if ((isIE68 || !value) && (typeof value === 'undefined' || typeof value === 'object')) {
+				try {
+					var str = toStr.call(value);
+					return (
+						str === ddaClass
+						|| str === ddaClass2
+						|| str === ddaClass3 // opera 12.16
+						|| str === objectClass // IE 6-8
+					) && value('') == null; // eslint-disable-line eqeqeq
+				} catch (e) { /**/ }
+			}
+			return false;
+		};
+	}
+}
+
+module.exports = reflectApply
+	? function isCallable(value) {
+		if (isDDA(value)) { return true; }
+		if (!value) { return false; }
+		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
+		try {
+			reflectApply(value, null, badArrayLike);
+		} catch (e) {
+			if (e !== isCallableMarker) { return false; }
+		}
+		return !isES6ClassFn(value) && tryFunctionObject(value);
+	}
+	: function isCallable(value) {
+		if (isDDA(value)) { return true; }
+		if (!value) { return false; }
+		if (typeof value !== 'function' && typeof value !== 'object') { return false; }
+		if (hasToStringTag) { return tryFunctionObject(value); }
+		if (isES6ClassFn(value)) { return false; }
+		var strClass = toStr.call(value);
+		if (strClass !== fnClass && strClass !== genClass && !(/^\[object HTML/).test(strClass)) { return false; }
+		return tryFunctionObject(value);
+	};
+
+
+/***/ }),
+/* 107 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var possibleNames = __webpack_require__(108);
+
+var g = typeof globalThis === 'undefined' ? __webpack_require__.g : globalThis;
+
+/** @type {import('.')} */
+module.exports = function availableTypedArrays() {
+	var /** @type {ReturnType<typeof availableTypedArrays>} */ out = [];
+	for (var i = 0; i < possibleNames.length; i++) {
+		if (typeof g[possibleNames[i]] === 'function') {
+			// @ts-expect-error
+			out[out.length] = possibleNames[i];
+		}
+	}
+	return out;
+};
+
+
+/***/ }),
+/* 108 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('.')} */
+module.exports = [
+	'Float16Array',
+	'Float32Array',
+	'Float64Array',
+	'Int8Array',
+	'Int16Array',
+	'Int32Array',
+	'Uint8Array',
+	'Uint8ClampedArray',
+	'Uint16Array',
+	'Uint32Array',
+	'BigInt64Array',
+	'BigUint64Array'
+];
+
+
+/***/ }),
+/* 109 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var setFunctionLength = __webpack_require__(110);
+
+var $defineProperty = __webpack_require__(86);
+
+var callBindBasic = __webpack_require__(92);
+var applyBind = __webpack_require__(113);
+
+module.exports = function callBind(originalFunction) {
+	var func = callBindBasic(arguments);
+	var adjustedLength = originalFunction.length - (arguments.length - 1);
+	return setFunctionLength(
+		func,
+		1 + (adjustedLength > 0 ? adjustedLength : 0),
+		true
+	);
+};
+
+if ($defineProperty) {
+	$defineProperty(module.exports, 'apply', { value: applyBind });
+} else {
+	module.exports.apply = applyBind;
+}
+
+
+/***/ }),
+/* 110 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var GetIntrinsic = __webpack_require__(67);
+var define = __webpack_require__(111);
+var hasDescriptors = __webpack_require__(112)();
+var gOPD = __webpack_require__(84);
+
+var $TypeError = __webpack_require__(74);
+var $floor = GetIntrinsic('%Math.floor%');
+
+/** @type {import('.')} */
+module.exports = function setFunctionLength(fn, length) {
+	if (typeof fn !== 'function') {
+		throw new $TypeError('`fn` is not a function');
+	}
+	if (typeof length !== 'number' || length < 0 || length > 0xFFFFFFFF || $floor(length) !== length) {
+		throw new $TypeError('`length` must be a positive 32-bit integer');
+	}
+
+	var loose = arguments.length > 2 && !!arguments[2];
+
+	var functionLengthIsConfigurable = true;
+	var functionLengthIsWritable = true;
+	if ('length' in fn && gOPD) {
+		var desc = gOPD(fn, 'length');
+		if (desc && !desc.configurable) {
+			functionLengthIsConfigurable = false;
+		}
+		if (desc && !desc.writable) {
+			functionLengthIsWritable = false;
+		}
+	}
+
+	if (functionLengthIsConfigurable || functionLengthIsWritable || !loose) {
+		if (hasDescriptors) {
+			define(/** @type {Parameters<define>[0]} */ (fn), 'length', length, true, true);
+		} else {
+			define(/** @type {Parameters<define>[0]} */ (fn), 'length', length);
+		}
+	}
+	return fn;
+};
+
+
+/***/ }),
+/* 111 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var $defineProperty = __webpack_require__(86);
+
+var $SyntaxError = __webpack_require__(73);
+var $TypeError = __webpack_require__(74);
+
+var gopd = __webpack_require__(84);
+
+/** @type {import('.')} */
+module.exports = function defineDataProperty(
+	obj,
+	property,
+	value
+) {
+	if (!obj || (typeof obj !== 'object' && typeof obj !== 'function')) {
+		throw new $TypeError('`obj` must be an object or a function`');
+	}
+	if (typeof property !== 'string' && typeof property !== 'symbol') {
+		throw new $TypeError('`property` must be a string or a symbol`');
+	}
+	if (arguments.length > 3 && typeof arguments[3] !== 'boolean' && arguments[3] !== null) {
+		throw new $TypeError('`nonEnumerable`, if provided, must be a boolean or null');
+	}
+	if (arguments.length > 4 && typeof arguments[4] !== 'boolean' && arguments[4] !== null) {
+		throw new $TypeError('`nonWritable`, if provided, must be a boolean or null');
+	}
+	if (arguments.length > 5 && typeof arguments[5] !== 'boolean' && arguments[5] !== null) {
+		throw new $TypeError('`nonConfigurable`, if provided, must be a boolean or null');
+	}
+	if (arguments.length > 6 && typeof arguments[6] !== 'boolean') {
+		throw new $TypeError('`loose`, if provided, must be a boolean');
+	}
+
+	var nonEnumerable = arguments.length > 3 ? arguments[3] : null;
+	var nonWritable = arguments.length > 4 ? arguments[4] : null;
+	var nonConfigurable = arguments.length > 5 ? arguments[5] : null;
+	var loose = arguments.length > 6 ? arguments[6] : false;
+
+	/* @type {false | TypedPropertyDescriptor<unknown>} */
+	var desc = !!gopd && gopd(obj, property);
+
+	if ($defineProperty) {
+		$defineProperty(obj, property, {
+			configurable: nonConfigurable === null && desc ? desc.configurable : !nonConfigurable,
+			enumerable: nonEnumerable === null && desc ? desc.enumerable : !nonEnumerable,
+			value: value,
+			writable: nonWritable === null && desc ? desc.writable : !nonWritable
+		});
+	} else if (loose || (!nonEnumerable && !nonWritable && !nonConfigurable)) {
+		// must fall back to [[Set]], and was not explicitly asked to make non-enumerable, non-writable, or non-configurable
+		obj[property] = value; // eslint-disable-line no-param-reassign
+	} else {
+		throw new $SyntaxError('This environment does not support defining a property as non-configurable, non-writable, or non-enumerable.');
+	}
+};
+
+
+/***/ }),
+/* 112 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var $defineProperty = __webpack_require__(86);
+
+var hasPropertyDescriptors = function hasPropertyDescriptors() {
+	return !!$defineProperty;
+};
+
+hasPropertyDescriptors.hasArrayLengthDefineBug = function hasArrayLengthDefineBug() {
+	// node v0.6 has a bug where array lengths can be Set but not Defined
+	if (!$defineProperty) {
+		return null;
+	}
+	try {
+		return $defineProperty([], 'length', { value: 1 }).length !== 1;
+	} catch (e) {
+		// In Firefox 4-22, defining length on an array throws an exception.
+		return true;
+	}
+};
+
+module.exports = hasPropertyDescriptors;
+
+
+/***/ }),
+/* 113 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var bind = __webpack_require__(93);
+var $apply = __webpack_require__(97);
+var actualApply = __webpack_require__(96);
+
+/** @type {import('./applyBind')} */
+module.exports = function applyBind() {
+	return actualApply(bind, $apply, arguments);
+};
+
+
+/***/ }),
+/* 114 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var whichTypedArray = __webpack_require__(104);
+
+/** @type {import('.')} */
+module.exports = function isTypedArray(value) {
+	return !!whichTypedArray(value);
+};
+
+
+/***/ }),
+/* 115 */
+/***/ ((module) => {
 
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
@@ -24916,46 +26652,122 @@ module.exports = function isBuffer(arg) {
 }
 
 /***/ }),
-/* 64 */
-/***/ (function(module, exports) {
+/* 116 */
+/***/ ((module) => {
 
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
+    if (superCtor) {
+      ctor.super_ = superCtor
+      ctor.prototype = Object.create(superCtor.prototype, {
+        constructor: {
+          value: ctor,
+          enumerable: false,
+          writable: true,
+          configurable: true
+        }
+      })
+    }
   };
 } else {
   // old school shim for old browsers
   module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
+    if (superCtor) {
+      ctor.super_ = superCtor
+      var TempCtor = function () {}
+      TempCtor.prototype = superCtor.prototype
+      ctor.prototype = new TempCtor()
+      ctor.prototype.constructor = ctor
+    }
   }
 }
 
 
 /***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 117 */
+/***/ ((module) => {
 
 "use strict";
+/* eslint-env browser */
+
+
+function getChromeVersion() {
+	const matches = /(Chrome|Chromium)\/(?<chromeVersion>\d+)\./.exec(navigator.userAgent);
+
+	if (!matches) {
+		return;
+	}
+
+	return Number.parseInt(matches.groups.chromeVersion, 10);
+}
+
+const colorSupport = getChromeVersion() >= 69 ? {
+	level: 1,
+	hasBasic: true,
+	has256: false,
+	has16m: false
+} : false;
 
 module.exports = {
-	stdout: false,
-	stderr: false
+	stdout: colorSupport,
+	stderr: colorSupport
 };
 
 
 /***/ })
-/******/ ]);
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__(0);
+/******/ 	
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
 });

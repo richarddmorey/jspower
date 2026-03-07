@@ -1,7 +1,8 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './build/index.js',
   output: {
     filename: 'jspower.js',
     path: path.resolve(__dirname, 'dist'),
@@ -27,7 +28,16 @@ module.exports = {
   resolve: {
     alias: {
         'node_modules': path.join(__dirname, 'node_modules'),
-    }
-  }
+    },
+    fallback: {
+        'tty': require.resolve('tty-browserify'),
+	      'util': require.resolve('util/') 
+    } 
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_DEBUG': JSON.stringify(process.env.NODE_DEBUG || false),
+    }),
+  ]
 };
 

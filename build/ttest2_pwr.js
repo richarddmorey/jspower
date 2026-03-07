@@ -9,13 +9,12 @@
 *
 *********/
 "use strict";
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, privateMap) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to get private field on non-instance");
-    }
-    return privateMap.get(receiver);
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _cache, _design, _test, _curve, _stamp, _power1, _compute_criterion, _es_power, _n_power;
+var _ttest2_pwr_cache, _ttest2_pwr_design, _ttest2_pwr_test, _ttest2_pwr_curve, _ttest2_pwr_stamp, _ttest2_pwr_power1, _ttest2_pwr_compute_criterion, _ttest2_pwr_es_power, _ttest2_pwr_n_power;
 Object.defineProperty(exports, "__esModule", { value: true });
 const Validator = require("validatorjs");
 /* Some validation rules */
@@ -48,35 +47,35 @@ const ttest2_test_vrule = {
 class ttest2_pwr {
     constructor(precision_2alpha = 0.2, nratio = 1, test = {}, options = {}) {
         this.names = { es: "𝛿", test_stat: "t" };
-        _cache.set(this, {
+        _ttest2_pwr_cache.set(this, {
             criterion: {}
         });
-        _design.set(this, {
+        _ttest2_pwr_design.set(this, {
             n1: 50,
             n2: 50,
             nratio: 1
         });
-        _test.set(this, {
+        _ttest2_pwr_test.set(this, {
             es0: 0,
             side: 1,
             alpha: 0.025
         });
-        _curve.set(this, {
+        _ttest2_pwr_curve.set(this, {
             es: 0.1,
             power: 0.9
         });
-        _stamp.set(this, () => {
+        _ttest2_pwr_stamp.set(this, () => {
             this.randstamp = Math.random().toString(36).substring(2);
             this.timestamp = Date.now();
         }
         // Note that this returns log-odds of power!
         );
         // Note that this returns log-odds of power!
-        _power1.set(this, (n1, n2, delta, alpha, criterion, delta0) => {
+        _ttest2_pwr_power1.set(this, (n1, n2, delta, alpha, criterion, delta0) => {
             const neff = n1 * n2 / (n1 + n2);
             const df = n1 + n2 - 2;
             if (typeof criterion === 'undefined')
-                criterion = __classPrivateFieldGet(this, _compute_criterion).call(this, n1, n2, alpha, delta0);
+                criterion = __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, n1, n2, alpha, delta0);
             const ncp = delta * Math.sqrt(neff);
             var logpow;
             if (df > this.options.df_normal_cutoff) {
@@ -88,14 +87,14 @@ class ttest2_pwr {
             const qpow = qlogis(logpow, 0, 1, true, true);
             return qpow;
         });
-        _compute_criterion.set(this, (n1, n2, alpha, delta0) => {
+        _ttest2_pwr_compute_criterion.set(this, (n1, n2, alpha, delta0) => {
             n1 = Math.ceil(n1);
             var ns0 = (n1 > n2) ? [n2, n1] : [n1, n2];
             var ns = ns0.toString();
             const key = `${delta0},${alpha},${ns}`;
             var f0, criterion, i = 0;
-            if ((key in __classPrivateFieldGet(this, _cache).criterion) && (this.options.criterion.cache)) {
-                criterion = __classPrivateFieldGet(this, _cache).criterion[key];
+            if ((key in __classPrivateFieldGet(this, _ttest2_pwr_cache, "f").criterion) && (this.options.criterion.cache)) {
+                criterion = __classPrivateFieldGet(this, _ttest2_pwr_cache, "f").criterion[key];
             }
             else {
                 const neff = n1 * n2 / (n1 + n2);
@@ -108,22 +107,22 @@ class ttest2_pwr {
                     criterion = qt(alpha, df, ncp, false);
                 }
                 if (this.options.criterion.cache)
-                    __classPrivateFieldGet(this, _cache).criterion[key] = criterion;
+                    __classPrivateFieldGet(this, _ttest2_pwr_cache, "f").criterion[key] = criterion;
             }
             return criterion;
         });
-        _es_power.set(this, (pow, criterion) => {
-            const n1 = __classPrivateFieldGet(this, _design).n1;
+        _ttest2_pwr_es_power.set(this, (pow, criterion) => {
+            const n1 = __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1;
             const n2 = this.n2;
-            const delta0 = __classPrivateFieldGet(this, _test).side < 0 ? -__classPrivateFieldGet(this, _test).es0 : __classPrivateFieldGet(this, _test).es0;
+            const delta0 = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side < 0 ? -__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 : __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0;
             const s_dn = this.options.es.s_dn;
             const s_up = this.options.es.s_up;
             const shift_dn = this.options.es.shift_dn;
             const shift_up = this.options.es.shift_up;
             const fix_n2 = this.options.fix_n2;
-            if (pow == __classPrivateFieldGet(this, _test).alpha)
-                return __classPrivateFieldGet(this, _test).es0;
-            if (__classPrivateFieldGet(this, _test).side < 0)
+            if (pow == __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha)
+                return __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0;
+            if (__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side < 0)
                 criterion = -criterion;
             var es_up, es_lo, pow_up, pow_lo;
             const qpow = qlogis(pow);
@@ -132,38 +131,38 @@ class ttest2_pwr {
             const tmp = criterion - qnorm(pow, 0, 1, false);
             es_up = (tmp + s_up) / Math.sqrt(neff);
             es_lo = (tmp - s_dn) / Math.sqrt(neff);
-            pow_up = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_up, undefined, criterion, delta0);
-            pow_lo = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_lo, undefined, criterion, delta0);
+            pow_up = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n1, n2, es_up, undefined, criterion, delta0);
+            pow_lo = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n1, n2, es_lo, undefined, criterion, delta0);
             while (pow_up < qpow) {
                 es_lo = es_up;
                 es_up = es_up + shift_up / Math.sqrt(neff);
-                pow_up = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_up, undefined, criterion, delta0);
+                pow_up = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n1, n2, es_up, undefined, criterion, delta0);
             }
             while (pow_lo > qpow) {
                 es_up = es_lo;
                 es_lo = es_lo - shift_dn / Math.sqrt(neff);
-                pow_lo = __classPrivateFieldGet(this, _power1).call(this, n1, n2, es_lo, undefined, criterion, delta0);
+                pow_lo = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n1, n2, es_lo, undefined, criterion, delta0);
             }
             if (fix_n2) {
-                es_lo = __classPrivateFieldGet(this, _test).es0 - qnorm(__classPrivateFieldGet(this, _test).alpha) / Math.sqrt(n2) + qnorm(pow) / Math.sqrt(n1);
+                es_lo = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 - qnorm(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha) / Math.sqrt(n2) + qnorm(pow) / Math.sqrt(n1);
             }
             var this0 = this;
             let opt_fun = function (delta) {
-                var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
+                var obj = __classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, n1, n2, delta, undefined, criterion, delta0) - qpow;
                 return obj * obj;
             };
             return fmin(es_lo, es_up, opt_fun, this.options.es.tol).x;
         });
-        _n_power.set(this, (pow, delta) => {
-            const alpha = __classPrivateFieldGet(this, _test).alpha;
-            const nratio = __classPrivateFieldGet(this, _design).nratio;
+        _ttest2_pwr_n_power.set(this, (pow, delta) => {
+            const alpha = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha;
+            const nratio = __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio;
             const s_dn = this.options.n.s_dn;
             const s_up = this.options.n.s_up;
             const shift_dn = this.options.n.shift_dn;
             const shift_up = this.options.n.shift_up;
             const n1_max_pow = this.options.n.n1_max_pow;
             const n1_max_min = this.options.n.n1_max_min;
-            const delta0 = __classPrivateFieldGet(this, _test).side < 0 ? -__classPrivateFieldGet(this, _test).es0 : __classPrivateFieldGet(this, _test).es0;
+            const delta0 = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side < 0 ? -__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 : __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0;
             const fix_n2 = this.options.fix_n2;
             if (fix_n2) {
                 let ncp = -Math.abs(delta - delta0) * Math.sqrt(this.n2);
@@ -171,7 +170,7 @@ class ttest2_pwr {
                     return Infinity;
                 }
             }
-            if (__classPrivateFieldGet(this, _test).side < 0)
+            if (__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side < 0)
                 delta = -delta;
             if (delta < delta0 && pow > alpha) {
                 throw 'The specified effect size specified cannot be in the null region if power > alpha.';
@@ -209,8 +208,8 @@ class ttest2_pwr {
                 n2_up = Math.max(2, n_up * nratio);
                 n2_lo = Math.max(2, n_lo * nratio);
             }
-            pow_up = __classPrivateFieldGet(this, _power1).call(this, n_up, n2_up, delta, alpha, undefined, delta0);
-            pow_lo = __classPrivateFieldGet(this, _power1).call(this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+            pow_up = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n_up, n2_up, delta, alpha, undefined, delta0);
+            pow_lo = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n_lo, n2_lo, delta, alpha, undefined, delta0);
             if (n_up == 2)
                 return 2;
             while (pow_up < qpow) {
@@ -220,7 +219,7 @@ class ttest2_pwr {
                     n2_lo = n2_up;
                     n2_up = n2_up * shift_up;
                 }
-                pow_up = __classPrivateFieldGet(this, _power1).call(this, n_up, n2_up, delta, alpha, undefined, delta0);
+                pow_up = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n_up, n2_up, delta, alpha, undefined, delta0);
             }
             while ((pow_lo > qpow) && (n_lo >= 2)) {
                 n_up = n_lo;
@@ -229,23 +228,23 @@ class ttest2_pwr {
                     n2_up = n2_lo;
                     n2_lo = n2_lo * shift_dn;
                 }
-                pow_lo = __classPrivateFieldGet(this, _power1).call(this, n_lo, n2_lo, delta, alpha, undefined, delta0);
+                pow_lo = __classPrivateFieldGet(this, _ttest2_pwr_power1, "f").call(this, n_lo, n2_lo, delta, alpha, undefined, delta0);
             }
             // Ensure group 2 has at least two samples in it
             if (!fix_n2 && (n_lo * nratio < 2))
                 n_lo = 2 / nratio;
             var this0 = this;
             let opt_fun = function (n1) {
-                var obj = __classPrivateFieldGet(this0, _power1).call(this0, n1, fix_n2 ? n2 : Math.ceil(n1 * nratio), delta, alpha, undefined, delta0) - qpow;
+                var obj = __classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, n1, fix_n2 ? n2 : Math.ceil(n1 * nratio), delta, alpha, undefined, delta0) - qpow;
                 return obj * obj;
             };
             const n_opt = fmin(n_lo, n_up, opt_fun, this.options.n.tol);
             return Math.ceil(n_opt.x);
         });
-        __classPrivateFieldGet(this, _design).nratio = nratio;
-        __classPrivateFieldGet(this, _stamp).call(this);
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = nratio;
+        __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
         this.id = Math.random().toString(36).substring(2);
-        Object.assign(__classPrivateFieldGet(this, _test), test);
+        Object.assign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f"), test);
         var options0 = {
             fix_es: true,
             fix_n2: false,
@@ -263,19 +262,19 @@ class ttest2_pwr {
         this.options.fix_n2 = fix_n2;
     }
     find_power(es, typeS = false, limit = false) {
-        const design = __classPrivateFieldGet(this, _design);
-        const test = __classPrivateFieldGet(this, _test);
-        const curve = __classPrivateFieldGet(this, _curve);
+        const design = __classPrivateFieldGet(this, _ttest2_pwr_design, "f");
+        const test = __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
+        const curve = __classPrivateFieldGet(this, _ttest2_pwr_curve, "f");
         const n2 = this.n2;
         const side = test.side;
         var criterion;
         if (typeof es === 'undefined')
             es = [curve.es];
         if (typeS) {
-            criterion = -Math.sign(side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, -Math.sign(side) * test.es0);
+            criterion = -Math.sign(side) * __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, design.n1, this.n2, test.alpha, -Math.sign(side) * test.es0);
         }
         else {
-            criterion = Math.sign(side) * __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, test.alpha, Math.sign(side) * test.es0);
+            criterion = Math.sign(side) * __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, design.n1, this.n2, test.alpha, Math.sign(side) * test.es0);
         }
         var this0 = this;
         return es.map(function (delta) {
@@ -298,21 +297,21 @@ class ttest2_pwr {
                 criterion0 = -criterion0;
             }
             if (typeS) {
-                return plogis(-__classPrivateFieldGet(this0, _power1).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
+                return plogis(-__classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
             }
             else {
-                return plogis(__classPrivateFieldGet(this0, _power1).call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
+                return plogis(__classPrivateFieldGet(this0, _ttest2_pwr_power1, "f").call(this0, design.n1, n2, delta, test.alpha, criterion0, delta0));
             }
         });
     }
     find_es(power, typeS = false, limit = false) {
-        const design = __classPrivateFieldGet(this, _design);
-        const test = __classPrivateFieldGet(this, _test);
-        const curve = __classPrivateFieldGet(this, _curve);
+        const design = __classPrivateFieldGet(this, _ttest2_pwr_design, "f");
+        const test = __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
+        const curve = __classPrivateFieldGet(this, _ttest2_pwr_curve, "f");
         if (typeof power === 'undefined')
             power = [curve.power];
         const criterion = Math.sign(test.side) *
-            __classPrivateFieldGet(this, _compute_criterion).call(this, design.n1, this.n2, typeS ? 1 - test.alpha : test.alpha, Math.sign(test.side) * test.es0);
+            __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, design.n1, this.n2, typeS ? 1 - test.alpha : test.alpha, Math.sign(test.side) * test.es0);
         const this0 = this;
         return power.map(function (power) {
             if (power == test.alpha) {
@@ -326,17 +325,17 @@ class ttest2_pwr {
                 return Math.sign(test.side) * Math.abs(es_diff) + test.es0;
             }
             return Math.sign(test.side) *
-                __classPrivateFieldGet(this0, _es_power).call(this0, typeS ? 1 - power : power, criterion);
+                __classPrivateFieldGet(this0, _ttest2_pwr_es_power, "f").call(this0, typeS ? 1 - power : power, criterion);
         });
     }
     find_n(curve) {
-        const design = __classPrivateFieldGet(this, _design);
-        const test = __classPrivateFieldGet(this, _test);
+        const design = __classPrivateFieldGet(this, _ttest2_pwr_design, "f");
+        const test = __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
         if (typeof curve === 'undefined')
-            curve = [__classPrivateFieldGet(this, _curve)];
+            curve = [__classPrivateFieldGet(this, _ttest2_pwr_curve, "f")];
         const this0 = this;
         return curve.map(function (curve) {
-            return __classPrivateFieldGet(this0, _n_power).call(this0, curve.power, curve.es);
+            return __classPrivateFieldGet(this0, _ttest2_pwr_n_power, "f").call(this0, curve.power, curve.es);
         });
     }
     density(x, es, cumulative = false, t = true, logp = false) {
@@ -368,8 +367,8 @@ class ttest2_pwr {
     }
     clear_cache() {
         var this0 = this;
-        Object.keys(__classPrivateFieldGet(this, _cache)).map(function (key) {
-            __classPrivateFieldGet(this0, _cache)[key] = {};
+        Object.keys(__classPrivateFieldGet(this, _ttest2_pwr_cache, "f")).map(function (key) {
+            __classPrivateFieldGet(this0, _ttest2_pwr_cache, "f")[key] = {};
         });
     }
     design_report() {
@@ -397,10 +396,10 @@ class ttest2_pwr {
         };
     }
     get cache() {
-        return __classPrivateFieldGet(this, _cache);
+        return __classPrivateFieldGet(this, _ttest2_pwr_cache, "f");
     }
     get test() {
-        return __classPrivateFieldGet(this, _test);
+        return __classPrivateFieldGet(this, _ttest2_pwr_test, "f");
     }
     set test(test) {
         const val = new Validator(test, ttest2_test_vrule);
@@ -408,57 +407,57 @@ class ttest2_pwr {
             throw 'Invalid test setup.';
         }
         var reset = false, i, which_change = [];
-        const keys = Object.keys(__classPrivateFieldGet(this, _test));
+        const keys = Object.keys(__classPrivateFieldGet(this, _ttest2_pwr_test, "f"));
         for (i = 0; i < keys.length; i++) {
             let key = keys[i];
             if (key in test)
-                if (test[key] != __classPrivateFieldGet(this, _test)[key]) {
+                if (test[key] != __classPrivateFieldGet(this, _ttest2_pwr_test, "f")[key]) {
                     which_change.push(key);
                 }
         }
         if (which_change.length > 0) {
-            Object.assign(__classPrivateFieldGet(this, _test), test);
+            Object.assign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f"), test);
             if (which_change[0] == "alpha" && which_change.length == 1) {
                 if (this.options.fix_es) {
-                    __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+                    __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([this.curve.es])[0];
                 }
                 else {
-                    __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+                    __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
                 }
             }
             else {
-                __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+                __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
             }
         }
-        __classPrivateFieldGet(this, _stamp).call(this);
+        __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
     get n1() {
-        return __classPrivateFieldGet(this, _design).n1;
+        return __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1;
     }
     set n1(n1) {
-        if (__classPrivateFieldGet(this, _design).n1 == n1)
+        if (__classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1 == n1)
             return;
         const val = new Validator({ n: n1 }, { n: n_vrule });
         if (val.fails()) {
             throw 'Invalid sample size.';
         }
-        __classPrivateFieldGet(this, _design).n1 = n1;
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1 = n1;
         if (this.options.fix_n2) {
-            __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+            __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
         }
         else {
-            __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+            __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
         }
         if (this.options.fix_es) {
-            __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+            __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([this.curve.es])[0];
         }
         else {
-            __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+            __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
         }
-        __classPrivateFieldGet(this, _stamp).call(this);
+        __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
     get nratio() {
-        return __classPrivateFieldGet(this, _design).nratio;
+        return __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio;
     }
     set nratio(nratio) {
         const val = new Validator({ nr: nratio }, { nr: positive_vrule });
@@ -468,11 +467,11 @@ class ttest2_pwr {
         const ntotal = this.ntotal;
         const n2 = Math.ceil(ntotal * nratio / (1 + nratio));
         this.options.fix_n2 = false;
-        __classPrivateFieldGet(this, _design).nratio = nratio;
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = nratio;
         this.n1 = ntotal - n2;
     }
     get n2() {
-        return __classPrivateFieldGet(this, _design).n2;
+        return __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2;
     }
     set n2(n2) {
         n2 = Math.ceil(n2);
@@ -480,46 +479,46 @@ class ttest2_pwr {
         if (val.fails()) {
             throw 'Invalid sample size.';
         }
-        __classPrivateFieldGet(this, _design).n2 = n2;
-        __classPrivateFieldGet(this, _design).nratio = n2 / this.n1;
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = n2;
+        __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n2 / this.n1;
         if (this.options.fix_es) {
-            __classPrivateFieldGet(this, _curve).power = this.find_power([this.curve.es])[0];
+            __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([this.curve.es])[0];
         }
         else {
-            __classPrivateFieldGet(this, _curve).es = this.find_es([this.curve.power])[0];
+            __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([this.curve.power])[0];
         }
         this.options.fix_n2 = true;
-        __classPrivateFieldGet(this, _stamp).call(this);
+        __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
     get ntotal() {
         return this.n1 + this.n2;
     }
     set es(es) {
-        if (__classPrivateFieldGet(this, _curve).es == es)
+        if (__classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es == es)
             return;
         const val = new Validator({ es: es }, { es: 'number' });
         if (val.fails()) {
             throw 'Invalid effect size.';
         }
-        __classPrivateFieldGet(this, _curve).es = es;
-        __classPrivateFieldGet(this, _curve).power = this.find_power([es])[0];
-        __classPrivateFieldGet(this, _stamp).call(this);
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = es;
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = this.find_power([es])[0];
+        __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
     set power(power) {
-        if (__classPrivateFieldGet(this, _curve).power == power)
+        if (__classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power == power)
             return;
         const val = new Validator({ power: power }, { n: prob_exclusive_vrule });
         if (val.fails()) {
             throw 'Invalid power.';
         }
-        __classPrivateFieldGet(this, _curve).power = power;
-        __classPrivateFieldGet(this, _curve).es = this.find_es([power])[0];
-        __classPrivateFieldGet(this, _stamp).call(this);
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power = power;
+        __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es = this.find_es([power])[0];
+        __classPrivateFieldGet(this, _ttest2_pwr_stamp, "f").call(this);
     }
     get precision_2alpha() {
-        const es = this.find_es([1 - __classPrivateFieldGet(this, _test).alpha])[0];
+        const es = this.find_es([1 - __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha])[0];
         // add cache?
-        return Math.abs(__classPrivateFieldGet(this, _test).es0 - es);
+        return Math.abs(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 - es);
     }
     set precision_2alpha(p) {
         const val = new Validator({ p: p }, { p: positive_vrule });
@@ -527,13 +526,13 @@ class ttest2_pwr {
             throw 'Invalid precision.';
         }
         const fix_n2 = this.options.fix_n2;
-        const es = __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * Math.abs(p);
-        const n1 = this.find_n([{ es: es, power: 1 - __classPrivateFieldGet(this, _test).alpha }])[0];
+        const es = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Math.sign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side) * Math.abs(p);
+        const n1 = this.find_n([{ es: es, power: 1 - __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha }])[0];
         if (fix_n2) {
-            __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+            __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
         }
         else {
-            __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+            __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
         }
         this.n1 = n1;
         // add cache?
@@ -543,38 +542,38 @@ class ttest2_pwr {
         return this.find_es([0.5])[0];
     }
     get powerLimit() {
-        return this.find_power([__classPrivateFieldGet(this, _curve).es], null, true)[0];
+        return this.find_power([__classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es], null, true)[0];
     }
     set es50(es) {
-        const min_max = __classPrivateFieldGet(this, _test).side > 0 ? "min" : "max";
-        const val = new Validator({ es: es }, { es: `${min_max}:${__classPrivateFieldGet(this, _test).es0 + Number.EPSILON}` });
+        const min_max = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side > 0 ? "min" : "max";
+        const val = new Validator({ es: es }, { es: `${min_max}:${__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Number.EPSILON}` });
         if (val.fails()) {
             throw 'Invalid effect size.';
         }
         const n1 = this.find_n([{ power: 0.5, es: es }])[0];
         const fix_n2 = this.options.fix_n2;
         if (fix_n2) {
-            __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+            __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
         }
         else {
-            __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+            __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
         }
         this.n1 = n1;
         // add cache?
     }
     get es1mAlpha() {
-        return __classPrivateFieldGet(this, _test).es0 + Math.sign(__classPrivateFieldGet(this, _test).side) * this.precision_2alpha;
+        return __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Math.sign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side) * this.precision_2alpha;
     }
     set es1mAlpha(es) {
-        const min_max = __classPrivateFieldGet(this, _test).side > 0 ? "min" : "max";
-        const val = new Validator({ es: es }, { es: `${min_max}:${__classPrivateFieldGet(this, _test).es0 + Number.EPSILON}` });
+        const min_max = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side > 0 ? "min" : "max";
+        const val = new Validator({ es: es }, { es: `${min_max}:${__classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0 + Number.EPSILON}` });
         if (val.fails()) {
             throw 'Invalid effect size.';
         }
-        this.precision_2alpha = Math.abs(es - __classPrivateFieldGet(this, _test).es0);
+        this.precision_2alpha = Math.abs(es - __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0);
     }
     get curve() {
-        return __classPrivateFieldGet(this, _curve);
+        return __classPrivateFieldGet(this, _ttest2_pwr_curve, "f");
     }
     set curve(curve) {
         const val = new Validator({ curve: curve }, { curve: pwr_curve_vrule });
@@ -583,33 +582,33 @@ class ttest2_pwr {
         }
         var reset = false, i;
         const fix_n2 = this.options.fix_n2;
-        const keys = Object.keys(__classPrivateFieldGet(this, _curve));
+        const keys = Object.keys(__classPrivateFieldGet(this, _ttest2_pwr_curve, "f"));
         for (i = 0; i < keys.length; i++) {
             let key = keys[i];
             if (key in curve)
-                if (curve[key] != __classPrivateFieldGet(this, _curve)[key]) {
+                if (curve[key] != __classPrivateFieldGet(this, _ttest2_pwr_curve, "f")[key]) {
                     reset = true;
                     break;
                 }
         }
-        Object.assign(__classPrivateFieldGet(this, _curve), curve);
+        Object.assign(__classPrivateFieldGet(this, _ttest2_pwr_curve, "f"), curve);
         if (reset) {
-            const n1 = this.find_n([{ power: __classPrivateFieldGet(this, _curve).power, es: __classPrivateFieldGet(this, _curve).es }])[0];
+            const n1 = this.find_n([{ power: __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").power, es: __classPrivateFieldGet(this, _ttest2_pwr_curve, "f").es }])[0];
             if (fix_n2) {
-                __classPrivateFieldGet(this, _design).nratio = n1 / this.n2;
+                __classPrivateFieldGet(this, _ttest2_pwr_design, "f").nratio = n1 / this.n2;
             }
             else {
-                __classPrivateFieldGet(this, _design).n2 = Math.ceil(n1 * this.nratio);
+                __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n2 = Math.ceil(n1 * this.nratio);
             }
             this.n1 = n1;
         }
     }
     get criterion() {
-        const delta0 = __classPrivateFieldGet(this, _test).es0;
-        return Math.sign(__classPrivateFieldGet(this, _test).side) * __classPrivateFieldGet(this, _compute_criterion).call(this, __classPrivateFieldGet(this, _design).n1, this.n2, __classPrivateFieldGet(this, _test).alpha, __classPrivateFieldGet(this, _test).side < 0 ? -delta0 : delta0);
+        const delta0 = __classPrivateFieldGet(this, _ttest2_pwr_test, "f").es0;
+        return Math.sign(__classPrivateFieldGet(this, _ttest2_pwr_test, "f").side) * __classPrivateFieldGet(this, _ttest2_pwr_compute_criterion, "f").call(this, __classPrivateFieldGet(this, _ttest2_pwr_design, "f").n1, this.n2, __classPrivateFieldGet(this, _ttest2_pwr_test, "f").alpha, __classPrivateFieldGet(this, _ttest2_pwr_test, "f").side < 0 ? -delta0 : delta0);
     }
 }
-_cache = new WeakMap(), _design = new WeakMap(), _test = new WeakMap(), _curve = new WeakMap(), _stamp = new WeakMap(), _power1 = new WeakMap(), _compute_criterion = new WeakMap(), _es_power = new WeakMap(), _n_power = new WeakMap();
+_ttest2_pwr_cache = new WeakMap(), _ttest2_pwr_design = new WeakMap(), _ttest2_pwr_test = new WeakMap(), _ttest2_pwr_curve = new WeakMap(), _ttest2_pwr_stamp = new WeakMap(), _ttest2_pwr_power1 = new WeakMap(), _ttest2_pwr_compute_criterion = new WeakMap(), _ttest2_pwr_es_power = new WeakMap(), _ttest2_pwr_n_power = new WeakMap();
 module.exports = {
     ttest2_pwr: ttest2_pwr
 };
