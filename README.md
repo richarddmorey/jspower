@@ -165,4 +165,15 @@ t.quantile([.25,.5,.75], .1)
 
 The other options mostly govern the precision/speed of optimization and should not be changed by users.
 
+## Building
+
+Assuming you have node.js installed, download the repository. Then:
+
+```
+npm install
+npm run build
+npm run webpack
+```
+
+This will compile the typescript files in `src`, then create a web-friendly `jspower.js` in the `build` directory. There is also an example `index.html` file in the `dist` file to demonstrate loading and using the functions in a webpage.
 
