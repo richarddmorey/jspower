@@ -29,7 +29,7 @@ n1 = function(ctx, n1 = NULL, obj_name = "t"){
   if(is.null(n1)){
     return(ctx$get(s))
   }else{
-    glue::glue("{s} = {n1};") %>%
+    glue::glue("{s} = {n1};") |>
       ctx$eval() 
     return(ctx)
   }
@@ -53,8 +53,8 @@ test = function(ctx, alpha = NULL, side = NULL, es0 = NULL, obj_name = "t", stri
   
   if(is.null(alpha) & is.null(side) & is.null(es0)){
     if(stringify){
-      glue::glue("JSON.stringify({s})") %>%
-        ctx$get() %>%
+      glue::glue("JSON.stringify({s})") |>
+        ctx$get() |>
         jsonlite::prettify() -> x
       return(x)
     }
@@ -73,7 +73,7 @@ test = function(ctx, alpha = NULL, side = NULL, es0 = NULL, obj_name = "t", stri
   if(!is.null(es0)){
     es0_s = glue::glue("es0: {es0},")
   }
-  glue::glue("{s} = {{ {alpha_s} {side_s} {es0_s} }}") %>% 
+  glue::glue("{s} = {{ {alpha_s} {side_s} {es0_s} }}") |> 
     ctx$eval() 
   return(ctx)
 }
@@ -95,13 +95,13 @@ find_n = function(ctx, es, power, obj_name = "t"){
   if(any(power>=1) | any(power<=0))
     stop("Power must by greater than 0 and less than 1.")
   if( (length(power)==length(es)) | (length(es)==1) | (length(power)==1)){
-    glue::glue("{{ power: {power}, es: {es} }}") %>%
-      paste(collapse=", ") %>%
+    glue::glue("{{ power: {power}, es: {es} }}") |>
+      paste(collapse=", ") |>
       paste("[", ., "]") -> arg
   }else{
     stop("Invalid lengths of power and es; must match or be 1.")
   }
-  glue::glue("{obj_name}.find_n({arg});") %>%
+  glue::glue("{obj_name}.find_n({arg});") |>
     ctx$get()
 }
 
@@ -118,8 +118,8 @@ find_n = function(ctx, es, power, obj_name = "t"){
 design_report = function(ctx, obj_name = "t", stringify = TRUE){
   s = glue::glue("{obj_name}.design_report()")
   if(stringify){
-    glue::glue("JSON.stringify({s});") %>%
-      ctx$get() %>%
+    glue::glue("JSON.stringify({s});") |>
+      ctx$get() |>
       jsonlite::prettify() -> x
     return(x)
   }
